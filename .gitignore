@@ -1,0 +1,6 @@
+.vs
+**/**/bin
+**/**/obj
+src/HotelManagement.Infrastructure/Migrations
+src/HotelManagement.Infrastructure/ApplicationDbContext.cs
+docs/**
