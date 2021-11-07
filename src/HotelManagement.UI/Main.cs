@@ -1,5 +1,6 @@
 ﻿using System.Windows.Forms;
 using HotelManagement.UI.Components;
+using HotelManagement.UI.Views.Room;
 
 
 namespace HotelManagement.UI
@@ -49,6 +50,11 @@ namespace HotelManagement.UI
             form.BringToFront();
             form.Show();
             LblTittle.Text = form.Text;
+        }
+
+        private void BtnRoom_Click(object sender, System.EventArgs e)
+        {
+            OpenForm(Program.Container.GetInstance<FrmMainRoom>(), sender);
         }
     }
 }

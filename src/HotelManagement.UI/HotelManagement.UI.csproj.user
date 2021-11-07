@@ -4,10 +4,19 @@
     <Compile Update="Components\CustomButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="Components\Room.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Components\TextBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Views\Room\FrmCreateRoom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Views\Room\FrmMainRoom.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

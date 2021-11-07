@@ -2,5 +2,5 @@
 **/**/bin
 **/**/obj
 src/HotelManagement.Infrastructure/Migrations
-src/HotelManagement.Infrastructure/ApplicationDbContext.cs
+src\HotelManagement.UI\HotelManagement.UI.csproj.DotSettings
 docs/**
