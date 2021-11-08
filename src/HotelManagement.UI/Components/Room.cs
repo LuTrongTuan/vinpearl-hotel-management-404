@@ -10,6 +10,8 @@ namespace HotelManagement.UI.Components
         private int _borderSize = 1;
         private int _borderRadius;
 
+        public int Id { get; set; }
+
         public Room()
         {
             InitializeComponent();
