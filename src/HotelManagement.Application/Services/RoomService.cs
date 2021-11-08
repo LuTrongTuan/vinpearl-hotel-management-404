@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using HotelManagement.Application.Contracts.Infrastructure;
@@ -53,10 +54,31 @@ namespace HotelManagement.Application.Services
             return _mapper.Map<IList<Room>, IList<RoomListDTO>>(query);
         }
 
+        public async Task<IList<RoomListDTO>> GetSearch(string _name)
+        {
+            var query = await _worker.Rooms.GetAll();
+            var search = query.Where(c => c.Name.ToLower().StartsWith(_name.ToLower())).ToList();// t tự code bô
+            return _mapper.Map<IList<Room>, IList<RoomListDTO>>(search);
+        }
+
         public async Task<RoomDetailDTO> GetDetail(int id)
         {
             var result = await _worker.Rooms.Get(x => x.Id == id);
             return _mapper.Map<RoomDetailDTO>(result);
+        }
+
+        public async Task<string> Update(RoomDetailDTO room)
+        {
+            _room = await _worker.Rooms.Get(x => x.Id == room.Id);
+            if (_room == null)
+            {
+                return "Không tồn tại";
+            }
+            _room.Name = room.Name;
+            _room.Status = room.Status;
+            await _worker.Rooms.Update(_room);
+            await _worker.Commit();
+            return "Sửa thành công";
         }
     }
 }
