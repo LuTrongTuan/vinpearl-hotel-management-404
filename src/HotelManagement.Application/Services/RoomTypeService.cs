@@ -26,7 +26,6 @@ namespace HotelManagement.Application.Services
             await _worker.RoomTypes.Add(_roomType);
             await _worker.Commit();
         }
-
         public async Task Update(RoomTypeDTO roomType)
         {
             _roomType = await _worker.RoomTypes.Get(x => x.Id == roomType.Id);
@@ -35,7 +34,6 @@ namespace HotelManagement.Application.Services
             await _worker.RoomTypes.Update(_roomType);
             await _worker.Commit();
         }
-
         public async Task<IEnumerable<RoomTypeDTO>> Get()
         {
             var result = await _worker.RoomTypes.GetAll();
