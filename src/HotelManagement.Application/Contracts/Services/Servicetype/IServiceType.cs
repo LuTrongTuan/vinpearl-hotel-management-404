@@ -9,6 +9,7 @@ namespace HotelManagement.Application.Contracts.Services
         Task Add(ServicetypeDTO sertype);
         Task Update(ServicetypeDTO sertype);
         Task<IEnumerable<ServicetypeDTO>> Get();
+        Task<IList<ServicetypeDTO>> getTask();
         Task<IList<ServicetypeDTO>> getype(string name);
     }
 }
