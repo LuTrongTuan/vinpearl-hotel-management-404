@@ -1,6 +1,9 @@
 ﻿using System.Windows.Forms;
 using HotelManagement.UI.Components;
+using HotelManagement.UI.Views.Customer;
+using HotelManagement.UI.Views.Employee;
 using HotelManagement.UI.Views.Room;
+using HotelManagement.UI.Views.Service;
 
 
 namespace HotelManagement.UI
@@ -55,6 +58,21 @@ namespace HotelManagement.UI
         private void BtnRoom_Click(object sender, System.EventArgs e)
         {
             OpenForm(Program.Container.GetInstance<FrmMainRoom>(), sender);
+        }
+
+        private void btnEmployee_Click(object sender, System.EventArgs e)
+        {
+            OpenForm(Program.Container.GetInstance<FrmEmployee>(), sender);
+        }
+
+        private void customButton3_Click(object sender, System.EventArgs e)
+        {
+            OpenForm(Program.Container.GetInstance<FrmService>(), sender);
+        }
+
+        private void customButton1_Click(object sender, System.EventArgs e)
+        {
+            OpenForm(Program.Container.GetInstance<FrmCustomer>(), sender);
         }
     }
 }

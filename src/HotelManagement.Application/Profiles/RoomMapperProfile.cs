@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using HotelManagement.Application.DTOs.Room;
+using HotelManagement.Application.DTOs.Service;
 using HotelManagement.Domain;
 
 namespace HotelManagement.Application.Profiles
@@ -11,6 +12,8 @@ namespace HotelManagement.Application.Profiles
             CreateMap<CreateRoomDTO, Room>();
             CreateMap<Room, RoomListDTO>();
             CreateMap<RoomType, RoomTypeDTO>();
+            CreateMap<Service, ServiceDTO>();
+            CreateMap<ServiceType, ServicetypeDTO>();
             CreateMap<Room, RoomDetailDTO>().ReverseMap();
         }
     }

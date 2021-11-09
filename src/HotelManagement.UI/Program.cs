@@ -1,11 +1,15 @@
 using System;
 using System.Windows.Forms;
 using HotelManagement.Application;
+using HotelManagement.Application.Contracts.Services;
 using HotelManagement.Application.DependencyInjection;
 using HotelManagement.Infrastructure;
 using HotelManagement.UI.Contracts;
 using HotelManagement.UI.Utilities;
+using HotelManagement.UI.Views.Customer;
+using HotelManagement.UI.Views.Employee;
 using HotelManagement.UI.Views.Room;
+using HotelManagement.UI.Views.Service;
 
 namespace HotelManagement.UI
 {
@@ -14,11 +18,14 @@ namespace HotelManagement.UI
         public static IContainer Container { get; } = new Container();
         private static void Configuration()
         {
+            Container.Register<FrmService>();
+            Container.Register<FrmCustomer>();
+            Container.Register<FrmEmployee>();
+            Container.Register<ChangePassWord>();
             Container.Register<IConfirm, Confirm>();
             Container.Register<FrmMainRoom>();
             Container.Register<FrmCreateRoom>();
             Container.Register<FrmUpdateRoom>();
-
             Container.ConfigureInfrastructureServices();
             Container.ConfigureApplicationServices();
         }
@@ -33,6 +40,8 @@ namespace HotelManagement.UI
             System.Windows.Forms.Application.EnableVisualStyles();
             System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(false);
             System.Windows.Forms.Application.Run(new Main());
+            System.Windows.Forms.Application.Run(Container.GetInstance<FrmService>());
+            System.Windows.Forms.Application.Run(Program.Container.GetInstance<FrmMainRoom>());
         }
     }
 }

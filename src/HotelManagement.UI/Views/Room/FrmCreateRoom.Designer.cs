@@ -52,14 +52,14 @@ namespace HotelManagement.UI.Views.Room
             this.TbxRoomType.ErrorMessage = null;
             this.TbxRoomType.FocusedColor = System.Drawing.Color.Aqua;
             this.TbxRoomType.IsError = false;
-            this.TbxRoomType.Location = new System.Drawing.Point(427, 13);
+            this.TbxRoomType.Location = new System.Drawing.Point(426, 15);
             this.TbxRoomType.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.TbxRoomType.Multiline = false;
             this.TbxRoomType.Name = "TbxRoomType";
             this.TbxRoomType.Padding = new System.Windows.Forms.Padding(7);
             this.TbxRoomType.Password = false;
             this.TbxRoomType.PlaceHolder = "Thêm loại phòng mới";
-            this.TbxRoomType.Size = new System.Drawing.Size(222, 39);
+            this.TbxRoomType.Size = new System.Drawing.Size(222, 37);
             this.TbxRoomType.TabIndex = 0;
             this.TbxRoomType.Underline = false;
             // 
@@ -72,7 +72,7 @@ namespace HotelManagement.UI.Views.Room
             this.BtnAddRoomType.BorderSize = 2;
             this.BtnAddRoomType.FlatAppearance.BorderSize = 0;
             this.BtnAddRoomType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnAddRoomType.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.BtnAddRoomType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.BtnAddRoomType.ForeColor = System.Drawing.Color.White;
             this.BtnAddRoomType.Location = new System.Drawing.Point(675, 13);
             this.BtnAddRoomType.Name = "BtnAddRoomType";
@@ -96,10 +96,10 @@ namespace HotelManagement.UI.Views.Room
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(13, 53);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(196, 24);
+            this.label1.Size = new System.Drawing.Size(209, 25);
             this.label1.TabIndex = 3;
             this.label1.Text = "Phòng sẽ được thêm";
             // 
@@ -110,24 +110,24 @@ namespace HotelManagement.UI.Views.Room
             this.TbxQuantity.ErrorMessage = null;
             this.TbxQuantity.FocusedColor = System.Drawing.Color.LightSeaGreen;
             this.TbxQuantity.IsError = false;
-            this.TbxQuantity.Location = new System.Drawing.Point(693, 101);
+            this.TbxQuantity.Location = new System.Drawing.Point(692, 108);
             this.TbxQuantity.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.TbxQuantity.Multiline = false;
             this.TbxQuantity.Name = "TbxQuantity";
             this.TbxQuantity.Padding = new System.Windows.Forms.Padding(7);
             this.TbxQuantity.Password = false;
             this.TbxQuantity.PlaceHolder = "Số lượng";
-            this.TbxQuantity.Size = new System.Drawing.Size(94, 39);
+            this.TbxQuantity.Size = new System.Drawing.Size(94, 37);
             this.TbxQuantity.TabIndex = 4;
             this.TbxQuantity.Underline = false;
             // 
             // CmbRoomType
             // 
-            this.CmbRoomType.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CmbRoomType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CmbRoomType.FormattingEnabled = true;
             this.CmbRoomType.Location = new System.Drawing.Point(378, 108);
             this.CmbRoomType.Name = "CmbRoomType";
-            this.CmbRoomType.Size = new System.Drawing.Size(196, 32);
+            this.CmbRoomType.Size = new System.Drawing.Size(196, 33);
             this.CmbRoomType.TabIndex = 5;
             // 
             // BtnAddToQueue
@@ -216,14 +216,14 @@ namespace HotelManagement.UI.Views.Room
             this.TbxFloor.ErrorMessage = null;
             this.TbxFloor.FocusedColor = System.Drawing.Color.LightSeaGreen;
             this.TbxFloor.IsError = false;
-            this.TbxFloor.Location = new System.Drawing.Point(581, 101);
+            this.TbxFloor.Location = new System.Drawing.Point(582, 108);
             this.TbxFloor.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.TbxFloor.Multiline = false;
             this.TbxFloor.Name = "TbxFloor";
             this.TbxFloor.Padding = new System.Windows.Forms.Padding(7);
             this.TbxFloor.Password = false;
             this.TbxFloor.PlaceHolder = "Tầng";
-            this.TbxFloor.Size = new System.Drawing.Size(94, 39);
+            this.TbxFloor.Size = new System.Drawing.Size(94, 37);
             this.TbxFloor.TabIndex = 11;
             this.TbxFloor.Underline = false;
             // 
@@ -231,6 +231,8 @@ namespace HotelManagement.UI.Views.Room
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::HotelManagement.UI.Properties.Resources.z2914805628131_5fbbb0b306b67de840cab4412b5fc185;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(800, 284);
             this.Controls.Add(this.TbxFloor);
             this.Controls.Add(this.BtnSave);
