@@ -23,7 +23,6 @@ namespace HotelManagement.UI.Views.Room
             var demo = Program.Container.GetInstance<FrmCreateRoom>();
             demo.Show();
         }
-
         async void LoadRoom()
         {
             var location = new Point(10, 5);
@@ -60,6 +59,7 @@ namespace HotelManagement.UI.Views.Room
             return new Components.Room()
             {
                 RoomNumber = source.Name,
+                Id = source.Id,
                 Background = source.Status switch
                 {
                     0 => Color.Green,
@@ -74,5 +74,46 @@ namespace HotelManagement.UI.Views.Room
         }
 
         private void BtnRefresh_Click(object sender, EventArgs e) => LoadRoom();
+
+        async void LoadRoomSearch(string name)
+        {
+            var location = new Point(10, 5);
+            const int numberOf = 1100 / 220;
+            var count = numberOf;
+            var request = await _roomService.GetSearch(name);
+            if (request.Count != 0)
+            {
+                PanelContainer.Controls.Clear();
+                foreach (var room in request)
+                {
+                    _room = SetAttribute(room);
+                    _room.Click += OpenEditForm;
+                    _room.Location = location;
+                    if (count == 1)
+                    {
+                        location = Location(location, false);
+                        count = numberOf;
+                    }
+                    else
+                    {
+                        location = Location(location);
+                        count--;
+                    }
+                    this.PanelContainer.Controls.Add(_room);
+                }
+            }
+        }
+        private void TbxSearch_KeyUp(object sender, KeyEventArgs e)
+        {
+            LoadRoomSearch(TbxSearch.Text);
+        }
+
+        private void OpenEditForm(object sender, EventArgs e)
+        {
+            var edit = Program.Container.GetInstance<FrmUpdateRoom>();
+            var d = sender as Components.Room;
+            edit.Id = d.Id;
+            edit.Show();
+        }
     }
 }
