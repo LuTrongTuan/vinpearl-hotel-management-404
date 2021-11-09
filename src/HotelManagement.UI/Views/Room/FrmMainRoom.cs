@@ -23,27 +23,37 @@ namespace HotelManagement.UI.Views.Room
             var demo = Program.Container.GetInstance<FrmCreateRoom>();
             demo.Show();
         }
-        async void LoadRoom()
+        private void customButton2_Click(object sender, EventArgs e)
+        {
+            var demo = Program.Container.GetInstance<FrmUpdateRoom>();
+            demo.Show();
+        }
+        async void LoadRoom(string name = "")
         {
             var location = new Point(10, 5);
             const int numberOf = 1100 / 220;
             var count = numberOf;
-            var request = await _roomService.Get();
-            foreach (var room in request)
+            var request = await _roomService.Get(name);
+            if (request.Count != 0)
             {
-                _room = SetAttribute(room);
-                _room.Location = location;
-                if (count == 1)
+                PanelContainer.Controls.Clear();
+                foreach (var room in request)
                 {
-                    location = Location(location, false);
-                    count = numberOf;
+                    _room = SetAttribute(room);
+                    
+                    _room.Location = location;
+                    if (count == 1)
+                    {
+                        location = Location(location, false);
+                        count = numberOf;
+                    }
+                    else
+                    {
+                        location = Location(location);
+                        count--;
+                    }
+                    this.PanelContainer.Controls.Add(_room);
                 }
-                else
-                {
-                    location = Location(location);
-                    count--;
-                }
-                this.PanelContainer.Controls.Add(_room);
             }
         }
 
@@ -62,9 +72,9 @@ namespace HotelManagement.UI.Views.Room
                 Id = source.Id,
                 Background = source.Status switch
                 {
-                    0 => Color.Green,
-                    1 => Color.Yellow,
-                    _ => Color.Red
+                    0 => Color.Red,
+                    1 => Color.Green,
+                    _ => Color.Yellow
                 },
                 BorderSize = 2,
                 BorderColor = Color.Green,
@@ -75,45 +85,9 @@ namespace HotelManagement.UI.Views.Room
 
         private void BtnRefresh_Click(object sender, EventArgs e) => LoadRoom();
 
-        async void LoadRoomSearch(string name)
-        {
-            var location = new Point(10, 5);
-            const int numberOf = 1100 / 220;
-            var count = numberOf;
-            var request = await _roomService.GetSearch(name);
-            if (request.Count != 0)
-            {
-                PanelContainer.Controls.Clear();
-                foreach (var room in request)
-                {
-                    _room = SetAttribute(room);
-                    _room.Click += OpenEditForm;
-                    _room.Location = location;
-                    if (count == 1)
-                    {
-                        location = Location(location, false);
-                        count = numberOf;
-                    }
-                    else
-                    {
-                        location = Location(location);
-                        count--;
-                    }
-                    this.PanelContainer.Controls.Add(_room);
-                }
-            }
-        }
         private void TbxSearch_KeyUp(object sender, KeyEventArgs e)
         {
-            LoadRoomSearch(TbxSearch.Text);
-        }
-
-        private void OpenEditForm(object sender, EventArgs e)
-        {
-            var edit = Program.Container.GetInstance<FrmUpdateRoom>();
-            var d = sender as Components.Room;
-            edit.Id = d.Id;
-            edit.Show();
+            LoadRoom(TbxSearch.Text);
         }
     }
 }

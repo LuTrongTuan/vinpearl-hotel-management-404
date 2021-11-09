@@ -45,19 +45,13 @@ namespace HotelManagement.Application.Services
                 }
             }
             await _worker.Commit();
-            return "Thêm thanh công";
+            return "Thêm thành công";
         }
 
-        public async Task<IList<RoomListDTO>> Get()
+        public async Task<IList<RoomListDTO>> Get(string _name)
         {
             var query = await _worker.Rooms.GetAll();
-            return _mapper.Map<IList<Room>, IList<RoomListDTO>>(query);
-        }
-
-        public async Task<IList<RoomListDTO>> GetSearch(string _name)
-        {
-            var query = await _worker.Rooms.GetAll();
-            var search = query.Where(c => c.Name.ToLower().StartsWith(_name.ToLower())).ToList();// t tự code bô
+            var search = query.Where(c => c.Name.ToLower().StartsWith(_name.ToLower())).ToList();
             return _mapper.Map<IList<Room>, IList<RoomListDTO>>(search);
         }
 

@@ -17,6 +17,8 @@ namespace HotelManagement.UI.Components
             InitializeComponent();
         }
 
+        public int Status { get; set; }
+
         public string RoomNumber
         {
             get => this.LblRoomName.Text;
