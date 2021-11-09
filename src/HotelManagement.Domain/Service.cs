@@ -6,6 +6,7 @@ namespace HotelManagement.Domain
     {
         public string Name { get; set; }
         public double Price { get; set; }
+        public bool Status { get; set; }
 
         public int ServiceTypeId { get; set; }
         public virtual ServiceType ServiceType { get; set; }

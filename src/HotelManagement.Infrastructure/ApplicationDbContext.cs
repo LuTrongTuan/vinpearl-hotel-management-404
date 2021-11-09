@@ -6,13 +6,8 @@ namespace HotelManagement.Infrastructure
 {
     public class ApplicationDbContext : DbContext
     {
-
         // define connection string here
-
-
-        
         private const string ConnectionString = @"";
-
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -39,5 +34,6 @@ namespace HotelManagement.Infrastructure
         public virtual DbSet<Room> Rooms { get; set; }
         public virtual DbSet<RoomType> RoomTypes { get; set; }
         public virtual DbSet<RoomReceipt> RoomReceipts { get; set; }
+        public virtual DbSet<Floor> Floors { get; set; }
     }
 }

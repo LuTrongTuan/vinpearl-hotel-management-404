@@ -23,6 +23,7 @@ namespace HotelManagement.Infrastructure.Repositories
             Services = new ServiceRepository(_context);
             ServiceTypes = new ServiceTypeRepository(_context);
             ServiceReceipts = new ServiceReceiptRepository(_context);
+            Floors = new FloorRepository(_context);
         }
 
         public Task<int> Commit() => _context.SaveChangesAsync();
@@ -39,6 +40,7 @@ namespace HotelManagement.Infrastructure.Repositories
         public IServiceReceiptRepository ServiceReceipts { get; set; }
         public IServiceRepository Services { get; set; }
         public IServiceTypeRepository ServiceTypes { get; set; }
+        public IFloorRepository Floors { get; set; }
 
         public void Dispose()
         {
