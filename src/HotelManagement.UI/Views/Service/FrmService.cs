@@ -4,7 +4,6 @@ using System.Linq;
 using System.Windows.Forms;
 using HotelManagement.Application.Contracts.Services;
 using HotelManagement.Application.DTOs.Service;
-using HotelManagement.Application.Services;
 using HotelManagement.UI.Contracts;
 
 namespace HotelManagement.UI.Views.Service
@@ -24,7 +23,6 @@ namespace HotelManagement.UI.Views.Service
             _serviceType = sert;
             LoadServiceType();
             Service();
-            ServiceType();
         }
 
         async void LoadServiceType()
@@ -33,19 +31,19 @@ namespace HotelManagement.UI.Views.Service
             cmb_LDV.DataSource = result.ToList();
             cmb_LDV.DisplayMember = "Name";
             cmb_LDV.ValueMember = "Id";
-        }
-        void ServiceType()
-        {
             dg_LDVview.ColumnCount = 1;
-            dg_LDVview.Columns[0].HeaderText = "name";
+            dg_LDVview.Columns[0].Name = "name";
             dg_LDVview.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dg_LDVview.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dg_LDVview.Rows.Clear();
-            foreach (var room in _listtype) 
+            foreach (var room in result.ToList())
+            {
                 dg_LDVview.Rows.Add(room.Name);
+            }
         }
-        void Service()
+        async void Service()
         {
+            var _list = await _service.Get();
             dg_DV.ColumnCount = 2;
             dg_DV.Columns[0].HeaderText = "name";
             dg_DV.Columns[1].HeaderText = "price";
@@ -53,7 +51,7 @@ namespace HotelManagement.UI.Views.Service
             dg_DV.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dg_DV.Rows.Clear();
             foreach (var room in _list)
-                dg_LDVview.Rows.Add(room.Name,room.Price);
+                dg_DV.Rows.Add(room.Name,room.Price);
         }
         private async void btn_addLDV_Click(object sender, EventArgs e)
         {
@@ -68,9 +66,7 @@ namespace HotelManagement.UI.Views.Service
                 if (_confirm.IsConfirm("bạn chắc chắn thêm"))
                 {
                     await _serviceType.Add(sertype);
-                    _list.Clear();
                     LoadServiceType();
-                    ServiceType();
                 }
             }
         }
@@ -84,18 +80,16 @@ namespace HotelManagement.UI.Views.Service
             }
             else
             {
-                var type = await _serviceType.getype(cmb_LDV.Text);
                 var sertype = new ServiceDTO
                 {
-                    Name = txt_LDV.Text,
-                    ServiceTypeId = type.Select(c=>c.Id).FirstOrDefault(),
+                    Name = txt_DV.Text,
+                    ServiceTypeId = Convert.ToInt32(cmb_LDV.SelectedValue),
                     Price = Convert.ToDouble(txt_price.Text)
                 };
                 if (_confirm.IsConfirm("bạn chắc chắn thêm"))
                 {
                     await _service.AddService(sertype);
-                    _list.Clear();
-                    LoadServiceType();
+                    Service();
                 }
             }
         }

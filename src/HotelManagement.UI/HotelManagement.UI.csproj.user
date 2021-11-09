@@ -16,6 +16,9 @@
     <Compile Update="Main.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Views\Check\FrmCheckOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Views\Customer\FrmCustomer.cs">
       <SubType>Form</SubType>
     </Compile>

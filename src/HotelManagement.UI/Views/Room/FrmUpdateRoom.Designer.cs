@@ -35,7 +35,9 @@ namespace HotelManagement.UI.Views.Room
             this.CbxActive = new System.Windows.Forms.CheckBox();
             this.CbxDeactive = new System.Windows.Forms.CheckBox();
             this.BtnSave = new HotelManagement.UI.Components.CustomButton();
-            this.BtnEditToQueue = new HotelManagement.UI.Components.CustomButton();
+            this.PanelContainer = new System.Windows.Forms.Panel();
+            this.CbxToUp = new System.Windows.Forms.CheckBox();
+            this.BtnRefresh = new HotelManagement.UI.Components.CustomButton();
             this.SuspendLayout();
             // 
             // TbxName
@@ -86,6 +88,7 @@ namespace HotelManagement.UI.Views.Room
             this.CbxActive.TabIndex = 17;
             this.CbxActive.Text = "Hoạt Động";
             this.CbxActive.UseVisualStyleBackColor = true;
+            this.CbxActive.CheckedChanged += new System.EventHandler(this.CbxActive_CheckedChanged);
             // 
             // CbxDeactive
             // 
@@ -97,6 +100,7 @@ namespace HotelManagement.UI.Views.Room
             this.CbxDeactive.TabIndex = 18;
             this.CbxDeactive.Text = "Không Hoạt Động";
             this.CbxDeactive.UseVisualStyleBackColor = true;
+            this.CbxDeactive.CheckedChanged += new System.EventHandler(this.CbxDeactive_CheckedChanged);
             // 
             // BtnSave
             // 
@@ -109,7 +113,7 @@ namespace HotelManagement.UI.Views.Room
             this.BtnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnSave.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.BtnSave.ForeColor = System.Drawing.Color.White;
-            this.BtnSave.Location = new System.Drawing.Point(557, 101);
+            this.BtnSave.Location = new System.Drawing.Point(708, 79);
             this.BtnSave.Name = "BtnSave";
             this.BtnSave.Size = new System.Drawing.Size(120, 45);
             this.BtnSave.TabIndex = 22;
@@ -118,33 +122,56 @@ namespace HotelManagement.UI.Views.Room
             this.BtnSave.UseVisualStyleBackColor = false;
             this.BtnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
-            // BtnEditToQueue
+            // PanelContainer
             // 
-            this.BtnEditToQueue.BackColor = System.Drawing.Color.DarkTurquoise;
-            this.BtnEditToQueue.BackgroundColor = System.Drawing.Color.DarkTurquoise;
-            this.BtnEditToQueue.BorderColor = System.Drawing.Color.DarkTurquoise;
-            this.BtnEditToQueue.BorderRadius = 7;
-            this.BtnEditToQueue.BorderSize = 2;
-            this.BtnEditToQueue.FlatAppearance.BorderSize = 0;
-            this.BtnEditToQueue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnEditToQueue.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.BtnEditToQueue.ForeColor = System.Drawing.Color.White;
-            this.BtnEditToQueue.Location = new System.Drawing.Point(557, 15);
-            this.BtnEditToQueue.Name = "BtnEditToQueue";
-            this.BtnEditToQueue.Size = new System.Drawing.Size(120, 45);
-            this.BtnEditToQueue.TabIndex = 19;
-            this.BtnEditToQueue.Text = "Sửa Phòng";
-            this.BtnEditToQueue.TextColor = System.Drawing.Color.White;
-            this.BtnEditToQueue.UseVisualStyleBackColor = false;
-            this.BtnEditToQueue.Click += new System.EventHandler(this.BtnEditToQueue_Click);
+            this.PanelContainer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PanelContainer.Location = new System.Drawing.Point(3, 229);
+            this.PanelContainer.Name = "PanelContainer";
+            this.PanelContainer.Size = new System.Drawing.Size(902, 303);
+            this.PanelContainer.TabIndex = 23;
+            // 
+            // CbxToUp
+            // 
+            this.CbxToUp.AutoSize = true;
+            this.CbxToUp.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.CbxToUp.Location = new System.Drawing.Point(205, 180);
+            this.CbxToUp.Name = "CbxToUp";
+            this.CbxToUp.Size = new System.Drawing.Size(146, 27);
+            this.CbxToUp.TabIndex = 24;
+            this.CbxToUp.Text = "Đang Dọn Dẹp";
+            this.CbxToUp.UseVisualStyleBackColor = true;
+            this.CbxToUp.CheckedChanged += new System.EventHandler(this.CbxToUp_CheckedChanged);
+            // 
+            // BtnRefresh
+            // 
+            this.BtnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnRefresh.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.BtnRefresh.BackgroundColor = System.Drawing.SystemColors.MenuHighlight;
+            this.BtnRefresh.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.BtnRefresh.BorderRadius = 5;
+            this.BtnRefresh.BorderSize = 2;
+            this.BtnRefresh.FlatAppearance.BorderSize = 0;
+            this.BtnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnRefresh.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.BtnRefresh.Image = global::HotelManagement.UI.Properties.Resources.refresh__2_;
+            this.BtnRefresh.Location = new System.Drawing.Point(627, 79);
+            this.BtnRefresh.Name = "BtnRefresh";
+            this.BtnRefresh.Size = new System.Drawing.Size(48, 45);
+            this.BtnRefresh.TabIndex = 25;
+            this.BtnRefresh.TextColor = System.Drawing.SystemColors.ControlText;
+            this.BtnRefresh.UseVisualStyleBackColor = false;
+            this.BtnRefresh.Click += new System.EventHandler(this.BtnRefresh_Click);
             // 
             // FrmUpdateRoom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(710, 198);
+            this.ClientSize = new System.Drawing.Size(909, 544);
+            this.Controls.Add(this.BtnRefresh);
+            this.Controls.Add(this.CbxToUp);
+            this.Controls.Add(this.PanelContainer);
             this.Controls.Add(this.BtnSave);
-            this.Controls.Add(this.BtnEditToQueue);
             this.Controls.Add(this.CbxDeactive);
             this.Controls.Add(this.CbxActive);
             this.Controls.Add(this.label2);
@@ -166,5 +193,8 @@ namespace HotelManagement.UI.Views.Room
         private System.Windows.Forms.CheckBox CbxDeactive;
         private Components.CustomButton BtnSave;
         private Components.CustomButton BtnEditToQueue;
+        private System.Windows.Forms.Panel PanelContainer;
+        private System.Windows.Forms.CheckBox CbxToUp;
+        private Components.CustomButton BtnRefresh;
     }
 }

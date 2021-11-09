@@ -20,8 +20,8 @@ namespace HotelManagement.Application.Services
         }
         public async Task<string> AddService(ServiceDTO ser)
         {
-            _ser = new Domain.Service();
-            await _work.Services.Add(_ser);
+            var service = _mapper.Map<Domain.Service>(ser);
+            await _work.Services.Add(service);
             await _work.Commit();
             return "thêm thành công";
         }
@@ -54,8 +54,6 @@ namespace HotelManagement.Application.Services
             var list = query.Where(c => c.Name.ToLower().StartsWith(name.ToLower())).ToList();
             return _mapper.Map<IList<Domain.Service>, IList<ServiceDTO>>(list);
         }
-
-
         public async Task<ServiceDTO> GetDetail(int id)
         {
             var query = await _work.Services.Get(x=>x.Id == id);
