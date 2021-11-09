@@ -8,7 +8,9 @@ namespace HotelManagement.Domain
         public int Status { get; set; }
 
         public int TypeId { get; set; }
+        public int FloorNumber { get; set; }
         public virtual RoomType RoomType { get; set; }
         public virtual ICollection<RoomReceipt> RoomReceipts { get; set; }
+        public virtual Floor Floor { get; set; }
     }
 }

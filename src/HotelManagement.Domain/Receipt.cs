@@ -10,6 +10,7 @@ namespace HotelManagement.Domain
         public bool Status { get; set; }
         public double Deposit { get; set; }
         public double Payment { get; set; }
+        public int Number { get; set; }
 
         public int EmployeeId { get; set; }
         public int CustomerId { get; set; }
