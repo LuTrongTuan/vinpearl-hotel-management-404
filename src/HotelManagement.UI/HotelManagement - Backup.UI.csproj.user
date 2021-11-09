@@ -22,19 +22,17 @@
     <Compile Update="Views\Employee\FrmEmployee.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Views\Login\FrmLogin.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="Views\Room\FrmCreateRoom.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Views\Room\FrmMainRoom.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Views\Room\FrmUpdateRoom.cs">
-      <SubType>Form</SubType>
-    </Compile>
+<<<<<<< HEAD
     <Compile Update="Views\Service\FrmService.cs">
+=======
+    <Compile Update="Views\Room\FrmUpdateRoom.cs">
+>>>>>>> 7ddf38178c1bbbb9fafd3b5582c7b6eaf1bd0813
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
