@@ -55,6 +55,15 @@ namespace HotelManagement.UI
             LblTittle.Text = form.Text;
         }
 
+        public void SenderDataLogintoMain(int vaitro)
+        {
+            if (vaitro == 1)
+            {
+                this.BtnRoom.Visible = false;
+                this.btnEmployee.Visible = false;
+                this.btn_thongke.Visible = false;
+            }
+        }
         private void BtnRoom_Click(object sender, System.EventArgs e)
         {
             OpenForm(Program.Container.GetInstance<FrmMainRoom>(), sender);
@@ -73,6 +82,11 @@ namespace HotelManagement.UI
         private void customButton1_Click(object sender, System.EventArgs e)
         {
             OpenForm(Program.Container.GetInstance<FrmCustomer>(), sender);
+        }
+
+        private void customButton4_Click(object sender, System.EventArgs e)
+        {
+            OpenForm(Program.Container.GetInstance<ChangePassWord>(), sender);
         }
     }
 }

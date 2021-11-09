@@ -37,7 +37,6 @@ namespace HotelManagement.UI
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.customButton2 = new HotelManagement.UI.Components.CustomButton();
             this.customButton1 = new HotelManagement.UI.Components.CustomButton();
             this.txt_nlmk = new HotelManagement.UI.Components.TextBox();
             this.txt_newMK = new HotelManagement.UI.Components.TextBox();
@@ -49,14 +48,13 @@ namespace HotelManagement.UI
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(194)))));
+            this.panel1.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.customButton2);
             this.panel1.Controls.Add(this.customButton1);
             this.panel1.Controls.Add(this.txt_nlmk);
             this.panel1.Controls.Add(this.txt_newMK);
@@ -64,7 +62,7 @@ namespace HotelManagement.UI
             this.panel1.Controls.Add(this.txt_mk);
             this.panel1.Location = new System.Drawing.Point(12, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(456, 615);
+            this.panel1.Size = new System.Drawing.Size(456, 561);
             this.panel1.TabIndex = 0;
             // 
             // pictureBox1
@@ -126,26 +124,6 @@ namespace HotelManagement.UI
             this.label1.Size = new System.Drawing.Size(83, 20);
             this.label1.TabIndex = 11;
             this.label1.Text = "UserName";
-            // 
-            // customButton2
-            // 
-            this.customButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(165)))), ((int)(((byte)(245)))));
-            this.customButton2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(165)))), ((int)(((byte)(245)))));
-            this.customButton2.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.customButton2.BorderRadius = 20;
-            this.customButton2.BorderSize = 0;
-            this.customButton2.FlatAppearance.BorderSize = 0;
-            this.customButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customButton2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.customButton2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.customButton2.Location = new System.Drawing.Point(142, 548);
-            this.customButton2.Name = "customButton2";
-            this.customButton2.Size = new System.Drawing.Size(188, 50);
-            this.customButton2.TabIndex = 7;
-            this.customButton2.Text = "Trở lại";
-            this.customButton2.TextColor = System.Drawing.SystemColors.ControlText;
-            this.customButton2.UseVisualStyleBackColor = false;
-            this.customButton2.Click += new System.EventHandler(this.customButton2_Click);
             // 
             // customButton1
             // 
@@ -243,10 +221,11 @@ namespace HotelManagement.UI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(480, 625);
+            this.ClientSize = new System.Drawing.Size(480, 573);
             this.Controls.Add(this.panel1);
             this.Name = "ChangePassWord";
-            this.Text = "ChangePassWord";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Đổi mật khẩu";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -266,7 +245,6 @@ namespace HotelManagement.UI
         private Components.TextBox txt_newMK;
         private Components.TextBox txt_name;
         private Components.TextBox txt_mk;
-        private Components.CustomButton customButton2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label5;
     }

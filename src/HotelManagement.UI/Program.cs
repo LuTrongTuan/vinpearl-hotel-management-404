@@ -7,6 +7,7 @@ using HotelManagement.UI.Contracts;
 using HotelManagement.UI.Utilities;
 using HotelManagement.UI.Views.Customer;
 using HotelManagement.UI.Views.Employee;
+using HotelManagement.UI.Views.Login;
 using HotelManagement.UI.Views.Room;
 using HotelManagement.UI.Views.Service;
 
@@ -17,6 +18,7 @@ namespace HotelManagement.UI
         public static IContainer Container { get; } = new Container();
         private static void Configuration()
         {
+            Container.Register<FrmLogin>();
             Container.Register<FrmService>();
             Container.Register<FrmCustomer>();
             Container.Register<FrmEmployee>();

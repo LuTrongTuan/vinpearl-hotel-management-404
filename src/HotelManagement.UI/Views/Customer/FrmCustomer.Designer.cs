@@ -262,7 +262,7 @@ namespace HotelManagement.UI.Views.Customer
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox7);
             this.Name = "FrmCustomer";
-            this.Text = "FrmCustomer";
+            this.Text = "Quản lý khách hàng";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

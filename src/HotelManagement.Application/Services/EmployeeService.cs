@@ -20,11 +20,17 @@ namespace HotelManagement.Application.Services
             throw new System.NotImplementedException();
         }
 
-        //public async Task<IList<EmployeeDTO>> GetList()
-        //{
-            
-        //    return 
-        //}
+        public async Task<IList<EmployeeDTO>> GetList()
+        {
+            _employeeDto = (from x in _worker.Employees.GetAll()
+                join y in _worker.Accounts.GetAll() on x.Id equals y.EmployeeId
+                join z in _worker.Roles.GetAll() on y.EmployeeId equals z.Id
+                select new EmployeeDTO()
+                {
+
+                });
+            throw new System.NotImplementedException();
+        }
 
         public Task<IList<EmployeeDTO>> GetList(string name)
         {

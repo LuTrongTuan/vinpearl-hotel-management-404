@@ -38,13 +38,13 @@ namespace HotelManagement.UI.Views.Service
             this.button1 = new System.Windows.Forms.Button();
             this.textBox7 = new HotelManagement.UI.Components.TextBox();
             this.textBox6 = new HotelManagement.UI.Components.TextBox();
-            this.textBox2 = new HotelManagement.UI.Components.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.textBox1 = new HotelManagement.UI.Components.TextBox();
             this.button5 = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -150,24 +150,6 @@ namespace HotelManagement.UI.Views.Service
             this.textBox6.TabIndex = 14;
             this.textBox6.Underline = false;
             // 
-            // textBox2
-            // 
-            this.textBox2.BorderColor = System.Drawing.Color.BlueViolet;
-            this.textBox2.BorderRadius = 0;
-            this.textBox2.ErrorMessage = null;
-            this.textBox2.FocusedColor = System.Drawing.Color.Aqua;
-            this.textBox2.IsError = false;
-            this.textBox2.Location = new System.Drawing.Point(519, 87);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox2.Multiline = false;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Padding = new System.Windows.Forms.Padding(7);
-            this.textBox2.Password = false;
-            this.textBox2.PlaceHolder = null;
-            this.textBox2.Size = new System.Drawing.Size(260, 37);
-            this.textBox2.TabIndex = 13;
-            this.textBox2.Underline = false;
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -240,12 +222,21 @@ namespace HotelManagement.UI.Views.Service
             this.button5.Text = "Clear";
             this.button5.UseVisualStyleBackColor = true;
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(519, 101);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(260, 28);
+            this.comboBox1.TabIndex = 26;
+            // 
             // FrmService
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1185, 689);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.checkBox1);
@@ -256,13 +247,12 @@ namespace HotelManagement.UI.Views.Service
             this.Controls.Add(this.textBox7);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Name = "FrmService";
-            this.Text = "FrmService";
+            this.Text = "Quản lý dịch vụ";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -279,12 +269,12 @@ namespace HotelManagement.UI.Views.Service
         private System.Windows.Forms.Button button1;
         private Components.TextBox textBox7;
         private Components.TextBox textBox6;
-        private Components.TextBox textBox2;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private Components.TextBox textBox1;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
