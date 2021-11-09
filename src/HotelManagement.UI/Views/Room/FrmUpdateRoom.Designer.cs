@@ -151,6 +151,7 @@ namespace HotelManagement.UI.Views.Room
             this.Controls.Add(this.label1);
             this.Controls.Add(this.TbxName);
             this.Name = "FrmUpdateRoom";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmUpdateRoom";
             this.ResumeLayout(false);
             this.PerformLayout();

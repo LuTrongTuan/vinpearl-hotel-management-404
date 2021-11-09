@@ -94,5 +94,10 @@ namespace HotelManagement.UI.Views.Room
             if (_confirm.IsConfirm("Bạn chắc chứ?"))
                 MessageBox.Show(await _roomService.AddRoom(_queue));
         }
+
+        private void BtnRemove_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

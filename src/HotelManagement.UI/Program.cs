@@ -27,11 +27,7 @@ namespace HotelManagement.UI
             Container.Register<IConfirm, Confirm>();
             Container.Register<FrmMainRoom>();
             Container.Register<FrmCreateRoom>();
-<<<<<<< HEAD
-=======
             Container.Register<FrmUpdateRoom>();
-
->>>>>>> 7ddf38178c1bbbb9fafd3b5582c7b6eaf1bd0813
             Container.ConfigureInfrastructureServices();
             Container.ConfigureApplicationServices();
         }
@@ -45,11 +41,8 @@ namespace HotelManagement.UI
             System.Windows.Forms.Application.SetHighDpiMode(HighDpiMode.SystemAware);
             System.Windows.Forms.Application.EnableVisualStyles();
             System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(false);
-<<<<<<< HEAD
-            System.Windows.Forms.Application.Run(Container.GetInstance<FrmService>());
-=======
-            System.Windows.Forms.Application.Run(Program.Container.GetInstance<FrmMainRoom>());
->>>>>>> 7ddf38178c1bbbb9fafd3b5582c7b6eaf1bd0813
+            System.Windows.Forms.Application.Run(Container.GetInstance<FrmLogin>());
+
         }
     }
 }

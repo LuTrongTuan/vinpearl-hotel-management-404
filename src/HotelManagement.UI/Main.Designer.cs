@@ -33,6 +33,7 @@ namespace HotelManagement.UI
         private void InitializeComponent()
         {
             this.sidebar = new System.Windows.Forms.Panel();
+            this.btn_thongke = new HotelManagement.UI.Components.CustomButton();
             this.customButton5 = new HotelManagement.UI.Components.CustomButton();
             this.customButton4 = new HotelManagement.UI.Components.CustomButton();
             this.customButton3 = new HotelManagement.UI.Components.CustomButton();
@@ -46,7 +47,6 @@ namespace HotelManagement.UI
             this.PanelTittle = new System.Windows.Forms.Panel();
             this.LblTittle = new System.Windows.Forms.Label();
             this.PanelMain = new System.Windows.Forms.Panel();
-            this.btn_thongke = new HotelManagement.UI.Components.CustomButton();
             this.sidebar.SuspendLayout();
             this.PanelAppName.SuspendLayout();
             this.PanelTittle.SuspendLayout();
@@ -69,6 +69,25 @@ namespace HotelManagement.UI
             this.sidebar.Name = "sidebar";
             this.sidebar.Size = new System.Drawing.Size(261, 745);
             this.sidebar.TabIndex = 0;
+            // 
+            // btn_thongke
+            // 
+            this.btn_thongke.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(165)))), ((int)(((byte)(245)))));
+            this.btn_thongke.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(165)))), ((int)(((byte)(245)))));
+            this.btn_thongke.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btn_thongke.BorderRadius = 0;
+            this.btn_thongke.BorderSize = 0;
+            this.btn_thongke.FlatAppearance.BorderSize = 0;
+            this.btn_thongke.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_thongke.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn_thongke.ForeColor = System.Drawing.Color.White;
+            this.btn_thongke.Location = new System.Drawing.Point(-3, 378);
+            this.btn_thongke.Name = "btn_thongke";
+            this.btn_thongke.Size = new System.Drawing.Size(261, 50);
+            this.btn_thongke.TabIndex = 7;
+            this.btn_thongke.Text = "Thống kê";
+            this.btn_thongke.TextColor = System.Drawing.Color.White;
+            this.btn_thongke.UseVisualStyleBackColor = false;
             // 
             // customButton5
             // 
@@ -277,25 +296,6 @@ namespace HotelManagement.UI
             this.PanelMain.Size = new System.Drawing.Size(1112, 665);
             this.PanelMain.TabIndex = 2;
             // 
-            // btn_thongke
-            // 
-            this.btn_thongke.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(165)))), ((int)(((byte)(245)))));
-            this.btn_thongke.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(165)))), ((int)(((byte)(245)))));
-            this.btn_thongke.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btn_thongke.BorderRadius = 0;
-            this.btn_thongke.BorderSize = 0;
-            this.btn_thongke.FlatAppearance.BorderSize = 0;
-            this.btn_thongke.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_thongke.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btn_thongke.ForeColor = System.Drawing.Color.White;
-            this.btn_thongke.Location = new System.Drawing.Point(-3, 378);
-            this.btn_thongke.Name = "btn_thongke";
-            this.btn_thongke.Size = new System.Drawing.Size(261, 50);
-            this.btn_thongke.TabIndex = 7;
-            this.btn_thongke.Text = "Thống kê";
-            this.btn_thongke.TextColor = System.Drawing.Color.White;
-            this.btn_thongke.UseVisualStyleBackColor = false;
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -309,6 +309,7 @@ namespace HotelManagement.UI
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main";
+            this.Load += new System.EventHandler(this.Main_Load);
             this.sidebar.ResumeLayout(false);
             this.PanelAppName.ResumeLayout(false);
             this.PanelAppName.PerformLayout();

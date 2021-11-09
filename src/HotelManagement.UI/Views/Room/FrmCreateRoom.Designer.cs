@@ -168,6 +168,7 @@ namespace HotelManagement.UI.Views.Room
             this.BtnRemove.Text = "Xóa";
             this.BtnRemove.TextColor = System.Drawing.Color.White;
             this.BtnRemove.UseVisualStyleBackColor = false;
+            this.BtnRemove.Click += new System.EventHandler(this.BtnRemove_Click);
             // 
             // BtnCancel
             // 
@@ -247,7 +248,7 @@ namespace HotelManagement.UI.Views.Room
             this.Controls.Add(this.TbxRoomType);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "FrmCreateRoom";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmCreateRoom";
             ((System.ComponentModel.ISupportInitialize)(this.GridView)).EndInit();
             this.ResumeLayout(false);

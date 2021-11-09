@@ -25,6 +25,12 @@
     <Compile Update="Views\Login\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Views\Receipt\FrmReceipt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Views\Receipt\FrmReceiptDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Views\Room\FrmCreateRoom.cs">
       <SubType>Form</SubType>
     </Compile>

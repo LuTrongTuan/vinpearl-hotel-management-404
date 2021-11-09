@@ -28,11 +28,9 @@ namespace HotelManagement.UI.Views.Login
             if (await _authenticate.authenticate(_account))
             {
                 Main main = new Main();
-                //var role = await _worker.Roles.Get(c => c.Name == _account.UserName);
-               //main.SenderDataLogintoMain(role);
                 MessageBox.Show("Đăng nhập thành công", "Thông báo");
                 main.Show();
-                main.Hide();
+                this.Hide();
             }
             else
             {

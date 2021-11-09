@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using HotelManagement.Application.Services;
 using HotelManagement.UI.Components;
 using HotelManagement.UI.Views.Customer;
 using HotelManagement.UI.Views.Employee;
@@ -87,6 +88,17 @@ namespace HotelManagement.UI
         private void customButton4_Click(object sender, System.EventArgs e)
         {
             OpenForm(Program.Container.GetInstance<ChangePassWord>(), sender);
+        }
+
+        private void Main_Load(object sender, System.EventArgs e)
+        {
+            
+            if (Session.Role == 1)
+            {
+                this.BtnRoom.Visible = false;
+                this.btnEmployee.Visible = false;
+                this.btn_thongke.Visible = false;
+            }
         }
     }
 }
