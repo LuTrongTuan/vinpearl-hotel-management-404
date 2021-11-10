@@ -20,8 +20,8 @@ namespace HotelManagement.Application.Services
         }
         public async Task<string> AddService(ServiceDTO ser)
         {
-            _ser = new Domain.Service();
-            await _work.Services.Add(_ser);
+            var service = _mapper.Map<Domain.Service>(ser);
+            await _work.Services.Add(service);
             await _work.Commit();
             return "thêm thành công";
         }
@@ -35,14 +35,13 @@ namespace HotelManagement.Application.Services
             }
             _ser.Name = ser.Name;
             _ser.Price = ser.Price;
-            var nametype = _work.ServiceTypes.Get(x => x.Id == ser.ServiceTypeId);
-            _ser.ServiceTypeId = nametype.Id;
+            _ser.ServiceTypeId = ser.ServiceTypeId;
             await _work.Services.Update(_ser);
             await _work.Commit();
             return "sửa thành công";
         }
 
-        public async Task<IList<ServiceDTO>> Get()
+        public async Task<IList<ServiceDTO>> Get()  
         {
             var query = await _work.Services.GetAll();
             return _mapper.Map<IList<Domain.Service>, IList<ServiceDTO>>(query);
@@ -54,8 +53,6 @@ namespace HotelManagement.Application.Services
             var list = query.Where(c => c.Name.ToLower().StartsWith(name.ToLower())).ToList();
             return _mapper.Map<IList<Domain.Service>, IList<ServiceDTO>>(list);
         }
-
-
         public async Task<ServiceDTO> GetDetail(int id)
         {
             var query = await _work.Services.Get(x=>x.Id == id);

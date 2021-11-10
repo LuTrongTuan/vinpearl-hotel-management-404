@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿    using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -14,6 +14,7 @@ namespace HotelManagement.Application.Services
     {
         private readonly IUnitOfWork _work;
         private readonly IMapper _mapper;
+        private readonly ServicetypeDTO _servicetypeDto;
         private ServiceType _ser;
         public Servicetype(IUnitOfWork work, IMapper mapper)
         {
@@ -42,6 +43,11 @@ namespace HotelManagement.Application.Services
             return _mapper.Map<IList<ServiceType>, IList<ServicetypeDTO>>(result);
         }
 
+        public async Task<IList<ServicetypeDTO>> getTask()
+        {
+            var result = await _work.ServiceTypes.GetAll();
+            return _mapper.Map<IList<ServiceType>, IList<ServicetypeDTO>>(result);
+        }
         public async Task<IList<ServicetypeDTO>> getype(string name)
         {
             var result = await _work.ServiceTypes.GetAll();

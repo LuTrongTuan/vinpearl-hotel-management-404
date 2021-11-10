@@ -12,8 +12,6 @@ namespace HotelManagement.Application.Profiles
             CreateMap<CreateRoomDTO, Room>();
             CreateMap<Room, RoomListDTO>();
             CreateMap<RoomType, RoomTypeDTO>();
-            CreateMap<Service, ServiceDTO>();
-            CreateMap<ServiceType, ServicetypeDTO>();
         }
     }
 }

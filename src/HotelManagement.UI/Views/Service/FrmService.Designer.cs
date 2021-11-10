@@ -51,6 +51,7 @@ namespace HotelManagement.UI.Views.Service
             this.lbl_LDV = new System.Windows.Forms.Label();
             this.txt_SeaLDV = new HotelManagement.UI.Components.TextBox();
             this.txt_LDV = new HotelManagement.UI.Components.TextBox();
+            this.TbxSearch = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dg_DV)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -68,6 +69,7 @@ namespace HotelManagement.UI.Views.Service
             this.dg_DV.RowTemplate.Height = 29;
             this.dg_DV.Size = new System.Drawing.Size(574, 227);
             this.dg_DV.TabIndex = 25;
+            this.dg_DV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_DV_CellClick);
             // 
             // btn_seaDV
             // 
@@ -109,6 +111,8 @@ namespace HotelManagement.UI.Views.Service
             this.txt_SeaDV.Size = new System.Drawing.Size(254, 37);
             this.txt_SeaDV.TabIndex = 15;
             this.txt_SeaDV.Underline = false;
+            this.txt_SeaDV._TextChanged += new System.EventHandler(this.txt_SeaDV__TextChanged);
+            this.txt_SeaDV.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_SeaDV_KeyDown);
             this.txt_SeaDV.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txt_SeaDV_KeyUp);
             // 
             // txt_DV
@@ -356,12 +360,21 @@ namespace HotelManagement.UI.Views.Service
             this.txt_LDV.TabIndex = 14;
             this.txt_LDV.Underline = false;
             // 
+            // TbxSearch
+            // 
+            this.TbxSearch.Location = new System.Drawing.Point(714, 447);
+            this.TbxSearch.Name = "TbxSearch";
+            this.TbxSearch.Size = new System.Drawing.Size(125, 27);
+            this.TbxSearch.TabIndex = 30;
+            this.TbxSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
+            // 
             // FrmService
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1132, 590);
+            this.Controls.Add(this.TbxSearch);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "FrmService";
@@ -373,6 +386,7 @@ namespace HotelManagement.UI.Views.Service
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_LDVview)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -399,5 +413,6 @@ namespace HotelManagement.UI.Views.Service
         private System.Windows.Forms.Label lbl_LDV;
         private Components.TextBox txt_SeaLDV;
         private Components.TextBox txt_LDV;
+        private System.Windows.Forms.TextBox TbxSearch;
     }
 }

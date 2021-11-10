@@ -4,7 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using HotelManagement.Application.Contracts.Services;
 using HotelManagement.Application.DTOs.Service;
-using HotelManagement.Application.Services;
+using HotelManagement.Application.ValidateFrom;
 using HotelManagement.UI.Contracts;
 
 namespace HotelManagement.UI.Views.Service
@@ -14,8 +14,7 @@ namespace HotelManagement.UI.Views.Service
         private readonly IService _service;
         private readonly IConfirm _confirm;
         private readonly IServiceType _serviceType;
-        private readonly IList<ServiceDTO> _list = new List<ServiceDTO>();
-        private readonly IList<ServicetypeDTO> _listtype = new List<ServicetypeDTO>();
+        private  int idClick;
         public FrmService(IServiceType sert, IConfirm con,IService ser)
         {
             InitializeComponent();
@@ -24,7 +23,6 @@ namespace HotelManagement.UI.Views.Service
             _serviceType = sert;
             LoadServiceType();
             Service();
-            ServiceType();
         }
 
         async void LoadServiceType()
@@ -33,27 +31,29 @@ namespace HotelManagement.UI.Views.Service
             cmb_LDV.DataSource = result.ToList();
             cmb_LDV.DisplayMember = "Name";
             cmb_LDV.ValueMember = "Id";
-        }
-        void ServiceType()
-        {
             dg_LDVview.ColumnCount = 1;
-            dg_LDVview.Columns[0].HeaderText = "name";
+            dg_LDVview.Columns[0].Name = "name";
             dg_LDVview.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dg_LDVview.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dg_LDVview.Rows.Clear();
-            foreach (var room in _listtype) 
+            foreach (var room in result.ToList())
+            {
                 dg_LDVview.Rows.Add(room.Name);
+            }
         }
-        void Service()
+        async void Service()
         {
-            dg_DV.ColumnCount = 2;
-            dg_DV.Columns[0].HeaderText = "name";
-            dg_DV.Columns[1].HeaderText = "price";
+            var _list = await _service.Get();
+            dg_DV.ColumnCount = 3;
+            dg_DV.Columns[0].Name = "name";
+            dg_DV.Columns[1].Name = "price";
+            dg_DV.Columns[2].Name = "id";
+            dg_DV.Columns[2].Visible = false;
             dg_DV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dg_DV.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dg_DV.Rows.Clear();
             foreach (var room in _list)
-                dg_LDVview.Rows.Add(room.Name,room.Price);
+                dg_DV.Rows.Add(room.Name,room.Price + " đ",room.Id);
         }
         private async void btn_addLDV_Click(object sender, EventArgs e)
         {
@@ -68,54 +68,87 @@ namespace HotelManagement.UI.Views.Service
                 if (_confirm.IsConfirm("bạn chắc chắn thêm"))
                 {
                     await _serviceType.Add(sertype);
-                    _list.Clear();
                     LoadServiceType();
-                    ServiceType();
                 }
             }
         }
 
         private async void btn_add_Click(object sender, EventArgs e)
         {
-            if (txt_DV.Text == string.Empty)
+            var sertype = new ServiceDTO
             {
-                txt_DV.IsError = true;
-                txt_DV.ErrorMessage = "Không được để trống";
+                Name = txt_DV.Text,
+                ServiceTypeId = Convert.ToInt32(cmb_LDV.SelectedValue),
+                Price = Convert.ToDouble(txt_price.Text)
+            };
+            if (ServiceValidate.validateSer(sertype) != "ok")
+            {
+                MessageBox.Show(ServiceValidate.validateSer(sertype));
+                return;
             }
-            else
+            if (_confirm.IsConfirm("bạn chắc chắn thêm"))
             {
-                var type = await _serviceType.getype(cmb_LDV.Text);
-                var sertype = new ServiceDTO
-                {
-                    Name = txt_LDV.Text,
-                    ServiceTypeId = type.Select(c=>c.Id).FirstOrDefault(),
-                    Price = Convert.ToDouble(txt_price.Text)
-                };
-                if (_confirm.IsConfirm("bạn chắc chắn thêm"))
-                {
-                    await _service.AddService(sertype);
-                    _list.Clear();
-                    LoadServiceType();
-                }
+                await _service.AddService(sertype);
+                Service();
             }
         }
         public async void loadserach(string dv)
         {
             var name = await _service.Find(dv);
+            dg_DV.ColumnCount = 2;
+            dg_DV.Columns[0].Name = "name";
+            dg_DV.Columns[1].Name = "price";
             dg_DV.Rows.Clear();
-            foreach (var x in name)
+            foreach (var x in name.ToList())
             {
-                dg_DV.Rows.Add(x.Name);
+                dg_DV.Rows.Add(x.Name,x.Price);
             }
         }
         private void txt_SeaDV_KeyUp(object sender, KeyEventArgs e)
         {
+            // để xem qua đã
+            MessageBox.Show("aaaa");
             loadserach(txt_DV.Text);
         }
 
-        private void btn_sua_Click(object sender, EventArgs e)
+        private async void btn_sua_Click(object sender, EventArgs e)
+        {
+            var x = await _service.Get();
+            var ser = x.Where(c => c.Id == idClick).FirstOrDefault();
+            ser.Name = txt_DV.Text;
+            ser.Price = Convert.ToDouble(txt_price.Text);
+            ser.ServiceTypeId = Convert.ToInt32(cmb_LDV.SelectedValue);
+            if (_confirm.IsConfirm("bạn chắc chắn sửa"))
+            {
+                await _service.UpdateService(ser);
+                Service();
+            }
+        }
+
+        private void txt_SeaDV_KeyDown(object sender, KeyEventArgs e)
+        {
+            MessageBox.Show("aaaa");
+            loadserach(txt_DV.Text);
+        }
+
+        private void txt_SeaDV__TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBox1_KeyUp(object sender, KeyEventArgs e)
+        {
+            
+            loadserach(TbxSearch.Text);
+        }
+
+        private void dg_DV_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowIndex = e.RowIndex;
+            if (rowIndex == -1) return;
+            idClick = dg_DV.Rows[rowIndex].Cells[2].Value.GetHashCode();
+            txt_DV.Text = dg_DV.Rows[rowIndex].Cells[0].Value.ToString();
+            txt_price.Text = dg_DV.Rows[rowIndex].Cells[1].Value.ToString();
         }
     }
 }
