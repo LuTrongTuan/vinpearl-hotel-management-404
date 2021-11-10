@@ -48,7 +48,7 @@ namespace HotelManagement.UI
 
             System.Windows.Forms.Application.Run(new Main());
             System.Windows.Forms.Application.Run(Container.GetInstance<FrmService>());
-            System.Windows.Forms.Application.Run(Program.Container.GetInstance<FrmMainRoom>());
+            System.Windows.Forms.Application.Run(Program.Container.GetInstance<FrmEmployee>());
 
         }
     }

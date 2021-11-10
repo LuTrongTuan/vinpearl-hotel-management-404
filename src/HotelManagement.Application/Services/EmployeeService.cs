@@ -1,34 +1,35 @@
 ﻿using HotelManagement.Application.Contracts.Services;
-using HotelManagement.Application.DTOs.Employee;
 using HotelManagement.Domain;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using AutoMapper;
 using HotelManagement.Application.Contracts.Infrastructure;
+using HotelManagement.Application.DTOs.Employee;
 
 namespace HotelManagement.Application.Services
 {
     public class EmployeeService : IEmployeeService
     {
         private IUnitOfWork _worker;
-        private EmployeeDTO _employeeDto;
-        public EmployeeService(IUnitOfWork worker)
+        private readonly IMapper _mapper;
+        private Employee _employee;
+        private Account _account;
+        public EmployeeService(IUnitOfWork worker, IMapper mapper)
         {
             _worker = worker;
+            _mapper = mapper;
         }
-        public Task<string> AddEmployee(Employee obj)
+        public async Task<string> AddEmployee(Employee obj,Account acc,Role role)
         {
-            throw new System.NotImplementedException();
+            await _worker.Employees.Add(obj);
+            await _worker.Accounts.Add(acc);
+            await _worker.Roles.Add(role);
+            await _worker.Commit();
+            return "thêm thành công";
         }
 
         public async Task<IList<EmployeeDTO>> GetList()
         {
-            //_employeeDto = (from x in _worker.Employees.GetAll()
-            //    join y in _worker.Accounts.GetAll() on x.Id equals y.EmployeeId
-            //    join z in _worker.Roles.GetAll() on y.EmployeeId equals z.Id
-            //    select new EmployeeDTO()
-            //    {
-
-            //    });
             throw new System.NotImplementedException();
         }
 
