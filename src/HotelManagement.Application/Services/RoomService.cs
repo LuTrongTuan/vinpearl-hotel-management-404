@@ -39,7 +39,8 @@ namespace HotelManagement.Application.Services
                     {
                         Name = _generator.Name(time.Floor, max),
                         Status = 0,
-                        TypeId = time.RoomType
+                        TypeId = time.RoomType,
+                        FloorNumber = time.Floor
                     };
                     await _worker.Rooms.Add(_room);
                 }
@@ -48,10 +49,10 @@ namespace HotelManagement.Application.Services
             return "Thêm thành công";
         }
 
-        public async Task<IList<RoomListDTO>> Get(string _name)
+        public async Task<IList<RoomListDTO>> Get(string name)
         {
             var query = await _worker.Rooms.GetAll();
-            var search = query.Where(c => c.Name.ToLower().StartsWith(_name.ToLower())).ToList();
+            var search = query.Where(c => c.Name.ToLower().StartsWith(name.ToLower())).ToList();
             return _mapper.Map<IList<Room>, IList<RoomListDTO>>(search);
         }
 

@@ -12,6 +12,11 @@ namespace HotelManagement.UI.Components
 
         public int Id { get; set; }
 
+        public Bitmap IconStatus
+        {
+            set => this.Icon.BackgroundImage = value;
+        }
+
         public Room()
         {
             InitializeComponent();

@@ -1,7 +1,6 @@
 using System;
 using System.Windows.Forms;
 using HotelManagement.Application;
-using HotelManagement.Application.Contracts.Services;
 using HotelManagement.Application.DependencyInjection;
 using HotelManagement.Infrastructure;
 using HotelManagement.UI.Contracts;
@@ -9,6 +8,7 @@ using HotelManagement.UI.Utilities;
 using HotelManagement.UI.Views.Customer;
 using HotelManagement.UI.Views.Employee;
 using HotelManagement.UI.Views.Login;
+using HotelManagement.UI.Views.Receipt;
 using HotelManagement.UI.Views.Room;
 using HotelManagement.UI.Views.Service;
 
@@ -28,6 +28,7 @@ namespace HotelManagement.UI
             Container.Register<FrmMainRoom>();
             Container.Register<FrmCreateRoom>();
             Container.Register<FrmUpdateRoom>();
+            Container.Register<FrmReceipt>();
             Container.ConfigureInfrastructureServices();
             Container.ConfigureApplicationServices();
         }

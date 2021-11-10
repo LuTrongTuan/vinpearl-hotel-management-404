@@ -14,10 +14,7 @@ namespace HotelManagement.UI
         private CustomButton _current = new();
         private Form _activeForm;
 
-        public Main()
-        {
-            InitializeComponent();
-        }
+        public Main() => InitializeComponent();
 
         public void SetColor(object sender)
         {

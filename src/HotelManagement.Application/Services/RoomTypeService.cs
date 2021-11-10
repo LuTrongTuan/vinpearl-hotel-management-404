@@ -39,5 +39,11 @@ namespace HotelManagement.Application.Services
             var result = await _worker.RoomTypes.GetAll();
             return _mapper.Map<IList<RoomType>, IList<RoomTypeDTO>>(result);
         }
+
+        public async Task<string> GetRoomTypeName(int id)
+        {
+            var query = await _worker.RoomTypes.Get(x => x.Id == id);
+            return query.Name;
+        }
     }
 }

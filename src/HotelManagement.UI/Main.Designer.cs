@@ -268,6 +268,8 @@ namespace HotelManagement.UI
             // 
             // PanelTittle
             // 
+            this.PanelTittle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.PanelTittle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(194)))));
             this.PanelTittle.Controls.Add(this.LblTittle);
             this.PanelTittle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -283,13 +285,16 @@ namespace HotelManagement.UI
             | System.Windows.Forms.AnchorStyles.Right)));
             this.LblTittle.AutoSize = true;
             this.LblTittle.ForeColor = System.Drawing.Color.White;
-            this.LblTittle.Location = new System.Drawing.Point(450, 28);
+            this.LblTittle.Location = new System.Drawing.Point(505, 27);
             this.LblTittle.Name = "LblTittle";
             this.LblTittle.Size = new System.Drawing.Size(0, 25);
             this.LblTittle.TabIndex = 3;
             // 
             // PanelMain
             // 
+            this.PanelMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.PanelMain.Location = new System.Drawing.Point(258, 80);
             this.PanelMain.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.PanelMain.Name = "PanelMain";
@@ -305,7 +310,6 @@ namespace HotelManagement.UI
             this.Controls.Add(this.PanelMain);
             this.Controls.Add(this.sidebar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.MaximizeBox = false;
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main";

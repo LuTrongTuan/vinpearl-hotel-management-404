@@ -46,14 +46,15 @@ namespace HotelManagement.UI.Views.Receipt
             this.customButton1 = new HotelManagement.UI.Components.CustomButton();
             this.customButton2 = new HotelManagement.UI.Components.CustomButton();
             this.label8 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.CmbIdentification = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.CmbService = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
             this.customButton3 = new HotelManagement.UI.Components.CustomButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.textBox6 = new HotelManagement.UI.Components.TextBox();
@@ -63,9 +64,8 @@ namespace HotelManagement.UI.Views.Receipt
             this.label11 = new System.Windows.Forms.Label();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.customButton6 = new HotelManagement.UI.Components.CustomButton();
+            this.LblRoomType = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -98,7 +98,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.textBox1.Padding = new System.Windows.Forms.Padding(7);
             this.textBox1.Password = false;
             this.textBox1.PlaceHolder = null;
-            this.textBox1.Size = new System.Drawing.Size(260, 37);
+            this.textBox1.Size = new System.Drawing.Size(260, 39);
             this.textBox1.TabIndex = 2;
             this.textBox1.Underline = false;
             // 
@@ -118,21 +118,21 @@ namespace HotelManagement.UI.Views.Receipt
             this.textBox2.FocusedColor = System.Drawing.Color.Aqua;
             this.textBox2.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.textBox2.IsError = false;
-            this.textBox2.Location = new System.Drawing.Point(143, 34);
+            this.textBox2.Location = new System.Drawing.Point(143, 82);
             this.textBox2.Margin = new System.Windows.Forms.Padding(4);
             this.textBox2.Multiline = false;
             this.textBox2.Name = "textBox2";
             this.textBox2.Padding = new System.Windows.Forms.Padding(7);
             this.textBox2.Password = false;
             this.textBox2.PlaceHolder = null;
-            this.textBox2.Size = new System.Drawing.Size(260, 37);
+            this.textBox2.Size = new System.Drawing.Size(260, 39);
             this.textBox2.TabIndex = 5;
             this.textBox2.Underline = false;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 42);
+            this.label2.Location = new System.Drawing.Point(16, 90);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(118, 20);
             this.label2.TabIndex = 4;
@@ -167,7 +167,7 @@ namespace HotelManagement.UI.Views.Receipt
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(16, 87);
+            this.label5.Location = new System.Drawing.Point(16, 135);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(100, 20);
             this.label5.TabIndex = 4;
@@ -181,21 +181,21 @@ namespace HotelManagement.UI.Views.Receipt
             this.textBox3.FocusedColor = System.Drawing.Color.Aqua;
             this.textBox3.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.textBox3.IsError = false;
-            this.textBox3.Location = new System.Drawing.Point(143, 79);
+            this.textBox3.Location = new System.Drawing.Point(143, 127);
             this.textBox3.Margin = new System.Windows.Forms.Padding(4);
             this.textBox3.Multiline = false;
             this.textBox3.Name = "textBox3";
             this.textBox3.Padding = new System.Windows.Forms.Padding(7);
             this.textBox3.Password = false;
             this.textBox3.PlaceHolder = null;
-            this.textBox3.Size = new System.Drawing.Size(260, 37);
+            this.textBox3.Size = new System.Drawing.Size(260, 39);
             this.textBox3.TabIndex = 5;
             this.textBox3.Underline = false;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(16, 132);
+            this.label6.Location = new System.Drawing.Point(16, 180);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(56, 20);
             this.label6.TabIndex = 4;
@@ -209,14 +209,14 @@ namespace HotelManagement.UI.Views.Receipt
             this.textBox4.FocusedColor = System.Drawing.Color.Aqua;
             this.textBox4.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.textBox4.IsError = false;
-            this.textBox4.Location = new System.Drawing.Point(143, 124);
+            this.textBox4.Location = new System.Drawing.Point(143, 172);
             this.textBox4.Margin = new System.Windows.Forms.Padding(4);
             this.textBox4.Multiline = false;
             this.textBox4.Name = "textBox4";
             this.textBox4.Padding = new System.Windows.Forms.Padding(7);
             this.textBox4.Password = false;
             this.textBox4.PlaceHolder = null;
-            this.textBox4.Size = new System.Drawing.Size(260, 37);
+            this.textBox4.Size = new System.Drawing.Size(260, 39);
             this.textBox4.TabIndex = 5;
             this.textBox4.Underline = false;
             // 
@@ -234,6 +234,7 @@ namespace HotelManagement.UI.Views.Receipt
             // 
             this.textBox5.BorderColor = System.Drawing.Color.BlueViolet;
             this.textBox5.BorderRadius = 0;
+            this.textBox5.Enabled = false;
             this.textBox5.ErrorMessage = null;
             this.textBox5.FocusedColor = System.Drawing.Color.Aqua;
             this.textBox5.IsError = false;
@@ -244,7 +245,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.textBox5.Padding = new System.Windows.Forms.Padding(7);
             this.textBox5.Password = false;
             this.textBox5.PlaceHolder = null;
-            this.textBox5.Size = new System.Drawing.Size(169, 37);
+            this.textBox5.Size = new System.Drawing.Size(169, 39);
             this.textBox5.TabIndex = 5;
             this.textBox5.Underline = false;
             // 
@@ -259,7 +260,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.customButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.customButton1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.customButton1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.customButton1.Location = new System.Drawing.Point(904, 603);
+            this.customButton1.Location = new System.Drawing.Point(904, 605);
             this.customButton1.Name = "customButton1";
             this.customButton1.Size = new System.Drawing.Size(150, 40);
             this.customButton1.TabIndex = 1;
@@ -295,14 +296,14 @@ namespace HotelManagement.UI.Views.Receipt
             this.label8.TabIndex = 4;
             this.label8.Text = "Giấy tờ";
             // 
-            // comboBox1
+            // CmbIdentification
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(145, 64);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(260, 28);
-            this.comboBox1.TabIndex = 8;
+            this.CmbIdentification.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.CmbIdentification.FormattingEnabled = true;
+            this.CmbIdentification.Location = new System.Drawing.Point(145, 64);
+            this.CmbIdentification.Name = "CmbIdentification";
+            this.CmbIdentification.Size = new System.Drawing.Size(260, 28);
+            this.CmbIdentification.TabIndex = 8;
             // 
             // label9
             // 
@@ -313,14 +314,14 @@ namespace HotelManagement.UI.Views.Receipt
             this.label9.TabIndex = 4;
             this.label9.Text = "Dịch vụ";
             // 
-            // comboBox2
+            // CmbService
             // 
-            this.comboBox2.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(145, 36);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(260, 28);
-            this.comboBox2.TabIndex = 8;
+            this.CmbService.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.CmbService.FormattingEnabled = true;
+            this.CmbService.Location = new System.Drawing.Point(145, 36);
+            this.CmbService.Name = "CmbService";
+            this.CmbService.Size = new System.Drawing.Size(260, 28);
+            this.CmbService.TabIndex = 8;
             // 
             // dataGridView1
             // 
@@ -370,13 +371,13 @@ namespace HotelManagement.UI.Views.Receipt
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.LblRoomType);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.dateTimePicker1);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.comboBox3);
             this.groupBox1.Controls.Add(this.label14);
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.CmbIdentification);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.dateTimePicker2);
             this.groupBox1.Controls.Add(this.label4);
@@ -388,9 +389,18 @@ namespace HotelManagement.UI.Views.Receipt
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin hóa đơn";
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(18, 24);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(90, 20);
+            this.label14.TabIndex = 4;
+            this.label14.Text = "Loại phòng:";
+            // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.comboBox2);
+            this.groupBox2.Controls.Add(this.CmbService);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.numericUpDown1);
             this.groupBox2.Controls.Add(this.label10);
@@ -431,21 +441,21 @@ namespace HotelManagement.UI.Views.Receipt
             this.textBox6.FocusedColor = System.Drawing.Color.Aqua;
             this.textBox6.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.textBox6.IsError = false;
-            this.textBox6.Location = new System.Drawing.Point(143, 169);
+            this.textBox6.Location = new System.Drawing.Point(143, 35);
             this.textBox6.Margin = new System.Windows.Forms.Padding(4);
             this.textBox6.Multiline = false;
             this.textBox6.Name = "textBox6";
             this.textBox6.Padding = new System.Windows.Forms.Padding(7);
             this.textBox6.Password = false;
             this.textBox6.PlaceHolder = null;
-            this.textBox6.Size = new System.Drawing.Size(260, 37);
+            this.textBox6.Size = new System.Drawing.Size(260, 39);
             this.textBox6.TabIndex = 5;
             this.textBox6.Underline = false;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(16, 177);
+            this.label12.Location = new System.Drawing.Point(16, 46);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(68, 20);
             this.label12.TabIndex = 4;
@@ -515,24 +525,6 @@ namespace HotelManagement.UI.Views.Receipt
             this.label13.TabIndex = 4;
             this.label13.Text = "Số phòng";
             // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(18, 24);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(86, 20);
-            this.label14.TabIndex = 4;
-            this.label14.Text = "Loại phòng";
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(145, 21);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(260, 28);
-            this.comboBox3.TabIndex = 8;
-            // 
             // customButton6
             // 
             this.customButton6.BackColor = System.Drawing.Color.DeepSkyBlue;
@@ -551,6 +543,14 @@ namespace HotelManagement.UI.Views.Receipt
             this.customButton6.Text = "Nhận phòng";
             this.customButton6.TextColor = System.Drawing.SystemColors.ControlText;
             this.customButton6.UseVisualStyleBackColor = false;
+            // 
+            // LblRoomType
+            // 
+            this.LblRoomType.AutoSize = true;
+            this.LblRoomType.Location = new System.Drawing.Point(145, 22);
+            this.LblRoomType.Name = "LblRoomType";
+            this.LblRoomType.Size = new System.Drawing.Size(0, 20);
+            this.LblRoomType.TabIndex = 9;
             // 
             // FrmReceipt
             // 
@@ -604,9 +604,9 @@ namespace HotelManagement.UI.Views.Receipt
         private Components.CustomButton customButton1;
         private Components.CustomButton customButton2;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox CmbIdentification;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox CmbService;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label label10;
@@ -621,8 +621,8 @@ namespace HotelManagement.UI.Views.Receipt
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.Label label14;
         private Components.CustomButton customButton6;
+        private System.Windows.Forms.Label LblRoomType;
     }
 }

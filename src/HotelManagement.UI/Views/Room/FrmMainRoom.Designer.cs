@@ -68,12 +68,14 @@ namespace HotelManagement.UI.Views.Room
             // 
             // PanelContainer
             // 
-            this.PanelContainer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.PanelContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PanelContainer.Location = new System.Drawing.Point(0, 103);
             this.PanelContainer.Name = "PanelContainer";
             this.PanelContainer.Size = new System.Drawing.Size(902, 347);
             this.PanelContainer.TabIndex = 2;
+            this.PanelContainer.ClientSizeChanged += new System.EventHandler(this.PanelContainer_ClientSizeChanged);
             // 
             // BtnRefresh
             // 

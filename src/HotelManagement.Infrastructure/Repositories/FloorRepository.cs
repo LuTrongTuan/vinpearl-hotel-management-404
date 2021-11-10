@@ -8,7 +8,7 @@ namespace HotelManagement.Infrastructure.Repositories
 {
     public class FloorRepository : GenericRepository<Floor>, IFloorRepository
     {
-        protected FloorRepository(ApplicationDbContext context) : base(context)
+        public FloorRepository(ApplicationDbContext context) : base(context)
         {
         }
 

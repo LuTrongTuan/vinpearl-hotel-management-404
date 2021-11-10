@@ -18,5 +18,6 @@ namespace HotelManagement.Application.Contracts.Infrastructure
         IServiceRepository Services { get; set; }
         IServiceTypeRepository ServiceTypes { get; set; }
         IFloorRepository Floors { get; set; }
+        IIdentificationRepository Identifications { get; set; }
     }
 }
