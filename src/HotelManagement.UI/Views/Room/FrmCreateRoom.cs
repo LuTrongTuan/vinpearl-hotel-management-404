@@ -13,15 +13,16 @@ namespace HotelManagement.UI.Views.Room
         private readonly IRoomTypeService _roomTypeService;
         private readonly IConfirm _confirm;
         private readonly IRoomService _roomService;
+        private readonly IFloorService _floorService;
         private readonly IList<CreateRoomDTO> _queue = new List<CreateRoomDTO>();
         public FrmCreateRoom(IRoomTypeService roomTypeService, IConfirm confirm,
-            IRoomService roomService)
+            IRoomService roomService, IFloorService floorService)
         {
             InitializeComponent();
             _roomTypeService = roomTypeService;
             _confirm = confirm;
             _roomService = roomService;
-            LoadRoomType();
+            _floorService = floorService;
         }
 
         void RoomInQueue()
@@ -40,9 +41,14 @@ namespace HotelManagement.UI.Views.Room
         {
             var result = await _roomTypeService.Get();
             CmbRoomType.DataSource = result.ToList();
-
             CmbRoomType.DisplayMember = "Name";
             CmbRoomType.ValueMember = "Id";
+        }
+
+        async void LoadFloor()
+        {
+            var query = await _floorService.Get();
+            CmbFloor.DataSource = query;
         }
 
         private async void BtnAddRoomType_Click(object sender, EventArgs e)
@@ -81,7 +87,7 @@ namespace HotelManagement.UI.Views.Room
             var createRoom = new CreateRoomDTO
             {
                 Quantity = Convert.ToInt32(TbxQuantity.Text),
-                Floor = Convert.ToInt32(TbxFloor.Text),
+                Floor = Convert.ToInt32(CmbFloor.Text),
                 RoomType = Convert.ToInt32(CmbRoomType.SelectedValue)
             };
 
@@ -93,6 +99,31 @@ namespace HotelManagement.UI.Views.Room
         {
             if (_confirm.IsConfirm("Bạn chắc chứ?"))
                 MessageBox.Show(await _roomService.AddRoom(_queue));
+        }
+
+        private void BtnRemove_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FrmCreateRoom_Load(object sender, EventArgs e)
+        {
+            LoadRoomType();
+            LoadFloor();
+        }
+
+        private async void BtnAddFloor_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var result = Convert.ToInt32(TbxFloor.Text);
+                MessageBox.Show(await _floorService.Add(result));
+                LoadFloor();
+            }
+            catch
+            {
+                MessageBox.Show("Chỉ nhập số");
+            }
         }
     }
 }

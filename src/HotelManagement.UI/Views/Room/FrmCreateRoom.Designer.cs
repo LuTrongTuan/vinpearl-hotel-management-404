@@ -41,7 +41,9 @@ namespace HotelManagement.UI.Views.Room
             this.BtnRemove = new HotelManagement.UI.Components.CustomButton();
             this.BtnCancel = new HotelManagement.UI.Components.CustomButton();
             this.BtnSave = new HotelManagement.UI.Components.CustomButton();
+            this.CmbFloor = new System.Windows.Forms.ComboBox();
             this.TbxFloor = new HotelManagement.UI.Components.TextBox();
+            this.BtnAddFloor = new HotelManagement.UI.Components.CustomButton();
             ((System.ComponentModel.ISupportInitialize)(this.GridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,14 +54,14 @@ namespace HotelManagement.UI.Views.Room
             this.TbxRoomType.ErrorMessage = null;
             this.TbxRoomType.FocusedColor = System.Drawing.Color.Aqua;
             this.TbxRoomType.IsError = false;
-            this.TbxRoomType.Location = new System.Drawing.Point(426, 15);
+            this.TbxRoomType.Location = new System.Drawing.Point(445, 13);
             this.TbxRoomType.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.TbxRoomType.Multiline = false;
             this.TbxRoomType.Name = "TbxRoomType";
             this.TbxRoomType.Padding = new System.Windows.Forms.Padding(7);
             this.TbxRoomType.Password = false;
             this.TbxRoomType.PlaceHolder = "Thêm loại phòng mới";
-            this.TbxRoomType.Size = new System.Drawing.Size(222, 37);
+            this.TbxRoomType.Size = new System.Drawing.Size(222, 39);
             this.TbxRoomType.TabIndex = 0;
             this.TbxRoomType.Underline = false;
             // 
@@ -110,14 +112,14 @@ namespace HotelManagement.UI.Views.Room
             this.TbxQuantity.ErrorMessage = null;
             this.TbxQuantity.FocusedColor = System.Drawing.Color.LightSeaGreen;
             this.TbxQuantity.IsError = false;
-            this.TbxQuantity.Location = new System.Drawing.Point(692, 108);
+            this.TbxQuantity.Location = new System.Drawing.Point(692, 102);
             this.TbxQuantity.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.TbxQuantity.Multiline = false;
             this.TbxQuantity.Name = "TbxQuantity";
             this.TbxQuantity.Padding = new System.Windows.Forms.Padding(7);
             this.TbxQuantity.Password = false;
             this.TbxQuantity.PlaceHolder = "Số lượng";
-            this.TbxQuantity.Size = new System.Drawing.Size(94, 37);
+            this.TbxQuantity.Size = new System.Drawing.Size(94, 39);
             this.TbxQuantity.TabIndex = 4;
             this.TbxQuantity.Underline = false;
             // 
@@ -168,6 +170,7 @@ namespace HotelManagement.UI.Views.Room
             this.BtnRemove.Text = "Xóa";
             this.BtnRemove.TextColor = System.Drawing.Color.White;
             this.BtnRemove.UseVisualStyleBackColor = false;
+            this.BtnRemove.Click += new System.EventHandler(this.BtnRemove_Click);
             // 
             // BtnCancel
             // 
@@ -209,23 +212,52 @@ namespace HotelManagement.UI.Views.Room
             this.BtnSave.UseVisualStyleBackColor = false;
             this.BtnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
+            // CmbFloor
+            // 
+            this.CmbFloor.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CmbFloor.FormattingEnabled = true;
+            this.CmbFloor.Location = new System.Drawing.Point(581, 108);
+            this.CmbFloor.Name = "CmbFloor";
+            this.CmbFloor.Size = new System.Drawing.Size(103, 33);
+            this.CmbFloor.TabIndex = 11;
+            // 
             // TbxFloor
             // 
             this.TbxFloor.BorderColor = System.Drawing.Color.Silver;
-            this.TbxFloor.BorderRadius = 5;
+            this.TbxFloor.BorderRadius = 7;
             this.TbxFloor.ErrorMessage = null;
-            this.TbxFloor.FocusedColor = System.Drawing.Color.LightSeaGreen;
+            this.TbxFloor.FocusedColor = System.Drawing.Color.Aqua;
             this.TbxFloor.IsError = false;
-            this.TbxFloor.Location = new System.Drawing.Point(582, 108);
+            this.TbxFloor.Location = new System.Drawing.Point(540, 60);
             this.TbxFloor.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.TbxFloor.Multiline = false;
             this.TbxFloor.Name = "TbxFloor";
             this.TbxFloor.Padding = new System.Windows.Forms.Padding(7);
             this.TbxFloor.Password = false;
-            this.TbxFloor.PlaceHolder = "Tầng";
-            this.TbxFloor.Size = new System.Drawing.Size(94, 37);
-            this.TbxFloor.TabIndex = 11;
+            this.TbxFloor.PlaceHolder = "Thêm tầng";
+            this.TbxFloor.Size = new System.Drawing.Size(127, 39);
+            this.TbxFloor.TabIndex = 12;
             this.TbxFloor.Underline = false;
+            // 
+            // BtnAddFloor
+            // 
+            this.BtnAddFloor.BackColor = System.Drawing.Color.DarkTurquoise;
+            this.BtnAddFloor.BackgroundColor = System.Drawing.Color.DarkTurquoise;
+            this.BtnAddFloor.BorderColor = System.Drawing.Color.DarkTurquoise;
+            this.BtnAddFloor.BorderRadius = 7;
+            this.BtnAddFloor.BorderSize = 2;
+            this.BtnAddFloor.FlatAppearance.BorderSize = 0;
+            this.BtnAddFloor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnAddFloor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.BtnAddFloor.ForeColor = System.Drawing.Color.White;
+            this.BtnAddFloor.Location = new System.Drawing.Point(675, 60);
+            this.BtnAddFloor.Name = "BtnAddFloor";
+            this.BtnAddFloor.Size = new System.Drawing.Size(94, 39);
+            this.BtnAddFloor.TabIndex = 13;
+            this.BtnAddFloor.Text = "Thêm";
+            this.BtnAddFloor.TextColor = System.Drawing.Color.White;
+            this.BtnAddFloor.UseVisualStyleBackColor = false;
+            this.BtnAddFloor.Click += new System.EventHandler(this.BtnAddFloor_Click);
             // 
             // FrmCreateRoom
             // 
@@ -234,7 +266,9 @@ namespace HotelManagement.UI.Views.Room
             this.BackgroundImage = global::HotelManagement.UI.Properties.Resources.z2914805628131_5fbbb0b306b67de840cab4412b5fc185;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(800, 284);
+            this.Controls.Add(this.BtnAddFloor);
             this.Controls.Add(this.TbxFloor);
+            this.Controls.Add(this.CmbFloor);
             this.Controls.Add(this.BtnSave);
             this.Controls.Add(this.BtnCancel);
             this.Controls.Add(this.BtnRemove);
@@ -247,8 +281,9 @@ namespace HotelManagement.UI.Views.Room
             this.Controls.Add(this.TbxRoomType);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "FrmCreateRoom";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmCreateRoom";
+            this.Load += new System.EventHandler(this.FrmCreateRoom_Load);
             ((System.ComponentModel.ISupportInitialize)(this.GridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -267,6 +302,8 @@ namespace HotelManagement.UI.Views.Room
         private Components.CustomButton BtnRemove;
         private Components.CustomButton BtnCancel;
         private Components.CustomButton BtnSave;
+        private ComboBox CmbFloor;
         private Components.TextBox TbxFloor;
+        private Components.CustomButton BtnAddFloor;
     }
 }

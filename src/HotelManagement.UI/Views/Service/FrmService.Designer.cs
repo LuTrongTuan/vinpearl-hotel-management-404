@@ -228,13 +228,10 @@ namespace HotelManagement.UI.Views.Service
             this.panel1.BackgroundImage = global::HotelManagement.UI.Properties.Resources.z2914805628131_5fbbb0b306b67de840cab4412b5fc185;
             this.panel1.Controls.Add(this.cmb_LDV);
             this.panel1.Controls.Add(this.btn_add);
-            this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.btn_cl);
             this.panel1.Controls.Add(this.btn_seaDV);
             this.panel1.Controls.Add(this.btn_sua);
             this.panel1.Controls.Add(this.dg_DV);
-            this.panel1.Controls.Add(this.label10);
-            this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.txt_SeaDV);
             this.panel1.Controls.Add(this.txt_DV);
             this.panel1.Controls.Add(this.txt_price);
@@ -374,14 +371,19 @@ namespace HotelManagement.UI.Views.Service
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1132, 590);
+<<<<<<< HEAD
             this.Controls.Add(this.TbxSearch);
+=======
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
+>>>>>>> aedac2ca5c67e726997c273c90795f72400a38a3
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "FrmService";
-            this.Text = "FrmService";
+            this.Text = "Quản lý dịch vụ";
             ((System.ComponentModel.ISupportInitialize)(this.dg_DV)).EndInit();
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_LDVview)).EndInit();
@@ -391,15 +393,16 @@ namespace HotelManagement.UI.Views.Service
         }
 
         #endregion
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
 
         private System.Windows.Forms.DataGridView dg_DV;
         private System.Windows.Forms.Button btn_seaDV;
         private System.Windows.Forms.Button btn_sua;
         private Components.TextBox txt_SeaDV;
         private Components.TextBox txt_DV;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
         private Components.TextBox txt_price;
         private System.Windows.Forms.Button btn_cl;
         private System.Windows.Forms.ComboBox cmb_LDV;
@@ -413,6 +416,10 @@ namespace HotelManagement.UI.Views.Service
         private System.Windows.Forms.Label lbl_LDV;
         private Components.TextBox txt_SeaLDV;
         private Components.TextBox txt_LDV;
+<<<<<<< HEAD
         private System.Windows.Forms.TextBox TbxSearch;
+=======
+
+>>>>>>> aedac2ca5c67e726997c273c90795f72400a38a3
     }
 }

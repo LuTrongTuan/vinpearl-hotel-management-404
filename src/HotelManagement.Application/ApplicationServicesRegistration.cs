@@ -13,6 +13,7 @@ namespace HotelManagement.Application
     {
         public static IContainer ConfigureApplicationServices(this IContainer container)
         {
+            container.Register<IAuthenticate, Authenticate>();
             container.Register<IEncrypt, Encrypt>();
             container.Register<IPasswordService, PasswordService>();
             container.Register<IRoomTypeService, RoomTypeService>();
@@ -21,6 +22,9 @@ namespace HotelManagement.Application
             container.Register<IMapper, Mapper>();
             container.Register<IService, Service>();
             container.Register<IServiceType, Servicetype>();
+            container.Register<IFloorService, FloorService>();
+            container.Register<IIdentificationService, IdentificationService>();
+            container.Register<IEmployeeService,EmployeeService>();
             return container;
         }
     }

@@ -7,7 +7,8 @@ namespace HotelManagement.Application.Contracts.Services
     public interface IRoomService
     {
         Task<string> AddRoom(IEnumerable<CreateRoomDTO> room);
-        Task<IList<RoomListDTO>> Get();
+        Task<string> Update(RoomDetailDTO room);
+        Task<IList<RoomListDTO>> Get(string name = "");
         Task<RoomDetailDTO> GetDetail(int id);
     }
 }

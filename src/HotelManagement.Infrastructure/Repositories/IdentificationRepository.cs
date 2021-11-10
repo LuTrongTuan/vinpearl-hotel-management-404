@@ -5,7 +5,7 @@ namespace HotelManagement.Infrastructure.Repositories
 {
     public class IdentificationRepository : GenericRepository<Identification>, IIdentificationRepository
     {
-        protected IdentificationRepository(ApplicationDbContext context) : base(context)
+        public IdentificationRepository(ApplicationDbContext context) : base(context)
         {
         }
     }

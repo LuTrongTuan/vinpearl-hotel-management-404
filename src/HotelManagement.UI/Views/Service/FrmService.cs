@@ -4,7 +4,10 @@ using System.Linq;
 using System.Windows.Forms;
 using HotelManagement.Application.Contracts.Services;
 using HotelManagement.Application.DTOs.Service;
+<<<<<<< HEAD
 using HotelManagement.Application.ValidateFrom;
+=======
+>>>>>>> aedac2ca5c67e726997c273c90795f72400a38a3
 using HotelManagement.UI.Contracts;
 
 namespace HotelManagement.UI.Views.Service
@@ -44,16 +47,26 @@ namespace HotelManagement.UI.Views.Service
         async void Service()
         {
             var _list = await _service.Get();
+<<<<<<< HEAD
             dg_DV.ColumnCount = 3;
             dg_DV.Columns[0].Name = "name";
             dg_DV.Columns[1].Name = "price";
             dg_DV.Columns[2].Name = "id";
             dg_DV.Columns[2].Visible = false;
+=======
+            dg_DV.ColumnCount = 2;
+            dg_DV.Columns[0].HeaderText = "name";
+            dg_DV.Columns[1].HeaderText = "price";
+>>>>>>> aedac2ca5c67e726997c273c90795f72400a38a3
             dg_DV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dg_DV.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dg_DV.Rows.Clear();
             foreach (var room in _list)
+<<<<<<< HEAD
                 dg_DV.Rows.Add(room.Name,room.Price + " đ",room.Id);
+=======
+                dg_DV.Rows.Add(room.Name,room.Price);
+>>>>>>> aedac2ca5c67e726997c273c90795f72400a38a3
         }
         private async void btn_addLDV_Click(object sender, EventArgs e)
         {
@@ -88,8 +101,22 @@ namespace HotelManagement.UI.Views.Service
             }
             if (_confirm.IsConfirm("bạn chắc chắn thêm"))
             {
+<<<<<<< HEAD
                 await _service.AddService(sertype);
                 Service();
+=======
+                var sertype = new ServiceDTO
+                {
+                    Name = txt_DV.Text,
+                    ServiceTypeId = Convert.ToInt32(cmb_LDV.SelectedValue),
+                    Price = Convert.ToDouble(txt_price.Text)
+                };
+                if (_confirm.IsConfirm("bạn chắc chắn thêm"))
+                {
+                    await _service.AddService(sertype);
+                    Service();
+                }
+>>>>>>> aedac2ca5c67e726997c273c90795f72400a38a3
             }
         }
         public async void loadserach(string dv)

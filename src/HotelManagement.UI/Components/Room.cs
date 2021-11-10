@@ -10,10 +10,19 @@ namespace HotelManagement.UI.Components
         private int _borderSize = 1;
         private int _borderRadius;
 
+        public int Id { get; set; }
+
+        public Bitmap IconStatus
+        {
+            set => this.Icon.BackgroundImage = value;
+        }
+
         public Room()
         {
             InitializeComponent();
         }
+
+        public int Status { get; set; }
 
         public string RoomNumber
         {

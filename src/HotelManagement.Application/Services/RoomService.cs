@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using HotelManagement.Application.Contracts.Infrastructure;
@@ -38,25 +39,41 @@ namespace HotelManagement.Application.Services
                     {
                         Name = _generator.Name(time.Floor, max),
                         Status = 0,
-                        TypeId = time.RoomType
+                        TypeId = time.RoomType,
+                        FloorNumber = time.Floor
                     };
                     await _worker.Rooms.Add(_room);
                 }
             }
             await _worker.Commit();
-            return "Thêm thanh công";
+            return "Thêm thành công";
         }
 
-        public async Task<IList<RoomListDTO>> Get()
+        public async Task<IList<RoomListDTO>> Get(string name)
         {
             var query = await _worker.Rooms.GetAll();
-            return _mapper.Map<IList<Room>, IList<RoomListDTO>>(query);
+            var search = query.Where(c => c.Name.ToLower().StartsWith(name.ToLower())).ToList();
+            return _mapper.Map<IList<Room>, IList<RoomListDTO>>(search);
         }
 
         public async Task<RoomDetailDTO> GetDetail(int id)
         {
             var result = await _worker.Rooms.Get(x => x.Id == id);
             return _mapper.Map<RoomDetailDTO>(result);
+        }
+
+        public async Task<string> Update(RoomDetailDTO room)
+        {
+            _room = await _worker.Rooms.Get(x => x.Id == room.Id);
+            if (_room == null)
+            {
+                return "Không tồn tại";
+            }
+            _room.Name = room.Name;
+            _room.Status = room.Status;
+            await _worker.Rooms.Update(_room);
+            await _worker.Commit();
+            return "Sửa thành công";
         }
     }
 }

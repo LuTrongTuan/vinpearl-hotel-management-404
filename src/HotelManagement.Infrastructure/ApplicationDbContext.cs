@@ -7,7 +7,8 @@ namespace HotelManagement.Infrastructure
     public class ApplicationDbContext : DbContext
     {
         // define connection string here
-        private const string ConnectionString = @"Data Source=TRINHTUAN\SQLEXPRESS;Initial Catalog=Hotel;Integrated Security=True";
+        private const string ConnectionString = @"Data Source=M1NG\SQLEXPRESS; Initial Catalog=HotelManagement; User Id=minh; Password=minh";
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
@@ -33,5 +34,6 @@ namespace HotelManagement.Infrastructure
         public virtual DbSet<Room> Rooms { get; set; }
         public virtual DbSet<RoomType> RoomTypes { get; set; }
         public virtual DbSet<RoomReceipt> RoomReceipts { get; set; }
+        public virtual DbSet<Floor> Floors { get; set; }
     }
 }

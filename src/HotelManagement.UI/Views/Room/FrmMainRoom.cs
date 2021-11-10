@@ -3,19 +3,21 @@ using System.Drawing;
 using System.Windows.Forms;
 using HotelManagement.Application.Contracts.Services;
 using HotelManagement.Application.DTOs.Room;
+using HotelManagement.UI.Components;
+using HotelManagement.UI.Views.Receipt;
 
 namespace HotelManagement.UI.Views.Room
 {
     public partial class FrmMainRoom : Form
     {
-        private readonly IRoomService _roomService;
+        private readonly IFloorService _floorService;
         private Components.Room _room;
+        private int _width;
 
-        public FrmMainRoom(IRoomService roomService)
+        public FrmMainRoom(IFloorService floorService)
         {
-            _roomService = roomService;
+            _floorService = floorService;
             InitializeComponent();
-            LoadRoom();
         }
 
         private void customButton1_Click(object sender, EventArgs e)
@@ -23,56 +25,122 @@ namespace HotelManagement.UI.Views.Room
             var demo = Program.Container.GetInstance<FrmCreateRoom>();
             demo.Show();
         }
-
-        async void LoadRoom()
+        private void customButton2_Click(object sender, EventArgs e)
         {
-            var location = new Point(10, 5);
-            const int numberOf = 1100 / 220;
-            var count = numberOf;
-            var request = await _roomService.Get();
-            foreach (var room in request)
+            var demo = Program.Container.GetInstance<FrmUpdateRoom>();
+            demo.Show();
+        }
+
+        private async void LoadRoom()
+        {
+            var roomLocation = new Point(120, 5);
+            var floorLocation = new Point(10, 5);
+            var numberOf = ((_width - 100) / 220) + 1;
+            var request = await _floorService.GetAll();
+            if (request.Count == 0) return;
+            PanelContainer.Controls.Clear();
+            foreach (var floor in request)
             {
-                _room = SetAttribute(room);
-                _room.Location = location;
-                if (count == 1)
+                var btn = CreateButton(floor.Floor);
+                btn.Location = floorLocation;
+                roomLocation.Y = floorLocation.Y;
+                roomLocation.X = 120;
+                floorLocation = new Point(10, 90);
+
+                this.PanelContainer.Controls.Add(btn);
+                var count = numberOf;
+                foreach (var room in floor.Rooms)
                 {
-                    location = Location(location, false);
-                    count = numberOf;
+                    _room = SetAttribute(room);
+                    
+                    _room.Location = roomLocation;
+
+                    _room.Click += CreateReceiptForm;
+                    if (count == 1)
+                    {
+                        roomLocation = Location(roomLocation, false);
+                        count = numberOf;
+                        floorLocation.Y += 80;
+                    }
+                    else
+                    {
+                        roomLocation = Location(roomLocation);
+                        count--;
+                    }
+                    this.PanelContainer.Controls.Add(_room);
                 }
-                else
-                {
-                    location = Location(location);
-                    count--;
-                }
-                this.PanelContainer.Controls.Add(_room);
             }
         }
 
-        new Point Location(Point point, bool wrap = true)
+        private new Point Location(Point point, bool wrap = true)
         {
             return wrap
                 ? new Point(point.X += 180, point.Y = point.Y)
-                : new Point(point.X = 10, point.Y += 80);
+                : new Point(point.X = 120, point.Y += 80);
         }
 
         private Components.Room SetAttribute(RoomListDTO source)
         {
-            return new Components.Room()
+            var room = new Components.Room();
+            room.RoomNumber = source.Name;
+            room.Id = source.Id;
+            room.BorderColor = Color.AliceBlue;
+            room.BorderSize = 2;
+            room.BorderRadius = 5;
+            room.Size = new Size(170, 70);
+            switch (source.Status)
             {
-                RoomNumber = source.Name,
-                Background = source.Status switch
-                {
-                    0 => Color.Green,
-                    1 => Color.Yellow,
-                    _ => Color.Red
-                },
-                BorderSize = 2,
-                BorderColor = Color.Green,
-                BorderRadius = 5,
-                Size = new Size(170, 70)
-            };
+                case 0:
+                    room.Background = Color.Red;
+                    room.IconStatus = Properties.Resources.user;
+                    break;
+                case 1:
+                    room.Background = Color.Yellow;
+                    room.IconStatus = Properties.Resources.broom;
+                    break;
+                default:
+                    room.Background = Color.Green;
+                    room.IconStatus = Properties.Resources.bed;
+                    break;
+            }
+
+            return room;
         }
 
         private void BtnRefresh_Click(object sender, EventArgs e) => LoadRoom();
+
+        private void TbxSearch_KeyUp(object sender, KeyEventArgs e)
+        {
+            //LoadRoom(TbxSearch.Text);
+            //issue, fix request
+        }
+
+        private void PanelContainer_ClientSizeChanged(object sender, EventArgs e)
+        {
+            _width = this.PanelContainer.ClientSize.Width;
+            LoadRoom();
+        }
+
+        private CustomButton CreateButton(int floorNumber)
+        {
+            return new CustomButton
+            {
+                BorderRadius = 3,
+                BackgroundColor = Color.White,
+                BorderSize = 2,
+                BorderColor = Color.Aqua,
+                Text = "Tầng " + floorNumber.ToString(),
+                Size = new Size(100, 70),
+                Enabled = false
+            };
+        }
+
+        private void CreateReceiptForm(object sender, EventArgs e)
+        {
+            var form = Program.Container.GetInstance<FrmReceipt>();
+            var room = sender as Components.Room;
+            form.RoomId = room.Id;
+            form.ShowDialog();
+        }
     }
 }
