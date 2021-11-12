@@ -17,8 +17,8 @@ namespace HotelManagement.Infrastructure.Configurations
                 .HasForeignKey<Account>(x => x.EmployeeId);
 
             builder.HasOne(e => e.Role)
-                .WithOne(x => x.Accound)
-                .HasForeignKey<Account>(d => d.RoleId);
+                .WithMany(x => x.Accounts)
+                .HasForeignKey(d => d.RoleId);
         }
     }
 }

@@ -5,12 +5,12 @@ namespace HotelManagement.Domain
 {
     public class Receipt : Entity
     {
-        public DateTime CreateAt { get; set; }
         public double Amount { get; set; }
         public bool Status { get; set; }
         public double Deposit { get; set; }
         public double Payment { get; set; }
         public int Number { get; set; }
+        public string Note { get; set; }
 
         public int EmployeeId { get; set; }
         public int CustomerId { get; set; }

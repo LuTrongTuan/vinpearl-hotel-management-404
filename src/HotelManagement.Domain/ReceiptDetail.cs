@@ -7,7 +7,6 @@ namespace HotelManagement.Domain
     {
         public DateTime CheckIn { get; set; }
         public DateTime Checkout { get; set; }
-        public double Amount { get; set; }
 
         public int ReceiptId { get; set; }
         public virtual Receipt Receipt { get; set; }
