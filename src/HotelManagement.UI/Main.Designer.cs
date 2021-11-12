@@ -54,7 +54,7 @@ namespace HotelManagement.UI
             // 
             // sidebar
             // 
-            this.sidebar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(194)))));
+            this.sidebar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.sidebar.Controls.Add(this.btn_thongke);
             this.sidebar.Controls.Add(this.customButton5);
             this.sidebar.Controls.Add(this.customButton4);
@@ -72,16 +72,17 @@ namespace HotelManagement.UI
             // 
             // btn_thongke
             // 
-            this.btn_thongke.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(165)))), ((int)(((byte)(245)))));
-            this.btn_thongke.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(165)))), ((int)(((byte)(245)))));
+            this.btn_thongke.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.btn_thongke.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.btn_thongke.BorderColor = System.Drawing.Color.PaleVioletRed;
             this.btn_thongke.BorderRadius = 0;
             this.btn_thongke.BorderSize = 0;
+            this.btn_thongke.Dock = System.Windows.Forms.DockStyle.Top;
             this.btn_thongke.FlatAppearance.BorderSize = 0;
             this.btn_thongke.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_thongke.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btn_thongke.ForeColor = System.Drawing.Color.White;
-            this.btn_thongke.Location = new System.Drawing.Point(-3, 378);
+            this.btn_thongke.Location = new System.Drawing.Point(0, 442);
             this.btn_thongke.Name = "btn_thongke";
             this.btn_thongke.Size = new System.Drawing.Size(261, 50);
             this.btn_thongke.TabIndex = 7;
@@ -91,59 +92,63 @@ namespace HotelManagement.UI
             // 
             // customButton5
             // 
-            this.customButton5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(165)))), ((int)(((byte)(245)))));
-            this.customButton5.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(165)))), ((int)(((byte)(245)))));
+            this.customButton5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.customButton5.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.customButton5.BorderColor = System.Drawing.Color.PaleVioletRed;
             this.customButton5.BorderRadius = 0;
             this.customButton5.BorderSize = 0;
+            this.customButton5.Dock = System.Windows.Forms.DockStyle.Top;
             this.customButton5.FlatAppearance.BorderSize = 0;
             this.customButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.customButton5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.customButton5.ForeColor = System.Drawing.Color.White;
-            this.customButton5.Location = new System.Drawing.Point(-6, 499);
+            this.customButton5.Location = new System.Drawing.Point(0, 389);
             this.customButton5.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.customButton5.Name = "customButton5";
-            this.customButton5.Size = new System.Drawing.Size(267, 53);
+            this.customButton5.Size = new System.Drawing.Size(261, 53);
             this.customButton5.TabIndex = 6;
             this.customButton5.Text = "Đăng xuất";
             this.customButton5.TextColor = System.Drawing.Color.White;
             this.customButton5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.customButton5.UseVisualStyleBackColor = true;
+            this.customButton5.UseVisualStyleBackColor = false;
+            this.customButton5.Click += new System.EventHandler(this.customButton5_Click);
             // 
             // customButton4
             // 
-            this.customButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(165)))), ((int)(((byte)(245)))));
-            this.customButton4.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(165)))), ((int)(((byte)(245)))));
+            this.customButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.customButton4.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.customButton4.BorderColor = System.Drawing.Color.PaleVioletRed;
             this.customButton4.BorderRadius = 0;
             this.customButton4.BorderSize = 0;
+            this.customButton4.Dock = System.Windows.Forms.DockStyle.Top;
             this.customButton4.FlatAppearance.BorderSize = 0;
             this.customButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.customButton4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.customButton4.ForeColor = System.Drawing.Color.White;
-            this.customButton4.Location = new System.Drawing.Point(-6, 436);
+            this.customButton4.Location = new System.Drawing.Point(0, 336);
             this.customButton4.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.customButton4.Name = "customButton4";
-            this.customButton4.Size = new System.Drawing.Size(267, 53);
+            this.customButton4.Size = new System.Drawing.Size(261, 53);
             this.customButton4.TabIndex = 5;
             this.customButton4.Text = "Đổi mật khẩu";
             this.customButton4.TextColor = System.Drawing.Color.White;
             this.customButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.customButton4.UseVisualStyleBackColor = true;
+            this.customButton4.UseVisualStyleBackColor = false;
             this.customButton4.Click += new System.EventHandler(this.customButton4_Click);
             // 
             // customButton3
             // 
-            this.customButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(165)))), ((int)(((byte)(245)))));
-            this.customButton3.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(165)))), ((int)(((byte)(245)))));
+            this.customButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.customButton3.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.customButton3.BorderColor = System.Drawing.Color.PaleVioletRed;
             this.customButton3.BorderRadius = 0;
             this.customButton3.BorderSize = 0;
+            this.customButton3.Dock = System.Windows.Forms.DockStyle.Top;
             this.customButton3.FlatAppearance.BorderSize = 0;
             this.customButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.customButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.customButton3.ForeColor = System.Drawing.Color.White;
-            this.customButton3.Location = new System.Drawing.Point(-3, 322);
+            this.customButton3.Location = new System.Drawing.Point(0, 286);
             this.customButton3.Name = "customButton3";
             this.customButton3.Size = new System.Drawing.Size(261, 50);
             this.customButton3.TabIndex = 4;
@@ -154,16 +159,17 @@ namespace HotelManagement.UI
             // 
             // customButton2
             // 
-            this.customButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(165)))), ((int)(((byte)(245)))));
-            this.customButton2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(165)))), ((int)(((byte)(245)))));
+            this.customButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.customButton2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.customButton2.BorderColor = System.Drawing.Color.PaleVioletRed;
             this.customButton2.BorderRadius = 0;
             this.customButton2.BorderSize = 0;
+            this.customButton2.Dock = System.Windows.Forms.DockStyle.Top;
             this.customButton2.FlatAppearance.BorderSize = 0;
             this.customButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.customButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.customButton2.ForeColor = System.Drawing.Color.White;
-            this.customButton2.Location = new System.Drawing.Point(0, 266);
+            this.customButton2.Location = new System.Drawing.Point(0, 236);
             this.customButton2.Name = "customButton2";
             this.customButton2.Size = new System.Drawing.Size(261, 50);
             this.customButton2.TabIndex = 4;
@@ -173,16 +179,17 @@ namespace HotelManagement.UI
             // 
             // customButton1
             // 
-            this.customButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(165)))), ((int)(((byte)(245)))));
-            this.customButton1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(165)))), ((int)(((byte)(245)))));
+            this.customButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.customButton1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.customButton1.BorderColor = System.Drawing.Color.PaleVioletRed;
             this.customButton1.BorderRadius = 0;
             this.customButton1.BorderSize = 0;
+            this.customButton1.Dock = System.Windows.Forms.DockStyle.Top;
             this.customButton1.FlatAppearance.BorderSize = 0;
             this.customButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.customButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.customButton1.ForeColor = System.Drawing.Color.White;
-            this.customButton1.Location = new System.Drawing.Point(0, 210);
+            this.customButton1.Location = new System.Drawing.Point(0, 186);
             this.customButton1.Name = "customButton1";
             this.customButton1.Size = new System.Drawing.Size(261, 50);
             this.customButton1.TabIndex = 3;
@@ -193,16 +200,17 @@ namespace HotelManagement.UI
             // 
             // btnEmployee
             // 
-            this.btnEmployee.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(165)))), ((int)(((byte)(245)))));
-            this.btnEmployee.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(165)))), ((int)(((byte)(245)))));
+            this.btnEmployee.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.btnEmployee.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.btnEmployee.BorderColor = System.Drawing.Color.PaleVioletRed;
             this.btnEmployee.BorderRadius = 0;
             this.btnEmployee.BorderSize = 0;
+            this.btnEmployee.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnEmployee.FlatAppearance.BorderSize = 0;
             this.btnEmployee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnEmployee.ForeColor = System.Drawing.Color.White;
-            this.btnEmployee.Location = new System.Drawing.Point(0, 154);
+            this.btnEmployee.Location = new System.Drawing.Point(0, 136);
             this.btnEmployee.Name = "btnEmployee";
             this.btnEmployee.Size = new System.Drawing.Size(261, 50);
             this.btnEmployee.TabIndex = 2;
@@ -213,31 +221,33 @@ namespace HotelManagement.UI
             // 
             // BtnRoom
             // 
-            this.BtnRoom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(165)))), ((int)(((byte)(245)))));
-            this.BtnRoom.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(165)))), ((int)(((byte)(245)))));
+            this.BtnRoom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.BtnRoom.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.BtnRoom.BorderColor = System.Drawing.Color.PaleVioletRed;
             this.BtnRoom.BorderRadius = 0;
             this.BtnRoom.BorderSize = 0;
+            this.BtnRoom.Dock = System.Windows.Forms.DockStyle.Top;
             this.BtnRoom.FlatAppearance.BorderSize = 0;
             this.BtnRoom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnRoom.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnRoom.ForeColor = System.Drawing.Color.White;
-            this.BtnRoom.Location = new System.Drawing.Point(-9, 93);
+            this.BtnRoom.Location = new System.Drawing.Point(0, 83);
             this.BtnRoom.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.BtnRoom.Name = "BtnRoom";
-            this.BtnRoom.Size = new System.Drawing.Size(267, 53);
+            this.BtnRoom.Size = new System.Drawing.Size(261, 53);
             this.BtnRoom.TabIndex = 1;
             this.BtnRoom.Text = "    Phòng";
             this.BtnRoom.TextColor = System.Drawing.Color.White;
             this.BtnRoom.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BtnRoom.UseVisualStyleBackColor = true;
+            this.BtnRoom.UseVisualStyleBackColor = false;
             this.BtnRoom.Click += new System.EventHandler(this.BtnRoom_Click);
             // 
             // PanelAppName
             // 
-            this.PanelAppName.BackColor = System.Drawing.Color.DarkRed;
+            this.PanelAppName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
             this.PanelAppName.Controls.Add(this.label2);
             this.PanelAppName.Controls.Add(this.label1);
+            this.PanelAppName.Dock = System.Windows.Forms.DockStyle.Top;
             this.PanelAppName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.PanelAppName.Location = new System.Drawing.Point(0, 0);
             this.PanelAppName.Name = "PanelAppName";
@@ -268,15 +278,14 @@ namespace HotelManagement.UI
             // 
             // PanelTittle
             // 
-            this.PanelTittle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PanelTittle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(194)))));
+            this.PanelTittle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(190)))));
             this.PanelTittle.Controls.Add(this.LblTittle);
+            this.PanelTittle.Dock = System.Windows.Forms.DockStyle.Top;
             this.PanelTittle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.PanelTittle.Location = new System.Drawing.Point(258, 0);
+            this.PanelTittle.Location = new System.Drawing.Point(261, 0);
             this.PanelTittle.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.PanelTittle.Name = "PanelTittle";
-            this.PanelTittle.Size = new System.Drawing.Size(1112, 83);
+            this.PanelTittle.Size = new System.Drawing.Size(1081, 83);
             this.PanelTittle.TabIndex = 1;
             // 
             // LblTittle
@@ -292,20 +301,18 @@ namespace HotelManagement.UI
             // 
             // PanelMain
             // 
-            this.PanelMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PanelMain.Location = new System.Drawing.Point(258, 80);
+            this.PanelMain.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.PanelMain.Location = new System.Drawing.Point(261, 83);
             this.PanelMain.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.PanelMain.Name = "PanelMain";
-            this.PanelMain.Size = new System.Drawing.Size(1112, 665);
+            this.PanelMain.Size = new System.Drawing.Size(1081, 662);
             this.PanelMain.TabIndex = 2;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1370, 745);
+            this.ClientSize = new System.Drawing.Size(1342, 745);
             this.Controls.Add(this.PanelTittle);
             this.Controls.Add(this.PanelMain);
             this.Controls.Add(this.sidebar);

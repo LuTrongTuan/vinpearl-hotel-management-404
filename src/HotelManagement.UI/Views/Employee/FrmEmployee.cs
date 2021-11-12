@@ -22,10 +22,10 @@ namespace HotelManagement.UI.Views.Employee
 
         async void load()
         {
-            var result = await _employee.GetList();
-            cboVaitro.DataSource = result;
-            cboVaitro.DisplayMember = "Name";
-            cboVaitro.ValueMember = "Id";
+            //var result = await _employee.GetList();
+            //cboVaitro.DataSource = result;
+            //cboVaitro.DisplayMember = "Name";
+            //cboVaitro.ValueMember = "Id";
         }
         private async void button1_Click(object sender, System.EventArgs e)
         {

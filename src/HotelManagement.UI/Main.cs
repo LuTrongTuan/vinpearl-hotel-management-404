@@ -3,6 +3,7 @@ using HotelManagement.Application.Services;
 using HotelManagement.UI.Components;
 using HotelManagement.UI.Views.Customer;
 using HotelManagement.UI.Views.Employee;
+using HotelManagement.UI.Views.Login;
 using HotelManagement.UI.Views.Room;
 using HotelManagement.UI.Views.Service;
 
@@ -52,16 +53,6 @@ namespace HotelManagement.UI
             form.Show();
             LblTittle.Text = form.Text;
         }
-
-        public void SenderDataLogintoMain(int vaitro)
-        {
-            if (vaitro == 1)
-            {
-                this.BtnRoom.Visible = false;
-                this.btnEmployee.Visible = false;
-                this.btn_thongke.Visible = false;
-            }
-        }
         private void BtnRoom_Click(object sender, System.EventArgs e)
         {
             OpenForm(Program.Container.GetInstance<FrmMainRoom>(), sender);
@@ -92,10 +83,17 @@ namespace HotelManagement.UI
             
             if (Session.Role == 1)
             {
-                this.BtnRoom.Visible = false;
                 this.btnEmployee.Visible = false;
                 this.btn_thongke.Visible = false;
             }
+        }
+
+        private void customButton5_Click(object sender, System.EventArgs e)
+        {
+            //if (MessageBox.Show("Bạn có chắc muốn đăng xuất không","Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            //{
+            //    //this.Hide();
+            //}
         }
     }
 }

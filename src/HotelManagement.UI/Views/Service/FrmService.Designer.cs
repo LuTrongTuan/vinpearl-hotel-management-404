@@ -33,7 +33,6 @@ namespace HotelManagement.UI.Views.Service
             this.dg_DV = new System.Windows.Forms.DataGridView();
             this.btn_seaDV = new System.Windows.Forms.Button();
             this.btn_sua = new System.Windows.Forms.Button();
-            this.txt_SeaDV = new HotelManagement.UI.Components.TextBox();
             this.txt_DV = new HotelManagement.UI.Components.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -43,6 +42,7 @@ namespace HotelManagement.UI.Views.Service
             this.cmb_LDV = new System.Windows.Forms.ComboBox();
             this.btn_add = new HotelManagement.UI.Components.CustomButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.TbxSearch = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btn_addLDV = new HotelManagement.UI.Components.CustomButton();
             this.btn_CLLDV = new System.Windows.Forms.Button();
@@ -51,7 +51,6 @@ namespace HotelManagement.UI.Views.Service
             this.lbl_LDV = new System.Windows.Forms.Label();
             this.txt_SeaLDV = new HotelManagement.UI.Components.TextBox();
             this.txt_LDV = new HotelManagement.UI.Components.TextBox();
-            this.TbxSearch = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dg_DV)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -93,27 +92,6 @@ namespace HotelManagement.UI.Views.Service
             this.btn_sua.Text = "Sửa";
             this.btn_sua.UseVisualStyleBackColor = false;
             this.btn_sua.Click += new System.EventHandler(this.btn_sua_Click);
-            // 
-            // txt_SeaDV
-            // 
-            this.txt_SeaDV.BorderColor = System.Drawing.Color.BlueViolet;
-            this.txt_SeaDV.BorderRadius = 0;
-            this.txt_SeaDV.ErrorMessage = null;
-            this.txt_SeaDV.FocusedColor = System.Drawing.Color.Aqua;
-            this.txt_SeaDV.IsError = false;
-            this.txt_SeaDV.Location = new System.Drawing.Point(87, 290);
-            this.txt_SeaDV.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_SeaDV.Multiline = false;
-            this.txt_SeaDV.Name = "txt_SeaDV";
-            this.txt_SeaDV.Padding = new System.Windows.Forms.Padding(7);
-            this.txt_SeaDV.Password = false;
-            this.txt_SeaDV.PlaceHolder = null;
-            this.txt_SeaDV.Size = new System.Drawing.Size(254, 37);
-            this.txt_SeaDV.TabIndex = 15;
-            this.txt_SeaDV.Underline = false;
-            this.txt_SeaDV._TextChanged += new System.EventHandler(this.txt_SeaDV__TextChanged);
-            this.txt_SeaDV.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_SeaDV_KeyDown);
-            this.txt_SeaDV.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txt_SeaDV_KeyUp);
             // 
             // txt_DV
             // 
@@ -226,19 +204,27 @@ namespace HotelManagement.UI.Views.Service
             // panel1
             // 
             this.panel1.BackgroundImage = global::HotelManagement.UI.Properties.Resources.z2914805628131_5fbbb0b306b67de840cab4412b5fc185;
+            this.panel1.Controls.Add(this.TbxSearch);
             this.panel1.Controls.Add(this.cmb_LDV);
             this.panel1.Controls.Add(this.btn_add);
             this.panel1.Controls.Add(this.btn_cl);
             this.panel1.Controls.Add(this.btn_seaDV);
             this.panel1.Controls.Add(this.btn_sua);
             this.panel1.Controls.Add(this.dg_DV);
-            this.panel1.Controls.Add(this.txt_SeaDV);
             this.panel1.Controls.Add(this.txt_DV);
             this.panel1.Controls.Add(this.txt_price);
             this.panel1.Location = new System.Drawing.Point(0, 1);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(574, 575);
             this.panel1.TabIndex = 28;
+            // 
+            // TbxSearch
+            // 
+            this.TbxSearch.Location = new System.Drawing.Point(78, 290);
+            this.TbxSearch.Name = "TbxSearch";
+            this.TbxSearch.Size = new System.Drawing.Size(247, 27);
+            this.TbxSearch.TabIndex = 30;
+            this.TbxSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
             // 
             // panel2
             // 
@@ -357,33 +343,22 @@ namespace HotelManagement.UI.Views.Service
             this.txt_LDV.TabIndex = 14;
             this.txt_LDV.Underline = false;
             // 
-            // TbxSearch
-            // 
-            this.TbxSearch.Location = new System.Drawing.Point(714, 447);
-            this.TbxSearch.Name = "TbxSearch";
-            this.TbxSearch.Size = new System.Drawing.Size(125, 27);
-            this.TbxSearch.TabIndex = 30;
-            this.TbxSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
-            // 
             // FrmService
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1132, 590);
-<<<<<<< HEAD
-            this.Controls.Add(this.TbxSearch);
-=======
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
->>>>>>> aedac2ca5c67e726997c273c90795f72400a38a3
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "FrmService";
             this.Text = "Quản lý dịch vụ";
             ((System.ComponentModel.ISupportInitialize)(this.dg_DV)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_LDVview)).EndInit();
@@ -401,7 +376,6 @@ namespace HotelManagement.UI.Views.Service
         private System.Windows.Forms.DataGridView dg_DV;
         private System.Windows.Forms.Button btn_seaDV;
         private System.Windows.Forms.Button btn_sua;
-        private Components.TextBox txt_SeaDV;
         private Components.TextBox txt_DV;
         private Components.TextBox txt_price;
         private System.Windows.Forms.Button btn_cl;
@@ -416,10 +390,6 @@ namespace HotelManagement.UI.Views.Service
         private System.Windows.Forms.Label lbl_LDV;
         private Components.TextBox txt_SeaLDV;
         private Components.TextBox txt_LDV;
-<<<<<<< HEAD
         private System.Windows.Forms.TextBox TbxSearch;
-=======
-
->>>>>>> aedac2ca5c67e726997c273c90795f72400a38a3
     }
 }
