@@ -61,7 +61,7 @@ namespace HotelManagement.UI.Views.Room
             this.TbxRoomType.Padding = new System.Windows.Forms.Padding(7);
             this.TbxRoomType.Password = false;
             this.TbxRoomType.PlaceHolder = "Thêm loại phòng mới";
-            this.TbxRoomType.Size = new System.Drawing.Size(222, 39);
+            this.TbxRoomType.Size = new System.Drawing.Size(222, 37);
             this.TbxRoomType.TabIndex = 0;
             this.TbxRoomType.Underline = false;
             // 
@@ -119,7 +119,7 @@ namespace HotelManagement.UI.Views.Room
             this.TbxQuantity.Padding = new System.Windows.Forms.Padding(7);
             this.TbxQuantity.Password = false;
             this.TbxQuantity.PlaceHolder = "Số lượng";
-            this.TbxQuantity.Size = new System.Drawing.Size(94, 39);
+            this.TbxQuantity.Size = new System.Drawing.Size(94, 37);
             this.TbxQuantity.TabIndex = 4;
             this.TbxQuantity.Underline = false;
             // 
@@ -235,7 +235,7 @@ namespace HotelManagement.UI.Views.Room
             this.TbxFloor.Padding = new System.Windows.Forms.Padding(7);
             this.TbxFloor.Password = false;
             this.TbxFloor.PlaceHolder = "Thêm tầng";
-            this.TbxFloor.Size = new System.Drawing.Size(127, 39);
+            this.TbxFloor.Size = new System.Drawing.Size(127, 37);
             this.TbxFloor.TabIndex = 12;
             this.TbxFloor.Underline = false;
             // 
@@ -263,7 +263,7 @@ namespace HotelManagement.UI.Views.Room
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::HotelManagement.UI.Properties.Resources.z2914805628131_5fbbb0b306b67de840cab4412b5fc185;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(134)))), ((int)(((byte)(203)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(800, 284);
             this.Controls.Add(this.BtnAddFloor);

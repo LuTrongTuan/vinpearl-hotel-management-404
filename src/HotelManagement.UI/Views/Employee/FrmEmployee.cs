@@ -38,7 +38,6 @@ namespace HotelManagement.UI.Views.Employee
             _acc.Role = _role;
             _acc.RoleId = _role.Id;
             _acc.UserName = TxtUsername.Text;
-            _role.Accound = _acc;
             _role.Name = cboVaitro.Text;
             _emp.Account = _acc;
             _emp.Address = TxtDiachi.Text;
@@ -53,6 +52,11 @@ namespace HotelManagement.UI.Views.Employee
                 await _employee.AddEmployee(_emp, _acc, _role);
                 MessageBox.Show("thêm thành công");
             }
+        }
+
+        private void checked_NHD_CheckedChanged(object sender, System.EventArgs e)
+        {
+
         }
     }
 }

@@ -62,6 +62,7 @@ namespace HotelManagement.UI.Views.Room
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.label1.Location = new System.Drawing.Point(22, 40);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(60, 23);
@@ -72,6 +73,7 @@ namespace HotelManagement.UI.Views.Room
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.label2.Location = new System.Drawing.Point(22, 124);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(60, 23);
@@ -82,6 +84,7 @@ namespace HotelManagement.UI.Views.Room
             // 
             this.CbxActive.AutoSize = true;
             this.CbxActive.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.CbxActive.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.CbxActive.Location = new System.Drawing.Point(126, 125);
             this.CbxActive.Name = "CbxActive";
             this.CbxActive.Size = new System.Drawing.Size(117, 27);
@@ -94,6 +97,7 @@ namespace HotelManagement.UI.Views.Room
             // 
             this.CbxDeactive.AutoSize = true;
             this.CbxDeactive.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.CbxDeactive.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.CbxDeactive.Location = new System.Drawing.Point(300, 123);
             this.CbxDeactive.Name = "CbxDeactive";
             this.CbxDeactive.Size = new System.Drawing.Size(172, 27);
@@ -135,6 +139,7 @@ namespace HotelManagement.UI.Views.Room
             // 
             this.CbxToUp.AutoSize = true;
             this.CbxToUp.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.CbxToUp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.CbxToUp.Location = new System.Drawing.Point(205, 180);
             this.CbxToUp.Name = "CbxToUp";
             this.CbxToUp.Size = new System.Drawing.Size(146, 27);
@@ -167,6 +172,7 @@ namespace HotelManagement.UI.Views.Room
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(134)))), ((int)(((byte)(203)))));
             this.ClientSize = new System.Drawing.Size(909, 544);
             this.Controls.Add(this.BtnRefresh);
             this.Controls.Add(this.CbxToUp);

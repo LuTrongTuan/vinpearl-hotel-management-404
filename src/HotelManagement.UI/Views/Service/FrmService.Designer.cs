@@ -29,7 +29,6 @@ namespace HotelManagement.UI.Views.Service
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmService));
             this.dg_DV = new System.Windows.Forms.DataGridView();
             this.btn_seaDV = new System.Windows.Forms.Button();
             this.btn_sua = new System.Windows.Forms.Button();
@@ -42,19 +41,11 @@ namespace HotelManagement.UI.Views.Service
             this.cmb_LDV = new System.Windows.Forms.ComboBox();
             this.btn_add = new HotelManagement.UI.Components.CustomButton();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.TbxSearch = new System.Windows.Forms.TextBox();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.btn_addLDV = new HotelManagement.UI.Components.CustomButton();
-            this.btn_CLLDV = new System.Windows.Forms.Button();
-            this.btn_SeaLDV = new System.Windows.Forms.Button();
-            this.dg_LDVview = new System.Windows.Forms.DataGridView();
-            this.lbl_LDV = new System.Windows.Forms.Label();
-            this.txt_SeaLDV = new HotelManagement.UI.Components.TextBox();
+            this.TbxSearch = new System.Windows.Forms.TextBox();
             this.txt_LDV = new HotelManagement.UI.Components.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dg_DV)).BeginInit();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dg_LDVview)).BeginInit();
             this.SuspendLayout();
             // 
             // dg_DV
@@ -62,30 +53,34 @@ namespace HotelManagement.UI.Views.Service
             this.dg_DV.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dg_DV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dg_DV.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dg_DV.Location = new System.Drawing.Point(0, 348);
+            this.dg_DV.Location = new System.Drawing.Point(0, 392);
             this.dg_DV.Name = "dg_DV";
             this.dg_DV.RowHeadersWidth = 51;
             this.dg_DV.RowTemplate.Height = 29;
-            this.dg_DV.Size = new System.Drawing.Size(574, 227);
+            this.dg_DV.Size = new System.Drawing.Size(1132, 218);
             this.dg_DV.TabIndex = 25;
             this.dg_DV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_DV_CellClick);
             // 
             // btn_seaDV
             // 
+            this.btn_seaDV.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_seaDV.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btn_seaDV.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_seaDV.Location = new System.Drawing.Point(364, 290);
+            this.btn_seaDV.Image = global::HotelManagement.UI.Properties.Resources.zoom;
+            this.btn_seaDV.Location = new System.Drawing.Point(668, 338);
             this.btn_seaDV.Name = "btn_seaDV";
-            this.btn_seaDV.Size = new System.Drawing.Size(108, 37);
+            this.btn_seaDV.Size = new System.Drawing.Size(122, 37);
             this.btn_seaDV.TabIndex = 18;
             this.btn_seaDV.Text = "Search";
+            this.btn_seaDV.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_seaDV.UseVisualStyleBackColor = false;
             // 
             // btn_sua
             // 
             this.btn_sua.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btn_sua.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_sua.Location = new System.Drawing.Point(217, 215);
+            this.btn_sua.Location = new System.Drawing.Point(533, 244);
             this.btn_sua.Name = "btn_sua";
             this.btn_sua.Size = new System.Drawing.Size(108, 37);
             this.btn_sua.TabIndex = 17;
@@ -100,7 +95,7 @@ namespace HotelManagement.UI.Views.Service
             this.txt_DV.ErrorMessage = null;
             this.txt_DV.FocusedColor = System.Drawing.Color.Aqua;
             this.txt_DV.IsError = false;
-            this.txt_DV.Location = new System.Drawing.Point(217, 77);
+            this.txt_DV.Location = new System.Drawing.Point(267, 91);
             this.txt_DV.Margin = new System.Windows.Forms.Padding(4);
             this.txt_DV.Multiline = false;
             this.txt_DV.Name = "txt_DV";
@@ -114,9 +109,9 @@ namespace HotelManagement.UI.Views.Service
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(134)))), ((int)(((byte)(203)))));
             this.label11.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label11.Location = new System.Drawing.Point(87, 146);
+            this.label11.Location = new System.Drawing.Point(138, 160);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(36, 23);
             this.label11.TabIndex = 10;
@@ -125,9 +120,9 @@ namespace HotelManagement.UI.Views.Service
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(134)))), ((int)(((byte)(203)))));
             this.label10.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(87, 90);
+            this.label10.Location = new System.Drawing.Point(138, 104);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(100, 23);
             this.label10.TabIndex = 9;
@@ -136,9 +131,9 @@ namespace HotelManagement.UI.Views.Service
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(134)))), ((int)(((byte)(203)))));
             this.label9.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(87, 32);
+            this.label9.Location = new System.Drawing.Point(138, 46);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(106, 23);
             this.label9.TabIndex = 12;
@@ -151,7 +146,7 @@ namespace HotelManagement.UI.Views.Service
             this.txt_price.ErrorMessage = null;
             this.txt_price.FocusedColor = System.Drawing.Color.Aqua;
             this.txt_price.IsError = false;
-            this.txt_price.Location = new System.Drawing.Point(217, 132);
+            this.txt_price.Location = new System.Drawing.Point(267, 146);
             this.txt_price.Margin = new System.Windows.Forms.Padding(4);
             this.txt_price.Multiline = false;
             this.txt_price.Name = "txt_price";
@@ -166,7 +161,7 @@ namespace HotelManagement.UI.Views.Service
             // 
             this.btn_cl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btn_cl.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_cl.Location = new System.Drawing.Point(366, 216);
+            this.btn_cl.Location = new System.Drawing.Point(682, 245);
             this.btn_cl.Name = "btn_cl";
             this.btn_cl.Size = new System.Drawing.Size(108, 37);
             this.btn_cl.TabIndex = 19;
@@ -176,7 +171,7 @@ namespace HotelManagement.UI.Views.Service
             // cmb_LDV
             // 
             this.cmb_LDV.FormattingEnabled = true;
-            this.cmb_LDV.Location = new System.Drawing.Point(217, 27);
+            this.cmb_LDV.Location = new System.Drawing.Point(267, 41);
             this.cmb_LDV.Name = "cmb_LDV";
             this.cmb_LDV.Size = new System.Drawing.Size(255, 28);
             this.cmb_LDV.TabIndex = 26;
@@ -192,7 +187,7 @@ namespace HotelManagement.UI.Views.Service
             this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_add.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_add.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btn_add.Location = new System.Drawing.Point(78, 216);
+            this.btn_add.Location = new System.Drawing.Point(394, 245);
             this.btn_add.Name = "btn_add";
             this.btn_add.Size = new System.Drawing.Size(108, 37);
             this.btn_add.TabIndex = 27;
@@ -203,9 +198,14 @@ namespace HotelManagement.UI.Views.Service
             // 
             // panel1
             // 
-            this.panel1.BackgroundImage = global::HotelManagement.UI.Properties.Resources.z2914805628131_5fbbb0b306b67de840cab4412b5fc185;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(134)))), ((int)(((byte)(203)))));
+            this.panel1.Controls.Add(this.label11);
+            this.panel1.Controls.Add(this.btn_addLDV);
+            this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.TbxSearch);
+            this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.cmb_LDV);
+            this.panel1.Controls.Add(this.txt_LDV);
             this.panel1.Controls.Add(this.btn_add);
             this.panel1.Controls.Add(this.btn_cl);
             this.panel1.Controls.Add(this.btn_seaDV);
@@ -213,33 +213,11 @@ namespace HotelManagement.UI.Views.Service
             this.panel1.Controls.Add(this.dg_DV);
             this.panel1.Controls.Add(this.txt_DV);
             this.panel1.Controls.Add(this.txt_price);
-            this.panel1.Location = new System.Drawing.Point(0, 1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(574, 575);
+            this.panel1.Size = new System.Drawing.Size(1132, 610);
             this.panel1.TabIndex = 28;
-            // 
-            // TbxSearch
-            // 
-            this.TbxSearch.Location = new System.Drawing.Point(78, 290);
-            this.TbxSearch.Name = "TbxSearch";
-            this.TbxSearch.Size = new System.Drawing.Size(247, 27);
-            this.TbxSearch.TabIndex = 30;
-            this.TbxSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
-            // 
-            // panel2
-            // 
-            this.panel2.BackgroundImage = global::HotelManagement.UI.Properties.Resources.z2914805628131_5fbbb0b306b67de840cab4412b5fc185;
-            this.panel2.Controls.Add(this.btn_addLDV);
-            this.panel2.Controls.Add(this.btn_CLLDV);
-            this.panel2.Controls.Add(this.btn_SeaLDV);
-            this.panel2.Controls.Add(this.dg_LDVview);
-            this.panel2.Controls.Add(this.lbl_LDV);
-            this.panel2.Controls.Add(this.txt_SeaLDV);
-            this.panel2.Controls.Add(this.txt_LDV);
-            this.panel2.Location = new System.Drawing.Point(605, 1);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(520, 412);
-            this.panel2.TabIndex = 29;
             // 
             // btn_addLDV
             // 
@@ -252,78 +230,25 @@ namespace HotelManagement.UI.Views.Service
             this.btn_addLDV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_addLDV.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_addLDV.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btn_addLDV.Location = new System.Drawing.Point(25, 100);
+            this.btn_addLDV.Image = global::HotelManagement.UI.Properties.Resources.plus;
+            this.btn_addLDV.Location = new System.Drawing.Point(948, 32);
             this.btn_addLDV.Name = "btn_addLDV";
-            this.btn_addLDV.Size = new System.Drawing.Size(108, 37);
+            this.btn_addLDV.Size = new System.Drawing.Size(172, 37);
             this.btn_addLDV.TabIndex = 27;
-            this.btn_addLDV.Text = "Thêm";
+            this.btn_addLDV.Text = "Thêm loại dịch vụ";
             this.btn_addLDV.TextColor = System.Drawing.SystemColors.ControlText;
+            this.btn_addLDV.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btn_addLDV.UseVisualStyleBackColor = false;
             this.btn_addLDV.Click += new System.EventHandler(this.btn_addLDV_Click);
             // 
-            // btn_CLLDV
+            // TbxSearch
             // 
-            this.btn_CLLDV.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.btn_CLLDV.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_CLLDV.Location = new System.Drawing.Point(407, 186);
-            this.btn_CLLDV.Name = "btn_CLLDV";
-            this.btn_CLLDV.Size = new System.Drawing.Size(108, 37);
-            this.btn_CLLDV.TabIndex = 19;
-            this.btn_CLLDV.Text = "Clear";
-            this.btn_CLLDV.UseVisualStyleBackColor = false;
-            // 
-            // btn_SeaLDV
-            // 
-            this.btn_SeaLDV.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.btn_SeaLDV.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_SeaLDV.Location = new System.Drawing.Point(286, 186);
-            this.btn_SeaLDV.Name = "btn_SeaLDV";
-            this.btn_SeaLDV.Size = new System.Drawing.Size(108, 37);
-            this.btn_SeaLDV.TabIndex = 18;
-            this.btn_SeaLDV.Text = "Search";
-            this.btn_SeaLDV.UseVisualStyleBackColor = false;
-            // 
-            // dg_LDVview
-            // 
-            this.dg_LDVview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dg_LDVview.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
-            this.dg_LDVview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dg_LDVview.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dg_LDVview.Location = new System.Drawing.Point(0, 236);
-            this.dg_LDVview.Name = "dg_LDVview";
-            this.dg_LDVview.RowHeadersWidth = 51;
-            this.dg_LDVview.RowTemplate.Height = 29;
-            this.dg_LDVview.Size = new System.Drawing.Size(520, 176);
-            this.dg_LDVview.TabIndex = 25;
-            // 
-            // lbl_LDV
-            // 
-            this.lbl_LDV.AutoSize = true;
-            this.lbl_LDV.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.lbl_LDV.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl_LDV.Location = new System.Drawing.Point(182, 32);
-            this.lbl_LDV.Name = "lbl_LDV";
-            this.lbl_LDV.Size = new System.Drawing.Size(106, 23);
-            this.lbl_LDV.TabIndex = 9;
-            this.lbl_LDV.Text = "Loại dịch vụ";
-            // 
-            // txt_SeaLDV
-            // 
-            this.txt_SeaLDV.BorderColor = System.Drawing.Color.BlueViolet;
-            this.txt_SeaLDV.BorderRadius = 0;
-            this.txt_SeaLDV.ErrorMessage = null;
-            this.txt_SeaLDV.FocusedColor = System.Drawing.Color.Aqua;
-            this.txt_SeaLDV.IsError = false;
-            this.txt_SeaLDV.Location = new System.Drawing.Point(25, 186);
-            this.txt_SeaLDV.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_SeaLDV.Multiline = false;
-            this.txt_SeaLDV.Name = "txt_SeaLDV";
-            this.txt_SeaLDV.Padding = new System.Windows.Forms.Padding(7);
-            this.txt_SeaLDV.Password = false;
-            this.txt_SeaLDV.PlaceHolder = null;
-            this.txt_SeaLDV.Size = new System.Drawing.Size(254, 37);
-            this.txt_SeaLDV.TabIndex = 15;
-            this.txt_SeaLDV.Underline = false;
+            this.TbxSearch.Location = new System.Drawing.Point(404, 338);
+            this.TbxSearch.Multiline = true;
+            this.TbxSearch.Name = "TbxSearch";
+            this.TbxSearch.Size = new System.Drawing.Size(247, 37);
+            this.TbxSearch.TabIndex = 30;
+            this.TbxSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
             // 
             // txt_LDV
             // 
@@ -332,7 +257,7 @@ namespace HotelManagement.UI.Views.Service
             this.txt_LDV.ErrorMessage = null;
             this.txt_LDV.FocusedColor = System.Drawing.Color.Aqua;
             this.txt_LDV.IsError = false;
-            this.txt_LDV.Location = new System.Drawing.Point(170, 100);
+            this.txt_LDV.Location = new System.Drawing.Point(667, 32);
             this.txt_LDV.Margin = new System.Windows.Forms.Padding(4);
             this.txt_LDV.Multiline = false;
             this.txt_LDV.Name = "txt_LDV";
@@ -347,23 +272,15 @@ namespace HotelManagement.UI.Views.Service
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(1132, 590);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.panel2);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(1132, 610);
             this.Controls.Add(this.panel1);
             this.Name = "FrmService";
             this.Text = "Quản lý dịch vụ";
             ((System.ComponentModel.ISupportInitialize)(this.dg_DV)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dg_LDVview)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -382,13 +299,7 @@ namespace HotelManagement.UI.Views.Service
         private System.Windows.Forms.ComboBox cmb_LDV;
         private Components.CustomButton btn_add;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
         private Components.CustomButton btn_addLDV;
-        private System.Windows.Forms.Button btn_CLLDV;
-        private System.Windows.Forms.Button btn_SeaLDV;
-        private System.Windows.Forms.DataGridView dg_LDVview;
-        private System.Windows.Forms.Label lbl_LDV;
-        private Components.TextBox txt_SeaLDV;
         private Components.TextBox txt_LDV;
         private System.Windows.Forms.TextBox TbxSearch;
     }
