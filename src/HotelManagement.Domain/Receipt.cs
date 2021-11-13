@@ -5,8 +5,7 @@ namespace HotelManagement.Domain
 {
     public class Receipt : Entity
     {
-        public double Amount { get; set; }
-        public bool Status { get; set; }
+        public int Status { get; set; }
         public double Deposit { get; set; }
         public double Payment { get; set; }
         public int Number { get; set; }
@@ -20,6 +19,5 @@ namespace HotelManagement.Domain
         public virtual Customer Customer { get; set; }
         public virtual ReceiptDetail ReceiptDetail { get; set; }
         public virtual Identification Identification { get; set; }
-        public virtual ICollection<RoomReceipt> RoomReceipts { get; set; }
     }
 }

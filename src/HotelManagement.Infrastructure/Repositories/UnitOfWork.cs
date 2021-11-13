@@ -19,7 +19,6 @@ namespace HotelManagement.Infrastructure.Repositories
             Roles = new RoleRepository(_context);
             Rooms = new RoomRepository(_context);
             RoomTypes = new RoomTypeRepository(_context);
-            RoomReceipts = new RoomReceiptRepository(_context);
             Services = new ServiceRepository(_context);
             ServiceTypes = new ServiceTypeRepository(_context);
             ServiceReceipts = new ServiceReceiptRepository(_context);
@@ -37,7 +36,6 @@ namespace HotelManagement.Infrastructure.Repositories
         public IRoleRepostiory Roles { get; set; }
         public IRoomRepository Rooms { get; set; }
         public IRoomTypeRepository RoomTypes { get; set; }
-        public IRoomReceiptRepository RoomReceipts { get; set; }
         public IServiceReceiptRepository ServiceReceipts { get; set; }
         public IServiceRepository Services { get; set; }
         public IServiceTypeRepository ServiceTypes { get; set; }
