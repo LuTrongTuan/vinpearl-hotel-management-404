@@ -7,7 +7,7 @@ namespace HotelManagement.Infrastructure
     public class ApplicationDbContext : DbContext
     {
         // define connection string here
-        private const string ConnectionString = @"Data Source=DESKTOP-1SHD3O8\MSSQLSERVER01;Initial Catalog=QuanLyKhachHang;Integrated Security=True";
+        private const string ConnectionString = @"";
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
