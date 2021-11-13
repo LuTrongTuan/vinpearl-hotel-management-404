@@ -32,7 +32,7 @@ namespace HotelManagement.UI
             {
                 if (control.GetType() == typeof(CustomButton))
                 {
-                    control.BackColor = ColorScheme.DarkBlue;
+                    control.BackColor = ColorScheme.DarkPurple;
                 }
             }
         }

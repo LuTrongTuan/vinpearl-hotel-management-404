@@ -31,15 +31,6 @@ namespace HotelManagement.UI.Views.Service
             cmb_LDV.DataSource = result.ToList();
             cmb_LDV.DisplayMember = "Name";
             cmb_LDV.ValueMember = "Id";
-            dg_LDVview.ColumnCount = 1;
-            dg_LDVview.Columns[0].Name = "name";
-            dg_LDVview.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dg_LDVview.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dg_LDVview.Rows.Clear();
-            foreach (var room in result.ToList())
-            {
-                dg_LDVview.Rows.Add(room.Name);
-            }
         }
         async void Service()
         {
@@ -129,11 +120,6 @@ namespace HotelManagement.UI.Views.Service
         {
             MessageBox.Show("aaaa");
             loadserach(txt_DV.Text);
-        }
-
-        private void txt_SeaDV__TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void textBox1_KeyUp(object sender, KeyEventArgs e)

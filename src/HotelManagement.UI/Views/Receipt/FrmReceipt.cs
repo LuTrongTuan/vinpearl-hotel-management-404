@@ -139,15 +139,13 @@ namespace HotelManagement.UI.Views.Receipt
                 CmbService.Text = "";
             }
         }
-
-        private void txb_price_Enter(object sender, EventArgs e)
+        private void txb_hinhthuc_Enter(object sender, EventArgs e)
         {
-            if (txb_price.Text == "Giá dịch vụ")
+            if (txb_hinhthuc.Text == "Hình thức thanh toán")
             {
-                txb_price.Text = "";
+                txb_hinhthuc.Text = "";
             }
         }
         #endregion
-
     }
 }

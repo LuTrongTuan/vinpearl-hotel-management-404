@@ -141,6 +141,7 @@ namespace HotelManagement.UI.Views.Room
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(134)))), ((int)(((byte)(203)))));
             this.ClientSize = new System.Drawing.Size(902, 474);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.customButton2);
