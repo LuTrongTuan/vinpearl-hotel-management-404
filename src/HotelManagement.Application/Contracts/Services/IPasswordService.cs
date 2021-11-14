@@ -11,5 +11,6 @@ namespace HotelManagement.Application.Contracts
     public interface IPasswordService
     {
         Task<string> UpdatePassword(AccountDTO account);
+        Task<string> forgotPassword(string email);
     }
 }

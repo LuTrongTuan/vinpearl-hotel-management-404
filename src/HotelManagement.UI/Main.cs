@@ -90,10 +90,12 @@ namespace HotelManagement.UI
 
         private void customButton5_Click(object sender, System.EventArgs e)
         {
-            //if (MessageBox.Show("Bạn có chắc muốn đăng xuất không","Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            //{
-            //    //this.Hide();
-            //}
+            if (MessageBox.Show("Bạn có chắc muốn đăng xuất không", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                FrmLogin frm = Program.Container.GetInstance<FrmLogin>();
+                frm.Show();
+                this.Hide();
+            }
         }
     }
 }

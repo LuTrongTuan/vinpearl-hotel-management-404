@@ -8,6 +8,7 @@ using HotelManagement.UI.Utilities;
 using HotelManagement.UI.Views.Customer;
 using HotelManagement.UI.Views.Employee;
 using HotelManagement.UI.Views.Login;
+using HotelManagement.UI.Views.Password;
 using HotelManagement.UI.Views.Receipt;
 using HotelManagement.UI.Views.Room;
 using HotelManagement.UI.Views.Service;
@@ -29,6 +30,7 @@ namespace HotelManagement.UI
             Container.Register<FrmCreateRoom>();
             Container.Register<FrmUpdateRoom>();
             Container.Register<FrmReceipt>();
+            Container.Register<FrmForgotPassword>();
             Container.ConfigureInfrastructureServices();
             Container.ConfigureApplicationServices();
         }
