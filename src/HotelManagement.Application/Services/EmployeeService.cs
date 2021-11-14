@@ -14,33 +14,36 @@ namespace HotelManagement.Application.Services
     {
         private IUnitOfWork _worker;
         private readonly IMapper _mapper;
+        private IEncrypt _encrypt;
         private Employee _employee;
         private Account _account;
-        public EmployeeService(IUnitOfWork worker, IMapper mapper)
+        public EmployeeService(IUnitOfWork worker, IMapper mapper, IEncrypt encrypt)
         {
             _worker = worker;
             _mapper = mapper;
-        }
-        public async Task<string> AddEmployee(EmployeeDTO obj, AccountDTO a)
-        {
-            var emp = _mapper.Map<Employee>(obj);
-            var acc = _mapper.Map<Account>(a);
-            await _worker.Employees.Add(emp);
-            await _worker.Accounts.Add(acc);
-            await _worker.Commit();
-            return "thêm thành công";
+            _encrypt = encrypt;
         }
 
-        public async Task<IList<roleDTO>> GetList()
+        public async Task<IEnumerable<RoleDTO>> GetList()
         {
-            var query = await _worker.Roles.GetAll();
-            return _mapper.Map<IList<Role>, IList<roleDTO>>(query);
+            var result = await _worker.Roles.GetAll();
+            return _mapper.Map<IList<Role>, IList<RoleDTO>>(result);
         }
 
         public Task<IList<EmployeeDTO>> GetList(string name)
         {
             throw new System.NotImplementedException();
         }
+
+        public async Task<string> AddEmployee(Account obj)
+        { 
+            var emp = _mapper.Map<Account>(obj);
+            emp.Password = _encrypt.Encrypt("welcome");
+            await _worker.Accounts.Add(emp);
+            await _worker.Commit();
+            return "ok";
+        }
+
         public Task<string> UpdateEmployee(Employee obj)
         {
             throw new System.NotImplementedException();

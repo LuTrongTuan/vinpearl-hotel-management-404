@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using HotelManagement.Application.Contracts.Infrastructure;
 using HotelManagement.Application.Contracts.Services;
 using HotelManagement.Application.DTOs;
+using HotelManagement.Application.DTOs.Account;
 
 namespace HotelManagement.UI.Views.Login
 {

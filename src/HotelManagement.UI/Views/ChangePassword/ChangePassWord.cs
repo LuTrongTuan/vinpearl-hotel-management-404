@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using HotelManagement.Application.Contracts;
 using HotelManagement.Application.DTOs;
+using HotelManagement.Application.DTOs.Account;
 
 namespace HotelManagement.UI
 {

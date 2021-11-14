@@ -7,7 +7,7 @@ namespace HotelManagement.Infrastructure
     public class ApplicationDbContext : DbContext
     {
         // define connection string here
-        private const string ConnectionString = @"";
+        private const string ConnectionString = @"Data Source=ADMIN\SQLEXPRESS;Initial Catalog=hiubg_hiepdam;Integrated Security=True";
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -2,6 +2,7 @@
 using HotelManagement.Application.Contracts;
 using HotelManagement.Application.Contracts.Infrastructure;
 using HotelManagement.Application.DTOs;
+using HotelManagement.Application.DTOs.Account;
 using HotelManagement.Domain;
 
 namespace HotelManagement.Application.Services
