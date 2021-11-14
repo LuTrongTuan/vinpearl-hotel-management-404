@@ -42,7 +42,7 @@ namespace HotelManagement.UI
             System.Windows.Forms.Application.SetHighDpiMode(HighDpiMode.SystemAware);
             System.Windows.Forms.Application.EnableVisualStyles();
             System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(false); 
-            System.Windows.Forms.Application.Run(new Main());
+            System.Windows.Forms.Application.Run(Program.Container.GetInstance<FrmReceipt>());
         }
     }
 }

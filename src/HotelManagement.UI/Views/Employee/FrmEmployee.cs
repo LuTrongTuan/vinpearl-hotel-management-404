@@ -65,5 +65,10 @@ namespace HotelManagement.UI.Views.Employee
                 MessageBox.Show("Thêm thành công");
             }
         }
+
+        private void checked_NHD_CheckedChanged(object sender, System.EventArgs e)
+        {
+
+        }
     }
 }

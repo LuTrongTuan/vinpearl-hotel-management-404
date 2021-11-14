@@ -37,7 +37,6 @@ namespace HotelManagement.UI.Views.Room
             this.TbxSearch = new System.Windows.Forms.TextBox();
             this.customButton2 = new HotelManagement.UI.Components.CustomButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.customButton3 = new HotelManagement.UI.Components.CustomButton();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -58,7 +57,7 @@ namespace HotelManagement.UI.Views.Room
             this.customButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.customButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.customButton1.ForeColor = System.Drawing.Color.White;
-            this.customButton1.Location = new System.Drawing.Point(444, 12);
+            this.customButton1.Location = new System.Drawing.Point(406, 24);
             this.customButton1.Name = "customButton1";
             this.customButton1.Size = new System.Drawing.Size(188, 50);
             this.customButton1.TabIndex = 1;
@@ -74,7 +73,7 @@ namespace HotelManagement.UI.Views.Room
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PanelContainer.Location = new System.Drawing.Point(0, 135);
             this.PanelContainer.Name = "PanelContainer";
-            this.PanelContainer.Size = new System.Drawing.Size(1153, 335);
+            this.PanelContainer.Size = new System.Drawing.Size(883, 335);
             this.PanelContainer.TabIndex = 2;
             this.PanelContainer.ClientSizeChanged += new System.EventHandler(this.PanelContainer_ClientSizeChanged);
             // 
@@ -90,7 +89,7 @@ namespace HotelManagement.UI.Views.Room
             this.BtnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnRefresh.ForeColor = System.Drawing.SystemColors.ControlText;
             this.BtnRefresh.Image = global::HotelManagement.UI.Properties.Resources.refresh__2_;
-            this.BtnRefresh.Location = new System.Drawing.Point(376, 12);
+            this.BtnRefresh.Location = new System.Drawing.Point(338, 24);
             this.BtnRefresh.Name = "BtnRefresh";
             this.BtnRefresh.Size = new System.Drawing.Size(48, 50);
             this.BtnRefresh.TabIndex = 3;
@@ -119,7 +118,7 @@ namespace HotelManagement.UI.Views.Room
             this.customButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.customButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.customButton2.ForeColor = System.Drawing.Color.White;
-            this.customButton2.Location = new System.Drawing.Point(686, 12);
+            this.customButton2.Location = new System.Drawing.Point(648, 24);
             this.customButton2.Name = "customButton2";
             this.customButton2.Size = new System.Drawing.Size(188, 50);
             this.customButton2.TabIndex = 8;
@@ -138,32 +137,11 @@ namespace HotelManagement.UI.Views.Room
             this.label1.TabIndex = 9;
             this.label1.Text = "Search:";
             // 
-            // customButton3
-            // 
-            this.customButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.customButton3.BackColor = System.Drawing.Color.DeepPink;
-            this.customButton3.BackgroundColor = System.Drawing.Color.DeepPink;
-            this.customButton3.BorderColor = System.Drawing.Color.HotPink;
-            this.customButton3.BorderRadius = 5;
-            this.customButton3.BorderSize = 1;
-            this.customButton3.FlatAppearance.BorderSize = 0;
-            this.customButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.customButton3.ForeColor = System.Drawing.Color.White;
-            this.customButton3.Location = new System.Drawing.Point(928, 12);
-            this.customButton3.Name = "customButton3";
-            this.customButton3.Size = new System.Drawing.Size(188, 50);
-            this.customButton3.TabIndex = 10;
-            this.customButton3.Text = "Loại Phòng";
-            this.customButton3.TextColor = System.Drawing.Color.White;
-            this.customButton3.UseVisualStyleBackColor = false;
-            // 
             // FrmMainRoom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1153, 474);
-            this.Controls.Add(this.customButton3);
+            this.ClientSize = new System.Drawing.Size(883, 474);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.customButton2);
             this.Controls.Add(this.TbxSearch);
@@ -186,6 +164,5 @@ namespace HotelManagement.UI.Views.Room
         private System.Windows.Forms.TextBox TbxSearch;
         private Components.CustomButton customButton2;
         private System.Windows.Forms.Label label1;
-        private Components.CustomButton customButton3;
     }
 }

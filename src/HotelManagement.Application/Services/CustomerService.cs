@@ -33,5 +33,19 @@ namespace HotelManagement.Application.Services
             await _worker.Customers.Add(user);
             await _worker.Commit();
         }
+
+        public async Task Update(CustomerDTO customer)
+        {
+            var cus = await _worker.Customers.Get(x => x.IdentityNumber == customer.IdentityNumber);
+            if (cus is not null)
+                return;
+            cus.Name = customer.Name;
+            cus.IdentityNumber = customer.IdentityNumber;
+            cus.Address = customer.Address;
+            cus.Gender = customer.Gender;
+            cus.PhoneNumber = customer.PhoneNumber;
+            await _worker.Customers.Update(cus);
+            await _worker.Commit();
+        }
     }
 }

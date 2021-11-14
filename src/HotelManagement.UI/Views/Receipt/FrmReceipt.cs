@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using HotelManagement.Application.Contracts.Services;
 using HotelManagement.Application.DTOs;
 using HotelManagement.Application.DTOs.Room;
+using HotelManagement.UI.Contracts;
 
 namespace HotelManagement.UI.Views.Receipt
 {
@@ -12,6 +13,8 @@ namespace HotelManagement.UI.Views.Receipt
         private readonly IService _service;
         private readonly IRoomTypeService _roomTypeService;
         private readonly IRoomService _roomService;
+        private readonly ICustomerService _customerService;
+        private readonly IConfirm _confirm;
         private int _roomId;
         private ReceiptDTO _receipt;
         private RoomDetailDTO _room;
@@ -28,14 +31,14 @@ namespace HotelManagement.UI.Views.Receipt
                 Binding();
             }
         }
-
         public FrmReceipt(IIdentificationService identificationService, IService service,
-            IRoomTypeService roomTypeService, IRoomService roomService)
+            IRoomTypeService roomTypeService, IRoomService roomService, ICustomerService customer)
         {
             _identificationService = identificationService;
             _service = service;
             _roomTypeService = roomTypeService;
             _roomService = roomService;
+            _customerService = customer;
             InitializeComponent();
         }
 
@@ -139,14 +142,44 @@ namespace HotelManagement.UI.Views.Receipt
                 CmbService.Text = "";
             }
         }
-
-        private void txb_price_Enter(object sender, EventArgs e)
+        private void txb_hinhthuc_Enter(object sender, EventArgs e)
         {
-            if (txb_price.Text == "Giá dịch vụ")
+            if (txb_hinhthuc.Text == "Hình thức thanh toán")
             {
-                txb_price.Text = "";
+                txb_hinhthuc.Text = "";
             }
         }
+        #endregion
+
+        #region Customer
+        private async void customButton4_Click(object sender, EventArgs e)
+        {
+            var cus = new CustomerDTO
+            {
+                Name = txb_name.Text,
+                Address = txt_address.Text,
+                Gender = rbtn_nam.Checked,
+                PhoneNumber = txb_numberPhone.Text,
+                IdentityNumber = txb_number.Text
+            };
+            await _customerService.Add(cus);
+            MessageBox.Show("thêm ok");
+        }
+        private void customButton5_Click(object sender, EventArgs e)
+        {
+            txt_address.Text = "";
+            txb_numberPhone.Text = "Số điện thoại";
+            txb_name.Text = "Tên khách hàng";
+            txb_number.Text = "Số giấy tờ";
+            rbtn_nam.Checked = false;
+            rbtn_nu.Checked = false;
+        }
+        #endregion
+
+        #region MyRegion
+
+        
+
         #endregion
 
     }

@@ -7,5 +7,6 @@ namespace HotelManagement.Application.Contracts.Services
     {
         Task<CustomerDTO> GetDetail(int id);
         Task Add(CustomerDTO customer);
+        Task Update(CustomerDTO customer);
     }
 }
