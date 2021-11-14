@@ -70,11 +70,14 @@ namespace HotelManagement.UI.Views.Receipt
             this.label21 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.customButton8 = new HotelManagement.UI.Components.CustomButton();
+            this.txt_address = new HotelManagement.UI.Components.TextBox();
             this.txb_numberPhone = new System.Windows.Forms.TextBox();
             this.txb_name = new System.Windows.Forms.TextBox();
             this.txb_number = new System.Windows.Forms.TextBox();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.rbtn_nu = new System.Windows.Forms.RadioButton();
+            this.rbtn_nam = new System.Windows.Forms.RadioButton();
+            this.label22 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.customButton5 = new HotelManagement.UI.Components.CustomButton();
             this.customButton4 = new HotelManagement.UI.Components.CustomButton();
@@ -477,7 +480,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.customButton7.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.customButton7.ForeColor = System.Drawing.SystemColors.ControlText;
             this.customButton7.Image = global::HotelManagement.UI.Properties.Resources.edit;
-            this.customButton7.Location = new System.Drawing.Point(1048, 466);
+            this.customButton7.Location = new System.Drawing.Point(1048, 476);
             this.customButton7.Name = "customButton7";
             this.customButton7.Size = new System.Drawing.Size(93, 40);
             this.customButton7.TabIndex = 18;
@@ -498,7 +501,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.customButton6.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.customButton6.ForeColor = System.Drawing.SystemColors.ControlText;
             this.customButton6.Image = global::HotelManagement.UI.Properties.Resources.plus;
-            this.customButton6.Location = new System.Drawing.Point(883, 466);
+            this.customButton6.Location = new System.Drawing.Point(886, 476);
             this.customButton6.Name = "customButton6";
             this.customButton6.Size = new System.Drawing.Size(149, 40);
             this.customButton6.TabIndex = 18;
@@ -527,7 +530,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.customButton3);
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBox2.Location = new System.Drawing.Point(6, 260);
+            this.groupBox2.Location = new System.Drawing.Point(6, 298);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(541, 127);
             this.groupBox2.TabIndex = 12;
@@ -554,12 +557,15 @@ namespace HotelManagement.UI.Views.Receipt
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.customButton8);
+            this.groupBox3.Controls.Add(this.txt_address);
             this.groupBox3.Controls.Add(this.txb_numberPhone);
             this.groupBox3.Controls.Add(this.txb_name);
             this.groupBox3.Controls.Add(this.txb_number);
-            this.groupBox3.Controls.Add(this.radioButton2);
-            this.groupBox3.Controls.Add(this.radioButton1);
+            this.groupBox3.Controls.Add(this.rbtn_nu);
+            this.groupBox3.Controls.Add(this.rbtn_nam);
             this.groupBox3.Controls.Add(this.groupBox2);
+            this.groupBox3.Controls.Add(this.label22);
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Controls.Add(this.customButton5);
             this.groupBox3.Controls.Add(this.customButton4);
@@ -569,10 +575,48 @@ namespace HotelManagement.UI.Views.Receipt
             this.groupBox3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBox3.Location = new System.Drawing.Point(600, 39);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(559, 398);
+            this.groupBox3.Size = new System.Drawing.Size(559, 431);
             this.groupBox3.TabIndex = 13;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Thông tin khách hàng";
+            // 
+            // customButton8
+            // 
+            this.customButton8.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.customButton8.BackgroundColor = System.Drawing.Color.DeepSkyBlue;
+            this.customButton8.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.customButton8.BorderRadius = 10;
+            this.customButton8.BorderSize = 0;
+            this.customButton8.FlatAppearance.BorderSize = 0;
+            this.customButton8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.customButton8.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.customButton8.Image = global::HotelManagement.UI.Properties.Resources.edit;
+            this.customButton8.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.customButton8.Location = new System.Drawing.Point(305, 250);
+            this.customButton8.Name = "customButton8";
+            this.customButton8.Size = new System.Drawing.Size(110, 42);
+            this.customButton8.TabIndex = 27;
+            this.customButton8.Text = "Sửa        ";
+            this.customButton8.TextColor = System.Drawing.SystemColors.ControlText;
+            this.customButton8.UseVisualStyleBackColor = false;
+            // 
+            // txt_address
+            // 
+            this.txt_address.BorderColor = System.Drawing.SystemColors.Control;
+            this.txt_address.BorderRadius = 0;
+            this.txt_address.ErrorMessage = null;
+            this.txt_address.FocusedColor = System.Drawing.SystemColors.Control;
+            this.txt_address.IsError = false;
+            this.txt_address.Location = new System.Drawing.Point(151, 182);
+            this.txt_address.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_address.Multiline = false;
+            this.txt_address.Name = "txt_address";
+            this.txt_address.Padding = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.txt_address.Password = false;
+            this.txt_address.PlaceHolder = "Địa chỉ khách hàng";
+            this.txt_address.Size = new System.Drawing.Size(260, 37);
+            this.txt_address.TabIndex = 26;
+            this.txt_address.Underline = false;
             // 
             // txb_numberPhone
             // 
@@ -604,27 +648,36 @@ namespace HotelManagement.UI.Views.Receipt
             this.txb_number.Text = "Số giấy tờ";
             this.txb_number.Enter += new System.EventHandler(this.txb_number_Enter);
             // 
-            // radioButton2
+            // rbtn_nu
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(261, 151);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(52, 24);
-            this.radioButton2.TabIndex = 20;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Nữ";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rbtn_nu.AutoSize = true;
+            this.rbtn_nu.Location = new System.Drawing.Point(261, 151);
+            this.rbtn_nu.Name = "rbtn_nu";
+            this.rbtn_nu.Size = new System.Drawing.Size(52, 24);
+            this.rbtn_nu.TabIndex = 20;
+            this.rbtn_nu.TabStop = true;
+            this.rbtn_nu.Text = "Nữ";
+            this.rbtn_nu.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // rbtn_nam
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(155, 151);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(64, 24);
-            this.radioButton1.TabIndex = 20;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Nam";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rbtn_nam.AutoSize = true;
+            this.rbtn_nam.Location = new System.Drawing.Point(155, 151);
+            this.rbtn_nam.Name = "rbtn_nam";
+            this.rbtn_nam.Size = new System.Drawing.Size(64, 24);
+            this.rbtn_nam.TabIndex = 20;
+            this.rbtn_nam.TabStop = true;
+            this.rbtn_nam.Text = "Nam";
+            this.rbtn_nam.UseVisualStyleBackColor = true;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(16, 184);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(56, 20);
+            this.label22.TabIndex = 4;
+            this.label22.Text = "Địa chỉ";
             // 
             // label12
             // 
@@ -647,7 +700,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.customButton5.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.customButton5.ForeColor = System.Drawing.SystemColors.ControlText;
             this.customButton5.Image = global::HotelManagement.UI.Properties.Resources.circle_of_two_clockwise_arrows_rotation;
-            this.customButton5.Location = new System.Drawing.Point(432, 192);
+            this.customButton5.Location = new System.Drawing.Point(432, 250);
             this.customButton5.Name = "customButton5";
             this.customButton5.Size = new System.Drawing.Size(109, 38);
             this.customButton5.TabIndex = 1;
@@ -655,6 +708,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.customButton5.TextColor = System.Drawing.SystemColors.ControlText;
             this.customButton5.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.customButton5.UseVisualStyleBackColor = false;
+            this.customButton5.Click += new System.EventHandler(this.customButton5_Click);
             // 
             // customButton4
             // 
@@ -668,7 +722,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.customButton4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.customButton4.ForeColor = System.Drawing.SystemColors.ControlText;
             this.customButton4.Image = global::HotelManagement.UI.Properties.Resources.plus;
-            this.customButton4.Location = new System.Drawing.Point(204, 192);
+            this.customButton4.Location = new System.Drawing.Point(74, 250);
             this.customButton4.Name = "customButton4";
             this.customButton4.Size = new System.Drawing.Size(222, 38);
             this.customButton4.TabIndex = 1;
@@ -676,6 +730,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.customButton4.TextColor = System.Drawing.SystemColors.ControlText;
             this.customButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.customButton4.UseVisualStyleBackColor = false;
+            this.customButton4.Click += new System.EventHandler(this.customButton4_Click);
             // 
             // label6
             // 
@@ -821,12 +876,12 @@ namespace HotelManagement.UI.Views.Receipt
         private System.Windows.Forms.Label LblRoomType;
         private System.Windows.Forms.ComboBox cbx_roomtype;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton rbtn_nam;
         private Components.CustomButton customButton2;
         private Components.CustomButton customButton6;
         private Components.CustomButton customButton1;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton rbtn_nu;
         private System.Windows.Forms.TextBox txb_deposits;
         private System.Windows.Forms.TextBox txb_note;
         private System.Windows.Forms.TextBox txb_payments;
@@ -851,5 +906,8 @@ namespace HotelManagement.UI.Views.Receipt
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label22;
+        private Components.TextBox txt_address;
+        private Components.CustomButton customButton8;
     }
 }

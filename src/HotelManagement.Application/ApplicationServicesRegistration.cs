@@ -25,6 +25,7 @@ namespace HotelManagement.Application
             container.Register<IFloorService, FloorService>();
             container.Register<IIdentificationService, IdentificationService>();
             container.Register<IEmployeeService,EmployeeService>();
+            container.Register<ICustomerService,CustomerService>();
             return container;
         }
     }

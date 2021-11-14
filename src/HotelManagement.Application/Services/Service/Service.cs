@@ -29,10 +29,7 @@ namespace HotelManagement.Application.Services
         public async Task<string> UpdateService(ServiceDTO ser)
         {
             _ser = await _work.Services.Get(x => x.Id == ser.Id);
-            if (_ser == null)
-            {
-                return "không tồn tại";
-            }
+            if (_ser == null) return "không tồn tại";
             _ser.Name = ser.Name;
             _ser.Price = ser.Price;
             _ser.ServiceTypeId = ser.ServiceTypeId;
