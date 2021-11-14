@@ -1,5 +1,10 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+using System.Windows.Forms;
 using HotelManagement.Application.Contracts.Services;
+using HotelManagement.Application.DTOs;
+using HotelManagement.Application.DTOs.Employee;
 using HotelManagement.Domain;
 using HotelManagement.UI.Contracts;
 
@@ -9,9 +14,7 @@ namespace HotelManagement.UI.Views.Employee
     {
         private readonly IEmployeeService _employee;
         private readonly IConfirm _confirm;
-        private Account _acc;
-        private Role _role;
-        private Domain.Employee _emp;
+        
         public FrmEmployee(IEmployeeService emp,IConfirm con)
         {
             InitializeComponent();
@@ -22,38 +25,46 @@ namespace HotelManagement.UI.Views.Employee
 
         async void load()
         {
-            //var result = await _employee.GetList();
-            //cboVaitro.DataSource = result;
-            //cboVaitro.DisplayMember = "Name";
-            //cboVaitro.ValueMember = "Id";
+            var result = await _employee.GetList();
+            foreach (var x in result.ToList()) ;
+            {
+                cboVaitro.Items.Add(x.name);
+            }
         }
         private async void button1_Click(object sender, System.EventArgs e)
         {
-            _acc= new Account();
-            _role = new Role();
-            _emp = new Domain.Employee();
-            _acc.Employee = _emp;
-            _acc.EmployeeId = _emp.Id;
-            _acc.Password = TxtPass.Text;
-            _acc.Role = _role;
-            _acc.RoleId = _role.Id;
-            _acc.UserName = TxtUsername.Text;
-            _role.Name = cboVaitro.Text;
-            _emp.Account = _acc;
+            var _emp = new EmployeeDTO()
+            {
+                Address =  TxtDiachi.Text,
+                Birthday = dateTimePicker1.Value,
+                Email = TxtEmail.Text,
+                Gender = rdoNam.Checked,
+                Name = TxtName.Text,
+                PhoneNumber = TxtPhone.Text,
+                Status = checked_HD.Checked
+            };
+            var _acc = new AccountDTO()
+            {
+                //EmployeeId = await _employee,
+                Password = TxtPass.Text,
+                RoleId = Convert.ToInt32(cboVaitro.SelectedValue),
+                UserName = TxtUsername.Text
+            };
             _emp.Address = TxtDiachi.Text;
             _emp.Birthday = dateTimePicker1.Value;
             _emp.Email = TxtEmail.Text;
-            _emp.Name = TxtName.Text;
             _emp.PhoneNumber = TxtPhone.Text;
             _emp.Status = checked_HD.Checked;
             _emp.Gender = rdoNam.Checked;
-            if (_confirm.IsConfirm("bạn chắc chắn thêm"))
-            {
-                await _employee.AddEmployee(_emp, _acc, _role);
-                MessageBox.Show("thêm thành công");
-            }
-        }
 
+            if (_confirm.IsConfirm("Bạn chắc chắn muốn thêm "))
+            {
+                await _employee.AddEmployee(_emp, _acc);
+                MessageBox.Show("Thêm thành công ");
+            }
+                    
+        }
+        
         private void checked_NHD_CheckedChanged(object sender, System.EventArgs e)
         {
 

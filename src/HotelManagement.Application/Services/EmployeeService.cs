@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using HotelManagement.Application.Contracts.Infrastructure;
+using HotelManagement.Application.DTOs;
 using HotelManagement.Application.DTOs.Employee;
+
 
 namespace HotelManagement.Application.Services
 {
@@ -19,18 +21,20 @@ namespace HotelManagement.Application.Services
             _worker = worker;
             _mapper = mapper;
         }
-        public async Task<string> AddEmployee(Employee obj,Account acc,Role role)
+        public async Task<string> AddEmployee(EmployeeDTO obj, AccountDTO a)
         {
-            await _worker.Employees.Add(obj);
+            var emp = _mapper.Map<Employee>(obj);
+            var acc = _mapper.Map<Account>(a);
+            await _worker.Employees.Add(emp);
             await _worker.Accounts.Add(acc);
-            await _worker.Roles.Add(role);
             await _worker.Commit();
             return "thêm thành công";
         }
 
-        public async Task<IList<EmployeeDTO>> GetList()
+        public async Task<IList<roleDTO>> GetList()
         {
-            throw new System.NotImplementedException();
+            var query = await _worker.Roles.GetAll();
+            return _mapper.Map<IList<Role>, IList<roleDTO>>(query);
         }
 
         public Task<IList<EmployeeDTO>> GetList(string name)
