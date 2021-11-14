@@ -1,4 +1,6 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
 using HotelManagement.Application.Contracts.Services;
 using HotelManagement.Domain;
 using HotelManagement.UI.Contracts;
@@ -12,6 +14,7 @@ namespace HotelManagement.UI.Views.Employee
         private Account _acc;
         private Role _role;
         private Domain.Employee _emp;
+        private Regex _year = new Regex(@"^[0-9]*$");
         public FrmEmployee(IEmployeeService emp,IConfirm con)
         {
             InitializeComponent();
@@ -38,20 +41,28 @@ namespace HotelManagement.UI.Views.Employee
             _acc.Role = _role;
             _acc.RoleId = _role.Id;
             _acc.UserName = TxtUsername.Text;
-            _role.Accound = _acc;
+            //_role.Account = _acc;
             _role.Name = cboVaitro.Text;
             _emp.Account = _acc;
             _emp.Address = TxtDiachi.Text;
             _emp.Birthday = dateTimePicker1.Value;
             _emp.Email = TxtEmail.Text;
             _emp.Name = TxtName.Text;
-            _emp.PhoneNumber = TxtPhone.Text;
+            if (_year.IsMatch(TxtPhone.Text))
+            {
+                _emp.PhoneNumber = TxtPhone.Text;
+            }
+            else
+            {
+                MessageBox.Show("SĐt không được nhập chữ", "Thông Báo");
+                return;
+            }
             _emp.Status = checked_HD.Checked;
             _emp.Gender = rdoNam.Checked;
-            if (_confirm.IsConfirm("bạn chắc chắn thêm"))
+            if (_confirm.IsConfirm("Bạn chắc chắn thêm"))
             {
                 await _employee.AddEmployee(_emp, _acc, _role);
-                MessageBox.Show("thêm thành công");
+                MessageBox.Show("Thêm thành công");
             }
         }
     }

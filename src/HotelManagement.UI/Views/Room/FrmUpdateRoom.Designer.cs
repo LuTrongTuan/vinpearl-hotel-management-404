@@ -38,6 +38,7 @@ namespace HotelManagement.UI.Views.Room
             this.PanelContainer = new System.Windows.Forms.Panel();
             this.CbxToUp = new System.Windows.Forms.CheckBox();
             this.BtnRefresh = new HotelManagement.UI.Components.CustomButton();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // TbxName
@@ -47,7 +48,7 @@ namespace HotelManagement.UI.Views.Room
             this.TbxName.ErrorMessage = null;
             this.TbxName.FocusedColor = System.Drawing.Color.LightSeaGreen;
             this.TbxName.IsError = false;
-            this.TbxName.Location = new System.Drawing.Point(126, 23);
+            this.TbxName.Location = new System.Drawing.Point(260, 33);
             this.TbxName.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.TbxName.Multiline = false;
             this.TbxName.Name = "TbxName";
@@ -62,27 +63,27 @@ namespace HotelManagement.UI.Views.Room
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(22, 40);
+            this.label1.Location = new System.Drawing.Point(103, 50);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 23);
+            this.label1.Size = new System.Drawing.Size(65, 23);
             this.label1.TabIndex = 15;
-            this.label1.Text = "Name";
+            this.label1.Text = "Name:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(22, 124);
+            this.label2.Location = new System.Drawing.Point(103, 105);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 23);
+            this.label2.Size = new System.Drawing.Size(68, 23);
             this.label2.TabIndex = 16;
-            this.label2.Text = "Name";
+            this.label2.Text = "Status:";
             // 
             // CbxActive
             // 
             this.CbxActive.AutoSize = true;
             this.CbxActive.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.CbxActive.Location = new System.Drawing.Point(126, 125);
+            this.CbxActive.Location = new System.Drawing.Point(260, 106);
             this.CbxActive.Name = "CbxActive";
             this.CbxActive.Size = new System.Drawing.Size(117, 27);
             this.CbxActive.TabIndex = 17;
@@ -94,7 +95,7 @@ namespace HotelManagement.UI.Views.Room
             // 
             this.CbxDeactive.AutoSize = true;
             this.CbxDeactive.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.CbxDeactive.Location = new System.Drawing.Point(300, 123);
+            this.CbxDeactive.Location = new System.Drawing.Point(453, 106);
             this.CbxDeactive.Name = "CbxDeactive";
             this.CbxDeactive.Size = new System.Drawing.Size(172, 27);
             this.CbxDeactive.TabIndex = 18;
@@ -113,7 +114,7 @@ namespace HotelManagement.UI.Views.Room
             this.BtnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnSave.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.BtnSave.ForeColor = System.Drawing.Color.White;
-            this.BtnSave.Location = new System.Drawing.Point(708, 79);
+            this.BtnSave.Location = new System.Drawing.Point(831, 50);
             this.BtnSave.Name = "BtnSave";
             this.BtnSave.Size = new System.Drawing.Size(120, 45);
             this.BtnSave.TabIndex = 22;
@@ -126,16 +127,16 @@ namespace HotelManagement.UI.Views.Room
             // 
             this.PanelContainer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.PanelContainer.Location = new System.Drawing.Point(3, 229);
+            this.PanelContainer.Location = new System.Drawing.Point(-2284, 229);
             this.PanelContainer.Name = "PanelContainer";
-            this.PanelContainer.Size = new System.Drawing.Size(902, 303);
+            this.PanelContainer.Size = new System.Drawing.Size(1073, 403);
             this.PanelContainer.TabIndex = 23;
             // 
             // CbxToUp
             // 
             this.CbxToUp.AutoSize = true;
             this.CbxToUp.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.CbxToUp.Location = new System.Drawing.Point(205, 180);
+            this.CbxToUp.Location = new System.Drawing.Point(344, 160);
             this.CbxToUp.Name = "CbxToUp";
             this.CbxToUp.Size = new System.Drawing.Size(146, 27);
             this.CbxToUp.TabIndex = 24;
@@ -155,7 +156,7 @@ namespace HotelManagement.UI.Views.Room
             this.BtnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnRefresh.ForeColor = System.Drawing.SystemColors.ControlText;
             this.BtnRefresh.Image = global::HotelManagement.UI.Properties.Resources.refresh__2_;
-            this.BtnRefresh.Location = new System.Drawing.Point(627, 79);
+            this.BtnRefresh.Location = new System.Drawing.Point(743, 51);
             this.BtnRefresh.Name = "BtnRefresh";
             this.BtnRefresh.Size = new System.Drawing.Size(48, 45);
             this.BtnRefresh.TabIndex = 25;
@@ -163,11 +164,19 @@ namespace HotelManagement.UI.Views.Room
             this.BtnRefresh.UseVisualStyleBackColor = false;
             this.BtnRefresh.Click += new System.EventHandler(this.BtnRefresh_Click);
             // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(3, 229);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1074, 426);
+            this.panel1.TabIndex = 26;
+            // 
             // FrmUpdateRoom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(909, 544);
+            this.ClientSize = new System.Drawing.Size(1080, 667);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.BtnRefresh);
             this.Controls.Add(this.CbxToUp);
             this.Controls.Add(this.PanelContainer);
@@ -196,5 +205,6 @@ namespace HotelManagement.UI.Views.Room
         private System.Windows.Forms.Panel PanelContainer;
         private System.Windows.Forms.CheckBox CbxToUp;
         private Components.CustomButton BtnRefresh;
+        private System.Windows.Forms.Panel panel1;
     }
 }
