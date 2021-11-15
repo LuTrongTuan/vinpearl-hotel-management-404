@@ -38,7 +38,7 @@ namespace HotelManagement.Application.Services
                     _room = new()
                     {
                         Name = _generator.Name(time.Floor, max),
-                        Status = 0,
+                        Status = 2,
                         TypeId = time.RoomType,
                         FloorNumber = time.Floor
                     };
@@ -58,7 +58,7 @@ namespace HotelManagement.Application.Services
 
         public async Task<RoomDetailDTO> GetDetail(int id)
         {
-            var result = await _worker.Rooms.Get(x => x.Id == id);
+            var result = await _worker.Rooms.GetDetail(id);
             return _mapper.Map<RoomDetailDTO>(result);
         }
 

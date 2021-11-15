@@ -41,7 +41,6 @@ namespace HotelManagement.Application.Services
                 return;
             cus.Name = customer.Name;
             cus.IdentityNumber = customer.IdentityNumber;
-            cus.Address = customer.Address;
             cus.Gender = customer.Gender;
             cus.PhoneNumber = customer.PhoneNumber;
             await _worker.Customers.Update(cus);
