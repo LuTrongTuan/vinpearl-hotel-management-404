@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using HotelManagement.Application.Contracts.Infrastructure;
 using HotelManagement.Application.Contracts.Services;
 using HotelManagement.Application.DTOs;
+using HotelManagement.UI.Views.Password;
 
 namespace HotelManagement.UI.Views.Login
 {
@@ -45,6 +46,13 @@ namespace HotelManagement.UI.Views.Login
             {
                 btn_login_Click(null,null);
             }
+        }
+
+        private void llb_quenmk_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            FrmForgotPassword frm = Program.Container.GetInstance<FrmForgotPassword>();
+            frm.Show();
+            this.Hide();
         }
     }
 }

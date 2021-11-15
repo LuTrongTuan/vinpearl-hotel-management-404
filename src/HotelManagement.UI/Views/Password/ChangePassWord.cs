@@ -27,6 +27,6 @@ namespace HotelManagement.UI
             _mss = await _iPasswordService.UpdatePassword(_accountDto);
             MessageBox.Show(_mss);
         }
-        private void customButton2_Click(object sender, EventArgs e) => this.Close();
+
     }
 }
