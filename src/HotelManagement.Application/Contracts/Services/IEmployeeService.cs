@@ -8,8 +8,9 @@ namespace HotelManagement.Application.Contracts.Services
 {
     public interface IEmployeeService
     {
-        Task<IEnumerable<RoleDTO>> GetList();
-        Task<IList<EmployeeDTO>> GetList(string name);
+        Task<IEnumerable<RoleDTO>> GetListrole();
+        Task<IEnumerable<EmployeeDTO>> GetList();
+        Task<IList<EmployeeDTO>> Find(string name);
         Task<string> AddEmployee(Account obj);
         Task<string> UpdateEmployee(Employee obj);
     }

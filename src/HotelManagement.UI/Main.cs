@@ -1,9 +1,11 @@
 ﻿using System.Windows.Forms;
 using HotelManagement.Application.Services;
 using HotelManagement.UI.Components;
+using HotelManagement.UI.Views.Check;
 using HotelManagement.UI.Views.Customer;
 using HotelManagement.UI.Views.Employee;
 using HotelManagement.UI.Views.Login;
+using HotelManagement.UI.Views.Receipt;
 using HotelManagement.UI.Views.Room;
 using HotelManagement.UI.Views.Service;
 
@@ -95,6 +97,24 @@ namespace HotelManagement.UI
                 FrmLogin frm = Program.Container.GetInstance<FrmLogin>();
                 frm.Show();
                 this.Hide();
+            }
+        }
+
+        private void btn_thongke_Click(object sender, System.EventArgs e)
+        {
+            OpenForm(Program.Container.GetInstance<FrmStastical>(), sender);
+        }
+
+        private void customButton2_Click(object sender, System.EventArgs e)
+        {
+            OpenForm(Program.Container.GetInstance<FrmReceiptDetail>(), sender);
+        }
+
+        private void customButton6_Click(object sender, System.EventArgs e)
+        {
+            if (MessageBox.Show("Bạn có chắc muốn thoát không","Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                this.Close();
             }
         }
     }

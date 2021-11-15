@@ -34,7 +34,6 @@ namespace HotelManagement.UI
         {
             this.sidebar = new System.Windows.Forms.Panel();
             this.btn_thongke = new HotelManagement.UI.Components.CustomButton();
-            this.customButton6 = new HotelManagement.UI.Components.CustomButton();
             this.customButton5 = new HotelManagement.UI.Components.CustomButton();
             this.customButton4 = new HotelManagement.UI.Components.CustomButton();
             this.customButton3 = new HotelManagement.UI.Components.CustomButton();
@@ -48,6 +47,7 @@ namespace HotelManagement.UI
             this.PanelTittle = new System.Windows.Forms.Panel();
             this.LblTittle = new System.Windows.Forms.Label();
             this.PanelMain = new System.Windows.Forms.Panel();
+            this.customButton6 = new HotelManagement.UI.Components.CustomButton();
             this.sidebar.SuspendLayout();
             this.PanelAppName.SuspendLayout();
             this.PanelTittle.SuspendLayout();
@@ -56,8 +56,8 @@ namespace HotelManagement.UI
             // sidebar
             // 
             this.sidebar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            this.sidebar.Controls.Add(this.btn_thongke);
             this.sidebar.Controls.Add(this.customButton6);
+            this.sidebar.Controls.Add(this.btn_thongke);
             this.sidebar.Controls.Add(this.customButton5);
             this.sidebar.Controls.Add(this.customButton4);
             this.sidebar.Controls.Add(this.customButton3);
@@ -94,30 +94,7 @@ namespace HotelManagement.UI
             this.btn_thongke.TextColor = System.Drawing.Color.White;
             this.btn_thongke.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_thongke.UseVisualStyleBackColor = false;
-            // 
-            // customButton6
-            // 
-            this.customButton6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            this.customButton6.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            this.customButton6.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.customButton6.BorderRadius = 0;
-            this.customButton6.BorderSize = 0;
-            this.customButton6.FlatAppearance.BorderSize = 0;
-            this.customButton6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customButton6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.customButton6.ForeColor = System.Drawing.Color.White;
-            this.customButton6.Image = global::HotelManagement.UI.Properties.Resources.close_button;
-            this.customButton6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.customButton6.Location = new System.Drawing.Point(3, 520);
-            this.customButton6.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.customButton6.Name = "customButton6";
-            this.customButton6.Size = new System.Drawing.Size(303, 50);
-            this.customButton6.TabIndex = 6;
-            this.customButton6.Text = "        Thoát";
-            this.customButton6.TextColor = System.Drawing.Color.White;
-            this.customButton6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.customButton6.UseVisualStyleBackColor = false;
-            this.customButton6.Click += new System.EventHandler(this.customButton5_Click);
+            this.btn_thongke.Click += new System.EventHandler(this.btn_thongke_Click);
             // 
             // customButton5
             // 
@@ -135,7 +112,7 @@ namespace HotelManagement.UI
             this.customButton5.Location = new System.Drawing.Point(3, 457);
             this.customButton5.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.customButton5.Name = "customButton5";
-            this.customButton5.Size = new System.Drawing.Size(303, 53);
+            this.customButton5.Size = new System.Drawing.Size(300, 53);
             this.customButton5.TabIndex = 6;
             this.customButton5.Text = "     Đăng xuất";
             this.customButton5.TextColor = System.Drawing.Color.White;
@@ -213,6 +190,7 @@ namespace HotelManagement.UI
             this.customButton2.TextColor = System.Drawing.Color.White;
             this.customButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.customButton2.UseVisualStyleBackColor = false;
+            this.customButton2.Click += new System.EventHandler(this.customButton2_Click);
             // 
             // customButton1
             // 
@@ -354,6 +332,30 @@ namespace HotelManagement.UI
             this.PanelMain.Name = "PanelMain";
             this.PanelMain.Size = new System.Drawing.Size(1036, 662);
             this.PanelMain.TabIndex = 2;
+            // 
+            // customButton6
+            // 
+            this.customButton6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.customButton6.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.customButton6.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.customButton6.BorderRadius = 0;
+            this.customButton6.BorderSize = 0;
+            this.customButton6.FlatAppearance.BorderSize = 0;
+            this.customButton6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.customButton6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.customButton6.ForeColor = System.Drawing.Color.White;
+            this.customButton6.Image = global::HotelManagement.UI.Properties.Resources.close_button;
+            this.customButton6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.customButton6.Location = new System.Drawing.Point(3, 520);
+            this.customButton6.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.customButton6.Name = "customButton6";
+            this.customButton6.Size = new System.Drawing.Size(303, 50);
+            this.customButton6.TabIndex = 8;
+            this.customButton6.Text = "        Thoát";
+            this.customButton6.TextColor = System.Drawing.Color.White;
+            this.customButton6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.customButton6.UseVisualStyleBackColor = false;
+            this.customButton6.Click += new System.EventHandler(this.customButton6_Click);
             // 
             // Main
             // 

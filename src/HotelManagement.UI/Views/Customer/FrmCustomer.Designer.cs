@@ -49,15 +49,16 @@ namespace HotelManagement.UI.Views.Customer
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.button2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.button2.Image = global::HotelManagement.UI.Properties.Resources.zoom;
-            this.button2.Location = new System.Drawing.Point(652, 255);
+            this.button2.Location = new System.Drawing.Point(960, 375);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(110, 44);
             this.button2.TabIndex = 29;
             this.button2.Text = "Search";
             this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             // 
             // txb_search
             // 
@@ -66,7 +67,7 @@ namespace HotelManagement.UI.Views.Customer
             this.txb_search.ErrorMessage = null;
             this.txb_search.FocusedColor = System.Drawing.Color.Aqua;
             this.txb_search.IsError = false;
-            this.txb_search.Location = new System.Drawing.Point(375, 255);
+            this.txb_search.Location = new System.Drawing.Point(683, 375);
             this.txb_search.Margin = new System.Windows.Forms.Padding(4);
             this.txb_search.Multiline = false;
             this.txb_search.Name = "txb_search";

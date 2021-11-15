@@ -47,14 +47,14 @@ namespace HotelManagement.UI.Views.Login
             this.txb_password.ErrorMessage = null;
             this.txb_password.FocusedColor = System.Drawing.Color.Aqua;
             this.txb_password.IsError = false;
-            this.txb_password.Location = new System.Drawing.Point(162, 118);
-            this.txb_password.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txb_password.Location = new System.Drawing.Point(185, 157);
+            this.txb_password.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txb_password.Multiline = false;
             this.txb_password.Name = "txb_password";
-            this.txb_password.Padding = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.txb_password.Padding = new System.Windows.Forms.Padding(7);
             this.txb_password.Password = false;
             this.txb_password.PlaceHolder = "PassWord";
-            this.txb_password.Size = new System.Drawing.Size(270, 29);
+            this.txb_password.Size = new System.Drawing.Size(309, 37);
             this.txb_password.TabIndex = 1;
             this.txb_password.Underline = false;
             // 
@@ -69,10 +69,9 @@ namespace HotelManagement.UI.Views.Login
             this.btn_login.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_login.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_login.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btn_login.Location = new System.Drawing.Point(162, 194);
-            this.btn_login.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_login.Location = new System.Drawing.Point(185, 259);
             this.btn_login.Name = "btn_login";
-            this.btn_login.Size = new System.Drawing.Size(270, 37);
+            this.btn_login.Size = new System.Drawing.Size(309, 49);
             this.btn_login.TabIndex = 4;
             this.btn_login.Text = "Login";
             this.btn_login.TextColor = System.Drawing.SystemColors.ControlText;
@@ -91,10 +90,9 @@ namespace HotelManagement.UI.Views.Login
             this.btn_exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_exit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_exit.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btn_exit.Location = new System.Drawing.Point(162, 245);
-            this.btn_exit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_exit.Location = new System.Drawing.Point(185, 327);
             this.btn_exit.Name = "btn_exit";
-            this.btn_exit.Size = new System.Drawing.Size(270, 37);
+            this.btn_exit.Size = new System.Drawing.Size(309, 49);
             this.btn_exit.TabIndex = 5;
             this.btn_exit.Text = "Thoát";
             this.btn_exit.TextColor = System.Drawing.SystemColors.ControlText;
@@ -105,10 +103,9 @@ namespace HotelManagement.UI.Views.Login
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.Control;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(10, 73);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(11, 97);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(144, 90);
+            this.pictureBox1.Size = new System.Drawing.Size(165, 120);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
@@ -119,9 +116,9 @@ namespace HotelManagement.UI.Views.Login
             this.llb_quenmk.BackColor = System.Drawing.SystemColors.Control;
             this.llb_quenmk.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.llb_quenmk.LinkColor = System.Drawing.SystemColors.InfoText;
-            this.llb_quenmk.Location = new System.Drawing.Point(312, 159);
+            this.llb_quenmk.Location = new System.Drawing.Point(357, 212);
             this.llb_quenmk.Name = "llb_quenmk";
-            this.llb_quenmk.Size = new System.Drawing.Size(107, 15);
+            this.llb_quenmk.Size = new System.Drawing.Size(138, 20);
             this.llb_quenmk.TabIndex = 7;
             this.llb_quenmk.TabStop = true;
             this.llb_quenmk.Text = "Forgot Password ?";
@@ -131,9 +128,9 @@ namespace HotelManagement.UI.Views.Login
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(232, 27);
+            this.label1.Location = new System.Drawing.Point(265, 36);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(136, 32);
+            this.label1.Size = new System.Drawing.Size(168, 41);
             this.label1.TabIndex = 8;
             this.label1.Text = "User Login";
             // 
@@ -144,24 +141,24 @@ namespace HotelManagement.UI.Views.Login
             this.txb_username.ErrorMessage = null;
             this.txb_username.FocusedColor = System.Drawing.Color.Aqua;
             this.txb_username.IsError = false;
-            this.txb_username.Location = new System.Drawing.Point(161, 84);
-            this.txb_username.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txb_username.Location = new System.Drawing.Point(184, 112);
+            this.txb_username.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txb_username.Multiline = false;
             this.txb_username.Name = "txb_username";
-            this.txb_username.Padding = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.txb_username.Padding = new System.Windows.Forms.Padding(7);
             this.txb_username.Password = false;
             this.txb_username.PlaceHolder = "Username";
-            this.txb_username.Size = new System.Drawing.Size(270, 29);
+            this.txb_username.Size = new System.Drawing.Size(309, 37);
             this.txb_username.TabIndex = 9;
             this.txb_username.Underline = false;
             // 
             // FrmLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(465, 319);
+            this.ClientSize = new System.Drawing.Size(531, 425);
             this.Controls.Add(this.txb_username);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.llb_quenmk);
@@ -170,7 +167,6 @@ namespace HotelManagement.UI.Views.Login
             this.Controls.Add(this.btn_login);
             this.Controls.Add(this.txb_password);
             this.DoubleBuffered = true;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FrmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đăng nhập";

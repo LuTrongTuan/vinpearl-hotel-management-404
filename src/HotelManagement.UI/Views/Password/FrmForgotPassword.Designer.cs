@@ -45,14 +45,14 @@ namespace HotelManagement.UI.Views.Password
             this.txt_email.ErrorMessage = null;
             this.txt_email.FocusedColor = System.Drawing.Color.Aqua;
             this.txt_email.IsError = false;
-            this.txt_email.Location = new System.Drawing.Point(59, 189);
-            this.txt_email.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txt_email.Location = new System.Drawing.Point(67, 252);
+            this.txt_email.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txt_email.Multiline = false;
             this.txt_email.Name = "txt_email";
-            this.txt_email.Padding = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.txt_email.Padding = new System.Windows.Forms.Padding(7);
             this.txt_email.Password = false;
             this.txt_email.PlaceHolder = "Email của bạn";
-            this.txt_email.Size = new System.Drawing.Size(318, 29);
+            this.txt_email.Size = new System.Drawing.Size(363, 37);
             this.txt_email.TabIndex = 0;
             this.txt_email.Underline = false;
             // 
@@ -60,9 +60,9 @@ namespace HotelManagement.UI.Views.Password
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(121, 146);
+            this.label1.Location = new System.Drawing.Point(138, 195);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(205, 32);
+            this.label1.Size = new System.Drawing.Size(253, 41);
             this.label1.TabIndex = 1;
             this.label1.Text = "Forgot Password";
             // 
@@ -77,10 +77,9 @@ namespace HotelManagement.UI.Views.Password
             this.customButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.customButton1.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.customButton1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.customButton1.Location = new System.Drawing.Point(135, 231);
-            this.customButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.customButton1.Location = new System.Drawing.Point(154, 308);
             this.customButton1.Name = "customButton1";
-            this.customButton1.Size = new System.Drawing.Size(163, 38);
+            this.customButton1.Size = new System.Drawing.Size(186, 51);
             this.customButton1.TabIndex = 2;
             this.customButton1.Text = "Send mail";
             this.customButton1.TextColor = System.Drawing.SystemColors.ControlText;
@@ -90,10 +89,9 @@ namespace HotelManagement.UI.Views.Password
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(161, 9);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(184, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(137, 135);
+            this.pictureBox1.Size = new System.Drawing.Size(157, 180);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
@@ -108,10 +106,9 @@ namespace HotelManagement.UI.Views.Password
             this.customButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.customButton2.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.customButton2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.customButton2.Location = new System.Drawing.Point(135, 277);
-            this.customButton2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.customButton2.Location = new System.Drawing.Point(154, 369);
             this.customButton2.Name = "customButton2";
-            this.customButton2.Size = new System.Drawing.Size(163, 38);
+            this.customButton2.Size = new System.Drawing.Size(186, 51);
             this.customButton2.TabIndex = 4;
             this.customButton2.Text = "Trở về";
             this.customButton2.TextColor = System.Drawing.SystemColors.ControlText;
@@ -119,15 +116,15 @@ namespace HotelManagement.UI.Views.Password
             // 
             // FrmForgotPassword
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(436, 334);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(498, 445);
             this.Controls.Add(this.customButton2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.customButton1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txt_email);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FrmForgotPassword";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quên mật khẩu";

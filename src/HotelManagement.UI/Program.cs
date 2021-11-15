@@ -5,6 +5,7 @@ using HotelManagement.Application.DependencyInjection;
 using HotelManagement.Infrastructure;
 using HotelManagement.UI.Contracts;
 using HotelManagement.UI.Utilities;
+using HotelManagement.UI.Views.Check;
 using HotelManagement.UI.Views.Customer;
 using HotelManagement.UI.Views.Employee;
 using HotelManagement.UI.Views.Login;
@@ -30,7 +31,9 @@ namespace HotelManagement.UI
             Container.Register<FrmCreateRoom>();
             Container.Register<FrmUpdateRoom>();
             Container.Register<FrmReceipt>();
+            Container.Register<FrmReceiptDetail>();
             Container.Register<FrmForgotPassword>();
+            Container.Register<FrmStastical>();
             Container.ConfigureInfrastructureServices();
             Container.ConfigureApplicationServices();
         }

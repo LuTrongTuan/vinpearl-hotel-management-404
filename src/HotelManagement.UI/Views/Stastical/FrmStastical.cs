@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace HotelManagement.UI.Views.Check
 {
-    public partial class FrmCheckOut : Form
+    public partial class FrmStastical : Form
     {
-        public FrmCheckOut()
+        public FrmStastical()
         {
             InitializeComponent();
         }

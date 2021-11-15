@@ -82,11 +82,11 @@ namespace HotelManagement.UI.Views.Receipt
             var query = await _transacsion.Query(_roomId);
             TbxDeposit.Text = query.Receipt.Deposit.ToString(CultureInfo.CurrentCulture);
             CheckInTime.Value = query.ReceiptDetail.CheckIn;
-            txb_note.Text = query.Receipt.Note;
+            TbxNote.Text = query.Receipt.Note;
             PeopleAmount.Value = query.Receipt.Number;
-            txb_number.Text = query.Customer.IdentityNumber;
-            txb_name.Text = query.Customer.Name;
-            txb_numberPhone.Text = query.Customer.PhoneNumber;
+            TbxIdentityNumber.Text = query.Customer.IdentityNumber;
+            TbxCustomerName.Text = query.Customer.Name;
+            TbxPhoneNumber.Text = query.Customer.PhoneNumber;
             if (query.Customer.Gender) RbtMale.Checked = true;
             else RbtFemale.Checked = true;
             if (query.Receipt.Status == 0) CbxByDay.Checked = true;
@@ -130,65 +130,11 @@ namespace HotelManagement.UI.Views.Receipt
             }
         }
 
-        private void txb_payments_Enter(object sender, EventArgs e)
-        {
-            if (TbxDeposit.Text == "Tiền trả trước")
-            {
-                TbxDeposit.Text = "";
-            }
-        }
-
-        private void txb_note_Enter(object sender, EventArgs e)
-        {
-            if (txb_note.Text == "Ghi chú")
-            {
-                txb_note.Text = "";
-            }
-        }
-
-        private void txb_deposits_Enter(object sender, EventArgs e)
-        {
-            if (TbxPayment.Text == "Thành tiền")
-            {
-                TbxPayment.Text = "";
-            }
-        }
-
-        private void txb_number_Enter(object sender, EventArgs e)
-        {
-            if (txb_number.Text == "Số giấy tờ")
-            {
-                txb_number.Text = "";
-            }
-        }
-        private void txb_name_Enter(object sender, EventArgs e)
-        {
-            if (txb_name.Text == "Tên khách hàng")
-            {
-                txb_name.Text = "";
-            }
-        }
-
-        private void txb_numberPhone_Enter(object sender, EventArgs e)
-        {
-            if (txb_numberPhone.Text == "Số điện thoại")
-            {
-                txb_numberPhone.Text = "";
-            }
-        }
-
         private void CmbService_Enter(object sender, EventArgs e)
         {
             if (CmbService.Text == "Tên dịch vụ")
             {
                 CmbService.Text = "";
-            }
-        }
-        private void txb_hinhthuc_Enter(object sender, EventArgs e)
-        {
-            if (txb_hinhthuc.Text == "Hình thức thanh toán")
-            {
-                txb_hinhthuc.Text = "";
             }
         }
         #endregion
@@ -242,15 +188,15 @@ namespace HotelManagement.UI.Views.Receipt
                 RoomId = _roomId,
                 Customer = new()
                 {
-                    Name = txb_name.Text,
-                    IdentityNumber = txb_number.Text,
-                    PhoneNumber = txb_numberPhone.Text,
+                    Name = TbxCustomerName.Text,
+                    IdentityNumber = TbxIdentityNumber.Text,
+                    PhoneNumber = TbxPhoneNumber.Text,
                     Gender = RbtMale.Checked
                 },
                 Receipt = new()
                 {
                     Deposit = Convert.ToDouble(TbxDeposit.Text),
-                    Note = txb_note.Text,
+                    Note = TbxNote.Text,
                     Number = Convert.ToInt32(PeopleAmount.Text),
                     IdentificationId = Convert.ToInt32(cbx_giayTo.SelectedValue)
                 },
@@ -272,6 +218,32 @@ namespace HotelManagement.UI.Views.Receipt
         {
             MessageBox.Show("Đang phát triển");
         }
+        private async void CmbService_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _serviceId = Convert.ToInt32(CmbService.SelectedValue);
+            _serviceDTO = await _service.GetDetail(_serviceId);
+            Price.Text = _serviceDTO.Price.ToString(CultureInfo.InvariantCulture);
+        }
+
+        private void ServiceQuantity_ValueChanged(object sender, EventArgs e)
+        {
+            if(_serviceDTO is null) return;
+            Price.Text = (Convert.ToInt32(ServiceQuantity.Value) * _serviceDTO.Price).ToString(CultureInfo.InvariantCulture);
+        }
+
+        private bool DuplicateHandler(ServiceReceiptDTO data)
+        {
+            var item = _serviceInOrder.FirstOrDefault(x => x.ServiceId == data.ServiceId);
+            if (item != null)
+            {
+                item.Quantity += data.Quantity;
+                item.Total += data.Total;
+            }
+
+            return item == null;
+        }
+
+        private void btb_cancel_Click(object sender, EventArgs e) => Close();
 
         private void BtnAddService_Click(object sender, EventArgs e)
         {
@@ -286,33 +258,6 @@ namespace HotelManagement.UI.Views.Receipt
             if(DuplicateHandler(item))
                 _serviceInOrder.Add(item);
             LoadToGrid(_serviceInOrder);
-        }
-
-        private async void CmbService_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            _serviceId = Convert.ToInt32(CmbService.SelectedValue);
-            _serviceDTO = await _service.GetDetail(_serviceId);
-            Price.Text = _serviceDTO.Price.ToString(CultureInfo.InvariantCulture);
-        }
-
-        private void ServiceQuantity_ValueChanged(object sender, EventArgs e)
-        {
-            if(_serviceDTO is null) return;
-            Price.Text = (Convert.ToInt32(ServiceQuantity.Value) * _serviceDTO.Price).ToString(CultureInfo.InvariantCulture);
-        }
-
-        private void BtnCancle_Click(object sender, EventArgs e) => Close();
-
-        private bool DuplicateHandler(ServiceReceiptDTO data)
-        {
-            var item = _serviceInOrder.FirstOrDefault(x => x.ServiceId == data.ServiceId);
-            if (item != null)
-            {
-                item.Quantity += data.Quantity;
-                item.Total += data.Total;
-            }
-
-            return item == null;
         }
     }
 }

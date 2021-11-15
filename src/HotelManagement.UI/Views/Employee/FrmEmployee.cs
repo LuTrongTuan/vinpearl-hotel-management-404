@@ -16,6 +16,7 @@ namespace HotelManagement.UI.Views.Employee
         private readonly IEmployeeService _employee;
         private readonly IConfirm _confirm;
         private readonly IRoleService _roleService;
+     
         
         public FrmEmployee(IEmployeeService emp,IConfirm con, IRoleService roleService)
         {
@@ -24,6 +25,7 @@ namespace HotelManagement.UI.Views.Employee
             _confirm = con;
             _roleService = roleService;
             load();
+            loadData();
         }
 
         async void load()
@@ -90,6 +92,83 @@ namespace HotelManagement.UI.Views.Employee
             {
                 checked_NHD.Checked = false;
             }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            TxtName.Text = "";
+            TxtEmail.Text = "";
+            TxtDiachi.Text = "";
+            TxtPhone.Text = "";
+            TxtUsername.Text = "";
+            rdoNam.Checked = false;
+            rdoNu.Checked = false;
+            checked_HD.Checked = false;
+            checked_NHD.Checked = false;
+        }
+        public async void loadData()
+        {
+            var name = await _employee.GetList();
+            dataGridView1.ColumnCount = 8;
+            dataGridView1.Columns[0].Name = "Họ tên";
+            dataGridView1.Columns[1].Name = "Ngày sinh";
+            dataGridView1.Columns[2].Name = "email";
+            dataGridView1.Columns[3].Name = "Địa chỉ";
+            dataGridView1.Columns[4].Name = "Điện thoại";
+            dataGridView1.Columns[5].Name = "Giới tính";
+            dataGridView1.Columns[6].Name = "Trạng thái";
+            dataGridView1.Columns[7].Name = "Vai trò";
+
+            dataGridView1.Rows.Clear();
+            foreach (var x in name.ToList())
+            {
+                dataGridView1.Rows.Add(x.Name, x.Birthday, x.Email, x.Address, x.PhoneNumber,
+                    x.Gender ? "Nam" : "Nữ", x.Status ? "Hoạt động" : "Ngưng hoạt động", x.NameRole);
+            }
+        }
+        public async void loadSeach(string dv)
+        {
+            var name = await _employee.Find(dv);
+            dataGridView1.ColumnCount = 8;
+            dataGridView1.Columns[0].Name = "Họ tên";
+            dataGridView1.Columns[1].Name = "Ngày sinh";
+            dataGridView1.Columns[2].Name = "email";
+            dataGridView1.Columns[3].Name = "Địa chỉ";
+            dataGridView1.Columns[4].Name = "Điện thoại";
+            dataGridView1.Columns[5].Name = "Giới tính";
+            dataGridView1.Columns[6].Name = "Trạng thái";
+            dataGridView1.Columns[7].Name = "Vai trò";
+
+            dataGridView1.Rows.Clear();
+            foreach (var x in name.ToList())
+            {
+                var role = await _roleService.GetRoles();
+                dataGridView1.Rows.Add(x.Name, x.Birthday, x.Email, x.Address, x.PhoneNumber,
+                    x.Gender ? "Nam" : "Nữ", x.Status ? "Hoạt động" : "Ngưng hoạt động");
+            }
+        }
+
+        private void textBox8_KeyUp(object sender, KeyEventArgs e)
+        {
+            loadSeach(textBox8.Text);
+        }
+
+        private void btn_edit_Click(object sender, EventArgs e)
+        {
+            //_.Nameme = TxtName.Text;
+            //_emp.Birthday = dateTimePicker1.Value;
+            //_emp.PhoneNumber = TxtPhone.Text;
+            //_emp.Email = TxtEmail.Text;
+            //_emp.Address = TxtDiachi.Text;
+            //_emp.Gender = rdoNam.Checked;
+            //_emp.Status = checked_HD.Checked;
+
+            //if (!checkNull()) return;
+            //if (_confirm.IsConfirm("bạn chắc muốn sửa"))
+            //{
+            //    await _employee.UpdateEmployee(_emp);
+            //    MessageBox.Show("sửa thành công");
+            //}
         }
     }
 }
