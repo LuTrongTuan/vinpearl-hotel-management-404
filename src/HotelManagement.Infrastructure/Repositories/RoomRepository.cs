@@ -2,6 +2,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using HotelManagement.Application.Contracts.Infrastructure;
 using HotelManagement.Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace HotelManagement.Infrastructure.Repositories
 {
@@ -26,6 +27,13 @@ namespace HotelManagement.Infrastructure.Repositories
                 result = "P00";
             }
             return Task.FromResult(result);
+        }
+
+        public async Task<Room> GetDetail(int id)
+        {
+            return await Context.Rooms
+                .Include(e => e.RoomType)
+                .FirstOrDefaultAsync(e => e.Id == id);
         }
     }
 }

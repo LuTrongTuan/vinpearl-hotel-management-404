@@ -11,8 +11,6 @@ namespace HotelManagement.Infrastructure.Configurations
             builder.ToTable("Customer");
             builder.HasKey(x => x.Id);
             builder.Property(e => e.Id).ValueGeneratedOnAdd();
-
-            builder.Property(e => e.Address).IsRequired();
             builder.Property(e => e.Name).IsRequired();
         }
     }

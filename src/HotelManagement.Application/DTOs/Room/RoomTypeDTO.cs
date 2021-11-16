@@ -7,5 +7,6 @@
         public double ByDay { get; set; }
         public double ByHour { get; set; }
         public double ByNight { get; set; }
+
     }
 }

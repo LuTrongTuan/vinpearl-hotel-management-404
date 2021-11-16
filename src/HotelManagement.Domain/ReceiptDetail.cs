@@ -13,5 +13,6 @@ namespace HotelManagement.Domain
         public virtual Receipt Receipt { get; set; }
         public virtual Room Room { get; set; }
         public virtual ICollection<ServiceReceipt> ServiceReceipts { get; set; }
+        //public virtual ICollection<RoomReceipt> RoomReceipts { get; set; }
     }
 }

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace HotelManagement.Domain
+﻿namespace HotelManagement.Domain
 {
     public class Receipt : Entity
     {

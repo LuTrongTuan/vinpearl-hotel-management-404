@@ -5,9 +5,11 @@ using HotelManagement.Application.DependencyInjection;
 using HotelManagement.Infrastructure;
 using HotelManagement.UI.Contracts;
 using HotelManagement.UI.Utilities;
+using HotelManagement.UI.Views.Check;
 using HotelManagement.UI.Views.Customer;
 using HotelManagement.UI.Views.Employee;
 using HotelManagement.UI.Views.Login;
+using HotelManagement.UI.Views.Password;
 using HotelManagement.UI.Views.Receipt;
 using HotelManagement.UI.Views.Room;
 using HotelManagement.UI.Views.Service;
@@ -29,6 +31,9 @@ namespace HotelManagement.UI
             Container.Register<FrmCreateRoom>();
             Container.Register<FrmUpdateRoom>();
             Container.Register<FrmReceipt>();
+            Container.Register<FrmReceiptDetail>();
+            Container.Register<FrmForgotPassword>();
+            Container.Register<FrmStastical>();
             Container.ConfigureInfrastructureServices();
             Container.ConfigureApplicationServices();
         }
@@ -41,9 +46,9 @@ namespace HotelManagement.UI
             Configuration();
             System.Windows.Forms.Application.SetHighDpiMode(HighDpiMode.SystemAware);
             System.Windows.Forms.Application.EnableVisualStyles();
-            System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(false); 
-            //System.Windows.Forms.Application.Run(Program.Container.GetInstance<FrmReceipt>());
-            System.Windows.Forms.Application.Run(new Main());
+            System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(false);
+                //System.Windows.Forms.Application.Run(Program.Container.GetInstance<FrmReceipt>());
+                System.Windows.Forms.Application.Run(new Main());
         }
     }
 }

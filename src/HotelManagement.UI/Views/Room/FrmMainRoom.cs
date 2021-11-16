@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Drawing;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using HotelManagement.Application.Contracts.Services;
 using HotelManagement.Application.DTOs.Room;
+using HotelManagement.Application.Services;
 using HotelManagement.UI.Components;
 using HotelManagement.UI.Views.Receipt;
 
@@ -35,7 +37,7 @@ namespace HotelManagement.UI.Views.Room
             demo.Show();
         }
 
-        private async void LoadRoom()
+        private async Task LoadRoom()
         {
             var roomLocation = new Point(120, 5);
             var floorLocation = new Point(10, 5);
@@ -72,6 +74,8 @@ namespace HotelManagement.UI.Views.Room
                     this.PanelContainer.Controls.Add(_room);
                 }
             }
+
+            //_floorService = Program.Container.GetInstance<IFloorService>();
         }
 
         private new Point Location(Point point, bool wrap = true)
@@ -83,13 +87,15 @@ namespace HotelManagement.UI.Views.Room
 
         private Components.Room SetAttribute(RoomListDTO source)
         {
-            var room = new Components.Room();
-            room.RoomNumber = source.Name;
-            room.Id = source.Id;
-            room.BorderColor = Color.AliceBlue;
-            room.BorderSize = 2;
-            room.BorderRadius = 5;
-            room.Size = new Size(170, 70);
+            var room = new Components.Room
+            {
+                RoomNumber = source.Name,
+                Id = source.Id,
+                BorderColor = Color.AliceBlue,
+                BorderSize = 2,
+                BorderRadius = 5,
+                Size = new Size(170, 70)
+            };
             switch (source.Status)
             {
                 case 0:
@@ -109,7 +115,7 @@ namespace HotelManagement.UI.Views.Room
             return room;
         }
 
-        private void BtnRefresh_Click(object sender, EventArgs e) => LoadRoom();
+        private async void BtnRefresh_Click(object sender, EventArgs e) => await LoadRoom();
 
         private void TbxSearch_KeyUp(object sender, KeyEventArgs e)
         {
@@ -142,11 +148,12 @@ namespace HotelManagement.UI.Views.Room
             }
         }
 
-        private void PanelContainer_ClientSizeChanged(object sender, EventArgs e)
+        private async void PanelContainer_ClientSizeChanged(object sender, EventArgs e)
         {
             _width = this.PanelContainer.ClientSize.Width;
-            LoadRoom();
+            await LoadRoom();
         }
+
 
         private CustomButton CreateButton(int floorNumber)
         {
@@ -167,7 +174,10 @@ namespace HotelManagement.UI.Views.Room
             var form = Program.Container.GetInstance<FrmReceipt>();
             var room = sender as Components.Room;
             form.RoomId = room.Id;
+            form.Closed += CloseForm;
             form.ShowDialog();
         }
+
+        private async void CloseForm(object sender, EventArgs e) => await LoadRoom();
     }
 }

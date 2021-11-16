@@ -1,25 +1,25 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using System.Windows.Forms;
 using HotelManagement.Application.Contracts.Services;
 using HotelManagement.Application.DTOs;
+using HotelManagement.Application.DTOs.Receipt;
 using HotelManagement.Application.DTOs.Room;
-using HotelManagement.UI.Contracts;
+using HotelManagement.Application.DTOs.Service;
 
 namespace HotelManagement.UI.Views.Receipt
 {
     public partial class FrmReceipt : Form
     {
-        private readonly IIdentificationService _identificationService;
+        private readonly ITransacsion _transacsion;
         private readonly IService _service;
-        private readonly IRoomTypeService _roomTypeService;
-        private readonly IRoomService _roomService;
-        private readonly ICustomerService _customerService;
-        private readonly IConfirm _confirm;
+        private IList<ServiceReceiptDTO> _serviceInOrder = new List<ServiceReceiptDTO>();
         private int _roomId;
-        private ReceiptDTO _receipt;
+        private int _serviceId;
+        private ServiceDTO _serviceDTO;
         private RoomDetailDTO _room;
-        private object datePortionDateTimePicker;
-        private object timePortionDateTimePicker;
 
         // properties
         public int RoomId
@@ -31,20 +31,18 @@ namespace HotelManagement.UI.Views.Receipt
                 Binding();
             }
         }
-        public FrmReceipt(IIdentificationService identificationService, IService service,
-            IRoomTypeService roomTypeService, IRoomService roomService, ICustomerService customer)
+        public FrmReceipt(ITransacsion transacsion, IService service)
         {
-            _identificationService = identificationService;
+            _transacsion = transacsion;
             _service = service;
-            _roomTypeService = roomTypeService;
-            _roomService = roomService;
-            _customerService = customer;
             InitializeComponent();
         }
 
+        #region Onload
+
         private async void LoadIdentification()
         {
-            var query = await _identificationService.Get();
+            var query = await _transacsion.GetIdentifications();
             cbx_giayTo.DisplayMember = "Name";
             cbx_giayTo.ValueMember = "Id";
             cbx_giayTo.DataSource = query;
@@ -52,22 +50,66 @@ namespace HotelManagement.UI.Views.Receipt
 
         private async void LoadService()
         {
-            var query = await _service.Get();
+            var query = await _transacsion.GetServices();
             CmbService.DisplayMember = "Name";
             CmbService.ValueMember = "Id";
             CmbService.DataSource = query;
         }
 
-        private async void GetRoomType()
-        {
-            //var query = await _roomTypeService.GetRoomTypeName();
-            //LblRoomType.Text = query;
-        }
+        #endregion
 
         private async void Binding()
         {
-            //_room = await _roomService.GetDetail(_roomId);
-            //GetRoomType();
+            _room = await _transacsion.GetRoomDetail(_roomId);
+            RoomName.Text = "Phòng: " + _room.Name;
+            cbx_roomtype.Text = _room.RoomType.Name;
+            CbxByDay.Checked = true;
+            if (_room.Status == 0)
+            {
+                ShowReceipt();
+                BtnConfirm.Click += Checkout_Click;
+                BtnConfirm.Text = "Thanh toán";
+            }
+            else
+            {
+                BtnConfirm.Text = "Nhận phòng";
+                BtnConfirm.Click += Checkin_Click;
+            }
+        }
+
+        private async void ShowReceipt()
+        {
+            var query = await _transacsion.Query(_roomId);
+            TbxDeposit.Text = query.Receipt.Deposit.ToString(CultureInfo.CurrentCulture);
+            CheckInTime.Value = query.ReceiptDetail.CheckIn;
+            TbxNote.Text = query.Receipt.Note;
+            PeopleAmount.Value = query.Receipt.Number;
+            TbxIdentityNumber.Text = query.Customer.IdentityNumber;
+            TbxCustomerName.Text = query.Customer.Name;
+            TbxPhoneNumber.Text = query.Customer.PhoneNumber;
+            if (query.Customer.Gender) RbtMale.Checked = true;
+            else RbtFemale.Checked = true;
+            if (query.Receipt.Status == 0) CbxByDay.Checked = true;
+            else if (query.Receipt.Status == 1) CbxByHour.Checked = true;
+            else CbxByNight.Checked = true;
+            LoadToGrid(query.ServiceReceipts);
+        }
+
+        private void LoadToGrid(IList<ServiceReceiptDTO> source)
+        {
+            _serviceInOrder = source;
+            ServiceGridView.ColumnCount = 4;
+            ServiceGridView.Columns[0].HeaderText = "Tên";
+            ServiceGridView.Columns[1].HeaderText = "Số lượng";
+            ServiceGridView.Columns[2].HeaderText = "Giá";
+            ServiceGridView.Columns[3].HeaderText = "Tổng";
+
+            ServiceGridView.Rows.Clear();
+
+            foreach (var x in source)
+            {
+                ServiceGridView.Rows.Add(x.Name, x.Quantity, x.Price, x.Price * x.Quantity);
+            }
         }
 
         #region 
@@ -88,53 +130,6 @@ namespace HotelManagement.UI.Views.Receipt
             }
         }
 
-        private void txb_payments_Enter(object sender, EventArgs e)
-        {
-            if (txb_payments.Text == "Tiền trả trước")
-            {
-                txb_payments.Text = "";
-            }
-        }
-
-        private void txb_note_Enter(object sender, EventArgs e)
-        {
-            if (txb_note.Text == "Ghi chú")
-            {
-                txb_note.Text = "";
-            }
-        }
-
-        private void txb_deposits_Enter(object sender, EventArgs e)
-        {
-            if (txb_deposits.Text == "Thành tiền")
-            {
-                txb_deposits.Text = "";
-            }
-        }
-
-        private void txb_number_Enter(object sender, EventArgs e)
-        {
-            if (txb_number.Text == "Số giấy tờ")
-            {
-                txb_number.Text = "";
-            }
-        }
-        private void txb_name_Enter(object sender, EventArgs e)
-        {
-            if (txb_name.Text == "Tên khách hàng")
-            {
-                txb_name.Text = "";
-            }
-        }
-
-        private void txb_numberPhone_Enter(object sender, EventArgs e)
-        {
-            if (txb_numberPhone.Text == "Số điện thoại")
-            {
-                txb_numberPhone.Text = "";
-            }
-        }
-
         private void CmbService_Enter(object sender, EventArgs e)
         {
             if (CmbService.Text == "Tên dịch vụ")
@@ -142,45 +137,127 @@ namespace HotelManagement.UI.Views.Receipt
                 CmbService.Text = "";
             }
         }
-        private void txb_hinhthuc_Enter(object sender, EventArgs e)
+        #endregion
+
+        private void FrmReceipt_Load(object sender, EventArgs e)
         {
-            if (txb_hinhthuc.Text == "Hình thức thanh toán")
+            LoadIdentification();
+            LoadService();
+            ServiceQuantity.Value = 1;
+        }
+
+        #region Checkbox
+
+        private void CbxByHour_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CbxByDay.Checked || CbxByNight.Checked)
             {
-                txb_hinhthuc.Text = "";
+                CbxByDay.Checked = false;
+                CbxByNight.Checked = false;
             }
+            lbl_roomPrice.Text = "Giá phòng:" + _room.RoomType.ByHour.ToString("C", new CultureInfo("vi_VN"));
         }
-        #endregion
 
-        #region Customer
-        private async void customButton4_Click(object sender, EventArgs e)
+        private void CbxByDay_CheckedChanged(object sender, EventArgs e)
         {
-            var cus = new CustomerDTO
+            if (CbxByHour.Checked || CbxByNight.Checked)
             {
-                Name = txb_name.Text,
-                Address = txt_address.Text,
-                Gender = rbtn_nam.Checked,
-                PhoneNumber = txb_numberPhone.Text,
-                IdentityNumber = txb_number.Text
-            };
-            await _customerService.Add(cus);
-            MessageBox.Show("thêm ok");
+                CbxByHour.Checked = false;
+                CbxByNight.Checked = false;
+            }
+            
+            lbl_roomPrice.Text = "Giá phòng:" + _room.RoomType.ByDay.ToString("C", new CultureInfo("vi_VN"));
         }
-        private void customButton5_Click(object sender, EventArgs e)
+
+        private void CbxByNight_CheckedChanged(object sender, EventArgs e)
         {
-            txt_address.Text = "";
-            txb_numberPhone.Text = "Số điện thoại";
-            txb_name.Text = "Tên khách hàng";
-            txb_number.Text = "Số giấy tờ";
-            rbtn_nam.Checked = false;
-            rbtn_nu.Checked = false;
+            if (CbxByHour.Checked || CbxByDay.Checked)
+            {
+                CbxByHour.Checked = false;
+                CbxByDay.Checked = false;
+            }
+            lbl_roomPrice.Text = "Giá phòng:" + _room.RoomType.ByNight.ToString("C", new CultureInfo("vi_VN"));
         }
-        #endregion
-
-        #region MyRegion
-
-        
 
         #endregion
 
+        private async void Checkin_Click(object sender, EventArgs e)
+        {
+            var transaction = new TransactionDTO()
+            {
+                RoomId = _roomId,
+                Customer = new()
+                {
+                    Name = TbxCustomerName.Text,
+                    IdentityNumber = TbxIdentityNumber.Text,
+                    PhoneNumber = TbxPhoneNumber.Text,
+                    Gender = RbtMale.Checked
+                },
+                Receipt = new()
+                {
+                    Deposit = Convert.ToDouble(TbxDeposit.Text),
+                    Note = TbxNote.Text,
+                    Number = Convert.ToInt32(PeopleAmount.Text),
+                    IdentificationId = Convert.ToInt32(cbx_giayTo.SelectedValue)
+                },
+                ServiceReceipts = _serviceInOrder,
+                
+                ReceiptDetail = new ()
+                {
+                    CheckIn = Convert.ToDateTime(CheckInTime.Value),
+                    CheckOut = Convert.ToDateTime(CheckOutTime.Value)
+                }
+            };
+            if (CbxByDay.Checked) transaction.Receipt.Status = 0;
+            else if (CbxByHour.Checked) transaction.Receipt.Status = 1;
+            else transaction.Receipt.Status = 2;
+            MessageBox.Show(await _transacsion.Create(transaction));
+        }
+
+        private void Checkout_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Đang phát triển");
+        }
+        private async void CmbService_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _serviceId = Convert.ToInt32(CmbService.SelectedValue);
+            _serviceDTO = await _service.GetDetail(_serviceId);
+            Price.Text = _serviceDTO.Price.ToString(CultureInfo.InvariantCulture);
+        }
+
+        private void ServiceQuantity_ValueChanged(object sender, EventArgs e)
+        {
+            if(_serviceDTO is null) return;
+            Price.Text = (Convert.ToInt32(ServiceQuantity.Value) * _serviceDTO.Price).ToString(CultureInfo.InvariantCulture);
+        }
+
+        private bool DuplicateHandler(ServiceReceiptDTO data)
+        {
+            var item = _serviceInOrder.FirstOrDefault(x => x.ServiceId == data.ServiceId);
+            if (item != null)
+            {
+                item.Quantity += data.Quantity;
+                item.Total += data.Total;
+            }
+
+            return item == null;
+        }
+
+        private void btb_cancel_Click(object sender, EventArgs e) => Close();
+
+        private void BtnAddService_Click(object sender, EventArgs e)
+        {
+            var item = new ServiceReceiptDTO()
+            {
+                Name = CmbService.Text,
+                Quantity = Convert.ToInt32(ServiceQuantity.Text),
+                ServiceId = Convert.ToInt32(CmbService.SelectedValue),
+                Price = _serviceDTO.Price,
+                Total = Convert.ToDouble(Price.Text)
+            };
+            if(DuplicateHandler(item))
+                _serviceInOrder.Add(item);
+            LoadToGrid(_serviceInOrder);
+        }
     }
 }
