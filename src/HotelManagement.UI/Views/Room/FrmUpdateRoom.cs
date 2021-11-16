@@ -15,7 +15,7 @@ namespace HotelManagement.UI.Views.Room
     {
         private readonly IFloorService _floorService;
         private readonly IRoomService _roomService;
-        private IRoomTypeService _iRoomTypeService;
+        private IRoomTypeService _roomType;
         private readonly IConfirm _confirm;
         private RoomDetailDTO _roomDetail;
         private RoomTypeDTO _roomTypeDTO;
@@ -23,12 +23,12 @@ namespace HotelManagement.UI.Views.Room
         private int _width;
 
         public FrmUpdateRoom(IRoomService roomService, IConfirm confirm, IFloorService iFloorService,
-            IRoomTypeService roomTypeService)
+            IRoomTypeService roomType)
         {
             InitializeComponent();
             _floorService = iFloorService;
             _roomService = roomService;
-            _iRoomTypeService = roomTypeService;
+            _roomType = roomType;
             _confirm = confirm;
             LoadRoom();
         }
@@ -89,6 +89,15 @@ namespace HotelManagement.UI.Views.Room
         {
             var obj = sender as Components.Room;
             _roomDetail = await _roomService.GetDetail(obj.Id);
+
+            //var type = sender as Domain.RoomType;
+
+            //_roomTypeDTO = await _roomType.GetType(type.Id);
+            //CbxNameType.Text = _roomTypeDTO.Name;
+            //TbxDay.Text = Convert.ToString(_roomTypeDTO.ByDay);
+            //TbxHour.Text = Convert.ToString(_roomTypeDTO.ByHour);
+            //TbxNight.Text = Convert.ToString(_roomTypeDTO.ByNight);
+
             TbxName.Text = _roomDetail.Name;
             if (_roomDetail.Status == 0) CbxActive.Checked = true;
             if (_roomDetail.Status == 1) CbxToUp.Checked = true;
@@ -131,6 +140,7 @@ namespace HotelManagement.UI.Views.Room
 
         private async void BtnSave_Click(object sender, EventArgs e)
         {
+            //_roomTypeDTO.Name = TbxName.Text;
             _roomDetail.Name = TbxName.Text;
             if (CbxActive.Checked)
                 _roomDetail.Status = 0;
