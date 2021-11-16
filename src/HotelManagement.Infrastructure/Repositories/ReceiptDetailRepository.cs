@@ -14,15 +14,15 @@ namespace HotelManagement.Infrastructure.Repositories
 
         public async Task<ReceiptDetail> GetDetail(int id)
         {
-            var query = await Context.ReceiptDetails
-                .Include(e => e.Receipt)
-                .ThenInclude(d => d.Customer)
-                .Include(j => j.ServiceReceipts)
-                .ThenInclude(h => h.Service)
-                .OrderBy(q => q.CheckIn)
-                .LastAsync(x => x.RoomId == id);
+            //var query = await Context.ReceiptDetails
+            //    .Include(e => e.Receipt)
+            //    .ThenInclude(d => d.Customer)
+            //    .Include(j => j.ServiceReceipts)
+            //    .ThenInclude(h => h.Service)
+            //    .OrderBy(q => q.CheckIn)
+            //    .LastAsync(x => x.RoomId == id);
 
-            return query;
+            return null;
         }
     }
 }

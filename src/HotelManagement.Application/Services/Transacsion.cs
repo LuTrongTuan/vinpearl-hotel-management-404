@@ -44,7 +44,7 @@ namespace HotelManagement.Application.Services
             var receipt = _mapper.Map<Receipt>(source.Receipt);
             receipt.Customer = _mapper.Map<Customer>(source.Customer);
             receipt.ReceiptDetail = _mapper.Map<ReceiptDetail>(source.ReceiptDetail);
-            receipt.ReceiptDetail.RoomId = source.RoomId;
+            //receipt.ReceiptDetail.RoomId = source.RoomId;
             receipt.EmployeeId = 1; // only for test
             receipt.ReceiptDetail.ServiceReceipts =
                 _mapper.Map<IList<ServiceReceiptDTO>, IList<ServiceReceipt>>(source.ServiceReceipts);

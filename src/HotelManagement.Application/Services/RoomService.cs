@@ -17,7 +17,6 @@ namespace HotelManagement.Application.Services
         private readonly IMapper _mapper;
         private readonly IGenerator _generator;
         private Room _room;
-        private RoomType _roomType;
 
         public RoomService(IUnitOfWork worker, IMapper mapper,
             IGenerator generator)

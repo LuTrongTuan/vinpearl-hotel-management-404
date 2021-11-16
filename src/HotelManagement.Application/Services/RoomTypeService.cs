@@ -34,7 +34,6 @@ namespace HotelManagement.Application.Services
             _roomType.Name = roomType.Name;
             _roomType.ByDay = roomType.ByDay;
             _roomType.ByHour = roomType.ByHour;
-            _roomType.ByNight = roomType.ByNight;
             await _worker.RoomTypes.Update(_roomType);
             await _worker.Commit();
         }

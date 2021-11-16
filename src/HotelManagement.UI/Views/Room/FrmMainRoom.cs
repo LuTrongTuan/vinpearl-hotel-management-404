@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using HotelManagement.Application.Contracts.Services;
 using HotelManagement.Application.DTOs.Room;
-using HotelManagement.Application.Services;
 using HotelManagement.UI.Components;
 using HotelManagement.UI.Views.Receipt;
 
@@ -12,12 +11,10 @@ namespace HotelManagement.UI.Views.Room
 {
     public partial class FrmMainRoom : Form
     {
-        private readonly IFloorService _floorService;
+        private IFloorService _floorService;
         private readonly IRoomService _iRoomService;
         private Components.Room _room;
-        private RoomDetailDTO _roomDetail;
-        private FloorDTO _floorDTO;
-        private int _width;
+        private const int PanelWidth = 1610;
 
         public FrmMainRoom(IFloorService floorService, IRoomService iRoomService)
         {
@@ -39,9 +36,9 @@ namespace HotelManagement.UI.Views.Room
 
         private async Task LoadRoom()
         {
-            var roomLocation = new Point(120, 5);
+            var roomLocation = new Point(140, 5);
             var floorLocation = new Point(10, 5);
-            var numberOf = ((_width - 100) / 220) + 1;
+            var numberOf = (PanelWidth - 100) / 250;
             var request = await _floorService.GetAll();
             if (request.Count == 0) return;
             PanelContainer.Controls.Clear();
@@ -50,8 +47,7 @@ namespace HotelManagement.UI.Views.Room
                 var btn = CreateButton(floor.Floor);
                 btn.Location = floorLocation;
                 roomLocation.Y = floorLocation.Y;
-                roomLocation.X = 120;
-                floorLocation = new Point(10, 90);
+                roomLocation.X = 140;
                 this.PanelContainer.Controls.Add(btn);
                 var count = numberOf;
                 foreach (var room in floor.Rooms)
@@ -64,7 +60,7 @@ namespace HotelManagement.UI.Views.Room
                     {
                         roomLocation = Location(roomLocation, false);
                         count = numberOf;
-                        //floorLocation.Y += 80;
+                        floorLocation.Y += 130;
                     }
                     else
                     {
@@ -73,16 +69,17 @@ namespace HotelManagement.UI.Views.Room
                     }
                     this.PanelContainer.Controls.Add(_room);
                 }
+                floorLocation.Y += 130;
             }
 
-            //_floorService = Program.Container.GetInstance<IFloorService>();
+            _floorService = Program.Container.GetInstance<IFloorService>();
         }
 
         private new Point Location(Point point, bool wrap = true)
         {
             return wrap
-                ? new Point(point.X += 180, point.Y = point.Y)
-                : new Point(point.X = 120, point.Y += 80);
+                ? new Point(point.X += 230, point.Y = point.Y)
+                : new Point(point.X = 140, point.Y += 130);
         }
 
         private Components.Room SetAttribute(RoomListDTO source)
@@ -94,7 +91,7 @@ namespace HotelManagement.UI.Views.Room
                 BorderColor = Color.AliceBlue,
                 BorderSize = 2,
                 BorderRadius = 5,
-                Size = new Size(170, 70)
+                Size = new Size(220, 120)
             };
             switch (source.Status)
             {
@@ -125,7 +122,7 @@ namespace HotelManagement.UI.Views.Room
         private async void LoadRoomSearch(string name)
         {
             var roomLocation = new Point(120, 5);
-            var numberOf = ((_width - 100) / 220) + 1;
+            var numberOf = (PanelWidth - 100) / 240;
             var request = await _iRoomService.Get(name);
             PanelContainer.Controls.Clear();
             var count = numberOf;
@@ -148,13 +145,6 @@ namespace HotelManagement.UI.Views.Room
             }
         }
 
-        private async void PanelContainer_ClientSizeChanged(object sender, EventArgs e)
-        {
-            _width = this.PanelContainer.ClientSize.Width;
-            await LoadRoom();
-        }
-
-
         private CustomButton CreateButton(int floorNumber)
         {
             return new CustomButton
@@ -172,12 +162,16 @@ namespace HotelManagement.UI.Views.Room
         private void CreateReceiptForm(object sender, EventArgs e)
         {
             var form = Program.Container.GetInstance<FrmReceipt>();
-            var room = sender as Components.Room;
-            form.RoomId = room.Id;
+            if (sender is Components.Room room) form.RoomId = room.Id;
             form.Closed += CloseForm;
             form.ShowDialog();
         }
 
         private async void CloseForm(object sender, EventArgs e) => await LoadRoom();
+
+        private async void FrmMainRoom_Load(object sender, EventArgs e)
+        {
+            await LoadRoom();
+        }
     }
 }

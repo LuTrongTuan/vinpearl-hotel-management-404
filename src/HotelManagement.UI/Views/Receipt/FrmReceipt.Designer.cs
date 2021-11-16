@@ -291,7 +291,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.TbxNote.Padding = new System.Windows.Forms.Padding(9, 7, 9, 7);
             this.TbxNote.Password = false;
             this.TbxNote.PlaceHolder = "Ghi chú";
-            this.TbxNote.Size = new System.Drawing.Size(300, 37);
+            this.TbxNote.Size = new System.Drawing.Size(300, 39);
             this.TbxNote.TabIndex = 38;
             this.TbxNote.Underline = false;
             // 
@@ -309,7 +309,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.txb_hinhthuc.Padding = new System.Windows.Forms.Padding(9, 7, 9, 7);
             this.txb_hinhthuc.Password = false;
             this.txb_hinhthuc.PlaceHolder = "Hình thức thanh toán";
-            this.txb_hinhthuc.Size = new System.Drawing.Size(300, 37);
+            this.txb_hinhthuc.Size = new System.Drawing.Size(300, 39);
             this.txb_hinhthuc.TabIndex = 37;
             this.txb_hinhthuc.Underline = false;
             // 
@@ -327,7 +327,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.TbxDeposit.Padding = new System.Windows.Forms.Padding(9, 7, 9, 7);
             this.TbxDeposit.Password = false;
             this.TbxDeposit.PlaceHolder = "Tiền trả trước";
-            this.TbxDeposit.Size = new System.Drawing.Size(300, 37);
+            this.TbxDeposit.Size = new System.Drawing.Size(300, 39);
             this.TbxDeposit.TabIndex = 36;
             this.TbxDeposit.Underline = false;
             // 
@@ -564,7 +564,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.TbxPhoneNumber.Padding = new System.Windows.Forms.Padding(9, 7, 9, 7);
             this.TbxPhoneNumber.Password = false;
             this.TbxPhoneNumber.PlaceHolder = "Sô điện thoại";
-            this.TbxPhoneNumber.Size = new System.Drawing.Size(275, 37);
+            this.TbxPhoneNumber.Size = new System.Drawing.Size(275, 39);
             this.TbxPhoneNumber.TabIndex = 36;
             this.TbxPhoneNumber.Underline = false;
             // 
@@ -582,7 +582,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.TbxCustomerName.Padding = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.TbxCustomerName.Password = false;
             this.TbxCustomerName.PlaceHolder = "Tên khách hàng";
-            this.TbxCustomerName.Size = new System.Drawing.Size(275, 37);
+            this.TbxCustomerName.Size = new System.Drawing.Size(275, 39);
             this.TbxCustomerName.TabIndex = 35;
             this.TbxCustomerName.Underline = false;
             // 
@@ -600,7 +600,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.TbxIdentityNumber.Padding = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.TbxIdentityNumber.Password = false;
             this.TbxIdentityNumber.PlaceHolder = "Số giấy tờ";
-            this.TbxIdentityNumber.Size = new System.Drawing.Size(275, 37);
+            this.TbxIdentityNumber.Size = new System.Drawing.Size(275, 39);
             this.TbxIdentityNumber.TabIndex = 34;
             this.TbxIdentityNumber.Underline = false;
             // 
@@ -736,7 +736,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.TbxPayment.Padding = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.TbxPayment.Password = false;
             this.TbxPayment.PlaceHolder = "Thành tiền";
-            this.TbxPayment.Size = new System.Drawing.Size(178, 37);
+            this.TbxPayment.Size = new System.Drawing.Size(178, 39);
             this.TbxPayment.TabIndex = 36;
             this.TbxPayment.Underline = false;
             // 

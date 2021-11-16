@@ -36,14 +36,14 @@ namespace HotelManagement.Application.Services
 
         public async Task Update(CustomerDTO customer)
         {
-            var cus = await _worker.Customers.Get(x => x.IdentityNumber == customer.IdentityNumber);
-            if (cus is not null)
+            var user = await _worker.Customers.Get(x => x.IdentityNumber == customer.IdentityNumber);
+            if (user is null)
                 return;
-            cus.Name = customer.Name;
-            cus.IdentityNumber = customer.IdentityNumber;
-            cus.Gender = customer.Gender;
-            cus.PhoneNumber = customer.PhoneNumber;
-            await _worker.Customers.Update(cus);
+            user.Name = customer.Name;
+            user.IdentityNumber = customer.IdentityNumber;
+            user.Gender = customer.Gender;
+            user.PhoneNumber = customer.PhoneNumber;
+            await _worker.Customers.Update(user);
             await _worker.Commit();
         }
     }

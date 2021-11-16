@@ -8,6 +8,7 @@ namespace HotelManagement.Domain
         public bool Gender { get; set; }
         public string PhoneNumber { get; set; }
         public string IdentityNumber { get; set; }
+        public bool Status { get; set; }
         public virtual ICollection<Receipt> Receipts { get; set; }
     }
 }

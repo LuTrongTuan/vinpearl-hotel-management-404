@@ -71,11 +71,11 @@ namespace HotelManagement.UI.Views.Room
             this.PanelContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.PanelContainer.AutoScroll = true;
             this.PanelContainer.Location = new System.Drawing.Point(0, 135);
             this.PanelContainer.Name = "PanelContainer";
             this.PanelContainer.Size = new System.Drawing.Size(883, 335);
             this.PanelContainer.TabIndex = 2;
-            this.PanelContainer.ClientSizeChanged += new System.EventHandler(this.PanelContainer_ClientSizeChanged);
             // 
             // BtnRefresh
             // 
@@ -150,6 +150,7 @@ namespace HotelManagement.UI.Views.Room
             this.Controls.Add(this.customButton1);
             this.Name = "FrmMainRoom";
             this.Text = "Quản lý Phòng";
+            this.Load += new System.EventHandler(this.FrmMainRoom_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
