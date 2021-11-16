@@ -45,7 +45,6 @@ namespace HotelManagement.UI.Views.Receipt
             this.ServiceQuantity = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.CbxByNight = new System.Windows.Forms.CheckBox();
             this.Dtpicker_out = new System.Windows.Forms.DateTimePicker();
             this.Dtpicker_in = new System.Windows.Forms.DateTimePicker();
             this.TbxNote = new HotelManagement.UI.Components.TextBox();
@@ -225,7 +224,6 @@ namespace HotelManagement.UI.Views.Receipt
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.CbxByNight);
             this.groupBox1.Controls.Add(this.Dtpicker_out);
             this.groupBox1.Controls.Add(this.Dtpicker_in);
             this.groupBox1.Controls.Add(this.TbxNote);
@@ -257,18 +255,6 @@ namespace HotelManagement.UI.Views.Receipt
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin hóa đơn";
-            // 
-            // CbxByNight
-            // 
-            this.CbxByNight.AutoSize = true;
-            this.CbxByNight.Location = new System.Drawing.Point(353, 366);
-            this.CbxByNight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.CbxByNight.Name = "CbxByNight";
-            this.CbxByNight.Size = new System.Drawing.Size(99, 24);
-            this.CbxByNight.TabIndex = 42;
-            this.CbxByNight.Text = "Theo đêm";
-            this.CbxByNight.UseVisualStyleBackColor = true;
-            this.CbxByNight.CheckedChanged += new System.EventHandler(this.CbxByNight_CheckedChanged);
             // 
             // Dtpicker_out
             // 
@@ -864,6 +850,5 @@ namespace HotelManagement.UI.Views.Receipt
         private CheckBox checkBox1;
         private Label label7;
         private CheckBox checkBox2;
-        private CheckBox CbxByNight;
     }
 }

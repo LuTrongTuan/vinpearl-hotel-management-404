@@ -24,7 +24,7 @@ namespace HotelManagement.UI
             Container.Register<FrmLogin>();
             Container.Register<FrmService>();
             Container.Register<FrmCustomer>();
-            Container.Register<FrmEmployee>();
+            Container.Register<Frm_Employee>();
             Container.Register<ChangePassWord>();
             Container.Register<IConfirm, Confirm>();
             Container.Register<FrmMainRoom>();
@@ -47,8 +47,7 @@ namespace HotelManagement.UI
             System.Windows.Forms.Application.SetHighDpiMode(HighDpiMode.SystemAware);
             System.Windows.Forms.Application.EnableVisualStyles();
             System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(false);
-                //System.Windows.Forms.Application.Run(Program.Container.GetInstance<FrmReceipt>());
-                System.Windows.Forms.Application.Run(new Main());
+            System.Windows.Forms.Application.Run(new Main());
         }
     }
 }

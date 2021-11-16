@@ -62,7 +62,7 @@ namespace HotelManagement.UI
 
         private void btnEmployee_Click(object sender, System.EventArgs e)
         {
-            OpenForm(Program.Container.GetInstance<FrmEmployee>(), sender);
+           OpenForm(Program.Container.GetInstance<Frm_Employee>(), sender);
         }
 
         private void customButton3_Click(object sender, System.EventArgs e)

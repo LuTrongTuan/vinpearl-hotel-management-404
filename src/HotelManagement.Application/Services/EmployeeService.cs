@@ -49,7 +49,7 @@ namespace HotelManagement.Application.Services
             emp.Password = _encrypt.Encrypt("welcome");
             await _worker.Accounts.Add(emp);
             await _worker.Commit();
-            return "ok";
+            return "Ok";
         }
 
         public async Task<string> UpdateEmployee(Employee obj)
@@ -66,7 +66,7 @@ namespace HotelManagement.Application.Services
 
             await _worker.Employees.Update(emp);
             await _worker.Commit();
-            return "Sửa thành công";
+            return "Ok";
         }
     }
 }

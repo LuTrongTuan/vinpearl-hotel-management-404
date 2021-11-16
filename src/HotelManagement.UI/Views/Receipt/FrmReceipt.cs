@@ -91,7 +91,7 @@ namespace HotelManagement.UI.Views.Receipt
             else RbtFemale.Checked = true;
             if (query.Receipt.Status == 0) CbxByDay.Checked = true;
             else if (query.Receipt.Status == 1) CbxByHour.Checked = true;
-            else CbxByNight.Checked = true;
+            //else CbxByNight.Checked = true;
             LoadToGrid(query.ServiceReceipts);
         }
 
@@ -122,20 +122,20 @@ namespace HotelManagement.UI.Views.Receipt
 
         private void CbxByHour_CheckedChanged(object sender, EventArgs e)
         {
-            if (CbxByDay.Checked || CbxByNight.Checked)
+            if (CbxByDay.Checked /*|| CbxByNight.Checked*/)
             {
                 CbxByDay.Checked = false;
-                CbxByNight.Checked = false;
+                //CbxByNight.Checked = false;
             }
             lbl_roomPrice.Text = "Giá phòng:" + _room.RoomType.ByHour.ToString("C", new CultureInfo("vi_VN"));
         }
 
         private void CbxByDay_CheckedChanged(object sender, EventArgs e)
         {
-            if (CbxByHour.Checked || CbxByNight.Checked)
+            if (CbxByHour.Checked /*|| CbxByNight.Checked*/)
             {
                 CbxByHour.Checked = false;
-                CbxByNight.Checked = false;
+                //CbxByNight.Checked = false;
             }
             
             lbl_roomPrice.Text = "Giá phòng:" + _room.RoomType.ByDay.ToString("C", new CultureInfo("vi_VN"));

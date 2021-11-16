@@ -1,7 +1,7 @@
 ﻿
 namespace HotelManagement.UI.Views.Employee
 {
-    partial class FrmEmployee
+    partial class Frm_Employee
     {
         /// <summary>
         /// Required designer variable.
@@ -33,7 +33,7 @@ namespace HotelManagement.UI.Views.Employee
             this.TxtUsername = new System.Windows.Forms.TextBox();
             this.TxtEmail = new System.Windows.Forms.TextBox();
             this.TxtPhone = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.tbx_search = new System.Windows.Forms.TextBox();
             this.TxtDiachi = new System.Windows.Forms.TextBox();
             this.TxtName = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -44,9 +44,9 @@ namespace HotelManagement.UI.Views.Employee
             this.rdoNam = new System.Windows.Forms.RadioButton();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.button2 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btn_reset = new System.Windows.Forms.Button();
             this.btn_edit = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_addEmployee = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -69,7 +69,7 @@ namespace HotelManagement.UI.Views.Employee
             this.panel1.Controls.Add(this.TxtUsername);
             this.panel1.Controls.Add(this.TxtEmail);
             this.panel1.Controls.Add(this.TxtPhone);
-            this.panel1.Controls.Add(this.textBox8);
+            this.panel1.Controls.Add(this.tbx_search);
             this.panel1.Controls.Add(this.TxtDiachi);
             this.panel1.Controls.Add(this.TxtName);
             this.panel1.Controls.Add(this.dataGridView1);
@@ -80,9 +80,9 @@ namespace HotelManagement.UI.Views.Employee
             this.panel1.Controls.Add(this.rdoNam);
             this.panel1.Controls.Add(this.dateTimePicker1);
             this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button4);
+            this.panel1.Controls.Add(this.btn_reset);
             this.panel1.Controls.Add(this.btn_edit);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btn_addEmployee);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.label11);
@@ -93,10 +93,10 @@ namespace HotelManagement.UI.Views.Employee
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.panel1.Location = new System.Drawing.Point(-2, -1);
+            this.panel1.Location = new System.Drawing.Point(2, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1528, 776);
-            this.panel1.TabIndex = 0;
+            this.panel1.TabIndex = 1;
             // 
             // TxtUsername
             // 
@@ -128,14 +128,15 @@ namespace HotelManagement.UI.Views.Employee
             this.TxtPhone.Size = new System.Drawing.Size(260, 37);
             this.TxtPhone.TabIndex = 10;
             // 
-            // textBox8
+            // tbx_search
             // 
-            this.textBox8.Location = new System.Drawing.Point(365, 484);
-            this.textBox8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBox8.Multiline = true;
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(260, 34);
-            this.textBox8.TabIndex = 9;
+            this.tbx_search.Location = new System.Drawing.Point(365, 484);
+            this.tbx_search.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbx_search.Multiline = true;
+            this.tbx_search.Name = "tbx_search";
+            this.tbx_search.Size = new System.Drawing.Size(260, 34);
+            this.tbx_search.TabIndex = 9;
+            this.tbx_search.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbx_search_KeyUp);
             // 
             // TxtDiachi
             // 
@@ -192,6 +193,7 @@ namespace HotelManagement.UI.Views.Employee
             this.checked_NHD.TabIndex = 5;
             this.checked_NHD.Text = "Ngưng hoạt động";
             this.checked_NHD.UseVisualStyleBackColor = false;
+            this.checked_NHD.CheckedChanged += new System.EventHandler(this.checked_NHD_CheckedChanged);
             // 
             // checked_HD
             // 
@@ -237,12 +239,14 @@ namespace HotelManagement.UI.Views.Employee
             // 
             // dateTimePicker1
             // 
+            this.dateTimePicker1.CustomFormat = "";
             this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker1.Location = new System.Drawing.Point(464, 146);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(260, 24);
             this.dateTimePicker1.TabIndex = 3;
+            this.dateTimePicker1.Value = new System.DateTime(2021, 11, 16, 0, 0, 0, 0);
             // 
             // button2
             // 
@@ -255,18 +259,19 @@ namespace HotelManagement.UI.Views.Employee
             this.button2.Text = "Search";
             this.button2.UseVisualStyleBackColor = false;
             // 
-            // button4
+            // btn_reset
             // 
-            this.button4.BackColor = System.Drawing.Color.Red;
-            this.button4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button4.Image = global::HotelManagement.UI.Properties.Resources.circle_of_two_clockwise_arrows_rotation;
-            this.button4.Location = new System.Drawing.Point(1192, 478);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(118, 44);
-            this.button4.TabIndex = 2;
-            this.button4.Text = "Reset";
-            this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button4.UseVisualStyleBackColor = false;
+            this.btn_reset.BackColor = System.Drawing.Color.Red;
+            this.btn_reset.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_reset.Image = global::HotelManagement.UI.Properties.Resources.circle_of_two_clockwise_arrows_rotation;
+            this.btn_reset.Location = new System.Drawing.Point(1192, 478);
+            this.btn_reset.Name = "btn_reset";
+            this.btn_reset.Size = new System.Drawing.Size(118, 44);
+            this.btn_reset.TabIndex = 2;
+            this.btn_reset.Text = "Reset";
+            this.btn_reset.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_reset.UseVisualStyleBackColor = false;
+            this.btn_reset.Click += new System.EventHandler(this.btn_reset_Click);
             // 
             // btn_edit
             // 
@@ -282,19 +287,19 @@ namespace HotelManagement.UI.Views.Employee
             this.btn_edit.UseVisualStyleBackColor = false;
             this.btn_edit.Click += new System.EventHandler(this.btn_edit_Click);
             // 
-            // button1
+            // btn_addEmployee
             // 
-            this.button1.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.Image = global::HotelManagement.UI.Properties.Resources.plus;
-            this.button1.Location = new System.Drawing.Point(907, 478);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(118, 44);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Thêm";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btn_addEmployee.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btn_addEmployee.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_addEmployee.Image = global::HotelManagement.UI.Properties.Resources.plus;
+            this.btn_addEmployee.Location = new System.Drawing.Point(907, 478);
+            this.btn_addEmployee.Name = "btn_addEmployee";
+            this.btn_addEmployee.Size = new System.Drawing.Size(118, 44);
+            this.btn_addEmployee.TabIndex = 2;
+            this.btn_addEmployee.Text = "Thêm";
+            this.btn_addEmployee.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_addEmployee.UseVisualStyleBackColor = false;
+            this.btn_addEmployee.Click += new System.EventHandler(this.btn_addEmployee_Click);
             // 
             // label4
             // 
@@ -404,16 +409,14 @@ namespace HotelManagement.UI.Views.Employee
             this.label2.TabIndex = 0;
             this.label2.Text = "Họ tên";
             // 
-            // FrmEmployee
+            // Frm_Employee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1526, 774);
+            this.ClientSize = new System.Drawing.Size(1532, 777);
             this.Controls.Add(this.panel1);
-            this.Name = "FrmEmployee";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Quản lý nhân viên";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Name = "Frm_Employee";
+            this.Text = "Frm_Employee";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -424,38 +427,31 @@ namespace HotelManagement.UI.Views.Employee
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
-        private Components.TextBox textBox1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private Components.TextBox textBox4;
-        private Components.TextBox textBox5;
-        private Components.TextBox textBox3;
-        private Components.TextBox textBox2;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox TxtUsername;
+        private System.Windows.Forms.TextBox TxtEmail;
+        private System.Windows.Forms.TextBox TxtPhone;
+        private System.Windows.Forms.TextBox tbx_search;
+        private System.Windows.Forms.TextBox TxtDiachi;
+        private System.Windows.Forms.TextBox TxtName;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.ComboBox cboVaitro;
         private System.Windows.Forms.CheckBox checked_NHD;
         private System.Windows.Forms.CheckBox checked_HD;
         private System.Windows.Forms.RadioButton rdoNu;
         private System.Windows.Forms.RadioButton rdoNam;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private Components.TextBox textBox6;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btn_reset;
+        private System.Windows.Forms.Button btn_edit;
+        private System.Windows.Forms.Button btn_addEmployee;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.ComboBox cboVaitro;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button btn_edit;
-        private Components.TextBox textBox7;
-        private System.Windows.Forms.TextBox TxtEmail;
-        private System.Windows.Forms.TextBox TxtPhone;
-        private System.Windows.Forms.TextBox TxtDiachi;
-        private System.Windows.Forms.TextBox TxtName;
-        private System.Windows.Forms.TextBox TxtUsername;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
     }
 }
