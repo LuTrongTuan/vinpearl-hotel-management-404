@@ -52,7 +52,7 @@ namespace HotelManagement.UI.Views.Login
             this.txb_password.Multiline = false;
             this.txb_password.Name = "txb_password";
             this.txb_password.Padding = new System.Windows.Forms.Padding(7);
-            this.txb_password.Password = false;
+            this.txb_password.Password = true;
             this.txb_password.PlaceHolder = "PassWord";
             this.txb_password.Size = new System.Drawing.Size(309, 37);
             this.txb_password.TabIndex = 1;

@@ -32,11 +32,11 @@ namespace HotelManagement.UI.Views.Receipt
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.CheckOutTime = new System.Windows.Forms.DateTimePicker();
+            this.Dtpicker_checkOut = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.CheckInTime = new System.Windows.Forms.DateTimePicker();
+            this.Dtpicker_checkIn = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.cbx_giayTo = new System.Windows.Forms.ComboBox();
@@ -45,12 +45,12 @@ namespace HotelManagement.UI.Views.Receipt
             this.ServiceQuantity = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Dtpicker_out = new System.Windows.Forms.DateTimePicker();
+            this.Dtpicker_in = new System.Windows.Forms.DateTimePicker();
             this.TbxNote = new HotelManagement.UI.Components.TextBox();
             this.txb_hinhthuc = new HotelManagement.UI.Components.TextBox();
             this.TbxDeposit = new HotelManagement.UI.Components.TextBox();
             this.lbl_roomPrice = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.CbxByNight = new System.Windows.Forms.CheckBox();
             this.CbxByDay = new System.Windows.Forms.CheckBox();
             this.CbxByHour = new System.Windows.Forms.CheckBox();
             this.label19 = new System.Windows.Forms.Label();
@@ -58,23 +58,24 @@ namespace HotelManagement.UI.Views.Receipt
             this.label11 = new System.Windows.Forms.Label();
             this.LblRoomType = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.cbx_roomtype = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.BtnAddService = new HotelManagement.UI.Components.CustomButton();
             this.Price = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.TbxPhoneNumber = new HotelManagement.UI.Components.TextBox();
             this.TbxCustomerName = new HotelManagement.UI.Components.TextBox();
             this.TbxIdentityNumber = new HotelManagement.UI.Components.TextBox();
             this.RbtFemale = new System.Windows.Forms.RadioButton();
             this.RbtMale = new System.Windows.Forms.RadioButton();
             this.label12 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.RoomName = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -102,16 +103,16 @@ namespace HotelManagement.UI.Views.Receipt
             this.label1.TabIndex = 0;
             this.label1.Text = "Tiền trả trước";
             // 
-            // CheckOutTime
+            // Dtpicker_checkOut
             // 
-            this.CheckOutTime.CustomFormat = "MMMMdd, yyyy  |  hh:mm";
-            this.CheckOutTime.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.CheckOutTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.CheckOutTime.Location = new System.Drawing.Point(145, 159);
-            this.CheckOutTime.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.CheckOutTime.Name = "CheckOutTime";
-            this.CheckOutTime.Size = new System.Drawing.Size(300, 27);
-            this.CheckOutTime.TabIndex = 3;
+            this.Dtpicker_checkOut.CustomFormat = "";
+            this.Dtpicker_checkOut.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Dtpicker_checkOut.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.Dtpicker_checkOut.Location = new System.Drawing.Point(145, 159);
+            this.Dtpicker_checkOut.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Dtpicker_checkOut.Name = "Dtpicker_checkOut";
+            this.Dtpicker_checkOut.Size = new System.Drawing.Size(160, 27);
+            this.Dtpicker_checkOut.TabIndex = 3;
             // 
             // label2
             // 
@@ -142,16 +143,16 @@ namespace HotelManagement.UI.Views.Receipt
             this.label4.TabIndex = 7;
             this.label4.Text = "Ngày vào";
             // 
-            // CheckInTime
+            // Dtpicker_checkIn
             // 
-            this.CheckInTime.CustomFormat = "MMMMdd, yyyy  |  hh:mm";
-            this.CheckInTime.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.CheckInTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.CheckInTime.Location = new System.Drawing.Point(145, 124);
-            this.CheckInTime.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.CheckInTime.Name = "CheckInTime";
-            this.CheckInTime.Size = new System.Drawing.Size(300, 27);
-            this.CheckInTime.TabIndex = 6;
+            this.Dtpicker_checkIn.CustomFormat = "";
+            this.Dtpicker_checkIn.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Dtpicker_checkIn.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.Dtpicker_checkIn.Location = new System.Drawing.Point(145, 124);
+            this.Dtpicker_checkIn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Dtpicker_checkIn.Name = "Dtpicker_checkIn";
+            this.Dtpicker_checkIn.Size = new System.Drawing.Size(160, 27);
+            this.Dtpicker_checkIn.TabIndex = 6;
             // 
             // label5
             // 
@@ -175,19 +176,17 @@ namespace HotelManagement.UI.Views.Receipt
             // cbx_giayTo
             // 
             this.cbx_giayTo.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.cbx_giayTo.ForeColor = System.Drawing.Color.Gray;
+            this.cbx_giayTo.ForeColor = System.Drawing.Color.Black;
             this.cbx_giayTo.FormattingEnabled = true;
             this.cbx_giayTo.Location = new System.Drawing.Point(145, 85);
             this.cbx_giayTo.Name = "cbx_giayTo";
             this.cbx_giayTo.Size = new System.Drawing.Size(300, 28);
             this.cbx_giayTo.TabIndex = 8;
-            this.cbx_giayTo.Text = "Giấy tờ";
-            this.cbx_giayTo.Enter += new System.EventHandler(this.cbx_giayTo_Enter);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(18, 44);
+            this.label9.Location = new System.Drawing.Point(18, 42);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(61, 20);
             this.label9.TabIndex = 4;
@@ -196,15 +195,13 @@ namespace HotelManagement.UI.Views.Receipt
             // CmbService
             // 
             this.CmbService.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.CmbService.ForeColor = System.Drawing.Color.Gray;
+            this.CmbService.ForeColor = System.Drawing.Color.Black;
             this.CmbService.FormattingEnabled = true;
             this.CmbService.Location = new System.Drawing.Point(145, 36);
             this.CmbService.Name = "CmbService";
             this.CmbService.Size = new System.Drawing.Size(275, 28);
             this.CmbService.TabIndex = 8;
-            this.CmbService.Text = "Tên dịch vụ";
             this.CmbService.SelectedIndexChanged += new System.EventHandler(this.CmbService_SelectedIndexChanged);
-            this.CmbService.Enter += new System.EventHandler(this.CmbService_Enter);
             // 
             // ServiceQuantity
             // 
@@ -227,12 +224,12 @@ namespace HotelManagement.UI.Views.Receipt
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.Dtpicker_out);
+            this.groupBox1.Controls.Add(this.Dtpicker_in);
             this.groupBox1.Controls.Add(this.TbxNote);
             this.groupBox1.Controls.Add(this.txb_hinhthuc);
             this.groupBox1.Controls.Add(this.TbxDeposit);
             this.groupBox1.Controls.Add(this.lbl_roomPrice);
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.CbxByNight);
             this.groupBox1.Controls.Add(this.CbxByDay);
             this.groupBox1.Controls.Add(this.CbxByHour);
             this.groupBox1.Controls.Add(this.label19);
@@ -240,17 +237,16 @@ namespace HotelManagement.UI.Views.Receipt
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.LblRoomType);
             this.groupBox1.Controls.Add(this.label16);
-            this.groupBox1.Controls.Add(this.label17);
             this.groupBox1.Controls.Add(this.label18);
             this.groupBox1.Controls.Add(this.label20);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.CheckOutTime);
+            this.groupBox1.Controls.Add(this.Dtpicker_checkOut);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.cbx_roomtype);
             this.groupBox1.Controls.Add(this.cbx_giayTo);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.CheckInTime);
+            this.groupBox1.Controls.Add(this.Dtpicker_checkIn);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBox1.Location = new System.Drawing.Point(0, 37);
@@ -259,6 +255,27 @@ namespace HotelManagement.UI.Views.Receipt
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin hóa đơn";
+            // 
+            // Dtpicker_out
+            // 
+            this.Dtpicker_out.CustomFormat = "HH:mm tt";
+            this.Dtpicker_out.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.Dtpicker_out.Location = new System.Drawing.Point(311, 160);
+            this.Dtpicker_out.Name = "Dtpicker_out";
+            this.Dtpicker_out.ShowUpDown = true;
+            this.Dtpicker_out.Size = new System.Drawing.Size(134, 27);
+            this.Dtpicker_out.TabIndex = 40;
+            // 
+            // Dtpicker_in
+            // 
+            this.Dtpicker_in.CustomFormat = "HH:mm tt";
+            this.Dtpicker_in.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.Dtpicker_in.Location = new System.Drawing.Point(311, 124);
+            this.Dtpicker_in.Name = "Dtpicker_in";
+            this.Dtpicker_in.ShowUpDown = true;
+            this.Dtpicker_in.Size = new System.Drawing.Size(134, 27);
+            this.Dtpicker_in.TabIndex = 39;
+            this.Dtpicker_in.Value = new System.DateTime(2021, 11, 16, 9, 27, 20, 0);
             // 
             // TbxNote
             // 
@@ -317,34 +334,11 @@ namespace HotelManagement.UI.Views.Receipt
             // lbl_roomPrice
             // 
             this.lbl_roomPrice.AutoSize = true;
-            this.lbl_roomPrice.Location = new System.Drawing.Point(145, 397);
+            this.lbl_roomPrice.Location = new System.Drawing.Point(145, 402);
             this.lbl_roomPrice.Name = "lbl_roomPrice";
             this.lbl_roomPrice.Size = new System.Drawing.Size(83, 20);
             this.lbl_roomPrice.TabIndex = 30;
             this.lbl_roomPrice.Text = "RoomPrice";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.comboBox1.ForeColor = System.Drawing.Color.Gray;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(145, 438);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(263, 28);
-            this.comboBox1.TabIndex = 29;
-            this.comboBox1.Text = "Thêm phòng";
-            // 
-            // CbxByNight
-            // 
-            this.CbxByNight.AutoSize = true;
-            this.CbxByNight.Location = new System.Drawing.Point(365, 366);
-            this.CbxByNight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.CbxByNight.Name = "CbxByNight";
-            this.CbxByNight.Size = new System.Drawing.Size(99, 24);
-            this.CbxByNight.TabIndex = 26;
-            this.CbxByNight.Text = "Theo đêm";
-            this.CbxByNight.UseVisualStyleBackColor = true;
-            this.CbxByNight.CheckedChanged += new System.EventHandler(this.CbxByNight_CheckedChanged);
             // 
             // CbxByDay
             // 
@@ -416,21 +410,11 @@ namespace HotelManagement.UI.Views.Receipt
             this.label16.TabIndex = 0;
             this.label16.Text = "Ghi chú";
             // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label17.Location = new System.Drawing.Point(21, 441);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(98, 20);
-            this.label17.TabIndex = 0;
-            this.label17.Text = "Thêm phòng";
-            // 
             // label18
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label18.Location = new System.Drawing.Point(18, 397);
+            this.label18.Location = new System.Drawing.Point(18, 402);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(81, 20);
             this.label18.TabIndex = 0;
@@ -459,24 +443,12 @@ namespace HotelManagement.UI.Views.Receipt
             // cbx_roomtype
             // 
             this.cbx_roomtype.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.cbx_roomtype.ForeColor = System.Drawing.Color.Gray;
+            this.cbx_roomtype.ForeColor = System.Drawing.Color.Black;
             this.cbx_roomtype.FormattingEnabled = true;
             this.cbx_roomtype.Location = new System.Drawing.Point(145, 45);
             this.cbx_roomtype.Name = "cbx_roomtype";
             this.cbx_roomtype.Size = new System.Drawing.Size(300, 28);
             this.cbx_roomtype.TabIndex = 8;
-            this.cbx_roomtype.Text = "Loại phòng";
-            this.cbx_roomtype.Enter += new System.EventHandler(this.cbx_roomtype_Enter);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(0, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(84, 20);
-            this.label7.TabIndex = 21;
-            this.label7.Text = "Thành tiền";
             // 
             // groupBox2
             // 
@@ -537,6 +509,8 @@ namespace HotelManagement.UI.Views.Receipt
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.checkBox2);
+            this.groupBox3.Controls.Add(this.checkBox1);
             this.groupBox3.Controls.Add(this.TbxPhoneNumber);
             this.groupBox3.Controls.Add(this.TbxCustomerName);
             this.groupBox3.Controls.Add(this.TbxIdentityNumber);
@@ -545,6 +519,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.groupBox3.Controls.Add(this.groupBox2);
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -554,6 +529,26 @@ namespace HotelManagement.UI.Views.Receipt
             this.groupBox3.TabIndex = 13;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Thông tin khách hàng";
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(262, 209);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(153, 24);
+            this.checkBox2.TabIndex = 37;
+            this.checkBox2.Text = "Không hoạt động";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(151, 209);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(105, 24);
+            this.checkBox1.TabIndex = 37;
+            this.checkBox1.Text = "Hoạt động";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // TbxPhoneNumber
             // 
@@ -569,7 +564,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.TbxPhoneNumber.Padding = new System.Windows.Forms.Padding(9, 7, 9, 7);
             this.TbxPhoneNumber.Password = false;
             this.TbxPhoneNumber.PlaceHolder = "Sô điện thoại";
-            this.TbxPhoneNumber.Size = new System.Drawing.Size(260, 37);
+            this.TbxPhoneNumber.Size = new System.Drawing.Size(275, 37);
             this.TbxPhoneNumber.TabIndex = 36;
             this.TbxPhoneNumber.Underline = false;
             // 
@@ -587,7 +582,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.TbxCustomerName.Padding = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.TbxCustomerName.Password = false;
             this.TbxCustomerName.PlaceHolder = "Tên khách hàng";
-            this.TbxCustomerName.Size = new System.Drawing.Size(260, 37);
+            this.TbxCustomerName.Size = new System.Drawing.Size(275, 37);
             this.TbxCustomerName.TabIndex = 35;
             this.TbxCustomerName.Underline = false;
             // 
@@ -605,7 +600,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.TbxIdentityNumber.Padding = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.TbxIdentityNumber.Password = false;
             this.TbxIdentityNumber.PlaceHolder = "Số giấy tờ";
-            this.TbxIdentityNumber.Size = new System.Drawing.Size(260, 37);
+            this.TbxIdentityNumber.Size = new System.Drawing.Size(275, 37);
             this.TbxIdentityNumber.TabIndex = 34;
             this.TbxIdentityNumber.Underline = false;
             // 
@@ -642,6 +637,15 @@ namespace HotelManagement.UI.Views.Receipt
             this.label12.TabIndex = 4;
             this.label12.Text = "Số";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(16, 209);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(80, 20);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "Trạng thái";
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -671,7 +675,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.groupBox5.Size = new System.Drawing.Size(1173, 182);
             this.groupBox5.TabIndex = 15;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Danh sách hóa đơn";
+            this.groupBox5.Text = "Danh sách dịch vụ";
             // 
             // ServiceGridView
             // 
@@ -769,7 +773,6 @@ namespace HotelManagement.UI.Views.Receipt
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.RoomName);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.label13);
             this.Name = "FrmReceipt";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -793,11 +796,11 @@ namespace HotelManagement.UI.Views.Receipt
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker CheckOutTime;
+        private System.Windows.Forms.DateTimePicker Dtpicker_checkOut;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DateTimePicker CheckInTime;
+        private System.Windows.Forms.DateTimePicker Dtpicker_checkIn;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cbx_giayTo;
@@ -813,7 +816,6 @@ namespace HotelManagement.UI.Views.Receipt
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label LblRoomType;
         private System.Windows.Forms.ComboBox cbx_roomtype;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.RadioButton RbtMale;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.RadioButton RbtFemale;
@@ -823,15 +825,12 @@ namespace HotelManagement.UI.Views.Receipt
         private System.Windows.Forms.DataGridView ServiceGridView;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.NumericUpDown PeopleAmount;
-        private System.Windows.Forms.CheckBox CbxByNight;
         private System.Windows.Forms.CheckBox CbxByDay;
         private System.Windows.Forms.CheckBox CbxByHour;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label lbl_roomPrice;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label Price;
         private Components.CustomButton BtnAddService;
         private Components.TextBox TbxNote;
@@ -846,5 +845,10 @@ namespace HotelManagement.UI.Views.Receipt
         private Components.TextBox TbxPayment;
         private Components.CustomButton BtnCancle;
         private Components.TextBox TbxCustomerName;
+        private DateTimePicker Dtpicker_out;
+        private DateTimePicker Dtpicker_in;
+        private CheckBox checkBox1;
+        private Label label7;
+        private CheckBox checkBox2;
     }
 }

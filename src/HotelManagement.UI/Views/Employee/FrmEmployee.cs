@@ -62,7 +62,7 @@ namespace HotelManagement.UI.Views.Employee
                 await _employee.AddEmployee(_emp);
                 MessageBox.Show("Thêm thành công ");
             }
-            
+            loadData();
                     
         }
 

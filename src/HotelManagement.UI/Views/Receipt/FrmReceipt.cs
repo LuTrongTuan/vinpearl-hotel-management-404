@@ -81,7 +81,7 @@ namespace HotelManagement.UI.Views.Receipt
         {
             var query = await _transacsion.Query(_roomId);
             TbxDeposit.Text = query.Receipt.Deposit.ToString(CultureInfo.CurrentCulture);
-            CheckInTime.Value = query.ReceiptDetail.CheckIn;
+            Dtpicker_checkIn.Value = query.ReceiptDetail.CheckIn;
             TbxNote.Text = query.Receipt.Note;
             PeopleAmount.Value = query.Receipt.Number;
             TbxIdentityNumber.Text = query.Customer.IdentityNumber;
@@ -91,7 +91,7 @@ namespace HotelManagement.UI.Views.Receipt
             else RbtFemale.Checked = true;
             if (query.Receipt.Status == 0) CbxByDay.Checked = true;
             else if (query.Receipt.Status == 1) CbxByHour.Checked = true;
-            else CbxByNight.Checked = true;
+            //else CbxByNight.Checked = true;
             LoadToGrid(query.ServiceReceipts);
         }
 
@@ -111,34 +111,6 @@ namespace HotelManagement.UI.Views.Receipt
                 ServiceGridView.Rows.Add(x.Name, x.Quantity, x.Price, x.Price * x.Quantity);
             }
         }
-
-        #region 
-
-        private void cbx_roomtype_Enter(object sender, EventArgs e)
-        {
-            if (cbx_roomtype.Text == "Loại phòng")
-            {
-                cbx_roomtype.Text = "";
-            }
-        }
-
-        private void cbx_giayTo_Enter(object sender, EventArgs e)
-        {
-            if (cbx_giayTo.Text == "Giấy tờ")
-            {
-                cbx_giayTo.Text = "";
-            }
-        }
-
-        private void CmbService_Enter(object sender, EventArgs e)
-        {
-            if (CmbService.Text == "Tên dịch vụ")
-            {
-                CmbService.Text = "";
-            }
-        }
-        #endregion
-
         private void FrmReceipt_Load(object sender, EventArgs e)
         {
             LoadIdentification();
@@ -150,20 +122,18 @@ namespace HotelManagement.UI.Views.Receipt
 
         private void CbxByHour_CheckedChanged(object sender, EventArgs e)
         {
-            if (CbxByDay.Checked || CbxByNight.Checked)
+            if (CbxByDay.Checked)
             {
                 CbxByDay.Checked = false;
-                CbxByNight.Checked = false;
             }
             lbl_roomPrice.Text = "Giá phòng:" + _room.RoomType.ByHour.ToString("C", new CultureInfo("vi_VN"));
         }
 
         private void CbxByDay_CheckedChanged(object sender, EventArgs e)
         {
-            if (CbxByHour.Checked || CbxByNight.Checked)
+            if (CbxByHour.Checked)
             {
                 CbxByHour.Checked = false;
-                CbxByNight.Checked = false;
             }
             
             lbl_roomPrice.Text = "Giá phòng:" + _room.RoomType.ByDay.ToString("C", new CultureInfo("vi_VN"));
@@ -204,8 +174,8 @@ namespace HotelManagement.UI.Views.Receipt
                 
                 ReceiptDetail = new ()
                 {
-                    CheckIn = Convert.ToDateTime(CheckInTime.Value),
-                    CheckOut = Convert.ToDateTime(CheckOutTime.Value)
+                    CheckIn = Convert.ToDateTime(Dtpicker_checkIn.Value),
+                    CheckOut = Convert.ToDateTime(Dtpicker_checkOut.Value)
                 }
             };
             if (CbxByDay.Checked) transaction.Receipt.Status = 0;
