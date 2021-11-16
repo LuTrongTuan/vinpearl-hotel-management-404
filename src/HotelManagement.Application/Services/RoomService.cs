@@ -17,6 +17,7 @@ namespace HotelManagement.Application.Services
         private readonly IMapper _mapper;
         private readonly IGenerator _generator;
         private Room _room;
+        private RoomType _roomType;
 
         public RoomService(IUnitOfWork worker, IMapper mapper,
             IGenerator generator)
@@ -67,7 +68,7 @@ namespace HotelManagement.Application.Services
             _room = await _worker.Rooms.Get(x => x.Id == room.Id);
             if (_room == null)
             {
-                return "Không tồn tại";
+                return "Không được để trống";
             }
             _room.Name = room.Name;
             _room.Status = room.Status;

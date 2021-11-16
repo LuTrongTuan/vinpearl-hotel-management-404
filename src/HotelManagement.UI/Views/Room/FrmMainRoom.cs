@@ -12,13 +12,17 @@ namespace HotelManagement.UI.Views.Room
 {
     public partial class FrmMainRoom : Form
     {
-        private IFloorService _floorService;
+        private readonly IFloorService _floorService;
+        private readonly IRoomService _iRoomService;
         private Components.Room _room;
+        private RoomDetailDTO _roomDetail;
+        private FloorDTO _floorDTO;
         private int _width;
 
-        public FrmMainRoom(IFloorService floorService)
+        public FrmMainRoom(IFloorService floorService, IRoomService iRoomService)
         {
             _floorService = floorService;
+            _iRoomService = iRoomService;
             InitializeComponent();
         }
 
@@ -48,13 +52,11 @@ namespace HotelManagement.UI.Views.Room
                 roomLocation.Y = floorLocation.Y;
                 roomLocation.X = 120;
                 floorLocation = new Point(10, 90);
-
                 this.PanelContainer.Controls.Add(btn);
                 var count = numberOf;
                 foreach (var room in floor.Rooms)
                 {
                     _room = SetAttribute(room);
-                    
                     _room.Location = roomLocation;
 
                     _room.Click += CreateReceiptForm;
@@ -62,7 +64,7 @@ namespace HotelManagement.UI.Views.Room
                     {
                         roomLocation = Location(roomLocation, false);
                         count = numberOf;
-                        floorLocation.Y += 80;
+                        //floorLocation.Y += 80;
                     }
                     else
                     {
@@ -73,7 +75,7 @@ namespace HotelManagement.UI.Views.Room
                 }
             }
 
-            _floorService = Program.Container.GetInstance<IFloorService>();
+            //_floorService = Program.Container.GetInstance<IFloorService>();
         }
 
         private new Point Location(Point point, bool wrap = true)
@@ -117,8 +119,33 @@ namespace HotelManagement.UI.Views.Room
 
         private void TbxSearch_KeyUp(object sender, KeyEventArgs e)
         {
-            //LoadRoom(TbxSearch.Text);
-            //issue, fix request
+            LoadRoomSearch(TbxSearch.Text);
+        }
+
+        private async void LoadRoomSearch(string name)
+        {
+            var roomLocation = new Point(120, 5);
+            var numberOf = ((_width - 100) / 220) + 1;
+            var request = await _iRoomService.Get(name);
+            PanelContainer.Controls.Clear();
+            var count = numberOf;
+            foreach (var room in request)
+            {
+                _room = SetAttribute(room);
+                _room.Location = roomLocation;
+                _room.Click += CreateReceiptForm;
+                if (count == 1)
+                {
+                    roomLocation = Location(roomLocation, false);
+                    count = numberOf;
+                }
+                else
+                {
+                    roomLocation = Location(roomLocation);
+                    count--;
+                }
+                this.PanelContainer.Controls.Add(_room);
+            }
         }
 
         private async void PanelContainer_ClientSizeChanged(object sender, EventArgs e)

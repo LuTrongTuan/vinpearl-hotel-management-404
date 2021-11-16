@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using AutoMapper;
 using HotelManagement.Application.Contracts.Infrastructure;
@@ -31,6 +32,9 @@ namespace HotelManagement.Application.Services
             _roomType = await _worker.RoomTypes.Get(x => x.Id == roomType.Id);
             if(_roomType is null) return;
             _roomType.Name = roomType.Name;
+            _roomType.ByDay = roomType.ByDay;
+            _roomType.ByHour = roomType.ByHour;
+            _roomType.ByNight = roomType.ByNight;
             await _worker.RoomTypes.Update(_roomType);
             await _worker.Commit();
         }
@@ -40,10 +44,11 @@ namespace HotelManagement.Application.Services
             return _mapper.Map<IList<RoomType>, IList<RoomTypeDTO>>(result);
         }
 
-        public async Task<string> GetRoomTypeName(int id)
+        public async Task<RoomTypeDTO> GetType(int id)
         {
             var query = await _worker.RoomTypes.Get(x => x.Id == id);
-            return query.Name;
+            return _mapper.Map<RoomTypeDTO>(query);
+            //return query.Name;
         }
     }
 }

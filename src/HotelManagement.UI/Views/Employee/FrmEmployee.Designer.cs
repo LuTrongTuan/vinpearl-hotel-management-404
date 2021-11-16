@@ -136,7 +136,6 @@ namespace HotelManagement.UI.Views.Employee
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(260, 34);
             this.textBox8.TabIndex = 9;
-            this.textBox8.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox8_KeyUp);
             // 
             // TxtDiachi
             // 
@@ -193,7 +192,6 @@ namespace HotelManagement.UI.Views.Employee
             this.checked_NHD.TabIndex = 5;
             this.checked_NHD.Text = "Ngưng hoạt động";
             this.checked_NHD.UseVisualStyleBackColor = false;
-            this.checked_NHD.CheckedChanged += new System.EventHandler(this.checked_NHD_CheckedChanged);
             // 
             // checked_HD
             // 
@@ -269,7 +267,6 @@ namespace HotelManagement.UI.Views.Employee
             this.button4.Text = "Reset";
             this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // btn_edit
             // 

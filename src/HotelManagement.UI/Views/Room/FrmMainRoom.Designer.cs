@@ -57,7 +57,7 @@ namespace HotelManagement.UI.Views.Room
             this.customButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.customButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.customButton1.ForeColor = System.Drawing.Color.White;
-            this.customButton1.Location = new System.Drawing.Point(449, 12);
+            this.customButton1.Location = new System.Drawing.Point(406, 24);
             this.customButton1.Name = "customButton1";
             this.customButton1.Size = new System.Drawing.Size(188, 50);
             this.customButton1.TabIndex = 1;
@@ -71,9 +71,9 @@ namespace HotelManagement.UI.Views.Room
             this.PanelContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.PanelContainer.Location = new System.Drawing.Point(0, 103);
+            this.PanelContainer.Location = new System.Drawing.Point(0, 135);
             this.PanelContainer.Name = "PanelContainer";
-            this.PanelContainer.Size = new System.Drawing.Size(902, 347);
+            this.PanelContainer.Size = new System.Drawing.Size(883, 335);
             this.PanelContainer.TabIndex = 2;
             this.PanelContainer.ClientSizeChanged += new System.EventHandler(this.PanelContainer_ClientSizeChanged);
             // 
@@ -89,7 +89,7 @@ namespace HotelManagement.UI.Views.Room
             this.BtnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnRefresh.ForeColor = System.Drawing.SystemColors.ControlText;
             this.BtnRefresh.Image = global::HotelManagement.UI.Properties.Resources.refresh__2_;
-            this.BtnRefresh.Location = new System.Drawing.Point(381, 12);
+            this.BtnRefresh.Location = new System.Drawing.Point(338, 24);
             this.BtnRefresh.Name = "BtnRefresh";
             this.BtnRefresh.Size = new System.Drawing.Size(48, 50);
             this.BtnRefresh.TabIndex = 3;
@@ -109,16 +109,16 @@ namespace HotelManagement.UI.Views.Room
             // customButton2
             // 
             this.customButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.customButton2.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.customButton2.BackgroundColor = System.Drawing.Color.LightSeaGreen;
-            this.customButton2.BorderColor = System.Drawing.Color.CadetBlue;
+            this.customButton2.BackColor = System.Drawing.Color.DeepPink;
+            this.customButton2.BackgroundColor = System.Drawing.Color.DeepPink;
+            this.customButton2.BorderColor = System.Drawing.Color.HotPink;
             this.customButton2.BorderRadius = 5;
             this.customButton2.BorderSize = 1;
             this.customButton2.FlatAppearance.BorderSize = 0;
             this.customButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.customButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.customButton2.ForeColor = System.Drawing.Color.White;
-            this.customButton2.Location = new System.Drawing.Point(684, 12);
+            this.customButton2.Location = new System.Drawing.Point(648, 24);
             this.customButton2.Name = "customButton2";
             this.customButton2.Size = new System.Drawing.Size(188, 50);
             this.customButton2.TabIndex = 8;
@@ -141,8 +141,7 @@ namespace HotelManagement.UI.Views.Room
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(134)))), ((int)(((byte)(203)))));
-            this.ClientSize = new System.Drawing.Size(902, 474);
+            this.ClientSize = new System.Drawing.Size(883, 474);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.customButton2);
             this.Controls.Add(this.TbxSearch);
