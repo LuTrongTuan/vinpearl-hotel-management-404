@@ -258,7 +258,7 @@ namespace HotelManagement.UI.Views.Receipt
             // 
             // Dtpicker_out
             // 
-            this.Dtpicker_out.CustomFormat = "HH:mm tt";
+            this.Dtpicker_out.CustomFormat = "HH:mm";
             this.Dtpicker_out.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.Dtpicker_out.Location = new System.Drawing.Point(311, 160);
             this.Dtpicker_out.Name = "Dtpicker_out";
@@ -268,14 +268,14 @@ namespace HotelManagement.UI.Views.Receipt
             // 
             // Dtpicker_in
             // 
-            this.Dtpicker_in.CustomFormat = "HH:mm tt";
+            this.Dtpicker_in.CustomFormat = "HH:mm";
             this.Dtpicker_in.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.Dtpicker_in.Location = new System.Drawing.Point(311, 124);
             this.Dtpicker_in.Name = "Dtpicker_in";
             this.Dtpicker_in.ShowUpDown = true;
             this.Dtpicker_in.Size = new System.Drawing.Size(134, 27);
             this.Dtpicker_in.TabIndex = 39;
-            this.Dtpicker_in.Value = new System.DateTime(2021, 11, 16, 9, 27, 20, 0);
+            this.Dtpicker_in.Value = new System.DateTime(2021, 11, 17, 9, 27, 0, 0);
             // 
             // TbxNote
             // 

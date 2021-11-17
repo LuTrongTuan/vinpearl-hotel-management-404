@@ -30,6 +30,12 @@ namespace HotelManagement.UI.Components
             set => this.LblRoomName.Text = value;
         }
 
+        public string Customer
+        {
+            get => this.CustomerName.Text;
+            set => this.CustomerName.Text = value;
+        }
+
         public int BorderRadius
         {
             get => _borderRadius;

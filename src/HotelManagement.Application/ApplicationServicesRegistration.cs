@@ -30,6 +30,8 @@ namespace HotelManagement.Application
             container.Register<ITransacsion, Transacsion>();
             container.Register<ICustomerService, CustomerService>();
             container.Register<IServiceReceiptService, ServiceReceiptService>();
+            container.Register<IPriceCalculate, PriceCaculator>();
+            container.Register<ITimer, Timer>();
             return container;
         }
     }

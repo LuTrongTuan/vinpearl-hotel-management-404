@@ -33,6 +33,7 @@ namespace HotelManagement.Infrastructure
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Room> Rooms { get; set; }
         public virtual DbSet<RoomType> RoomTypes { get; set; }
+        public virtual DbSet<RoomReceipt> RoomReceipts { get; set; }
         public virtual DbSet<Floor> Floors { get; set; }
     }
 }

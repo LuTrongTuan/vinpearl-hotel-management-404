@@ -71,8 +71,6 @@ namespace HotelManagement.UI.Views.Room
                 }
                 floorLocation.Y += 130;
             }
-
-            _floorService = Program.Container.GetInstance<IFloorService>();
         }
 
         private new Point Location(Point point, bool wrap = true)
@@ -91,7 +89,8 @@ namespace HotelManagement.UI.Views.Room
                 BorderColor = Color.AliceBlue,
                 BorderSize = 2,
                 BorderRadius = 5,
-                Size = new Size(220, 120)
+                Size = new Size(220, 120),
+                Customer = source.Customer
             };
             switch (source.Status)
             {
@@ -112,7 +111,11 @@ namespace HotelManagement.UI.Views.Room
             return room;
         }
 
-        private async void BtnRefresh_Click(object sender, EventArgs e) => await LoadRoom();
+        private async void BtnRefresh_Click(object sender, EventArgs e)
+        {
+            _floorService = Program.Container.GetInstance<IFloorService>();
+            await LoadRoom();
+        }
 
         private void TbxSearch_KeyUp(object sender, KeyEventArgs e)
         {
@@ -169,9 +172,6 @@ namespace HotelManagement.UI.Views.Room
 
         private async void CloseForm(object sender, EventArgs e) => await LoadRoom();
 
-        private async void FrmMainRoom_Load(object sender, EventArgs e)
-        {
-            await LoadRoom();
-        }
+        private async void FrmMainRoom_Load(object sender, EventArgs e) => await LoadRoom();
     }
 }

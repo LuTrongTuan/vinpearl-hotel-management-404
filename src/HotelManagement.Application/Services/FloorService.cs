@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -29,7 +30,27 @@ namespace HotelManagement.Application.Services
         public async Task<IList<FloorDTO>> GetAll()
         {
             var query = await _worker.Floors.LoadRoomInFloor();
-            return _mapper.Map<IList<Floor>, IList<FloorDTO>>(query);
+            var result = _mapper.Map<IList<Floor>, IList<FloorDTO>>(query);
+            foreach (var floorDTO in result)
+                foreach (var room in floorDTO.Rooms)
+                    room.Customer = await GetCurrentCustomerName(room.Id);
+
+            return result;
+        }
+
+        private async Task<string> GetCurrentCustomerName(int roomId)
+        {
+            var room = await _worker.Rooms.Get(x => x.Id == roomId);
+            if (room.Status == 2) return string.Empty;
+            try
+            {
+                var receiptDetail = await _worker.ReceiptDetails.GetDetail(roomId);
+                return receiptDetail.Receipt.Customer.Name;
+            }
+            catch
+            {
+                return string.Empty;
+            }
         }
 
         public async Task<string> Add(int number)

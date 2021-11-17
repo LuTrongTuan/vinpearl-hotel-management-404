@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using HotelManagement.Application.DTOs.Receipt;
+using HotelManagement.Domain;
 
 namespace HotelManagement.Application.DTOs
 {

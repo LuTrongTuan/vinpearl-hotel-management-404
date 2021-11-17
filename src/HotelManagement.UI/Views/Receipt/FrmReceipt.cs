@@ -87,11 +87,11 @@ namespace HotelManagement.UI.Views.Receipt
             TbxIdentityNumber.Text = query.Customer.IdentityNumber;
             TbxCustomerName.Text = query.Customer.Name;
             TbxPhoneNumber.Text = query.Customer.PhoneNumber;
+            TbxPayment.Text = query.Receipt.Payment.ToString(CultureInfo.InvariantCulture);
             if (query.Customer.Gender) RbtMale.Checked = true;
             else RbtFemale.Checked = true;
             if (query.Receipt.Status == 0) CbxByDay.Checked = true;
-            else if (query.Receipt.Status == 1) CbxByHour.Checked = true;
-            //else CbxByNight.Checked = true;
+            if (query.Receipt.Status == 1) CbxByHour.Checked = true;
             LoadToGrid(query.ServiceReceipts);
         }
 
@@ -108,7 +108,7 @@ namespace HotelManagement.UI.Views.Receipt
 
             foreach (var x in source)
             {
-                ServiceGridView.Rows.Add(x.Name, x.Quantity, x.Price, x.Price * x.Quantity);
+                ServiceGridView.Rows.Add(x.Name, x.Quantity, MoneyFormat(x.Price), MoneyFormat(x.Price * x.Quantity));
             }
         }
         private void FrmReceipt_Load(object sender, EventArgs e)
@@ -122,34 +122,18 @@ namespace HotelManagement.UI.Views.Receipt
 
         private void CbxByHour_CheckedChanged(object sender, EventArgs e)
         {
-            if (CbxByDay.Checked /*|| CbxByNight.Checked*/)
-            {
+            if (CbxByDay.Checked)
                 CbxByDay.Checked = false;
-                //CbxByNight.Checked = false;
-            }
-            lbl_roomPrice.Text = "Giá phòng:" + _room.RoomType.ByHour.ToString("C", new CultureInfo("vi_VN"));
+            lbl_roomPrice.Text = "Giá phòng:" + MoneyFormat(_room.RoomType.ByHour);
         }
 
         private void CbxByDay_CheckedChanged(object sender, EventArgs e)
         {
-            if (CbxByHour.Checked /*|| CbxByNight.Checked*/)
-            {
+            if (CbxByHour.Checked)
                 CbxByHour.Checked = false;
-                //CbxByNight.Checked = false;
-            }
-            
-            lbl_roomPrice.Text = "Giá phòng:" + _room.RoomType.ByDay.ToString("C", new CultureInfo("vi_VN"));
-        }
-        private void CbxByNight_CheckedChanged(object sender, EventArgs e)
-        {
-            if (CbxByHour.Checked || CbxByDay.Checked)
-            {
-                CbxByHour.Checked = false;
-                CbxByDay.Checked = false;
-            }
-            lbl_roomPrice.Text = "Giá phòng:" + _room.RoomType.ByNight.ToString("C", new CultureInfo("vi_VN"));
-        }
 
+            lbl_roomPrice.Text = "Giá phòng:" + MoneyFormat(_room.RoomType.ByDay);
+        }
         #endregion
 
         private async void Checkin_Click(object sender, EventArgs e)
@@ -171,16 +155,26 @@ namespace HotelManagement.UI.Views.Receipt
                     Number = Convert.ToInt32(PeopleAmount.Text),
                     IdentificationId = Convert.ToInt32(cbx_giayTo.SelectedValue)
                 },
-                ServiceReceipts = _serviceInOrder,
-                
-                ReceiptDetail = new ()
-                {
-                    CheckIn = Convert.ToDateTime(Dtpicker_checkIn.Value),
-                    CheckOut = Convert.ToDateTime(Dtpicker_checkOut.Value)
-                }
+                ServiceReceipts = _serviceInOrder
             };
-            if (CbxByDay.Checked) transaction.Receipt.Status = 0;
-            else if (CbxByHour.Checked) transaction.Receipt.Status = 1;
+            if (CbxByDay.Checked)
+            {
+                transaction.Receipt.Status = 0;
+                transaction.ReceiptDetail = new ReceiptDetailDTO
+                {
+                    CheckIn = Dtpicker_checkIn.Value,
+                    CheckOut = Dtpicker_checkOut.Value
+                };
+            }
+            else if (CbxByHour.Checked)
+            {
+                transaction.Receipt.Status = 1;
+                transaction.ReceiptDetail = new ReceiptDetailDTO
+                {
+                    CheckIn = Dtpicker_in.Value,
+                    CheckOut = Dtpicker_out.Value
+                };
+            }
             else transaction.Receipt.Status = 2;
             MessageBox.Show(await _transacsion.Create(transaction));
         }
@@ -193,7 +187,7 @@ namespace HotelManagement.UI.Views.Receipt
         {
             _serviceId = Convert.ToInt32(CmbService.SelectedValue);
             _serviceDTO = await _service.GetDetail(_serviceId);
-            Price.Text = _serviceDTO.Price.ToString(CultureInfo.InvariantCulture);
+            Price.Text = MoneyFormat(_serviceDTO.Price);
         }
 
         private void ServiceQuantity_ValueChanged(object sender, EventArgs e)
@@ -230,5 +224,7 @@ namespace HotelManagement.UI.Views.Receipt
                 _serviceInOrder.Add(item);
             LoadToGrid(_serviceInOrder);
         }
+
+        private string MoneyFormat(double money) => money.ToString("C", new CultureInfo("vi-VN"));
     }
 }

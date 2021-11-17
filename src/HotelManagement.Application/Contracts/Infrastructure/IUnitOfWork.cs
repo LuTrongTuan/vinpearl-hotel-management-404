@@ -19,5 +19,6 @@ namespace HotelManagement.Application.Contracts.Infrastructure
         IServiceTypeRepository ServiceTypes { get; set; }
         IFloorRepository Floors { get; set; }
         IIdentificationRepository Identifications { get; set; }
+        IRoomReceiptRepository RoomReceipts { get; set; }
     }
 }

@@ -232,7 +232,7 @@ namespace HotelManagement.UI.Components
         }
         private void RemovePlaceholder()
         {
-            if (_isPlaceHolder && _placeHolder != "")
+            if (_isPlaceHolder && _placeHolder != "" && textBox1.Text == PlaceHolder)
             {
                 _isPlaceHolder = false;
                 textBox1.Text = "";
