@@ -15,7 +15,6 @@ namespace HotelManagement.Application.Services
         private readonly IEncrypt _encrypt;
         private ISendMail _isSendMail;
         private Account _account;
-        private Employee _employee;
         private string _mss, rawPassword, _encryptPassword;
 
         public PasswordService(IUnitOfWork work, IEncrypt encrypt, ISendMail isSendMail)
@@ -45,18 +44,19 @@ namespace HotelManagement.Application.Services
         #region Chức năng quên mật khẩu
         public async Task<string> forgotPassword(string email)
         {
-            _employee = await _work.Employees.Get(c => c.Email == email);
-            if (_employee != null)
+            _account = await _work.Accounts.Get(c => c.Employee.Email == email);
+            if (_account != null)
             {
                 rawPassword = new Random().password();
                 _account.Password = _encrypt.Encrypt(rawPassword);
                 await _work.Accounts.Update(_account);
+                await _work.Commit();
                 _isSendMail.sendMail(new AccountDTO()
                 {
                     Email = email,
                     Password = rawPassword
                 });
-                return "Một email chưa mật khẩu đã gửi tới email của bạn";
+                return "Một email chứa password đã gửi tới Email của bạn\nBạn vui lòng kiếm tra email để lấy mật khẩu đăng nhập";
             }
 
             return "Email không tồn tại, vui lòng nhập lại email!";

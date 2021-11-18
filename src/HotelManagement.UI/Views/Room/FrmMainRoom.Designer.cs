@@ -149,7 +149,7 @@ namespace HotelManagement.UI.Views.Room
             this.BtnBack.BorderSize = 2;
             this.BtnBack.FlatAppearance.BorderSize = 0;
             this.BtnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnBack.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.BtnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.BtnBack.ForeColor = System.Drawing.SystemColors.ControlText;
             this.BtnBack.Image = global::HotelManagement.UI.Properties.Resources.previous;
             this.BtnBack.Location = new System.Drawing.Point(21, 85);
@@ -186,6 +186,7 @@ namespace HotelManagement.UI.Views.Room
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(134)))), ((int)(((byte)(203)))));
             this.ClientSize = new System.Drawing.Size(883, 474);
             this.Controls.Add(this.CmbRoomType);
             this.Controls.Add(this.CmbFloor);

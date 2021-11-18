@@ -49,6 +49,8 @@ namespace HotelManagement.UI.Views.Room
         {
             var query = await _floorService.Get();
             CmbFloor.DataSource = query;
+            CmbFloor.DisplayMember = "Floor";
+            CmbFloor.ValueMember = "Id";
         }
 
         private async void BtnAddRoomType_Click(object sender, EventArgs e)
@@ -87,7 +89,7 @@ namespace HotelManagement.UI.Views.Room
             var createRoom = new CreateRoomDTO
             {
                 Quantity = Convert.ToInt32(TbxQuantity.Text),
-                Floor = Convert.ToInt32(CmbFloor.Text),
+                Floor = Convert.ToInt32(CmbFloor.SelectedValue),
                 RoomType = Convert.ToInt32(CmbRoomType.SelectedValue)
             };
 

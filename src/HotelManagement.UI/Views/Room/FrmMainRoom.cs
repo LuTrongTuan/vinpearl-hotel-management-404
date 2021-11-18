@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using HotelManagement.Application.Contracts.Services;
 using HotelManagement.Application.DTOs.Room;
+using HotelManagement.Application.Services;
 using HotelManagement.UI.Components;
 using HotelManagement.UI.Views.Receipt;
 
@@ -191,7 +192,7 @@ namespace HotelManagement.UI.Views.Room
         private async void FrmMainRoom_Load(object sender, EventArgs e)
         {
             await LoadRoom();
-            _firstLoad = true;
+            //_firstLoad = true;
             var roomType = await _roomTypeService.Get();
             var floor = await _floorService.Get();
             floor.Insert(0, new FloorDTO {Floor = "Tầng", Id = -1});
@@ -202,6 +203,11 @@ namespace HotelManagement.UI.Views.Room
             CmbFloor.DataSource = floor;
             CmbFloor.DisplayMember = "Floor";
             CmbFloor.ValueMember = "Id";
+            if (Session.Role == 1)
+            {
+                this.customButton1.Visible = false;
+                this.customButton2.Visible = false;
+            }
         }
 
         private void BtnBack_Click(object sender, EventArgs e)
@@ -224,17 +230,23 @@ namespace HotelManagement.UI.Views.Room
         private async void CmbFloor_SelectedIndexChanged(object sender, EventArgs e)
         {
             _floor = (CmbFloor.SelectedItem as FloorDTO)?.Floor;
-            if(_floor is "Tầng") _floor = string.Empty;
-            if(_firstLoad)
-                await LoadRoom();
+            if (_floor is "Tầng")
+            {
+                _floor = string.Empty;
+                return;
+            }
+            await LoadRoom();
         }
 
         private async void CmbRoomType_SelectedIndexChanged(object sender, EventArgs e)
         {
             _roomType = (CmbRoomType.SelectedItem as RoomTypeDTO)?.Name;
-            if(_roomType is "Loại phòng") _roomType = string.Empty;
-            if(_firstLoad)
-                await LoadRoom();
+            if(_roomType is "Loại phòng")
+            {
+                _roomType = string.Empty;
+                return;
+            }
+            await LoadRoom();
         }
     }
 }
