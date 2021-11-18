@@ -12,6 +12,6 @@ namespace HotelManagement.Application.Contracts.Services
         Task<IEnumerable<EmployeeDTO>> GetList();
         Task<IList<EmployeeDTO>> Find(string name);
         Task<string> AddEmployee(Account obj);
-        Task<string> UpdateEmployee(Employee obj);
+        Task<string> UpdateEmployee(EmployeeDTO obj);
     }
 }

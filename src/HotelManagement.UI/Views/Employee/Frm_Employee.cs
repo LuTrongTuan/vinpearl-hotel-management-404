@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using HotelManagement.Application.Contracts.Services;
+using HotelManagement.Application.DTOs.Employee;
 using HotelManagement.Domain;
 using HotelManagement.UI.Contracts;
 
@@ -18,7 +13,9 @@ namespace HotelManagement.UI.Views.Employee
         private readonly IEmployeeService _employee;
         private readonly IConfirm _confirm;
         private readonly IRoleService _roleService;
-        public Frm_Employee(IEmployeeService emp,IConfirm con, IRoleService roleService)
+        private int rowIndex, IdClick;
+        private string _phone;
+        public Frm_Employee(IEmployeeService emp, IConfirm con, IRoleService roleService)
         {
             InitializeComponent();
             _employee = emp;
@@ -37,7 +34,8 @@ namespace HotelManagement.UI.Views.Employee
         public async void loadData()
         {
             var name = await _employee.GetList();
-            dataGridView1.ColumnCount = 8;
+
+            dataGridView1.ColumnCount = 9;
             dataGridView1.Columns[0].Name = "Họ tên";
             dataGridView1.Columns[1].Name = "Ngày sinh";
             dataGridView1.Columns[2].Name = "email";
@@ -46,12 +44,14 @@ namespace HotelManagement.UI.Views.Employee
             dataGridView1.Columns[5].Name = "Giới tính";
             dataGridView1.Columns[6].Name = "Trạng thái";
             dataGridView1.Columns[7].Name = "Vai trò";
+            dataGridView1.Columns[8].Name = "Id";
+            dataGridView1.Columns[8].Visible = false;
 
             dataGridView1.Rows.Clear();
-            foreach (var x in name.ToList())
+            foreach (var x in name)
             {
                 dataGridView1.Rows.Add(x.Name, x.Birthday, x.Email, x.Address, x.PhoneNumber,
-                    x.Gender ? "Nam" : "Nữ", x.Status ? "Hoạt động" : "Ngưng hoạt động", x.NameRole);
+                    x.Gender ? "Nam" : "Nữ", x.Status ? "Hoạt động" : "Không hoạt động", x.NameRole,x.Id);
             }
         }
         private async void btn_addEmployee_Click(object sender, EventArgs e)
@@ -63,18 +63,18 @@ namespace HotelManagement.UI.Views.Employee
                     Name = TxtName.Text,
                     Email = TxtEmail.Text,
                     Birthday = dateTimePicker1.Value,
-                    Address =  TxtDiachi.Text,
+                    Address = TxtDiachi.Text,
                     PhoneNumber = TxtPhone.Text,
                     Status = checked_HD.Checked,
                     Gender = rdoNam.Checked,
-                    
+
                 },
                 UserName = TxtUsername.Text,
                 RoleId = Convert.ToInt32(cboVaitro.SelectedValue)
             };
 
             if (!checkNull()) return;
-            
+
             if (_confirm.IsConfirm("Bạn chắc chắn muốn thêm "))
             {
                 await _employee.AddEmployee(_emp);
@@ -85,10 +85,8 @@ namespace HotelManagement.UI.Views.Employee
         bool checkNull()
         {
             if (string.IsNullOrEmpty(TxtName.Text) || string.IsNullOrEmpty(TxtEmail.Text) ||
-                string.IsNullOrEmpty(TxtDiachi.Text) || string.IsNullOrEmpty(TxtPhone.Text) ||
-                string.IsNullOrEmpty(TxtUsername.Text))
-            {
-                MessageBox.Show("Không được để trống thông tin \n Vui lòng nhập lại", "Thông báo");
+                string.IsNullOrEmpty(TxtDiachi.Text) || string.IsNullOrEmpty(TxtPhone.Text))
+            { MessageBox.Show("Không được để trống thông tin \n Vui lòng nhập lại", "Thông báo");
                 return false;
             }
 
@@ -139,9 +137,8 @@ namespace HotelManagement.UI.Views.Employee
             dataGridView1.Rows.Clear();
             foreach (var x in name.ToList())
             {
-                var role = await _roleService.GetRoles();
                 dataGridView1.Rows.Add(x.Name, x.Birthday, x.Email, x.Address, x.PhoneNumber,
-                    x.Gender ? "Nam" : "Nữ", x.Status ? "Hoạt động" : "Ngưng hoạt động");
+                    x.Gender ? "Nam" : "Nữ", x.Status ? "Hoạt động" : "Không hoạt động", x.NameRole);
             }
         }
 
@@ -152,20 +149,44 @@ namespace HotelManagement.UI.Views.Employee
 
         private async void btn_edit_Click(object sender, EventArgs e)
         {
-            //_.Nameme = TxtName.Text;
-            //_emp.Birthday = dateTimePicker1.Value;
-            //_emp.PhoneNumber = TxtPhone.Text;
-            //_emp.Email = TxtEmail.Text;
-            //_emp.Address = TxtDiachi.Text;
-            //_emp.Gender = rdoNam.Checked;
-            //_emp.Status = checked_HD.Checked;
+            var x = await _employee.GetList();
+            var _employeeDTOs = x.FirstOrDefault(c => c.Id == IdClick);
+            _employeeDTOs.Name = TxtName.Text;
+            _employeeDTOs.Birthday = dateTimePicker1.Value;
+            _employeeDTOs.Email = TxtEmail.Text;
+            _employeeDTOs.Address = TxtDiachi.Text;
+            _employeeDTOs.PhoneNumber = TxtPhone.Text;
+            _employeeDTOs.Gender = rdoNam.Checked;
+            _employeeDTOs.Status = checked_HD.Checked;
+            if (!checkNull()) return;
+            if (_confirm.IsConfirm("bạn chắc chắn muốn sửa:"))
+            {
+                MessageBox.Show(await _employee.UpdateEmployee(_employeeDTOs),"Thông báo");
+                loadData();
+            }
 
-            //if (!checkNull()) return;
-            //if (_confirm.IsConfirm("bạn chắc muốn sửa"))
-            //{
-            //    await _employee.UpdateEmployee(_emp);
-            //    MessageBox.Show("sửa thành công");
-            //}
+        } 
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            rowIndex = e.RowIndex;
+            if (rowIndex == -1) return;
+            TxtName.Text = dataGridView1.Rows[rowIndex].Cells[0].Value.ToString();
+            dateTimePicker1.Text = dataGridView1.Rows[rowIndex].Cells[1].Value.ToString();
+            TxtEmail.Text = dataGridView1.Rows[rowIndex].Cells[2].Value.ToString();
+            TxtDiachi.Text = dataGridView1.Rows[rowIndex].Cells[3].Value.ToString();
+            TxtPhone.Text = dataGridView1.Rows[rowIndex].Cells[4].Value.ToString();
+            rdoNam.Checked = dataGridView1.Rows[rowIndex].Cells[5].Value.ToString() == "Nam"?true:false;
+            rdoNu.Checked = dataGridView1.Rows[rowIndex].Cells[5].Value.ToString() == "Nữ" ? true : false;
+            if (dataGridView1.Rows[rowIndex].Cells[6].Value.ToString() == "Hoạt động")
+            {
+                checked_HD.Checked = true;
+            }
+            else
+            {
+                checked_NHD.Checked = true;
+            }
+            cboVaitro.Text = dataGridView1.Rows[rowIndex].Cells[7].Value.ToString();
+            IdClick = dataGridView1.Rows[rowIndex].Cells[8].Value.GetHashCode();
         }
     }
 }
