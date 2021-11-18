@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -21,10 +20,10 @@ namespace HotelManagement.Application.Services
             _mapper = mapper;
         }
 
-        public async Task<IList<int>> Get()
+        public async Task<IList<FloorDTO>> Get()
         {
             var query = await _worker.Floors.GetAll();
-            return query.Select(x => x.Number).ToList();
+            return _mapper.Map<IList<Floor>, IList<FloorDTO>>(query);
         }
 
         public async Task<IList<FloorDTO>> GetAll()
@@ -33,7 +32,10 @@ namespace HotelManagement.Application.Services
             var result = _mapper.Map<IList<Floor>, IList<FloorDTO>>(query);
             foreach (var floorDTO in result)
                 foreach (var room in floorDTO.Rooms)
+                {
                     room.Customer = await GetCurrentCustomerName(room.Id);
+                    room.Type = await GetRoomTypeName(room.Id);
+                }
 
             return result;
         }
@@ -51,6 +53,12 @@ namespace HotelManagement.Application.Services
             {
                 return string.Empty;
             }
+        }
+
+        private async Task<string> GetRoomTypeName(int id)
+        {
+            var type = await _worker.Rooms.GetDetail(id);
+            return type.RoomType.Name;
         }
 
         public async Task<string> Add(int number)

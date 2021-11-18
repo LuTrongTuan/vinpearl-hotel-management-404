@@ -37,6 +37,9 @@ namespace HotelManagement.UI.Views.Room
             this.TbxSearch = new System.Windows.Forms.TextBox();
             this.customButton2 = new HotelManagement.UI.Components.CustomButton();
             this.label1 = new System.Windows.Forms.Label();
+            this.BtnBack = new HotelManagement.UI.Components.CustomButton();
+            this.CmbFloor = new System.Windows.Forms.ComboBox();
+            this.CmbRoomType = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -57,7 +60,7 @@ namespace HotelManagement.UI.Views.Room
             this.customButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.customButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.customButton1.ForeColor = System.Drawing.Color.White;
-            this.customButton1.Location = new System.Drawing.Point(406, 24);
+            this.customButton1.Location = new System.Drawing.Point(489, 24);
             this.customButton1.Name = "customButton1";
             this.customButton1.Size = new System.Drawing.Size(188, 50);
             this.customButton1.TabIndex = 1;
@@ -89,7 +92,7 @@ namespace HotelManagement.UI.Views.Room
             this.BtnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnRefresh.ForeColor = System.Drawing.SystemColors.ControlText;
             this.BtnRefresh.Image = global::HotelManagement.UI.Properties.Resources.refresh__2_;
-            this.BtnRefresh.Location = new System.Drawing.Point(338, 24);
+            this.BtnRefresh.Location = new System.Drawing.Point(435, 24);
             this.BtnRefresh.Name = "BtnRefresh";
             this.BtnRefresh.Size = new System.Drawing.Size(48, 50);
             this.BtnRefresh.TabIndex = 3;
@@ -118,7 +121,7 @@ namespace HotelManagement.UI.Views.Room
             this.customButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.customButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.customButton2.ForeColor = System.Drawing.Color.White;
-            this.customButton2.Location = new System.Drawing.Point(648, 24);
+            this.customButton2.Location = new System.Drawing.Point(683, 24);
             this.customButton2.Name = "customButton2";
             this.customButton2.Size = new System.Drawing.Size(188, 50);
             this.customButton2.TabIndex = 8;
@@ -137,11 +140,56 @@ namespace HotelManagement.UI.Views.Room
             this.label1.TabIndex = 9;
             this.label1.Text = "Search:";
             // 
+            // BtnBack
+            // 
+            this.BtnBack.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.BtnBack.BackgroundColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.BtnBack.BorderColor = System.Drawing.Color.Transparent;
+            this.BtnBack.BorderRadius = 5;
+            this.BtnBack.BorderSize = 2;
+            this.BtnBack.FlatAppearance.BorderSize = 0;
+            this.BtnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnBack.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.BtnBack.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.BtnBack.Image = global::HotelManagement.UI.Properties.Resources.previous;
+            this.BtnBack.Location = new System.Drawing.Point(21, 85);
+            this.BtnBack.Name = "BtnBack";
+            this.BtnBack.Size = new System.Drawing.Size(117, 44);
+            this.BtnBack.TabIndex = 10;
+            this.BtnBack.Text = "Trở lại";
+            this.BtnBack.TextColor = System.Drawing.SystemColors.ControlText;
+            this.BtnBack.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnBack.UseVisualStyleBackColor = false;
+            this.BtnBack.Click += new System.EventHandler(this.BtnBack_Click);
+            // 
+            // CmbFloor
+            // 
+            this.CmbFloor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CmbFloor.FormattingEnabled = true;
+            this.CmbFloor.Location = new System.Drawing.Point(552, 95);
+            this.CmbFloor.Name = "CmbFloor";
+            this.CmbFloor.Size = new System.Drawing.Size(151, 28);
+            this.CmbFloor.TabIndex = 11;
+            this.CmbFloor.SelectedIndexChanged += new System.EventHandler(this.CmbFloor_SelectedIndexChanged);
+            // 
+            // CmbRoomType
+            // 
+            this.CmbRoomType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CmbRoomType.FormattingEnabled = true;
+            this.CmbRoomType.Location = new System.Drawing.Point(720, 95);
+            this.CmbRoomType.Name = "CmbRoomType";
+            this.CmbRoomType.Size = new System.Drawing.Size(151, 28);
+            this.CmbRoomType.TabIndex = 12;
+            this.CmbRoomType.SelectedIndexChanged += new System.EventHandler(this.CmbRoomType_SelectedIndexChanged);
+            // 
             // FrmMainRoom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(883, 474);
+            this.Controls.Add(this.CmbRoomType);
+            this.Controls.Add(this.CmbFloor);
+            this.Controls.Add(this.BtnBack);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.customButton2);
             this.Controls.Add(this.TbxSearch);
@@ -165,5 +213,8 @@ namespace HotelManagement.UI.Views.Room
         private System.Windows.Forms.TextBox TbxSearch;
         private Components.CustomButton customButton2;
         private System.Windows.Forms.Label label1;
+        private Components.CustomButton BtnBack;
+        private System.Windows.Forms.ComboBox CmbFloor;
+        private System.Windows.Forms.ComboBox CmbRoomType;
     }
 }

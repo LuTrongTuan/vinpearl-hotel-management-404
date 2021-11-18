@@ -43,7 +43,7 @@ namespace HotelManagement.UI.Views.Room
             PanelContainer.Controls.Clear();
             foreach (var floor in request)
             {
-                var btn = CreateButton(floor.Floor);
+                var btn = CreateButton(Convert.ToInt32(floor.Floor));
                 btn.Location = floorLocation;
                 roomLocation.Y = floorLocation.Y;
                 roomLocation.X = 120;

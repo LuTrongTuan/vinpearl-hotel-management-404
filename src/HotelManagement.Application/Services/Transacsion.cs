@@ -60,7 +60,35 @@ namespace HotelManagement.Application.Services
             await _worker.Commit();
             return "Thành công";
         }
-        public async Task Update(TransactionDTO source){}
+
+        public async Task<string> Update(TransactionDTO source)
+        {
+            var room = await _worker.Rooms.GetDetail(source.RoomId);
+            var data = await _worker.ReceiptDetails.GetDetail(source.RoomId);
+            _mapper.Map(source.Receipt, data.Receipt);
+            _mapper.Map(source.ReceiptDetail, data);
+            _mapper.Map(source.Customer, data.Receipt.Customer);
+            _mapper.Map(source.ServiceReceipts, data.ServiceReceipts);
+            data.Receipt.Payment = data.Receipt.Status switch
+            {
+                0 => _calculator.ByDay(source, room.RoomType.ByDay),
+                1 => _calculator.ByHour(source, room.RoomType.ByHour),
+                _ => data.Receipt.Payment
+            };
+            await _worker.ReceiptDetails.Update(data);
+            await _worker.Commit();
+            return "Thành công";
+        }
+
+        public async Task<string> Checkout(int id)
+        {
+            var room = await _worker.Rooms.Get(x => x.Id == id);
+            room.Status = 1;
+            await _worker.Rooms.Update(room);
+            await _worker.Commit();
+            return "Thành công";
+        }
+
         public async Task<TransactionDTO> Query(int roomId)
         {
             try

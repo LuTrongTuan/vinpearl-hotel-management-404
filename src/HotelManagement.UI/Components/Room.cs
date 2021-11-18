@@ -60,6 +60,12 @@ namespace HotelManagement.UI.Components
             set => BackColor = value;
         }
 
+        public string Type
+        {
+            get => this.LblRoomType.Text;
+            set => this.LblRoomType.Text = value;
+        }
+
         protected override void OnPaint(PaintEventArgs pevent)
         {
             base.OnPaint(pevent);

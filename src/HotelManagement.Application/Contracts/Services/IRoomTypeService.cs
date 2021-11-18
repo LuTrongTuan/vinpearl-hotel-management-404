@@ -8,7 +8,7 @@ namespace HotelManagement.Application.Contracts.Services
     {
         Task Add(RoomTypeDTO roomtype);
         Task Update(RoomTypeDTO roomType);
-        Task<IEnumerable<RoomTypeDTO>> Get();
+        Task<IList<RoomTypeDTO>> Get();
         Task<RoomTypeDTO> GetType(int id);
     }
 }

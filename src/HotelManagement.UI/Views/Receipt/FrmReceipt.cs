@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using HotelManagement.Application.Contracts.Services;
 using HotelManagement.Application.DTOs;
@@ -13,6 +14,7 @@ namespace HotelManagement.UI.Views.Receipt
 {
     public partial class FrmReceipt : Form
     {
+        private readonly Regex _pattern = new(@"\W|\.|₫");
         private readonly ITransacsion _transacsion;
         private readonly IService _service;
         private IList<ServiceReceiptDTO> _serviceInOrder = new List<ServiceReceiptDTO>();
@@ -74,6 +76,7 @@ namespace HotelManagement.UI.Views.Receipt
             {
                 BtnConfirm.Text = "Nhận phòng";
                 BtnConfirm.Click += Checkin_Click;
+                BtnUpdate.Enabled = false;
             }
         }
 
@@ -87,7 +90,7 @@ namespace HotelManagement.UI.Views.Receipt
             TbxIdentityNumber.Text = query.Customer.IdentityNumber;
             TbxCustomerName.Text = query.Customer.Name;
             TbxPhoneNumber.Text = query.Customer.PhoneNumber;
-            TbxPayment.Text = query.Receipt.Payment.ToString(CultureInfo.InvariantCulture);
+            LblPayment.Text = MoneyFormat(query.Receipt.Payment - query.Receipt.Deposit);
             if (query.Customer.Gender) RbtMale.Checked = true;
             else RbtFemale.Checked = true;
             if (query.Receipt.Status == 0) CbxByDay.Checked = true;
@@ -138,6 +141,60 @@ namespace HotelManagement.UI.Views.Receipt
 
         private async void Checkin_Click(object sender, EventArgs e)
         {
+            var transaction = GetTransaction();
+            MessageBox.Show(await _transacsion.Create(transaction));
+        }
+
+        private async void Checkout_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(await _transacsion.Checkout(_roomId));
+        }
+        private async void CmbService_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _serviceId = Convert.ToInt32(CmbService.SelectedValue);
+            _serviceDTO = await _service.GetDetail(_serviceId);
+            Price.Text = MoneyFormat(_serviceDTO.Price);
+        }
+
+        private void ServiceQuantity_ValueChanged(object sender, EventArgs e)
+        {
+            if(_serviceDTO is null) return;
+            Price.Text = MoneyFormat(Convert.ToInt32(ServiceQuantity.Value) * _serviceDTO.Price);
+        }
+
+        private bool DuplicateHandler(ServiceReceiptDTO data)
+        {
+            var item = _serviceInOrder.FirstOrDefault(x => x.ServiceId == data.ServiceId);
+            if (item != null)
+            {
+                item.Quantity += data.Quantity;
+                item.Total += data.Total;
+            }
+
+            return item == null;
+        }
+
+        private void btb_cancel_Click(object sender, EventArgs e) => Close();
+
+        private void BtnAddService_Click(object sender, EventArgs e)
+        {
+
+            var item = new ServiceReceiptDTO()
+            {
+                Name = CmbService.Text,
+                Quantity = Convert.ToInt32(ServiceQuantity.Text),
+                ServiceId = Convert.ToInt32(CmbService.SelectedValue),
+                Price = _serviceDTO.Price,
+                Total = Convert.ToDouble(Remove(Price.Text))
+            };
+            if(DuplicateHandler(item))
+                _serviceInOrder.Add(item);
+            LoadToGrid(_serviceInOrder);
+            ServiceQuantity.Value = 1;
+        }
+
+        private TransactionDTO GetTransaction()
+        {
             var transaction = new TransactionDTO()
             {
                 RoomId = _roomId,
@@ -176,55 +233,18 @@ namespace HotelManagement.UI.Views.Receipt
                 };
             }
             else transaction.Receipt.Status = 2;
-            MessageBox.Show(await _transacsion.Create(transaction));
-        }
 
-        private void Checkout_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Đang phát triển");
-        }
-        private async void CmbService_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            _serviceId = Convert.ToInt32(CmbService.SelectedValue);
-            _serviceDTO = await _service.GetDetail(_serviceId);
-            Price.Text = MoneyFormat(_serviceDTO.Price);
-        }
-
-        private void ServiceQuantity_ValueChanged(object sender, EventArgs e)
-        {
-            if(_serviceDTO is null) return;
-            Price.Text = (Convert.ToInt32(ServiceQuantity.Value) * _serviceDTO.Price).ToString(CultureInfo.InvariantCulture);
-        }
-
-        private bool DuplicateHandler(ServiceReceiptDTO data)
-        {
-            var item = _serviceInOrder.FirstOrDefault(x => x.ServiceId == data.ServiceId);
-            if (item != null)
-            {
-                item.Quantity += data.Quantity;
-                item.Total += data.Total;
-            }
-
-            return item == null;
-        }
-
-        private void btb_cancel_Click(object sender, EventArgs e) => Close();
-
-        private void BtnAddService_Click(object sender, EventArgs e)
-        {
-            var item = new ServiceReceiptDTO()
-            {
-                Name = CmbService.Text,
-                Quantity = Convert.ToInt32(ServiceQuantity.Text),
-                ServiceId = Convert.ToInt32(CmbService.SelectedValue),
-                Price = _serviceDTO.Price,
-                Total = Convert.ToDouble(Price.Text)
-            };
-            if(DuplicateHandler(item))
-                _serviceInOrder.Add(item);
-            LoadToGrid(_serviceInOrder);
+            return transaction;
         }
 
         private string MoneyFormat(double money) => money.ToString("C", new CultureInfo("vi-VN"));
+
+        private string Remove(string money) => _pattern.Replace(money, "");
+
+        private async void BtnUpdate_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(await _transacsion.Update(GetTransaction()));
+            ShowReceipt();
+        }
     }
 }

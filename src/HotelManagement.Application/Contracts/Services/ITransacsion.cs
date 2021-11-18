@@ -13,5 +13,7 @@ namespace HotelManagement.Application.Contracts.Services
         Task<RoomDetailDTO> GetRoomDetail(int id);
         Task<IList<ServiceDTO>> GetServices();
         Task<IList<IdentificationDTO>> GetIdentifications();
+        Task<string> Update(TransactionDTO source);
+        Task<string> Checkout(int id);
     }
 }

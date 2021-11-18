@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using HotelManagement.Application.DTOs.Receipt;
 using HotelManagement.Application.DTOs.Service;
 using HotelManagement.Domain;
 
@@ -13,6 +14,7 @@ namespace HotelManagement.Application.Profiles
                 .ForMember(x => x.ServiceType, d => d.Ignore());
             CreateMap<ServiceType, ServicetypeDTO>();
             CreateMap<Service, ServiceDTO>().ReverseMap();
+            CreateMap<ServiceReceiptDTO, ServiceReceipt>();
         }
     }
 }
