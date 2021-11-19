@@ -2,11 +2,15 @@
 using System.Drawing;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using HotelManagement.Application.Contracts.Services;
 using HotelManagement.Application.DTOs.Room;
+using HotelManagement.Application.Services;
 using HotelManagement.UI.Components;
 using HotelManagement.UI.Contracts;
+using HotelManagement.UI.Views.Receipt;
 
 
 namespace HotelManagement.UI.Views.Room
@@ -44,8 +48,9 @@ namespace HotelManagement.UI.Views.Room
             CbxNameType.Enabled = false;
         }
 
-        async void LoadRoom()
+        async Task LoadRoom()
         {
+            TbxName.Enabled = false;
             var roomLocation = new Point(140, 5);
             var floorLocation = new Point(10, 5);
             var numberOf = (PanelWidth - 100) / 250;
@@ -55,12 +60,13 @@ namespace HotelManagement.UI.Views.Room
             foreach (var floor in request)
             {
                 var btn = CreateButton(Convert.ToInt32(floor.Floor));
+                var roomListDtos = floor.Rooms.ToList();
                 btn.Location = floorLocation;
                 roomLocation.Y = floorLocation.Y;
                 roomLocation.X = 140;
                 this.panel1.Controls.Add(btn);
                 var count = numberOf;
-                foreach (var room in floor.Rooms)
+                foreach (var room in roomListDtos)
                 {
                     _room = SetAttribute(room);
                     _room.Location = roomLocation;
@@ -80,7 +86,8 @@ namespace HotelManagement.UI.Views.Room
                 }
                 floorLocation.Y += 130;
             }
-            _floorService = Program.Container.GetInstance<IFloorService>();
+            var a = new Thread(() => _floorService = Program.Container.GetInstance<IFloorService>());
+            a.Start();
         }
 
         private CustomButton CreateButton(int floorNumber)
@@ -127,13 +134,15 @@ namespace HotelManagement.UI.Views.Room
                 BorderColor = Color.AliceBlue,
                 BorderSize = 2,
                 BorderRadius = 5,
-                Size = new Size(220, 120)
+                Size = new Size(220, 120),
+                Type = source.Type
             };
             switch (source.Status)
             {
                 case 0:
                     room.Background = Color.Red;
                     room.IconStatus = Properties.Resources.user;
+                    room.Customer = source.Customer;
                     break;
                 case 1:
                     room.Background = Color.Yellow;
@@ -170,12 +179,6 @@ namespace HotelManagement.UI.Views.Room
             }
             roomTypeDTO.ByHour = Convert.ToDouble(TbxHour.Text);
 
-            var type = await _roomService.Get();
-            if (type.Any(c => c.Name == TbxName.Text))
-            {
-                MessageBox.Show("Tên phòng đã tồn tại");
-                return;
-            }
             _roomDetail.Name = TbxName.Text;
             if (CbxActive.Checked) _roomDetail.Status = 0;
             if (CbxDeactive.Checked) _roomDetail.Status = 2;

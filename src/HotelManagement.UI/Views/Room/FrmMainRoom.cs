@@ -68,7 +68,6 @@ namespace HotelManagement.UI.Views.Room
                 {
                     _room = SetAttribute(room);
                     _room.Location = roomLocation;
-
                     _room.Click += CreateReceiptForm;
                     if (count == 1)
                     {
@@ -124,13 +123,12 @@ namespace HotelManagement.UI.Views.Room
                     room.IconStatus = Properties.Resources.bed;
                     break;
             }
-
             return room;
         }
 
         private async void BtnRefresh_Click(object sender, EventArgs e)
         {
-            //_floorService = Program.Container.GetInstance<IFloorService>();
+            _floorService = Program.Container.GetInstance<IFloorService>();
             await LoadRoom();
         }
 
@@ -144,11 +142,11 @@ namespace HotelManagement.UI.Views.Room
             var roomLocation = new Point(140, 5);
             var floorLocation = new Point(10, 5);
             var numberOf = (PanelWidth - 100) / 250;
-            var requestt = await _roomService.Get(name);
-            if (requestt.Count == 0) return;
+            var request = await _roomService.Get(name);
+            if (request.Count == 0) return;
             PanelContainer.Controls.Clear();
             var count = numberOf;
-            foreach (var room in requestt)
+            foreach (var room in request)
             {
                 _room = SetAttribute(room);
                 _room.Location = roomLocation;
@@ -167,7 +165,8 @@ namespace HotelManagement.UI.Views.Room
                 this.PanelContainer.Controls.Add(_room);
             }
             floorLocation.Y += 130;
-            _floorService = Program.Container.GetInstance<IFloorService>();
+            var a = new Thread(() => _floorService = Program.Container.GetInstance<IFloorService>());
+            a.Start();
         }
 
         private CustomButton CreateButton(int floorNumber)
@@ -200,8 +199,8 @@ namespace HotelManagement.UI.Views.Room
             //_firstLoad = true;
             var roomType = await _roomTypeService.Get();
             var floor = await _floorService.Get();
-            floor.Insert(0, new FloorDTO {Floor = "Tầng", Id = -1});
-            roomType.Insert(0, new RoomTypeDTO { Name = "Loại phòng", Id = -1});
+            floor.Insert(0, new FloorDTO { Floor = "Tầng", Id = -1 });
+            roomType.Insert(0, new RoomTypeDTO { Name = "Loại phòng", Id = -1 });
             CmbRoomType.DataSource = roomType;
             CmbRoomType.DisplayMember = "Name";
             CmbRoomType.ValueMember = "Id";

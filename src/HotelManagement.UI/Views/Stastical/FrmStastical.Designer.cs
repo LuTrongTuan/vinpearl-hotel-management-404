@@ -45,6 +45,9 @@ namespace HotelManagement.UI.Views.Check
             // 
             // statisCustomer
             // 
+            this.statisCustomer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.statisCustomer.Controls.Add(this.tabPage1);
             this.statisCustomer.Controls.Add(this.tabPage2);
             this.statisCustomer.Location = new System.Drawing.Point(12, 12);
