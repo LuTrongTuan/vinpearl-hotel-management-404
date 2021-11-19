@@ -22,13 +22,13 @@ namespace HotelManagement.UI
         }
         private async void customButton1_Click_1(object sender, EventArgs e)
         {
-            _accountDto = new AccountDTO()
-            {
-                UserName = txt_name.Text,
-                Password = txt_mk.Text,
-                NewPassword = txt_newMK.Text,
-                EnterNewPassword = txt_nlmk.Text
-            };
+            _accountDto = new AccountDTO();
+
+            _accountDto.UserName = txt_name.Text;
+            _accountDto.Password = txt_mk.Text;
+            _accountDto.NewPassword = txt_newMK.Text;
+            _accountDto.EnterNewPassword = txt_nlmk.Text;
+            
             _mss = await _iPasswordService.UpdatePassword(_accountDto);
             MessageBox.Show(_mss);
         }

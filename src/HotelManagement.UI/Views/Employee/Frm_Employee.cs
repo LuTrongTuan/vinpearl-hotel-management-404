@@ -77,8 +77,17 @@ namespace HotelManagement.UI.Views.Employee
             };
 
             if (!checkNull()) return;
-
-            
+            if (!number.IsMatch(TxtPhone.Text))
+            {
+                MessageBox.Show("SĐT không được nhập chữ");
+                return;
+            }
+            var load = await _employee.Get();
+            if (load.Any(c => c.Name == TxtName.Text))
+            {
+                MessageBox.Show("Email đã có trong hệ thống ");
+                return;
+            }
             if (_confirm.IsConfirm("Bạn chắc chắn muốn thêm "))
             {
                 await _employee.AddEmployee(_emp);
