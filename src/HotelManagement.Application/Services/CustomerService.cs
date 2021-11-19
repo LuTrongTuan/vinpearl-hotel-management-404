@@ -18,9 +18,9 @@ namespace HotelManagement.Application.Services
             _mapper = mapper;
         }
 
-        public async Task<CustomerDTO> GetDetail(int id)
+        public async Task<CustomerDTO> GetDetail(string id)
         {
-            var query = await _worker.Customers.Get(x => x.Id == id);
+            var query = await _worker.Customers.Get(x => x.IdentityNumber == id);
             return _mapper.Map<CustomerDTO>(query);
         }
 

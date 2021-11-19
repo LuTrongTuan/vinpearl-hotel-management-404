@@ -22,7 +22,7 @@ namespace HotelManagement.UI.Views.Room
         private FrmReceipt _activeForm;
         private string _roomType = "";
         private string _floor = "";
-        private bool _firstLoad;
+        private bool _callLoadRoom;
 
         public FrmMainRoom(IFloorService floorService, IRoomService iRoomService,
             IRoomTypeService roomTypeService)
@@ -34,12 +34,12 @@ namespace HotelManagement.UI.Views.Room
             _roomTypeService = roomTypeService;
         }
 
-        private void customButton1_Click(object sender, EventArgs e)
+        private void BtnCreateRoom_Click(object sender, EventArgs e)
         {
             var demo = Program.Container.GetInstance<FrmCreateRoom>();
             demo.Show();
         }
-        private void customButton2_Click(object sender, EventArgs e)
+        private void BtnUpdateRoom_Click(object sender, EventArgs e)
         {
             var demo = Program.Container.GetInstance<FrmUpdateRoom>();
             demo.Show();
@@ -57,8 +57,8 @@ namespace HotelManagement.UI.Views.Room
             foreach (var floor in request)
             {
                 var btn = CreateButton(Convert.ToInt32(floor.Floor));
-                var roomListDtos = floor.Rooms.ToList();
-                floor.Rooms = roomListDtos.Where(x => x.Type.StartsWith(_roomType));
+                var roomListDtos = floor.Rooms.Where(x => x.Type.StartsWith(_roomType)).ToList();
+                floor.Rooms = roomListDtos;
                 btn.Location = floorLocation;
                 roomLocation.Y = floorLocation.Y;
                 roomLocation.X = 140;
@@ -191,8 +191,6 @@ namespace HotelManagement.UI.Views.Room
 
         private async void FrmMainRoom_Load(object sender, EventArgs e)
         {
-            await LoadRoom();
-            //_firstLoad = true;
             var roomType = await _roomTypeService.Get();
             var floor = await _floorService.Get();
             floor.Insert(0, new FloorDTO {Floor = "Tầng", Id = -1});
@@ -203,10 +201,12 @@ namespace HotelManagement.UI.Views.Room
             CmbFloor.DataSource = floor;
             CmbFloor.DisplayMember = "Floor";
             CmbFloor.ValueMember = "Id";
+            await LoadRoom();
+            _callLoadRoom = true;
             if (Session.Role == 1)
             {
-                this.customButton1.Enabled = false;
-                this.customButton2.Enabled = false;
+                this.BtnCreateRoom.Enabled = false;
+                this.BtnUpdateRoom.Enabled = false;
             }
         }
 
@@ -231,22 +231,18 @@ namespace HotelManagement.UI.Views.Room
         {
             _floor = (CmbFloor.SelectedItem as FloorDTO)?.Floor;
             if (_floor is "Tầng")
-            {
                 _floor = string.Empty;
-                return;
-            }
-            await LoadRoom();
+            if(_callLoadRoom)
+                await LoadRoom();
         }
 
         private async void CmbRoomType_SelectedIndexChanged(object sender, EventArgs e)
         {
             _roomType = (CmbRoomType.SelectedItem as RoomTypeDTO)?.Name;
             if(_roomType is "Loại phòng")
-            {
                 _roomType = string.Empty;
-                return;
-            }
-            await LoadRoom();
+            if (_callLoadRoom)
+                await LoadRoom();
         }
     }
 }

@@ -5,7 +5,7 @@ namespace HotelManagement.Application.Contracts.Services
 {
     public interface ICustomerService
     {
-        Task<CustomerDTO> GetDetail(int id);
+        Task<CustomerDTO> GetDetail(string id);
         Task Add(CustomerDTO customer);
         Task Update(CustomerDTO customer);
     }
