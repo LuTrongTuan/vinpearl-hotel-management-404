@@ -48,7 +48,6 @@ namespace HotelManagement.UI.Views.Receipt
             this.Dtpicker_out = new System.Windows.Forms.DateTimePicker();
             this.Dtpicker_in = new System.Windows.Forms.DateTimePicker();
             this.TbxNote = new HotelManagement.UI.Components.TextBox();
-            this.txb_hinhthuc = new HotelManagement.UI.Components.TextBox();
             this.TbxDeposit = new HotelManagement.UI.Components.TextBox();
             this.lbl_roomPrice = new System.Windows.Forms.Label();
             this.CbxByDay = new System.Windows.Forms.CheckBox();
@@ -85,6 +84,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.BtnCancle = new HotelManagement.UI.Components.CustomButton();
             this.LblPayment = new System.Windows.Forms.Label();
             this.BtnUpdate = new HotelManagement.UI.Components.CustomButton();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.ServiceQuantity)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PeopleAmount)).BeginInit();
@@ -239,10 +239,10 @@ namespace HotelManagement.UI.Views.Receipt
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.Dtpicker_out);
             this.groupBox1.Controls.Add(this.Dtpicker_in);
             this.groupBox1.Controls.Add(this.TbxNote);
-            this.groupBox1.Controls.Add(this.txb_hinhthuc);
             this.groupBox1.Controls.Add(this.TbxDeposit);
             this.groupBox1.Controls.Add(this.lbl_roomPrice);
             this.groupBox1.Controls.Add(this.CbxByDay);
@@ -309,30 +309,9 @@ namespace HotelManagement.UI.Views.Receipt
             this.TbxNote.Password = false;
             this.TbxNote.PlaceHolder = "Ghi chú";
             this.TbxNote.PlaceHolderColor = System.Drawing.SystemColors.ScrollBar;
-            this.TbxNote.Size = new System.Drawing.Size(300, 39);
+            this.TbxNote.Size = new System.Drawing.Size(300, 37);
             this.TbxNote.TabIndex = 38;
             this.TbxNote.Underline = true;
-            // 
-            // txb_hinhthuc
-            // 
-            this.txb_hinhthuc.Background = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(134)))), ((int)(((byte)(203)))));
-            this.txb_hinhthuc.BorderColor = System.Drawing.Color.White;
-            this.txb_hinhthuc.BorderRadius = 0;
-            this.txb_hinhthuc.ErrorMessage = null;
-            this.txb_hinhthuc.FocusedColor = System.Drawing.Color.Aqua;
-            this.txb_hinhthuc.ForeColor = System.Drawing.Color.White;
-            this.txb_hinhthuc.IsError = false;
-            this.txb_hinhthuc.Location = new System.Drawing.Point(145, 239);
-            this.txb_hinhthuc.Margin = new System.Windows.Forms.Padding(4);
-            this.txb_hinhthuc.Multiline = false;
-            this.txb_hinhthuc.Name = "txb_hinhthuc";
-            this.txb_hinhthuc.Padding = new System.Windows.Forms.Padding(9, 7, 9, 7);
-            this.txb_hinhthuc.Password = false;
-            this.txb_hinhthuc.PlaceHolder = "Hình thức thanh toán";
-            this.txb_hinhthuc.PlaceHolderColor = System.Drawing.SystemColors.ScrollBar;
-            this.txb_hinhthuc.Size = new System.Drawing.Size(300, 39);
-            this.txb_hinhthuc.TabIndex = 37;
-            this.txb_hinhthuc.Underline = true;
             // 
             // TbxDeposit
             // 
@@ -351,7 +330,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.TbxDeposit.Password = false;
             this.TbxDeposit.PlaceHolder = "Tiền trả trước";
             this.TbxDeposit.PlaceHolderColor = System.Drawing.SystemColors.ScrollBar;
-            this.TbxDeposit.Size = new System.Drawing.Size(300, 39);
+            this.TbxDeposit.Size = new System.Drawing.Size(300, 37);
             this.TbxDeposit.TabIndex = 36;
             this.TbxDeposit.Underline = true;
             // 
@@ -610,7 +589,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.TbxPhoneNumber.Password = false;
             this.TbxPhoneNumber.PlaceHolder = "Sô điện thoại";
             this.TbxPhoneNumber.PlaceHolderColor = System.Drawing.SystemColors.ScrollBar;
-            this.TbxPhoneNumber.Size = new System.Drawing.Size(274, 39);
+            this.TbxPhoneNumber.Size = new System.Drawing.Size(274, 37);
             this.TbxPhoneNumber.TabIndex = 36;
             this.TbxPhoneNumber.Underline = true;
             // 
@@ -631,7 +610,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.TbxCustomerName.Password = false;
             this.TbxCustomerName.PlaceHolder = "Tên khách hàng";
             this.TbxCustomerName.PlaceHolderColor = System.Drawing.SystemColors.ScrollBar;
-            this.TbxCustomerName.Size = new System.Drawing.Size(274, 39);
+            this.TbxCustomerName.Size = new System.Drawing.Size(274, 37);
             this.TbxCustomerName.TabIndex = 35;
             this.TbxCustomerName.Underline = true;
             // 
@@ -652,7 +631,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.TbxIdentityNumber.Password = false;
             this.TbxIdentityNumber.PlaceHolder = "Số giấy tờ";
             this.TbxIdentityNumber.PlaceHolderColor = System.Drawing.SystemColors.ScrollBar;
-            this.TbxIdentityNumber.Size = new System.Drawing.Size(274, 39);
+            this.TbxIdentityNumber.Size = new System.Drawing.Size(274, 37);
             this.TbxIdentityNumber.TabIndex = 34;
             this.TbxIdentityNumber.Underline = true;
             this.TbxIdentityNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TbxIdentityNumber_KeyDown);
@@ -833,6 +812,17 @@ namespace HotelManagement.UI.Views.Receipt
             this.BtnUpdate.UseVisualStyleBackColor = false;
             this.BtnUpdate.Click += new System.EventHandler(this.BtnUpdate_Click);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Tiền mặt",
+            "Banking"});
+            this.comboBox1.Location = new System.Drawing.Point(142, 253);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(303, 28);
+            this.comboBox1.TabIndex = 41;
+            // 
             // FrmReceipt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -909,7 +899,6 @@ namespace HotelManagement.UI.Views.Receipt
         private System.Windows.Forms.Label Price;
         private Components.CustomButton BtnAddService;
         private Components.TextBox TbxNote;
-        private Components.TextBox txb_hinhthuc;
         private Components.TextBox TbxDeposit;
         private Components.CustomButton btb;
         private Components.TextBox TbxPhoneNumber;
@@ -926,5 +915,6 @@ namespace HotelManagement.UI.Views.Receipt
         private CheckBox CbxDeactive;
         private Label LblPayment;
         private Components.CustomButton BtnUpdate;
+        private ComboBox comboBox1;
     }
 }

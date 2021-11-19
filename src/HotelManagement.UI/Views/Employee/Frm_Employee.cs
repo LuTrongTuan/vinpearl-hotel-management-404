@@ -84,16 +84,13 @@ namespace HotelManagement.UI.Views.Employee
             };
 
             if (!checkNull()) return;
-
-
-
             if (!number.IsMatch(TxtPhone.Text))
             {
                 MessageBox.Show("SĐT không được nhập chữ");
                 return;
             }
             var load = await _employee.Get();
-            if (load.Any(c => c.Name == TxtName.Text))
+            if (load.Any(c => c.Email == TxtEmail.Text))
             {
                 MessageBox.Show("Email đã có trong hệ thống ");
                 return;

@@ -40,6 +40,7 @@ namespace HotelManagement.UI.Views.Password
             // 
             // txt_email
             // 
+            this.txt_email.Background = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(134)))), ((int)(((byte)(203)))));
             this.txt_email.BorderColor = System.Drawing.Color.BlueViolet;
             this.txt_email.BorderRadius = 10;
             this.txt_email.ErrorMessage = null;
@@ -52,9 +53,10 @@ namespace HotelManagement.UI.Views.Password
             this.txt_email.Padding = new System.Windows.Forms.Padding(7);
             this.txt_email.Password = false;
             this.txt_email.PlaceHolder = "Email của bạn";
+            this.txt_email.PlaceHolderColor = System.Drawing.Color.WhiteSmoke;
             this.txt_email.Size = new System.Drawing.Size(363, 37);
             this.txt_email.TabIndex = 0;
-            this.txt_email.Underline = false;
+            this.txt_email.Underline = true;
             // 
             // label1
             // 
@@ -89,7 +91,7 @@ namespace HotelManagement.UI.Views.Password
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(187, 114);
+            this.pictureBox1.Location = new System.Drawing.Point(187, 84);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(129, 130);
             this.pictureBox1.TabIndex = 3;
@@ -121,7 +123,7 @@ namespace HotelManagement.UI.Views.Password
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(134)))), ((int)(((byte)(203)))));
             this.ClientSize = new System.Drawing.Size(498, 445);
             this.Controls.Add(this.BtnBack);
             this.Controls.Add(this.pictureBox1);

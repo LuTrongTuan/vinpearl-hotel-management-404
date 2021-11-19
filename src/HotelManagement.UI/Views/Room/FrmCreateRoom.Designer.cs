@@ -54,6 +54,7 @@ namespace HotelManagement.UI.Views.Room
             // 
             // TbxRoomType
             // 
+            this.TbxRoomType.Background = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(134)))), ((int)(((byte)(203)))));
             this.TbxRoomType.BorderColor = System.Drawing.Color.Silver;
             this.TbxRoomType.BorderRadius = 7;
             this.TbxRoomType.ErrorMessage = null;
@@ -66,9 +67,10 @@ namespace HotelManagement.UI.Views.Room
             this.TbxRoomType.Padding = new System.Windows.Forms.Padding(7);
             this.TbxRoomType.Password = false;
             this.TbxRoomType.PlaceHolder = "Thêm loại phòng mới";
+            this.TbxRoomType.PlaceHolderColor = System.Drawing.Color.WhiteSmoke;
             this.TbxRoomType.Size = new System.Drawing.Size(222, 37);
             this.TbxRoomType.TabIndex = 0;
-            this.TbxRoomType.Underline = false;
+            this.TbxRoomType.Underline = true;
             // 
             // BtnAddRoomType
             // 
@@ -112,6 +114,7 @@ namespace HotelManagement.UI.Views.Room
             // 
             // TbxQuantity
             // 
+            this.TbxQuantity.Background = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(134)))), ((int)(((byte)(203)))));
             this.TbxQuantity.BorderColor = System.Drawing.Color.Silver;
             this.TbxQuantity.BorderRadius = 5;
             this.TbxQuantity.ErrorMessage = null;
@@ -124,9 +127,10 @@ namespace HotelManagement.UI.Views.Room
             this.TbxQuantity.Padding = new System.Windows.Forms.Padding(7);
             this.TbxQuantity.Password = false;
             this.TbxQuantity.PlaceHolder = "Số lượng";
+            this.TbxQuantity.PlaceHolderColor = System.Drawing.Color.WhiteSmoke;
             this.TbxQuantity.Size = new System.Drawing.Size(94, 37);
             this.TbxQuantity.TabIndex = 4;
-            this.TbxQuantity.Underline = false;
+            this.TbxQuantity.Underline = true;
             // 
             // CmbRoomType
             // 
@@ -228,6 +232,7 @@ namespace HotelManagement.UI.Views.Room
             // 
             // TbxFloor
             // 
+            this.TbxFloor.Background = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(134)))), ((int)(((byte)(203)))));
             this.TbxFloor.BorderColor = System.Drawing.Color.Silver;
             this.TbxFloor.BorderRadius = 7;
             this.TbxFloor.ErrorMessage = null;
@@ -240,9 +245,10 @@ namespace HotelManagement.UI.Views.Room
             this.TbxFloor.Padding = new System.Windows.Forms.Padding(7);
             this.TbxFloor.Password = false;
             this.TbxFloor.PlaceHolder = "Thêm tầng";
+            this.TbxFloor.PlaceHolderColor = System.Drawing.Color.WhiteSmoke;
             this.TbxFloor.Size = new System.Drawing.Size(127, 37);
             this.TbxFloor.TabIndex = 12;
-            this.TbxFloor.Underline = false;
+            this.TbxFloor.Underline = true;
             // 
             // BtnAddFloor
             // 
@@ -266,6 +272,7 @@ namespace HotelManagement.UI.Views.Room
             // 
             // txb_byHour
             // 
+            this.txb_byHour.Background = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(134)))), ((int)(((byte)(203)))));
             this.txb_byHour.BorderColor = System.Drawing.Color.BlueViolet;
             this.txb_byHour.BorderRadius = 0;
             this.txb_byHour.ErrorMessage = null;
@@ -278,12 +285,14 @@ namespace HotelManagement.UI.Views.Room
             this.txb_byHour.Padding = new System.Windows.Forms.Padding(7);
             this.txb_byHour.Password = false;
             this.txb_byHour.PlaceHolder = "Giá giờ";
+            this.txb_byHour.PlaceHolderColor = System.Drawing.Color.WhiteSmoke;
             this.txb_byHour.Size = new System.Drawing.Size(90, 37);
             this.txb_byHour.TabIndex = 14;
-            this.txb_byHour.Underline = false;
+            this.txb_byHour.Underline = true;
             // 
             // txb_byday
             // 
+            this.txb_byday.Background = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(134)))), ((int)(((byte)(203)))));
             this.txb_byday.BorderColor = System.Drawing.Color.BlueViolet;
             this.txb_byday.BorderRadius = 0;
             this.txb_byday.ErrorMessage = null;
@@ -296,9 +305,10 @@ namespace HotelManagement.UI.Views.Room
             this.txb_byday.Padding = new System.Windows.Forms.Padding(7);
             this.txb_byday.Password = false;
             this.txb_byday.PlaceHolder = "Giá ngày";
+            this.txb_byday.PlaceHolderColor = System.Drawing.Color.WhiteSmoke;
             this.txb_byday.Size = new System.Drawing.Size(101, 37);
             this.txb_byday.TabIndex = 14;
-            this.txb_byday.Underline = false;
+            this.txb_byday.Underline = true;
             // 
             // dataGridView1
             // 
