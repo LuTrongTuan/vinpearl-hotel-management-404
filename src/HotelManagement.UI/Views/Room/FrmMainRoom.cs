@@ -141,12 +141,14 @@ namespace HotelManagement.UI.Views.Room
 
         private async void LoadRoomSearch(string name)
         {
-            var roomLocation = new Point(120, 5);
-            var numberOf = (PanelWidth - 100) / 240;
-            var request = await _roomService.Get(name);
+            var roomLocation = new Point(140, 5);
+            var floorLocation = new Point(10, 5);
+            var numberOf = (PanelWidth - 100) / 250;
+            var requestt = await _roomService.Get(name);
+            if (requestt.Count == 0) return;
             PanelContainer.Controls.Clear();
             var count = numberOf;
-            foreach (var room in request)
+            foreach (var room in requestt)
             {
                 _room = SetAttribute(room);
                 _room.Location = roomLocation;
@@ -155,6 +157,7 @@ namespace HotelManagement.UI.Views.Room
                 {
                     roomLocation = Location(roomLocation, false);
                     count = numberOf;
+                    floorLocation.Y += 130;
                 }
                 else
                 {
@@ -163,6 +166,8 @@ namespace HotelManagement.UI.Views.Room
                 }
                 this.PanelContainer.Controls.Add(_room);
             }
+            floorLocation.Y += 130;
+            _floorService = Program.Container.GetInstance<IFloorService>();
         }
 
         private CustomButton CreateButton(int floorNumber)

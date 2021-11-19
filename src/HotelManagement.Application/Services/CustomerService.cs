@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using AutoMapper;
 using HotelManagement.Application.Contracts.Infrastructure;
 using HotelManagement.Application.Contracts.Services;
@@ -45,6 +46,12 @@ namespace HotelManagement.Application.Services
             user.PhoneNumber = customer.PhoneNumber;
             await _worker.Customers.Update(user);
             await _worker.Commit();
+        }
+
+        public async Task<IList<CustomerDTO>> GetList()
+        {
+            var query = await _worker.Customers.GetAll();
+            return _mapper.Map<IList<Customer>, IList<CustomerDTO>>(query);
         }
     }
 }

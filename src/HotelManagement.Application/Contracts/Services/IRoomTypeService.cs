@@ -7,7 +7,7 @@ namespace HotelManagement.Application.Contracts.Services
     public interface IRoomTypeService
     {
         Task Add(RoomTypeDTO roomtype);
-        Task Update(RoomTypeDTO roomType);
+        Task<string> Update(RoomTypeDTO roomType);
         Task<IList<RoomTypeDTO>> Get();
         Task<RoomTypeDTO> GetType(int id);
     }
