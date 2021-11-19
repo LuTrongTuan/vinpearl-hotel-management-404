@@ -15,5 +15,6 @@ namespace HotelManagement.Application.Contracts.Services
         Task<IList<IdentificationDTO>> GetIdentifications();
         Task<string> Update(TransactionDTO source);
         Task<string> Checkout(int id);
+        Task<string> CheckClean(int id);
     }
 }

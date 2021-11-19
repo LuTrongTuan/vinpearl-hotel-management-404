@@ -72,6 +72,12 @@ namespace HotelManagement.UI.Views.Receipt
                 BtnConfirm.Click += Checkout_Click;
                 BtnConfirm.Text = "Thanh toán";
             }
+            else if(_room.Status == 1)
+            {
+                BtnConfirm.Text = "Dọn xong";
+                BtnConfirm.Click += CheckClean_Click;
+                BtnUpdate.Enabled = false;
+            }
             else
             {
                 BtnConfirm.Text = "Nhận phòng";
@@ -148,6 +154,11 @@ namespace HotelManagement.UI.Views.Receipt
         private async void Checkout_Click(object sender, EventArgs e)
         {
             MessageBox.Show(await _transacsion.Checkout(_roomId));
+        }
+
+        private async void CheckClean_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(await _transacsion.CheckClean(_roomId));
         }
         private async void CmbService_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -246,5 +257,6 @@ namespace HotelManagement.UI.Views.Receipt
             MessageBox.Show(await _transacsion.Update(GetTransaction()));
             ShowReceipt();
         }
+
     }
 }

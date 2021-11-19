@@ -46,6 +46,7 @@ namespace HotelManagement.UI
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.PanelTittle = new System.Windows.Forms.Panel();
+            this.lbl_name = new System.Windows.Forms.Label();
             this.LblTittle = new System.Windows.Forms.Label();
             this.PanelMain = new System.Windows.Forms.Panel();
             this.sidebar.SuspendLayout();
@@ -69,7 +70,7 @@ namespace HotelManagement.UI
             this.sidebar.Dock = System.Windows.Forms.DockStyle.Left;
             this.sidebar.Location = new System.Drawing.Point(0, 0);
             this.sidebar.Name = "sidebar";
-            this.sidebar.Size = new System.Drawing.Size(306, 745);
+            this.sidebar.Size = new System.Drawing.Size(306, 757);
             this.sidebar.TabIndex = 0;
             // 
             // customButton6
@@ -326,14 +327,24 @@ namespace HotelManagement.UI
             // PanelTittle
             // 
             this.PanelTittle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(95)))), ((int)(((byte)(196)))));
+            this.PanelTittle.Controls.Add(this.lbl_name);
             this.PanelTittle.Controls.Add(this.LblTittle);
             this.PanelTittle.Dock = System.Windows.Forms.DockStyle.Top;
             this.PanelTittle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.PanelTittle.Location = new System.Drawing.Point(306, 0);
             this.PanelTittle.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.PanelTittle.Name = "PanelTittle";
-            this.PanelTittle.Size = new System.Drawing.Size(1036, 83);
+            this.PanelTittle.Size = new System.Drawing.Size(1260, 83);
             this.PanelTittle.TabIndex = 1;
+            // 
+            // lbl_name
+            // 
+            this.lbl_name.AutoSize = true;
+            this.lbl_name.Location = new System.Drawing.Point(1142, 27);
+            this.lbl_name.Name = "lbl_name";
+            this.lbl_name.Size = new System.Drawing.Size(61, 25);
+            this.lbl_name.TabIndex = 4;
+            this.lbl_name.Text = "Hello";
             // 
             // LblTittle
             // 
@@ -354,14 +365,14 @@ namespace HotelManagement.UI
             this.PanelMain.Location = new System.Drawing.Point(306, 83);
             this.PanelMain.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.PanelMain.Name = "PanelMain";
-            this.PanelMain.Size = new System.Drawing.Size(1036, 662);
+            this.PanelMain.Size = new System.Drawing.Size(1260, 674);
             this.PanelMain.TabIndex = 2;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1342, 745);
+            this.ClientSize = new System.Drawing.Size(1566, 757);
             this.Controls.Add(this.PanelTittle);
             this.Controls.Add(this.PanelMain);
             this.Controls.Add(this.sidebar);
@@ -398,5 +409,6 @@ namespace HotelManagement.UI
         private Components.CustomButton customButton5;
         private Components.CustomButton btn_thongke;
         private Components.CustomButton customButton6;
+        private System.Windows.Forms.Label lbl_name;
     }
 }

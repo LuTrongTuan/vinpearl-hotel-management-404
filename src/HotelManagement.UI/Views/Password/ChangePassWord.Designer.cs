@@ -76,7 +76,7 @@ namespace HotelManagement.UI
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(16, 321);
+            this.label2.Location = new System.Drawing.Point(18, 343);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(109, 20);
             this.label2.TabIndex = 10;
@@ -96,7 +96,7 @@ namespace HotelManagement.UI
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(16, 181);
+            this.label1.Location = new System.Drawing.Point(18, 259);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(131, 20);
             this.label1.TabIndex = 11;
@@ -113,14 +113,15 @@ namespace HotelManagement.UI
             this.customButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.customButton1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.customButton1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.customButton1.Location = new System.Drawing.Point(0, 477);
+            this.customButton1.Location = new System.Drawing.Point(0, 506);
             this.customButton1.Name = "customButton1";
             this.customButton1.Size = new System.Drawing.Size(476, 50);
-            this.customButton1.TabIndex = 7;
+            this.customButton1.TabIndex = 5;
             this.customButton1.Text = "Cập nhật";
             this.customButton1.TextColor = System.Drawing.SystemColors.ControlText;
             this.customButton1.UseVisualStyleBackColor = false;
             this.customButton1.Click += new System.EventHandler(this.customButton1_Click_1);
+            this.customButton1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.customButton1_KeyDown);
             // 
             // txt_nlmk
             // 
@@ -129,7 +130,7 @@ namespace HotelManagement.UI
             this.txt_nlmk.ErrorMessage = null;
             this.txt_nlmk.FocusedColor = System.Drawing.Color.Aqua;
             this.txt_nlmk.IsError = false;
-            this.txt_nlmk.Location = new System.Drawing.Point(93, 390);
+            this.txt_nlmk.Location = new System.Drawing.Point(95, 412);
             this.txt_nlmk.Margin = new System.Windows.Forms.Padding(4);
             this.txt_nlmk.Multiline = false;
             this.txt_nlmk.Name = "txt_nlmk";
@@ -137,7 +138,7 @@ namespace HotelManagement.UI
             this.txt_nlmk.Password = false;
             this.txt_nlmk.PlaceHolder = "Nhắc lại mật khẩu";
             this.txt_nlmk.Size = new System.Drawing.Size(305, 37);
-            this.txt_nlmk.TabIndex = 3;
+            this.txt_nlmk.TabIndex = 4;
             this.txt_nlmk.Underline = false;
             // 
             // txt_newMK
@@ -147,7 +148,7 @@ namespace HotelManagement.UI
             this.txt_newMK.ErrorMessage = null;
             this.txt_newMK.FocusedColor = System.Drawing.Color.Aqua;
             this.txt_newMK.IsError = false;
-            this.txt_newMK.Location = new System.Drawing.Point(93, 345);
+            this.txt_newMK.Location = new System.Drawing.Point(95, 367);
             this.txt_newMK.Margin = new System.Windows.Forms.Padding(4);
             this.txt_newMK.Multiline = false;
             this.txt_newMK.Name = "txt_newMK";
@@ -155,7 +156,7 @@ namespace HotelManagement.UI
             this.txt_newMK.Password = false;
             this.txt_newMK.PlaceHolder = "Mật khẩu mới";
             this.txt_newMK.Size = new System.Drawing.Size(305, 37);
-            this.txt_newMK.TabIndex = 4;
+            this.txt_newMK.TabIndex = 3;
             this.txt_newMK.Underline = false;
             // 
             // txt_name
@@ -165,7 +166,7 @@ namespace HotelManagement.UI
             this.txt_name.ErrorMessage = null;
             this.txt_name.FocusedColor = System.Drawing.Color.Aqua;
             this.txt_name.IsError = false;
-            this.txt_name.Location = new System.Drawing.Point(93, 205);
+            this.txt_name.Location = new System.Drawing.Point(95, 207);
             this.txt_name.Margin = new System.Windows.Forms.Padding(4);
             this.txt_name.Multiline = false;
             this.txt_name.Name = "txt_name";
@@ -173,7 +174,7 @@ namespace HotelManagement.UI
             this.txt_name.Password = false;
             this.txt_name.PlaceHolder = "Username";
             this.txt_name.Size = new System.Drawing.Size(305, 37);
-            this.txt_name.TabIndex = 5;
+            this.txt_name.TabIndex = 1;
             this.txt_name.Underline = false;
             // 
             // txt_mk
@@ -183,7 +184,7 @@ namespace HotelManagement.UI
             this.txt_mk.ErrorMessage = null;
             this.txt_mk.FocusedColor = System.Drawing.Color.Aqua;
             this.txt_mk.IsError = false;
-            this.txt_mk.Location = new System.Drawing.Point(93, 261);
+            this.txt_mk.Location = new System.Drawing.Point(95, 292);
             this.txt_mk.Margin = new System.Windows.Forms.Padding(4);
             this.txt_mk.Multiline = false;
             this.txt_mk.Name = "txt_mk";
@@ -191,7 +192,7 @@ namespace HotelManagement.UI
             this.txt_mk.Password = false;
             this.txt_mk.PlaceHolder = "Mật khẩu hiện tại";
             this.txt_mk.Size = new System.Drawing.Size(305, 37);
-            this.txt_mk.TabIndex = 6;
+            this.txt_mk.TabIndex = 2;
             this.txt_mk.Underline = false;
             // 
             // ChangePassWord

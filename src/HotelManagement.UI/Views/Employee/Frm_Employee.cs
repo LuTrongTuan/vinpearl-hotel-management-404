@@ -152,20 +152,6 @@ namespace HotelManagement.UI.Views.Employee
 
         private async void btn_edit_Click(object sender, EventArgs e)
         {
-            //_.Nameme = TxtName.Text;
-            //_emp.Birthday = dateTimePicker1.Value;
-            //_emp.PhoneNumber = TxtPhone.Text;
-            //_emp.Email = TxtEmail.Text;
-            //_emp.Address = TxtDiachi.Text;
-            //_emp.Gender = rdoNam.Checked;
-            //_emp.Status = checked_HD.Checked;
-
-            //if (!checkNull()) return;
-            //if (_confirm.IsConfirm("bạn chắc muốn sửa"))
-            //{
-            //    await _employee.UpdateEmployee(_emp);
-            //    MessageBox.Show("sửa thành công");
-            //}
         }
     }
 }
