@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using HotelManagement.Application.Contracts.Ultilities;
 using HotelManagement.Application.DTOs;
 

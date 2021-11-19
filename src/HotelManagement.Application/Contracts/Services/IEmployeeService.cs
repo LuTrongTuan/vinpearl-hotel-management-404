@@ -10,8 +10,9 @@ namespace HotelManagement.Application.Contracts.Services
     {
         Task<IEnumerable<RoleDTO>> GetListrole();
         Task<IEnumerable<EmployeeDTO>> GetList();
+        Task<IList<EmployeeDTO>> Get();
         Task<IList<EmployeeDTO>> Find(string name);
         Task<string> AddEmployee(Account obj);
-        Task<string> UpdateEmployee(Employee obj);
+        Task<string> UpdateEmployee(EmployeeDTO obj);
     }
 }

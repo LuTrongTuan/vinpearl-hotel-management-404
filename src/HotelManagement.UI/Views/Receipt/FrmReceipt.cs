@@ -17,6 +17,7 @@ namespace HotelManagement.UI.Views.Receipt
         private readonly Regex _pattern = new(@"\W|\.|₫");
         private readonly ITransacsion _transacsion;
         private readonly IService _service;
+        private readonly ICustomerService _customerService;
         private IList<ServiceReceiptDTO> _serviceInOrder = new List<ServiceReceiptDTO>();
         private int _roomId;
         private int _serviceId;
@@ -33,10 +34,12 @@ namespace HotelManagement.UI.Views.Receipt
                 Binding();
             }
         }
-        public FrmReceipt(ITransacsion transacsion, IService service)
+        public FrmReceipt(ITransacsion transacsion, IService service,
+            ICustomerService customerService)
         {
             _transacsion = transacsion;
             _service = service;
+            _customerService = customerService;
             InitializeComponent();
         }
 
@@ -90,7 +93,6 @@ namespace HotelManagement.UI.Views.Receipt
         {
             var query = await _transacsion.Query(_roomId);
             TbxDeposit.Text = query.Receipt.Deposit.ToString(CultureInfo.CurrentCulture);
-            Dtpicker_checkIn.Value = query.ReceiptDetail.CheckIn;
             TbxNote.Text = query.Receipt.Note;
             PeopleAmount.Value = query.Receipt.Number;
             TbxIdentityNumber.Text = query.Customer.IdentityNumber;
@@ -99,8 +101,19 @@ namespace HotelManagement.UI.Views.Receipt
             LblPayment.Text = MoneyFormat(query.Receipt.Payment - query.Receipt.Deposit);
             if (query.Customer.Gender) RbtMale.Checked = true;
             else RbtFemale.Checked = true;
-            if (query.Receipt.Status == 0) CbxByDay.Checked = true;
-            if (query.Receipt.Status == 1) CbxByHour.Checked = true;
+            if (query.Receipt.Status == 0)
+            {
+                CbxByDay.Checked = true;
+                Dtpicker_checkIn.Value = query.ReceiptDetail.CheckIn;
+                Dtpicker_checkOut.Value = query.ReceiptDetail.CheckOut;
+            }
+
+            if (query.Receipt.Status == 1)
+            {
+                CbxByHour.Checked = true;
+                Dtpicker_in.Value = query.ReceiptDetail.CheckIn;
+                Dtpicker_out.Value = query.ReceiptDetail.CheckOut;
+            }
             LoadToGrid(query.ServiceReceipts);
         }
 
@@ -125,20 +138,25 @@ namespace HotelManagement.UI.Views.Receipt
             LoadIdentification();
             LoadService();
             ServiceQuantity.Value = 1;
+            if (_roomId == default)
+            {
+                Dtpicker_in.Value = DateTime.Now;
+                Dtpicker_checkIn.Value = DateTime.Now;
+            }
         }
 
         #region Checkbox
 
         private void CbxByHour_CheckedChanged(object sender, EventArgs e)
         {
-            if (CbxByDay.Checked)
+            if (CbxByHour.Checked)
                 CbxByDay.Checked = false;
             lbl_roomPrice.Text = "Giá phòng:" + MoneyFormat(_room.RoomType.ByHour);
         }
 
         private void CbxByDay_CheckedChanged(object sender, EventArgs e)
         {
-            if (CbxByHour.Checked)
+            if (CbxByDay.Checked)
                 CbxByHour.Checked = false;
 
             lbl_roomPrice.Text = "Giá phòng:" + MoneyFormat(_room.RoomType.ByDay);
@@ -258,5 +276,18 @@ namespace HotelManagement.UI.Views.Receipt
             ShowReceipt();
         }
 
+        private async void TbxIdentityNumber_KeyDown(object sender, KeyEventArgs e)
+        {
+            var request = await _customerService.GetDetail(TbxIdentityNumber.Text);
+            if (request is null) return;
+            TbxCustomerName.Text = request.Name;
+            TbxPhoneNumber.Text = request.PhoneNumber;
+            if (request.Gender)
+                RbtMale.Checked = true;
+            else RbtFemale.Checked = true;
+            if (request.Status)
+                CbxActive.Checked = true;
+            else CbxDeactive.Checked = true;
+        }
     }
 }

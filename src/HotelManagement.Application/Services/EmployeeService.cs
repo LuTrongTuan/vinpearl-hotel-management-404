@@ -29,11 +29,20 @@ namespace HotelManagement.Application.Services
         {
             var result = await _worker.Roles.GetAll();
             return _mapper.Map<IList<Role>, IList<RoleDTO>>(result);
+
         }
         public async Task<IEnumerable<EmployeeDTO>> GetList()
         {
             var result = await _worker.Employees.GetAll();
-            return _mapper.Map<IList<Employee>, IList<EmployeeDTO>>(result);
+            var lst = _mapper.Map<IList<Employee>, IList<EmployeeDTO>>(result);
+            for(var i = 0; i < result.Count; i++)
+            {
+                var acc = await _worker.Accounts.Get(x => x.EmployeeId == result[i].Id);
+                var role = await _worker.Roles.Get(x => x.Id == acc.RoleId);
+                lst[i].NameRole = role.Name;
+            }
+
+            return lst;
         }
 
         public async Task<IList<EmployeeDTO>> Find(string name)
@@ -52,21 +61,27 @@ namespace HotelManagement.Application.Services
             return "Ok";
         }
 
-        public async Task<string> UpdateEmployee(Employee obj)
+        public async Task<string> UpdateEmployee(EmployeeDTO obj)
         {
-            var emp = await _worker.Employees.Get(x => x.Id == obj.Id);
-            
-            emp.Name = obj.Name;
-            emp.Birthday = obj.Birthday;
-            emp.PhoneNumber = obj.PhoneNumber;
-            emp.Address = obj.Address;
-            emp.Email = obj.Email;
-            emp.Gender = obj.Gender;
-            emp.Status = obj.Status;
+           _employee = await _worker.Employees.Get(x => x.Id == obj.Id);
 
-            await _worker.Employees.Update(emp);
+           _employee.Name = obj.Name;
+           _employee.Birthday = obj.Birthday;
+            _employee.PhoneNumber = obj.PhoneNumber;
+            _employee.Address = obj.Address;
+            _employee.Email = obj.Email;
+            _employee.Gender = obj.Gender;
+            _employee.Status = obj.Status;
+
+            await _worker.Employees.Update(_employee);
             await _worker.Commit();
-            return "Ok";
+            return "Sửa thành công";
+        }
+        
+        public async Task<IList<EmployeeDTO>> Get()
+        {
+            var query = await _worker.Employees.GetAll();
+            return _mapper.Map<IList<Employee>, IList<EmployeeDTO>>(query);
         }
     }
 }

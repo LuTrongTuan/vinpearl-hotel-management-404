@@ -11,7 +11,7 @@ namespace HotelManagement.UI.Components
     {
         private Color _borderColor = Color.BlueViolet;
         private Color _focusColor = Color.Aqua;
-        private Color _placeHolderColor = Color.CornflowerBlue;
+        private Color _placeHolderColor = Color.WhiteSmoke;
         private int _borderSize = 2;
         private int _borderRadius;
         private bool _isFocused;
@@ -152,6 +152,12 @@ namespace HotelManagement.UI.Components
             set => _underline = value;
         }
 
+        public Color Background
+        {
+            get => this.textBox1.BackColor;
+            set => this.textBox1.BackColor = value;
+        }
+
         public bool Password
         {
             get => textBox1.UseSystemPasswordChar;
@@ -221,6 +227,12 @@ namespace HotelManagement.UI.Components
             set => _errorMessage = value;
         }
 
+        public Color PlaceHolderColor
+        {
+            get => _placeHolderColor;
+            set => _placeHolderColor = value;
+        }
+
         public bool IsError { get; set; }
 
         private void SetPlaceholder()
@@ -252,6 +264,7 @@ namespace HotelManagement.UI.Components
             RemovePlaceholder();
         }
 
+
         private void textBox1_MouseLeave(object sender, EventArgs e)
         {
             OnMouseLeave(e);
@@ -276,6 +289,11 @@ namespace HotelManagement.UI.Components
             _isFocused = false;
             SetPlaceholder();
             this.Invalidate();
+        }
+
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            OnKeyDown(e);
         }
     }
 }

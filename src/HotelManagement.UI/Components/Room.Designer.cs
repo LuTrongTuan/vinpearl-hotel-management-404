@@ -63,9 +63,8 @@ namespace HotelManagement.UI.Components
             this.CustomerName.AutoSize = true;
             this.CustomerName.Location = new System.Drawing.Point(20, 68);
             this.CustomerName.Name = "CustomerName";
-            this.CustomerName.Size = new System.Drawing.Size(64, 24);
+            this.CustomerName.Size = new System.Drawing.Size(0, 24);
             this.CustomerName.TabIndex = 2;
-            this.CustomerName.Text = "label1";
             // 
             // LblRoomType
             // 
@@ -73,9 +72,8 @@ namespace HotelManagement.UI.Components
             this.LblRoomType.AutoSize = true;
             this.LblRoomType.Location = new System.Drawing.Point(20, 37);
             this.LblRoomType.Name = "LblRoomType";
-            this.LblRoomType.Size = new System.Drawing.Size(64, 24);
+            this.LblRoomType.Size = new System.Drawing.Size(0, 24);
             this.LblRoomType.TabIndex = 3;
-            this.LblRoomType.Text = "label1";
             // 
             // Room
             // 

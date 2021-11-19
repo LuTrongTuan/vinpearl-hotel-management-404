@@ -56,6 +56,12 @@ namespace HotelManagement.Application.Services
             return _mapper.Map<IList<Room>, IList<RoomListDTO>>(search);
         }
 
+        public async Task<IList<RoomDetailDTO>> GetList()
+        {
+            var query = await _worker.Rooms.GetAll();
+            return _mapper.Map<IList<Room>, IList<RoomDetailDTO>>(query);
+        }
+
         public async Task<RoomDetailDTO> GetDetail(int id)
         {
             var result = await _worker.Rooms.GetDetail(id);

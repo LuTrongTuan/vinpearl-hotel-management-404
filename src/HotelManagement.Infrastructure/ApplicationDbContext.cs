@@ -1,4 +1,7 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
+using System.Threading;
+using System.Threading.Tasks;
 using HotelManagement.Domain;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,6 +22,14 @@ namespace HotelManagement.Infrastructure
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        }
+
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
+        {
+            foreach (var entry in ChangeTracker.Entries<RoomReceipt>())
+                entry.Entity.CreateAt = DateTime.Now;
+
+            return base.SaveChangesAsync(cancellationToken);
         }
 
         public virtual DbSet<Account> Accounts { get; set; }

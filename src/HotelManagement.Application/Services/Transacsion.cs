@@ -23,7 +23,7 @@ namespace HotelManagement.Application.Services
         private TransactionDTO _transaction;
 
         public Transacsion(IRoomService roomService,
-            IService service, IServiceReceiptService receiptService,
+            IService service,
             IIdentificationService identificationService,
             IMapper mapper, IUnitOfWork worker, IPriceCalculate calculator)
         {
