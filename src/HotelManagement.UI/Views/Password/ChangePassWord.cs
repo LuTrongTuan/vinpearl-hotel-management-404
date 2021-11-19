@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using HotelManagement.Application.Contracts;
 using HotelManagement.Application.DTOs;
 using HotelManagement.Application.DTOs.Account;
+using HotelManagement.Application.Services;
 
 namespace HotelManagement.UI
 {
@@ -11,10 +12,13 @@ namespace HotelManagement.UI
         private IPasswordService _iPasswordService;
         private AccountDTO _accountDto;
         private string _mss;
+        public string name { get; set; }
         public ChangePassWord(IPasswordService iPasswordService)
         {
             InitializeComponent();
             _iPasswordService = iPasswordService;
+            txt_name.Text = Session.Username;
+            txt_name.Enabled = false;
         }
         private async void customButton1_Click_1(object sender, EventArgs e)
         {
@@ -29,5 +33,12 @@ namespace HotelManagement.UI
             MessageBox.Show(_mss);
         }
 
+        private void customButton1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                customButton1_Click_1(null,null);
+            }
+        }
     }
 }

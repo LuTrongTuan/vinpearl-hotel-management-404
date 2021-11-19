@@ -89,7 +89,6 @@ namespace HotelManagement.UI.Views.Employee
             { MessageBox.Show("Không được để trống thông tin \n Vui lòng nhập lại", "Thông báo");
                 return false;
             }
-
             return true;
         }
 
@@ -149,6 +148,7 @@ namespace HotelManagement.UI.Views.Employee
 
         private async void btn_edit_Click(object sender, EventArgs e)
         {
+
             var x = await _employee.GetList();
             var _employeeDTOs = x.FirstOrDefault(c => c.Id == IdClick);
             _employeeDTOs.Name = TxtName.Text;
@@ -187,6 +187,7 @@ namespace HotelManagement.UI.Views.Employee
             }
             cboVaitro.Text = dataGridView1.Rows[rowIndex].Cells[7].Value.ToString();
             IdClick = dataGridView1.Rows[rowIndex].Cells[8].Value.GetHashCode();
+
         }
     }
 }

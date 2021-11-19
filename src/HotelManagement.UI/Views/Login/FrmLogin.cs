@@ -10,14 +10,11 @@ namespace HotelManagement.UI.Views.Login
 {
     public partial class FrmLogin : Form
     {
-        private IUnitOfWork _worker;
         private AccountDTO _account;
         private IAuthenticate _authenticate;
-        private static string role;
-        public FrmLogin(IUnitOfWork worker, IAuthenticate authenticate)
+        public FrmLogin(IAuthenticate authenticate)
         {
             InitializeComponent();
-            _worker = worker;
             _authenticate = authenticate;
         }
         private async void btn_login_Click(object sender, EventArgs e)
@@ -31,6 +28,7 @@ namespace HotelManagement.UI.Views.Login
             {
                 Main main = new Main();
                 MessageBox.Show("Đăng nhập thành công", "Thông báo");
+                main.getTextBox(txb_username);
                 main.Show();
                 this.Hide();
             }
