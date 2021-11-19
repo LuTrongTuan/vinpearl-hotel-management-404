@@ -77,5 +77,11 @@ namespace HotelManagement.Application.Services
             await _worker.Commit();
             return "Sửa thành công";
         }
+        
+        public async Task<IList<EmployeeDTO>> Get()
+        {
+            var query = await _worker.Employees.GetAll();
+            return _mapper.Map<IList<Employee>, IList<EmployeeDTO>>(query);
+        }
     }
 }

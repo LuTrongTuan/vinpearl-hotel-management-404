@@ -1,4 +1,7 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
+using System.Threading;
+using System.Threading.Tasks;
 using HotelManagement.Domain;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,7 +10,7 @@ namespace HotelManagement.Infrastructure
     public class ApplicationDbContext : DbContext
     {
         // define connection string here
-        private const string ConnectionString = @"Data Source=ADMIN\SQLEXPRESS;Initial Catalog=Hotelmanagement;Integrated Security=True";
+        private const string ConnectionString = @"";
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -19,6 +22,14 @@ namespace HotelManagement.Infrastructure
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        }
+
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
+        {
+            foreach (var entry in ChangeTracker.Entries<RoomReceipt>())
+                entry.Entity.CreateAt = DateTime.Now;
+
+            return base.SaveChangesAsync(cancellationToken);
         }
 
         public virtual DbSet<Account> Accounts { get; set; }

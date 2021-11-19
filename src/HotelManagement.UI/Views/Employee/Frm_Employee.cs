@@ -1,5 +1,11 @@
 ﻿using System;
 using System.Linq;
+
+
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+
 using System.Windows.Forms;
 using HotelManagement.Application.Contracts.Services;
 using HotelManagement.Application.DTOs.Employee;
@@ -13,9 +19,12 @@ namespace HotelManagement.UI.Views.Employee
         private readonly IEmployeeService _employee;
         private readonly IConfirm _confirm;
         private readonly IRoleService _roleService;
+
         private int rowIndex, IdClick;
         private string _phone;
-        public Frm_Employee(IEmployeeService emp, IConfirm con, IRoleService roleService)
+        private Regex number;
+        public Frm_Employee(IEmployeeService emp,IConfirm con, IRoleService roleService)
+
         {
             InitializeComponent();
             _employee = emp;
@@ -23,6 +32,7 @@ namespace HotelManagement.UI.Views.Employee
             _roleService = roleService;
             load();
             loadData();
+            number = new Regex(@"^[0-9]*$");
         }
         async void load()
         {
@@ -74,6 +84,20 @@ namespace HotelManagement.UI.Views.Employee
             };
 
             if (!checkNull()) return;
+
+
+
+            if (!number.IsMatch(TxtPhone.Text))
+            {
+                MessageBox.Show("SĐT không được nhập chữ");
+                return;
+            }
+            var load = await _employee.Get();
+            if (load.Any(c => c.Name == TxtName.Text))
+            {
+                MessageBox.Show("Email đã có trong hệ thống ");
+                return;
+            }
 
             if (_confirm.IsConfirm("Bạn chắc chắn muốn thêm "))
             {

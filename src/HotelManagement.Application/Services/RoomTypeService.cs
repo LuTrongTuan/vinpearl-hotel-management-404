@@ -32,15 +32,15 @@ namespace HotelManagement.Application.Services
             await _worker.RoomTypes.Add(_roomType);
             await _worker.Commit();
         }
-        public async Task Update(RoomTypeDTO roomType)
+        public async Task<string> Update(RoomTypeDTO roomType)
         {
             _roomType = await _worker.RoomTypes.Get(x => x.Id == roomType.Id);
-            if(_roomType is null) return;
             _roomType.Name = roomType.Name;
             _roomType.ByDay = roomType.ByDay;
             _roomType.ByHour = roomType.ByHour;
             await _worker.RoomTypes.Update(_roomType);
             await _worker.Commit();
+            return "Sửa thành công";
         }
         public async Task<IList<RoomTypeDTO>> Get()
         {

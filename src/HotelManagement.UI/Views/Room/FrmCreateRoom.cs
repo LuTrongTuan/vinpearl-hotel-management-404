@@ -133,7 +133,7 @@ namespace HotelManagement.UI.Views.Room
             }
             catch
             {
-                MessageBox.Show("Chỉ nhập số");
+                MessageBox.Show("Không được để trống và chỉ nhập số");
             }
         }
     }

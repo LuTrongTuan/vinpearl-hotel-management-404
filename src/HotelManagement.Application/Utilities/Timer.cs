@@ -13,10 +13,17 @@ namespace HotelManagement.Application.Utilities
 
         public int GetHours(DateTime start, DateTime end, int minute = 0)
         {
-            var times = end.Subtract(start).TotalMinutes;
-            var hours = Convert.ToInt32(times / 60);
-            var minutes = times - (hours * 60);
-            return minutes > minute ? hours + 1 : hours;
+            var startTime = Get(start);
+            var endTime = Get(end);
+            var totalMinutes = endTime.Subtract(startTime).TotalMinutes;
+            var hour = Convert.ToInt32(totalMinutes / 60);
+            var remain = totalMinutes % 60;
+            return remain > minute ? hour + 1 : hour;
+        }
+
+        private DateTime Get(DateTime value)
+        {
+            return new DateTime(1999, 1, 1, value.Hour, value.Minute, 0);
         }
     }
 }

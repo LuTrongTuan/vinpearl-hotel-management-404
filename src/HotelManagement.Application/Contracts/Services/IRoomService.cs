@@ -9,6 +9,7 @@ namespace HotelManagement.Application.Contracts.Services
         Task<string> AddRoom(IEnumerable<CreateRoomDTO> room);
         Task<string> Update(RoomDetailDTO room);
         Task<IList<RoomListDTO>> Get(string name = "");
+        Task<IList<RoomDetailDTO>> GetList();
         Task<RoomDetailDTO> GetDetail(int id);
     }
 }
