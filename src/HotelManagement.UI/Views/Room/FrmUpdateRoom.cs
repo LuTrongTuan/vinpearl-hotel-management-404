@@ -2,13 +2,11 @@
 using System.Drawing;
 using System.Linq;
 using System.Text.RegularExpressions;
-using System.Threading;
 using System.Windows.Forms;
 using HotelManagement.Application.Contracts.Services;
 using HotelManagement.Application.DTOs.Room;
 using HotelManagement.UI.Components;
 using HotelManagement.UI.Contracts;
-using HotelManagement.UI.Views.Receipt;
 
 
 namespace HotelManagement.UI.Views.Room
@@ -20,11 +18,10 @@ namespace HotelManagement.UI.Views.Room
         private IRoomTypeService _roomType;
         private readonly IConfirm _confirm;
         private RoomDetailDTO _roomDetail;
-        private RoomTypeDTO _roomTypeDTO;
         private Components.Room _room;
         private const int PanelWidth = 1610;
         private Regex number;
-
+        
         public FrmUpdateRoom(IRoomService roomService, IConfirm confirm, IFloorService iFloorService,
             IRoomTypeService roomType)
         {
