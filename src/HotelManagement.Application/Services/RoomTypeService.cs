@@ -23,7 +23,12 @@ namespace HotelManagement.Application.Services
 
         public async Task Add(RoomTypeDTO roomtype)
         {
-            _roomType = new RoomType { Name = roomtype.Name };
+            _roomType = new RoomType
+            {
+                Name = roomtype.Name,
+                ByDay = roomtype.ByDay,
+                ByHour = roomtype.ByHour
+            };
             await _worker.RoomTypes.Add(_roomType);
             await _worker.Commit();
         }

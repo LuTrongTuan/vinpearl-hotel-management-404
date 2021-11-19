@@ -88,7 +88,14 @@ namespace HotelManagement.Application.Services
             await _worker.Commit();
             return "Thành công";
         }
-
+        public async Task<string> CheckClean(int id)
+        {
+            var room = await _worker.Rooms.Get(x => x.Id == id);
+            room.Status = 2;
+            await _worker.Rooms.Update(room);
+            await _worker.Commit();
+            return "Thành công";
+        }
         public async Task<TransactionDTO> Query(int roomId)
         {
             try

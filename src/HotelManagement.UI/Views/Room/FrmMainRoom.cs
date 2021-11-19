@@ -210,8 +210,8 @@ namespace HotelManagement.UI.Views.Room
             CmbFloor.ValueMember = "Id";
             if (Session.Role == 1)
             {
-                this.customButton1.Visible = false;
-                this.customButton2.Visible = false;
+                this.customButton1.Enabled = false;
+                this.customButton2.Enabled = false;
             }
         }
 

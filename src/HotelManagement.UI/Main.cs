@@ -8,6 +8,7 @@ using HotelManagement.UI.Views.Login;
 using HotelManagement.UI.Views.Receipt;
 using HotelManagement.UI.Views.Room;
 using HotelManagement.UI.Views.Service;
+using TextBox = HotelManagement.UI.Components.TextBox;
 
 
 namespace HotelManagement.UI
@@ -85,8 +86,8 @@ namespace HotelManagement.UI
             
             if (Session.Role == 1)
             {
-                this.btnEmployee.Visible = false;
-                this.btn_thongke.Visible = false;
+                this.btnEmployee.Enabled = false;
+                this.btn_thongke.Enabled = false;
             }
         }
 
@@ -116,6 +117,11 @@ namespace HotelManagement.UI
             {
                 this.Close();
             }
+        }
+
+        public void getTextBox(TextBox value)
+        {
+            lbl_name.Text = "Xin chào: " + value.Text;
         }
     }
 }

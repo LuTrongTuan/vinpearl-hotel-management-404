@@ -55,14 +55,23 @@ namespace HotelManagement.UI.Views.Room
 
         private async void BtnAddRoomType_Click(object sender, EventArgs e)
         {
-            if (TbxRoomType.Text == string.Empty)
+            if (TbxRoomType.Text == string.Empty || txb_byday.Text == string.Empty || txb_byHour.Text == string.Empty)
             {
                 TbxRoomType.IsError = true;
+                txb_byday.IsError = true;
+                txb_byHour.IsError = true;
                 TbxRoomType.ErrorMessage = "Không được để trống";
+                txb_byday.ErrorMessage = "Không được để trống";
+                txb_byHour.ErrorMessage = "Không được để trống";
             }
             else
             {
-                var roomType = new RoomTypeDTO {Name = TbxRoomType.Text};
+                var roomType = new RoomTypeDTO
+                {
+                    Name = TbxRoomType.Text,
+                    ByDay = Convert.ToDouble(txb_byday.Text),
+                    ByHour = Convert.ToDouble(txb_byHour.Text)
+                };
                 if (_confirm.IsConfirm("Bạn chắc chắn muốn thêm"))
                 {
                     await _roomTypeService.Add(roomType);

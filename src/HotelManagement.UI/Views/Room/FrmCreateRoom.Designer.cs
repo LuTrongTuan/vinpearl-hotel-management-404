@@ -44,9 +44,8 @@ namespace HotelManagement.UI.Views.Room
             this.CmbFloor = new System.Windows.Forms.ComboBox();
             this.TbxFloor = new HotelManagement.UI.Components.TextBox();
             this.BtnAddFloor = new HotelManagement.UI.Components.CustomButton();
-            this.textBox1 = new HotelManagement.UI.Components.TextBox();
-            this.textBox2 = new HotelManagement.UI.Components.TextBox();
-            this.textBox3 = new HotelManagement.UI.Components.TextBox();
+            this.txb_byHour = new HotelManagement.UI.Components.TextBox();
+            this.txb_byday = new HotelManagement.UI.Components.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.GridView)).BeginInit();
@@ -265,59 +264,41 @@ namespace HotelManagement.UI.Views.Room
             this.BtnAddFloor.UseVisualStyleBackColor = false;
             this.BtnAddFloor.Click += new System.EventHandler(this.BtnAddFloor_Click);
             // 
-            // textBox1
+            // txb_byHour
             // 
-            this.textBox1.BorderColor = System.Drawing.Color.BlueViolet;
-            this.textBox1.BorderRadius = 0;
-            this.textBox1.ErrorMessage = null;
-            this.textBox1.FocusedColor = System.Drawing.Color.Aqua;
-            this.textBox1.IsError = false;
-            this.textBox1.Location = new System.Drawing.Point(704, 60);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Multiline = false;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Padding = new System.Windows.Forms.Padding(7);
-            this.textBox1.Password = false;
-            this.textBox1.PlaceHolder = null;
-            this.textBox1.Size = new System.Drawing.Size(90, 37);
-            this.textBox1.TabIndex = 14;
-            this.textBox1.Underline = false;
+            this.txb_byHour.BorderColor = System.Drawing.Color.BlueViolet;
+            this.txb_byHour.BorderRadius = 0;
+            this.txb_byHour.ErrorMessage = null;
+            this.txb_byHour.FocusedColor = System.Drawing.Color.Aqua;
+            this.txb_byHour.IsError = false;
+            this.txb_byHour.Location = new System.Drawing.Point(681, 48);
+            this.txb_byHour.Margin = new System.Windows.Forms.Padding(4);
+            this.txb_byHour.Multiline = false;
+            this.txb_byHour.Name = "txb_byHour";
+            this.txb_byHour.Padding = new System.Windows.Forms.Padding(7);
+            this.txb_byHour.Password = false;
+            this.txb_byHour.PlaceHolder = "Giá giờ";
+            this.txb_byHour.Size = new System.Drawing.Size(90, 37);
+            this.txb_byHour.TabIndex = 14;
+            this.txb_byHour.Underline = false;
             // 
-            // textBox2
+            // txb_byday
             // 
-            this.textBox2.BorderColor = System.Drawing.Color.BlueViolet;
-            this.textBox2.BorderRadius = 0;
-            this.textBox2.ErrorMessage = null;
-            this.textBox2.FocusedColor = System.Drawing.Color.Aqua;
-            this.textBox2.IsError = false;
-            this.textBox2.Location = new System.Drawing.Point(606, 60);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox2.Multiline = false;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Padding = new System.Windows.Forms.Padding(7);
-            this.textBox2.Password = false;
-            this.textBox2.PlaceHolder = null;
-            this.textBox2.Size = new System.Drawing.Size(90, 37);
-            this.textBox2.TabIndex = 14;
-            this.textBox2.Underline = false;
-            // 
-            // textBox3
-            // 
-            this.textBox3.BorderColor = System.Drawing.Color.BlueViolet;
-            this.textBox3.BorderRadius = 0;
-            this.textBox3.ErrorMessage = null;
-            this.textBox3.FocusedColor = System.Drawing.Color.Aqua;
-            this.textBox3.IsError = false;
-            this.textBox3.Location = new System.Drawing.Point(508, 60);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox3.Multiline = false;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Padding = new System.Windows.Forms.Padding(7);
-            this.textBox3.Password = false;
-            this.textBox3.PlaceHolder = null;
-            this.textBox3.Size = new System.Drawing.Size(90, 37);
-            this.textBox3.TabIndex = 14;
-            this.textBox3.Underline = false;
+            this.txb_byday.BorderColor = System.Drawing.Color.BlueViolet;
+            this.txb_byday.BorderRadius = 0;
+            this.txb_byday.ErrorMessage = null;
+            this.txb_byday.FocusedColor = System.Drawing.Color.Aqua;
+            this.txb_byday.IsError = false;
+            this.txb_byday.Location = new System.Drawing.Point(572, 48);
+            this.txb_byday.Margin = new System.Windows.Forms.Padding(4);
+            this.txb_byday.Multiline = false;
+            this.txb_byday.Name = "txb_byday";
+            this.txb_byday.Padding = new System.Windows.Forms.Padding(7);
+            this.txb_byday.Password = false;
+            this.txb_byday.PlaceHolder = "Giá ngày";
+            this.txb_byday.Size = new System.Drawing.Size(101, 37);
+            this.txb_byday.TabIndex = 14;
+            this.txb_byday.Underline = false;
             // 
             // dataGridView1
             // 
@@ -347,9 +328,8 @@ namespace HotelManagement.UI.Views.Room
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(909, 520);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txb_byday);
+            this.Controls.Add(this.txb_byHour);
             this.Controls.Add(this.BtnAddFloor);
             this.Controls.Add(this.TbxFloor);
             this.Controls.Add(this.CmbFloor);
@@ -391,9 +371,8 @@ namespace HotelManagement.UI.Views.Room
         private ComboBox CmbFloor;
         private Components.TextBox TbxFloor;
         private Components.CustomButton BtnAddFloor;
-        private Components.TextBox textBox1;
-        private Components.TextBox textBox2;
-        private Components.TextBox textBox3;
+        private Components.TextBox txb_byHour;
+        private Components.TextBox txb_byday;
         private DataGridView dataGridView1;
         private Label label2;
     }

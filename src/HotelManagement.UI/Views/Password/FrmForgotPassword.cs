@@ -28,5 +28,12 @@ namespace HotelManagement.UI.Views.Password
             frm.Show();
             this.Hide();
         }
+
+        private void BtnBack_Click(object sender, EventArgs e)
+        {
+            FrmLogin frm = Program.Container.GetInstance<FrmLogin>();
+            frm.Show();
+            this.Hide();
+        }
     }
 }
