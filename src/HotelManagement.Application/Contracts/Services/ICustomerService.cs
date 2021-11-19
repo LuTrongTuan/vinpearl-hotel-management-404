@@ -10,5 +10,7 @@ namespace HotelManagement.Application.Contracts.Services
         Task<IList<CustomerDTO>> GetList();
         Task Add(CustomerDTO customer);
         Task Update(CustomerDTO customer);
+        Task<IEnumerable<CustomerDTO>> Get();
+        Task<IList<CustomerDTO>> Find(string name);
     }
 }
