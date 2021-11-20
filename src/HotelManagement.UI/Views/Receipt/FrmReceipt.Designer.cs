@@ -48,7 +48,6 @@ namespace HotelManagement.UI.Views.Receipt
             this.Dtpicker_out = new System.Windows.Forms.DateTimePicker();
             this.Dtpicker_in = new System.Windows.Forms.DateTimePicker();
             this.TbxNote = new HotelManagement.UI.Components.TextBox();
-            this.txb_hinhthuc = new HotelManagement.UI.Components.TextBox();
             this.TbxDeposit = new HotelManagement.UI.Components.TextBox();
             this.lbl_roomPrice = new System.Windows.Forms.Label();
             this.CbxByDay = new System.Windows.Forms.CheckBox();
@@ -67,8 +66,8 @@ namespace HotelManagement.UI.Views.Receipt
             this.Price = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.CbxDeactive = new System.Windows.Forms.CheckBox();
+            this.CbxActive = new System.Windows.Forms.CheckBox();
             this.TbxPhoneNumber = new HotelManagement.UI.Components.TextBox();
             this.TbxCustomerName = new HotelManagement.UI.Components.TextBox();
             this.TbxIdentityNumber = new HotelManagement.UI.Components.TextBox();
@@ -85,6 +84,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.BtnCancle = new HotelManagement.UI.Components.CustomButton();
             this.LblPayment = new System.Windows.Forms.Label();
             this.BtnUpdate = new HotelManagement.UI.Components.CustomButton();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.ServiceQuantity)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PeopleAmount)).BeginInit();
@@ -98,6 +98,7 @@ namespace HotelManagement.UI.Views.Receipt
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(12, 211);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(105, 20);
@@ -128,6 +129,7 @@ namespace HotelManagement.UI.Views.Receipt
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(18, 159);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(64, 20);
@@ -138,6 +140,7 @@ namespace HotelManagement.UI.Views.Receipt
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(18, 124);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(75, 20);
@@ -168,6 +171,7 @@ namespace HotelManagement.UI.Views.Receipt
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.Location = new System.Drawing.Point(18, 88);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(59, 20);
@@ -196,7 +200,7 @@ namespace HotelManagement.UI.Views.Receipt
             // CmbService
             // 
             this.CmbService.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.CmbService.ForeColor = System.Drawing.Color.Black;
+            this.CmbService.ForeColor = System.Drawing.SystemColors.WindowText;
             this.CmbService.FormattingEnabled = true;
             this.CmbService.Location = new System.Drawing.Point(145, 36);
             this.CmbService.Name = "CmbService";
@@ -235,10 +239,10 @@ namespace HotelManagement.UI.Views.Receipt
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.Dtpicker_out);
             this.groupBox1.Controls.Add(this.Dtpicker_in);
             this.groupBox1.Controls.Add(this.TbxNote);
-            this.groupBox1.Controls.Add(this.txb_hinhthuc);
             this.groupBox1.Controls.Add(this.TbxDeposit);
             this.groupBox1.Controls.Add(this.lbl_roomPrice);
             this.groupBox1.Controls.Add(this.CbxByDay);
@@ -290,10 +294,12 @@ namespace HotelManagement.UI.Views.Receipt
             // 
             // TbxNote
             // 
-            this.TbxNote.BorderColor = System.Drawing.Color.BlueViolet;
+            this.TbxNote.Background = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(134)))), ((int)(((byte)(203)))));
+            this.TbxNote.BorderColor = System.Drawing.Color.White;
             this.TbxNote.BorderRadius = 0;
             this.TbxNote.ErrorMessage = null;
             this.TbxNote.FocusedColor = System.Drawing.Color.Aqua;
+            this.TbxNote.ForeColor = System.Drawing.Color.White;
             this.TbxNote.IsError = false;
             this.TbxNote.Location = new System.Drawing.Point(145, 284);
             this.TbxNote.Margin = new System.Windows.Forms.Padding(4);
@@ -302,34 +308,19 @@ namespace HotelManagement.UI.Views.Receipt
             this.TbxNote.Padding = new System.Windows.Forms.Padding(9, 7, 9, 7);
             this.TbxNote.Password = false;
             this.TbxNote.PlaceHolder = "Ghi chú";
+            this.TbxNote.PlaceHolderColor = System.Drawing.SystemColors.ScrollBar;
             this.TbxNote.Size = new System.Drawing.Size(300, 37);
             this.TbxNote.TabIndex = 38;
-            this.TbxNote.Underline = false;
-            // 
-            // txb_hinhthuc
-            // 
-            this.txb_hinhthuc.BorderColor = System.Drawing.Color.BlueViolet;
-            this.txb_hinhthuc.BorderRadius = 0;
-            this.txb_hinhthuc.ErrorMessage = null;
-            this.txb_hinhthuc.FocusedColor = System.Drawing.Color.Aqua;
-            this.txb_hinhthuc.IsError = false;
-            this.txb_hinhthuc.Location = new System.Drawing.Point(145, 239);
-            this.txb_hinhthuc.Margin = new System.Windows.Forms.Padding(4);
-            this.txb_hinhthuc.Multiline = false;
-            this.txb_hinhthuc.Name = "txb_hinhthuc";
-            this.txb_hinhthuc.Padding = new System.Windows.Forms.Padding(9, 7, 9, 7);
-            this.txb_hinhthuc.Password = false;
-            this.txb_hinhthuc.PlaceHolder = "Hình thức thanh toán";
-            this.txb_hinhthuc.Size = new System.Drawing.Size(300, 37);
-            this.txb_hinhthuc.TabIndex = 37;
-            this.txb_hinhthuc.Underline = false;
+            this.TbxNote.Underline = true;
             // 
             // TbxDeposit
             // 
-            this.TbxDeposit.BorderColor = System.Drawing.Color.BlueViolet;
+            this.TbxDeposit.Background = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(134)))), ((int)(((byte)(203)))));
+            this.TbxDeposit.BorderColor = System.Drawing.Color.White;
             this.TbxDeposit.BorderRadius = 0;
             this.TbxDeposit.ErrorMessage = null;
             this.TbxDeposit.FocusedColor = System.Drawing.Color.Aqua;
+            this.TbxDeposit.ForeColor = System.Drawing.Color.White;
             this.TbxDeposit.IsError = false;
             this.TbxDeposit.Location = new System.Drawing.Point(145, 194);
             this.TbxDeposit.Margin = new System.Windows.Forms.Padding(4);
@@ -338,13 +329,15 @@ namespace HotelManagement.UI.Views.Receipt
             this.TbxDeposit.Padding = new System.Windows.Forms.Padding(9, 7, 9, 7);
             this.TbxDeposit.Password = false;
             this.TbxDeposit.PlaceHolder = "Tiền trả trước";
+            this.TbxDeposit.PlaceHolderColor = System.Drawing.SystemColors.ScrollBar;
             this.TbxDeposit.Size = new System.Drawing.Size(300, 37);
             this.TbxDeposit.TabIndex = 36;
-            this.TbxDeposit.Underline = false;
+            this.TbxDeposit.Underline = true;
             // 
             // lbl_roomPrice
             // 
             this.lbl_roomPrice.AutoSize = true;
+            this.lbl_roomPrice.ForeColor = System.Drawing.Color.White;
             this.lbl_roomPrice.Location = new System.Drawing.Point(145, 402);
             this.lbl_roomPrice.Name = "lbl_roomPrice";
             this.lbl_roomPrice.Size = new System.Drawing.Size(83, 20);
@@ -354,6 +347,7 @@ namespace HotelManagement.UI.Views.Receipt
             // CbxByDay
             // 
             this.CbxByDay.AutoSize = true;
+            this.CbxByDay.ForeColor = System.Drawing.Color.White;
             this.CbxByDay.Location = new System.Drawing.Point(145, 366);
             this.CbxByDay.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CbxByDay.Name = "CbxByDay";
@@ -366,6 +360,7 @@ namespace HotelManagement.UI.Views.Receipt
             // CbxByHour
             // 
             this.CbxByHour.AutoSize = true;
+            this.CbxByHour.ForeColor = System.Drawing.Color.White;
             this.CbxByHour.Location = new System.Drawing.Point(256, 366);
             this.CbxByHour.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CbxByHour.Name = "CbxByHour";
@@ -379,6 +374,7 @@ namespace HotelManagement.UI.Views.Receipt
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label19.ForeColor = System.Drawing.Color.White;
             this.label19.Location = new System.Drawing.Point(18, 333);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(71, 20);
@@ -407,6 +403,7 @@ namespace HotelManagement.UI.Views.Receipt
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label11.ForeColor = System.Drawing.Color.White;
             this.label11.Location = new System.Drawing.Point(18, 363);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(80, 20);
@@ -425,6 +422,7 @@ namespace HotelManagement.UI.Views.Receipt
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label16.ForeColor = System.Drawing.Color.White;
             this.label16.Location = new System.Drawing.Point(18, 295);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(62, 20);
@@ -435,6 +433,7 @@ namespace HotelManagement.UI.Views.Receipt
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label18.ForeColor = System.Drawing.Color.White;
             this.label18.Location = new System.Drawing.Point(18, 402);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(81, 20);
@@ -445,6 +444,7 @@ namespace HotelManagement.UI.Views.Receipt
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label20.ForeColor = System.Drawing.Color.White;
             this.label20.Location = new System.Drawing.Point(15, 256);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(78, 20);
@@ -455,6 +455,7 @@ namespace HotelManagement.UI.Views.Receipt
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label14.ForeColor = System.Drawing.Color.White;
             this.label14.Location = new System.Drawing.Point(18, 45);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(91, 20);
@@ -530,8 +531,8 @@ namespace HotelManagement.UI.Views.Receipt
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.checkBox2);
-            this.groupBox3.Controls.Add(this.checkBox1);
+            this.groupBox3.Controls.Add(this.CbxDeactive);
+            this.groupBox3.Controls.Add(this.CbxActive);
             this.groupBox3.Controls.Add(this.TbxPhoneNumber);
             this.groupBox3.Controls.Add(this.TbxCustomerName);
             this.groupBox3.Controls.Add(this.TbxIdentityNumber);
@@ -551,32 +552,34 @@ namespace HotelManagement.UI.Views.Receipt
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Thông tin khách hàng";
             // 
-            // checkBox2
+            // CbxDeactive
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(262, 209);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(153, 24);
-            this.checkBox2.TabIndex = 37;
-            this.checkBox2.Text = "Không hoạt động";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.CbxDeactive.AutoSize = true;
+            this.CbxDeactive.Location = new System.Drawing.Point(262, 209);
+            this.CbxDeactive.Name = "CbxDeactive";
+            this.CbxDeactive.Size = new System.Drawing.Size(153, 24);
+            this.CbxDeactive.TabIndex = 37;
+            this.CbxDeactive.Text = "Không hoạt động";
+            this.CbxDeactive.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // CbxActive
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(151, 209);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(105, 24);
-            this.checkBox1.TabIndex = 37;
-            this.checkBox1.Text = "Hoạt động";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.CbxActive.AutoSize = true;
+            this.CbxActive.Location = new System.Drawing.Point(151, 209);
+            this.CbxActive.Name = "CbxActive";
+            this.CbxActive.Size = new System.Drawing.Size(105, 24);
+            this.CbxActive.TabIndex = 37;
+            this.CbxActive.Text = "Hoạt động";
+            this.CbxActive.UseVisualStyleBackColor = true;
             // 
             // TbxPhoneNumber
             // 
-            this.TbxPhoneNumber.BorderColor = System.Drawing.Color.BlueViolet;
+            this.TbxPhoneNumber.Background = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(134)))), ((int)(((byte)(203)))));
+            this.TbxPhoneNumber.BorderColor = System.Drawing.Color.White;
             this.TbxPhoneNumber.BorderRadius = 0;
             this.TbxPhoneNumber.ErrorMessage = null;
             this.TbxPhoneNumber.FocusedColor = System.Drawing.Color.Aqua;
+            this.TbxPhoneNumber.ForeColor = System.Drawing.Color.White;
             this.TbxPhoneNumber.IsError = false;
             this.TbxPhoneNumber.Location = new System.Drawing.Point(151, 126);
             this.TbxPhoneNumber.Margin = new System.Windows.Forms.Padding(4);
@@ -585,16 +588,19 @@ namespace HotelManagement.UI.Views.Receipt
             this.TbxPhoneNumber.Padding = new System.Windows.Forms.Padding(9, 7, 9, 7);
             this.TbxPhoneNumber.Password = false;
             this.TbxPhoneNumber.PlaceHolder = "Sô điện thoại";
+            this.TbxPhoneNumber.PlaceHolderColor = System.Drawing.SystemColors.ScrollBar;
             this.TbxPhoneNumber.Size = new System.Drawing.Size(274, 37);
             this.TbxPhoneNumber.TabIndex = 36;
-            this.TbxPhoneNumber.Underline = false;
+            this.TbxPhoneNumber.Underline = true;
             // 
             // TbxCustomerName
             // 
-            this.TbxCustomerName.BorderColor = System.Drawing.Color.BlueViolet;
+            this.TbxCustomerName.Background = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(134)))), ((int)(((byte)(203)))));
+            this.TbxCustomerName.BorderColor = System.Drawing.Color.White;
             this.TbxCustomerName.BorderRadius = 0;
             this.TbxCustomerName.ErrorMessage = null;
             this.TbxCustomerName.FocusedColor = System.Drawing.Color.Aqua;
+            this.TbxCustomerName.ForeColor = System.Drawing.Color.White;
             this.TbxCustomerName.IsError = false;
             this.TbxCustomerName.Location = new System.Drawing.Point(151, 81);
             this.TbxCustomerName.Margin = new System.Windows.Forms.Padding(4);
@@ -603,16 +609,19 @@ namespace HotelManagement.UI.Views.Receipt
             this.TbxCustomerName.Padding = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.TbxCustomerName.Password = false;
             this.TbxCustomerName.PlaceHolder = "Tên khách hàng";
+            this.TbxCustomerName.PlaceHolderColor = System.Drawing.SystemColors.ScrollBar;
             this.TbxCustomerName.Size = new System.Drawing.Size(274, 37);
             this.TbxCustomerName.TabIndex = 35;
-            this.TbxCustomerName.Underline = false;
+            this.TbxCustomerName.Underline = true;
             // 
             // TbxIdentityNumber
             // 
-            this.TbxIdentityNumber.BorderColor = System.Drawing.Color.BlueViolet;
+            this.TbxIdentityNumber.Background = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(134)))), ((int)(((byte)(203)))));
+            this.TbxIdentityNumber.BorderColor = System.Drawing.Color.White;
             this.TbxIdentityNumber.BorderRadius = 0;
             this.TbxIdentityNumber.ErrorMessage = null;
             this.TbxIdentityNumber.FocusedColor = System.Drawing.Color.Aqua;
+            this.TbxIdentityNumber.ForeColor = System.Drawing.Color.White;
             this.TbxIdentityNumber.IsError = false;
             this.TbxIdentityNumber.Location = new System.Drawing.Point(151, 36);
             this.TbxIdentityNumber.Margin = new System.Windows.Forms.Padding(4);
@@ -621,9 +630,11 @@ namespace HotelManagement.UI.Views.Receipt
             this.TbxIdentityNumber.Padding = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.TbxIdentityNumber.Password = false;
             this.TbxIdentityNumber.PlaceHolder = "Số giấy tờ";
+            this.TbxIdentityNumber.PlaceHolderColor = System.Drawing.SystemColors.ScrollBar;
             this.TbxIdentityNumber.Size = new System.Drawing.Size(274, 37);
             this.TbxIdentityNumber.TabIndex = 34;
-            this.TbxIdentityNumber.Underline = false;
+            this.TbxIdentityNumber.Underline = true;
+            this.TbxIdentityNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TbxIdentityNumber_KeyDown);
             // 
             // RbtFemale
             // 
@@ -801,6 +812,17 @@ namespace HotelManagement.UI.Views.Receipt
             this.BtnUpdate.UseVisualStyleBackColor = false;
             this.BtnUpdate.Click += new System.EventHandler(this.BtnUpdate_Click);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Tiền mặt",
+            "Banking"});
+            this.comboBox1.Location = new System.Drawing.Point(142, 253);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(303, 28);
+            this.comboBox1.TabIndex = 41;
+            // 
             // FrmReceipt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -816,6 +838,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.RoomName);
             this.Controls.Add(this.label13);
+            this.ForeColor = System.Drawing.Color.White;
             this.Name = "FrmReceipt";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hóa đơn khách hàng";
@@ -876,7 +899,6 @@ namespace HotelManagement.UI.Views.Receipt
         private System.Windows.Forms.Label Price;
         private Components.CustomButton BtnAddService;
         private Components.TextBox TbxNote;
-        private Components.TextBox txb_hinhthuc;
         private Components.TextBox TbxDeposit;
         private Components.CustomButton btb;
         private Components.TextBox TbxPhoneNumber;
@@ -888,10 +910,11 @@ namespace HotelManagement.UI.Views.Receipt
         private Components.TextBox TbxCustomerName;
         private DateTimePicker Dtpicker_out;
         private DateTimePicker Dtpicker_in;
-        private CheckBox checkBox1;
+        private CheckBox CbxActive;
         private Label label7;
-        private CheckBox checkBox2;
+        private CheckBox CbxDeactive;
         private Label LblPayment;
         private Components.CustomButton BtnUpdate;
+        private ComboBox comboBox1;
     }
 }

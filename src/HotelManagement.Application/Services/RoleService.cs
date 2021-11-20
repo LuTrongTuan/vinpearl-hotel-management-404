@@ -24,5 +24,12 @@ namespace HotelManagement.Application.Services
             var query = await _worker.Roles.GetAll();
             return _mapper.Map<IList<Role>, IList<RoleDTO>>(query);
         }
+
+        public async Task<string> GetRoleName(int id)
+        {
+            var role = await _worker.Roles.Get(x => x.Id == id);
+            return role.Name;
+        }
+
     }
 }

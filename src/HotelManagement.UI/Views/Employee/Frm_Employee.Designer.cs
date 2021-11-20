@@ -95,13 +95,13 @@ namespace HotelManagement.UI.Views.Employee
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.panel1.Location = new System.Drawing.Point(2, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1528, 776);
+            this.panel1.Size = new System.Drawing.Size(1551, 803);
             this.panel1.TabIndex = 1;
             // 
             // TxtUsername
             // 
             this.TxtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.TxtUsername.Location = new System.Drawing.Point(972, 140);
+            this.TxtUsername.Location = new System.Drawing.Point(971, 140);
             this.TxtUsername.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TxtUsername.Multiline = true;
             this.TxtUsername.Name = "TxtUsername";
@@ -134,14 +134,14 @@ namespace HotelManagement.UI.Views.Employee
             this.tbx_search.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbx_search.Multiline = true;
             this.tbx_search.Name = "tbx_search";
-            this.tbx_search.Size = new System.Drawing.Size(260, 34);
+            this.tbx_search.Size = new System.Drawing.Size(260, 33);
             this.tbx_search.TabIndex = 9;
             this.tbx_search.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbx_search_KeyUp);
             // 
             // TxtDiachi
             // 
             this.TxtDiachi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.TxtDiachi.Location = new System.Drawing.Point(464, 310);
+            this.TxtDiachi.Location = new System.Drawing.Point(464, 309);
             this.TxtDiachi.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TxtDiachi.Multiline = true;
             this.TxtDiachi.Name = "TxtDiachi";
@@ -164,19 +164,20 @@ namespace HotelManagement.UI.Views.Employee
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 549);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 576);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 29;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1528, 227);
+            this.dataGridView1.Size = new System.Drawing.Size(1551, 227);
             this.dataGridView1.TabIndex = 7;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // cboVaitro
             // 
             this.cboVaitro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.cboVaitro.FormattingEnabled = true;
-            this.cboVaitro.Location = new System.Drawing.Point(972, 191);
+            this.cboVaitro.Location = new System.Drawing.Point(971, 191);
             this.cboVaitro.Name = "cboVaitro";
             this.cboVaitro.Size = new System.Drawing.Size(260, 26);
             this.cboVaitro.TabIndex = 6;
@@ -201,7 +202,7 @@ namespace HotelManagement.UI.Views.Employee
             this.checked_HD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(134)))), ((int)(((byte)(203)))));
             this.checked_HD.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.checked_HD.ForeColor = System.Drawing.SystemColors.Control;
-            this.checked_HD.Location = new System.Drawing.Point(972, 255);
+            this.checked_HD.Location = new System.Drawing.Point(971, 255);
             this.checked_HD.Name = "checked_HD";
             this.checked_HD.Size = new System.Drawing.Size(133, 29);
             this.checked_HD.TabIndex = 5;
@@ -229,7 +230,7 @@ namespace HotelManagement.UI.Views.Employee
             this.rdoNam.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(134)))), ((int)(((byte)(203)))));
             this.rdoNam.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.rdoNam.ForeColor = System.Drawing.SystemColors.Control;
-            this.rdoNam.Location = new System.Drawing.Point(972, 95);
+            this.rdoNam.Location = new System.Drawing.Point(971, 95);
             this.rdoNam.Name = "rdoNam";
             this.rdoNam.Size = new System.Drawing.Size(77, 29);
             this.rdoNam.TabIndex = 4;
@@ -242,7 +243,7 @@ namespace HotelManagement.UI.Views.Employee
             this.dateTimePicker1.CustomFormat = "";
             this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(464, 146);
+            this.dateTimePicker1.Location = new System.Drawing.Point(464, 147);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(260, 24);
             this.dateTimePicker1.TabIndex = 3;
@@ -254,7 +255,7 @@ namespace HotelManagement.UI.Views.Employee
             this.button2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.button2.Location = new System.Drawing.Point(645, 484);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(113, 34);
+            this.button2.Size = new System.Drawing.Size(113, 35);
             this.button2.TabIndex = 2;
             this.button2.Text = "Search";
             this.button2.UseVisualStyleBackColor = false;
@@ -264,7 +265,7 @@ namespace HotelManagement.UI.Views.Employee
             this.btn_reset.BackColor = System.Drawing.Color.Red;
             this.btn_reset.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_reset.Image = global::HotelManagement.UI.Properties.Resources.circle_of_two_clockwise_arrows_rotation;
-            this.btn_reset.Location = new System.Drawing.Point(1192, 478);
+            this.btn_reset.Location = new System.Drawing.Point(1192, 477);
             this.btn_reset.Name = "btn_reset";
             this.btn_reset.Size = new System.Drawing.Size(118, 44);
             this.btn_reset.TabIndex = 2;
@@ -292,7 +293,7 @@ namespace HotelManagement.UI.Views.Employee
             this.btn_addEmployee.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.btn_addEmployee.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_addEmployee.Image = global::HotelManagement.UI.Properties.Resources.plus;
-            this.btn_addEmployee.Location = new System.Drawing.Point(907, 478);
+            this.btn_addEmployee.Location = new System.Drawing.Point(907, 477);
             this.btn_addEmployee.Name = "btn_addEmployee";
             this.btn_addEmployee.Size = new System.Drawing.Size(118, 44);
             this.btn_addEmployee.TabIndex = 2;
@@ -307,7 +308,7 @@ namespace HotelManagement.UI.Views.Employee
             this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(134)))), ((int)(((byte)(203)))));
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label4.ForeColor = System.Drawing.SystemColors.Control;
-            this.label4.Location = new System.Drawing.Point(350, 146);
+            this.label4.Location = new System.Drawing.Point(350, 147);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(108, 25);
             this.label4.TabIndex = 0;
@@ -343,7 +344,7 @@ namespace HotelManagement.UI.Views.Employee
             this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(134)))), ((int)(((byte)(203)))));
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label9.ForeColor = System.Drawing.SystemColors.Control;
-            this.label9.Location = new System.Drawing.Point(825, 146);
+            this.label9.Location = new System.Drawing.Point(825, 147);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(110, 25);
             this.label9.TabIndex = 0;
@@ -413,7 +414,7 @@ namespace HotelManagement.UI.Views.Employee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1532, 777);
+            this.ClientSize = new System.Drawing.Size(1558, 776);
             this.Controls.Add(this.panel1);
             this.Name = "Frm_Employee";
             this.Text = "Frm_Employee";

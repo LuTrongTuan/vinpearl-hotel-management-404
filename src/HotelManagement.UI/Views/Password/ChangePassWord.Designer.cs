@@ -125,6 +125,7 @@ namespace HotelManagement.UI
             // 
             // txt_nlmk
             // 
+            this.txt_nlmk.Background = System.Drawing.SystemColors.Window;
             this.txt_nlmk.BorderColor = System.Drawing.Color.BlueViolet;
             this.txt_nlmk.BorderRadius = 10;
             this.txt_nlmk.ErrorMessage = null;
@@ -137,12 +138,14 @@ namespace HotelManagement.UI
             this.txt_nlmk.Padding = new System.Windows.Forms.Padding(7);
             this.txt_nlmk.Password = false;
             this.txt_nlmk.PlaceHolder = "Nhắc lại mật khẩu";
+            this.txt_nlmk.PlaceHolderColor = System.Drawing.Color.Gray;
             this.txt_nlmk.Size = new System.Drawing.Size(305, 37);
             this.txt_nlmk.TabIndex = 4;
             this.txt_nlmk.Underline = false;
             // 
             // txt_newMK
             // 
+            this.txt_newMK.Background = System.Drawing.SystemColors.Window;
             this.txt_newMK.BorderColor = System.Drawing.Color.BlueViolet;
             this.txt_newMK.BorderRadius = 10;
             this.txt_newMK.ErrorMessage = null;
@@ -155,12 +158,14 @@ namespace HotelManagement.UI
             this.txt_newMK.Padding = new System.Windows.Forms.Padding(7);
             this.txt_newMK.Password = false;
             this.txt_newMK.PlaceHolder = "Mật khẩu mới";
+            this.txt_newMK.PlaceHolderColor = System.Drawing.Color.Gray;
             this.txt_newMK.Size = new System.Drawing.Size(305, 37);
             this.txt_newMK.TabIndex = 3;
             this.txt_newMK.Underline = false;
             // 
             // txt_name
             // 
+            this.txt_name.Background = System.Drawing.SystemColors.Window;
             this.txt_name.BorderColor = System.Drawing.Color.BlueViolet;
             this.txt_name.BorderRadius = 10;
             this.txt_name.ErrorMessage = null;
@@ -173,12 +178,14 @@ namespace HotelManagement.UI
             this.txt_name.Padding = new System.Windows.Forms.Padding(7);
             this.txt_name.Password = false;
             this.txt_name.PlaceHolder = "Username";
+            this.txt_name.PlaceHolderColor = System.Drawing.Color.Gray;
             this.txt_name.Size = new System.Drawing.Size(305, 37);
             this.txt_name.TabIndex = 1;
             this.txt_name.Underline = false;
             // 
             // txt_mk
             // 
+            this.txt_mk.Background = System.Drawing.SystemColors.Window;
             this.txt_mk.BorderColor = System.Drawing.Color.BlueViolet;
             this.txt_mk.BorderRadius = 10;
             this.txt_mk.ErrorMessage = null;
@@ -191,6 +198,7 @@ namespace HotelManagement.UI
             this.txt_mk.Padding = new System.Windows.Forms.Padding(7);
             this.txt_mk.Password = false;
             this.txt_mk.PlaceHolder = "Mật khẩu hiện tại";
+            this.txt_mk.PlaceHolderColor = System.Drawing.Color.Gray;
             this.txt_mk.Size = new System.Drawing.Size(305, 37);
             this.txt_mk.TabIndex = 2;
             this.txt_mk.Underline = false;

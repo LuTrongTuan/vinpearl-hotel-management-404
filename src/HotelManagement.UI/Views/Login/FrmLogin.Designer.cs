@@ -42,6 +42,7 @@ namespace HotelManagement.UI.Views.Login
             // 
             // txb_username
             // 
+            this.txb_username.Background = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(134)))), ((int)(((byte)(203)))));
             this.txb_username.BorderColor = System.Drawing.Color.BlueViolet;
             this.txb_username.BorderRadius = 15;
             this.txb_username.ErrorMessage = null;
@@ -54,9 +55,10 @@ namespace HotelManagement.UI.Views.Login
             this.txb_username.Padding = new System.Windows.Forms.Padding(7);
             this.txb_username.Password = false;
             this.txb_username.PlaceHolder = "Username";
+            this.txb_username.PlaceHolderColor = System.Drawing.Color.WhiteSmoke;
             this.txb_username.Size = new System.Drawing.Size(309, 37);
             this.txb_username.TabIndex = 1;
-            this.txb_username.Underline = false;
+            this.txb_username.Underline = true;
             // 
             // btn_login
             // 
@@ -128,7 +130,7 @@ namespace HotelManagement.UI.Views.Login
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(265, 36);
+            this.label1.Location = new System.Drawing.Point(245, 38);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(168, 41);
             this.label1.TabIndex = 8;
@@ -136,6 +138,7 @@ namespace HotelManagement.UI.Views.Login
             // 
             // txb_password
             // 
+            this.txb_password.Background = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(134)))), ((int)(((byte)(203)))));
             this.txb_password.BorderColor = System.Drawing.Color.BlueViolet;
             this.txb_password.BorderRadius = 15;
             this.txb_password.ErrorMessage = null;
@@ -148,15 +151,16 @@ namespace HotelManagement.UI.Views.Login
             this.txb_password.Padding = new System.Windows.Forms.Padding(7);
             this.txb_password.Password = true;
             this.txb_password.PlaceHolder = "Password";
+            this.txb_password.PlaceHolderColor = System.Drawing.Color.WhiteSmoke;
             this.txb_password.Size = new System.Drawing.Size(309, 37);
             this.txb_password.TabIndex = 2;
-            this.txb_password.Underline = false;
+            this.txb_password.Underline = true;
             // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(134)))), ((int)(((byte)(203)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(531, 425);
             this.Controls.Add(this.txb_password);

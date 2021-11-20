@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using HotelManagement.Application.Contracts.Infrastructure;
@@ -18,10 +19,22 @@ namespace HotelManagement.Application.Services
             _worker = worker;
             _mapper = mapper;
         }
-
-        public async Task<CustomerDTO> GetDetail(int id)
+        public async Task<IEnumerable<CustomerDTO>> Get()
         {
-            var query = await _worker.Customers.Get(x => x.Id == id);
+            var query = await _worker.Customers.GetAll();
+            return _mapper.Map<IList<Customer>, IList<CustomerDTO>>(query);
+        }
+
+        public async Task<IList<CustomerDTO>> Find(string name)
+        {
+            var cus = await _worker.Customers.GetAll();
+            var list = cus.Where(c => c.Name.ToLower().StartsWith(name.ToLower())).ToList();
+            return _mapper.Map<IList<Domain.Customer>, IList<CustomerDTO>>(list);
+        }
+
+        public async Task<CustomerDTO> GetDetail(string id)
+        {
+            var query = await _worker.Customers.Get(x => x.IdentityNumber == id);
             return _mapper.Map<CustomerDTO>(query);
         }
 
