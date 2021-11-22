@@ -9,6 +9,8 @@ using HotelManagement.Application.DTOs;
 using HotelManagement.Application.DTOs.Receipt;
 using HotelManagement.Application.DTOs.Room;
 using HotelManagement.Application.DTOs.Service;
+using HotelManagement.UI.Contracts;
+using HotelManagement.UI.Utilities;
 
 namespace HotelManagement.UI.Views.Receipt
 {
@@ -18,6 +20,7 @@ namespace HotelManagement.UI.Views.Receipt
         private readonly ITransacsion _transacsion;
         private readonly IService _service;
         private readonly ICustomerService _customerService;
+        private readonly IValidate _validate;
         private IList<ServiceReceiptDTO> _serviceInOrder = new List<ServiceReceiptDTO>();
         private int _roomId;
         private int _serviceId;
@@ -35,11 +38,12 @@ namespace HotelManagement.UI.Views.Receipt
             }
         }
         public FrmReceipt(ITransacsion transacsion, IService service,
-            ICustomerService customerService)
+            ICustomerService customerService, IValidate validate)
         {
             _transacsion = transacsion;
             _service = service;
             _customerService = customerService;
+            _validate = validate;
             InitializeComponent();
         }
 
@@ -143,6 +147,7 @@ namespace HotelManagement.UI.Views.Receipt
                 Dtpicker_in.Value = DateTime.Now;
                 Dtpicker_checkIn.Value = DateTime.Now;
             }
+            AddControlToValidate();
         }
 
         #region Checkbox
@@ -166,7 +171,8 @@ namespace HotelManagement.UI.Views.Receipt
         private async void Checkin_Click(object sender, EventArgs e)
         {
             var transaction = GetTransaction();
-            MessageBox.Show(await _transacsion.Create(transaction));
+            if(transaction is not null)
+                MessageBox.Show(await _transacsion.Create(transaction));
         }
 
         private async void Checkout_Click(object sender, EventArgs e)
@@ -183,6 +189,14 @@ namespace HotelManagement.UI.Views.Receipt
             _serviceId = Convert.ToInt32(CmbService.SelectedValue);
             _serviceDTO = await _service.GetDetail(_serviceId);
             Price.Text = MoneyFormat(_serviceDTO.Price);
+        }
+
+        private void AddControlToValidate()
+        {
+            _validate.Add(new ValidateModel {Control = TbxDeposit, Error = "Chỉ nhập số" , Pattern = Pattern.Number})
+                .Add(new ValidateModel {Control = TbxCustomerName, Error = "Tên không đúng định dạng", Pattern = Pattern.Name })
+                .Add(new ValidateModel { Control = TbxIdentityNumber, Error = "Định dạng không đúng"})
+                .Add(new ValidateModel {Control = TbxPhoneNumber, Error = "Số điện thoại không đúng", Pattern = Pattern.PhoneNumber});
         }
 
         private void ServiceQuantity_ValueChanged(object sender, EventArgs e)
@@ -224,6 +238,7 @@ namespace HotelManagement.UI.Views.Receipt
 
         private TransactionDTO GetTransaction()
         {
+            if (!_validate.Run().Accept()) return null;
             var transaction = new TransactionDTO()
             {
                 RoomId = _roomId,
@@ -264,6 +279,7 @@ namespace HotelManagement.UI.Views.Receipt
             else transaction.Receipt.Status = 2;
 
             return transaction;
+
         }
 
         private string MoneyFormat(double money) => money.ToString("C", new CultureInfo("vi-VN"));

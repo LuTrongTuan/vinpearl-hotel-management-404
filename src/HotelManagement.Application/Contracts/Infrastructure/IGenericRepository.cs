@@ -9,6 +9,7 @@ namespace HotelManagement.Application.Contracts.Infrastructure
         where TEntity : class
     {
         Task<IList<TEntity>> GetAll();
+        Task<IList<TEntity>> GetAll(Expression<Func<TEntity, bool>> predicate);
         Task<TEntity> Get(Expression<Func<TEntity, bool>> predicate);
         Task Update(TEntity entity);
         Task Add(TEntity entity);

@@ -34,6 +34,7 @@ namespace HotelManagement.UI
             Container.Register<FrmReceiptDetail>();
             Container.Register<FrmForgotPassword>();
             Container.Register<FrmStastical>();
+            Container.Register<IValidate, Validate>();
             Container.ConfigureInfrastructureServices();
             Container.ConfigureApplicationServices();
         }

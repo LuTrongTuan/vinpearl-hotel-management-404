@@ -11,7 +11,7 @@ namespace HotelManagement.Application.Profiles
         {
             CreateMap<Service, ServiceDTO>();
             CreateMap<ServiceDTO, Service>()
-                .ForMember(x => x.ServiceType, d => d.Ignore());
+                .ForMember(x => x.Type, d => d.Ignore());
             CreateMap<ServiceType, ServicetypeDTO>();
             CreateMap<Service, ServiceDTO>().ReverseMap();
             CreateMap<ServiceReceiptDTO, ServiceReceipt>();

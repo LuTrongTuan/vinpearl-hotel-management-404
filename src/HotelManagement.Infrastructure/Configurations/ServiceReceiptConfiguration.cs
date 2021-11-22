@@ -9,15 +9,15 @@ namespace HotelManagement.Infrastructure.Configurations
         public void Configure(EntityTypeBuilder<ServiceReceipt> builder)
         {
             builder.ToTable("ServiceReceipt");
-            builder.HasKey(e => new {e.ReceiptDetailId, e.ServiceId});
+            builder.HasKey(e => new {e.DetailId, e.ServiceId});
 
             builder.HasOne(e => e.Service)
-                .WithMany(d => d.ServiceReceipts)
+                .WithMany(d => d.Receipts)
                 .HasForeignKey(d => d.ServiceId);
 
-            builder.HasOne(e => e.ReceiptDetail)
-                .WithMany(d => d.ServiceReceipts)
-                .HasForeignKey(x => x.ReceiptDetailId);
+            builder.HasOne(e => e.Detail)
+                .WithMany(d => d.Services)
+                .HasForeignKey(x => x.ServiceId);
         }
     }
 }

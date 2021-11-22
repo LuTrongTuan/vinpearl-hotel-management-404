@@ -32,7 +32,7 @@ namespace HotelManagement.Application.Services
             foreach (var receipt in source)
             {
                 var query = await _worker.ServiceReceipts.Get(x =>
-                    x.ReceiptDetailId == receipt.ReceiptId && x.ServiceId == receipt.ServiceId);
+                    x.DetailId == receipt.ReceiptId && x.ServiceId == receipt.ServiceId);
                 query.Quantity = receipt.Quantity;
                 query.Total = receipt.Total;
                 await _worker.ServiceReceipts.Update(query);

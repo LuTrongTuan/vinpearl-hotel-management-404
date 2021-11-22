@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using HotelManagement.Application.Contracts.Infrastructure;
 using HotelManagement.Domain;
@@ -12,20 +13,15 @@ namespace HotelManagement.Infrastructure.Repositories
         {
         }
 
-        public async Task<ReceiptDetail> GetDetail(int id)
+        public override async Task<ReceiptDetail> Get(Expression<Func<ReceiptDetail, bool>> predicate)
         {
-            var roomReceipt = await Context.RoomReceipts
-                .OrderBy(x => x.CreateAt)
-                .LastAsync(x => x.RoomId == id);
-
-            var query = await Context.ReceiptDetails
+            return await Context.ReceiptDetails
+                .Include(l => l.Rooms)
                 .Include(e => e.Receipt)
                 .ThenInclude(d => d.Customer)
-                .Include(j => j.ServiceReceipts)
+                .Include(b => b.Services)
                 .ThenInclude(h => h.Service)
-                .FirstAsync(x => x.Id == roomReceipt.ReceiptDetailId);
-
-            return query;
+                .FirstAsync(predicate);
         }
     }
 }

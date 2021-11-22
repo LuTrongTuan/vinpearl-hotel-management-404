@@ -27,7 +27,7 @@ namespace HotelManagement.Application.Services
 
         public async Task<IList<FloorDTO>> GetAll()
         {
-            var query = await _worker.Floors.LoadRoomInFloor();
+            var query = await _worker.Floors.GetAll();
             var result = _mapper.Map<IList<Floor>, IList<FloorDTO>>(query);
             foreach (var floorDTO in result)
                 foreach (var room in floorDTO.Rooms)
@@ -41,23 +41,24 @@ namespace HotelManagement.Application.Services
 
         private async Task<string> GetCurrentCustomerName(int roomId)
         {
-            var room = await _worker.Rooms.Get(x => x.Id == roomId);
-            if (room.Status == 2) return string.Empty;
-            try
-            {
-                var receiptDetail = await _worker.ReceiptDetails.GetDetail(roomId);
-                return receiptDetail.Receipt.Customer.Name;
-            }
-            catch
-            {
-                return string.Empty;
-            }
+            //var room = await _worker.Rooms.Get(x => x.Id == roomId);
+            //if (room.Status == 2) return string.Empty;
+            //try
+            //{
+            //    var receiptDetail = await _worker.ReceiptDetails.GetDetail(roomId);
+            //    return receiptDetail.Receipt.Customer.Name;
+            //}
+            //catch
+            //{
+            //    return string.Empty;
+            //}
+            return default;
         }
 
         private async Task<string> GetRoomTypeName(int id)
         {
             var type = await _worker.Rooms.GetDetail(id);
-            return type.RoomType.Name;
+            return type.Type.Name;
         }
 
         public async Task<string> Add(int number)

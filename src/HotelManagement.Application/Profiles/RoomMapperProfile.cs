@@ -17,7 +17,7 @@ namespace HotelManagement.Application.Profiles
                 .ForMember(x => x.Rooms, d => d.MapFrom<ICollection<Room>>(e => e.Rooms))
                 .ForMember(x => x.Floor, d => d.MapFrom(e => e.Number));
             CreateMap<Room, RoomDetailDTO>()
-                .ForMember(x => x.RoomType, d => d.MapFrom(e => e.RoomType));
+                .ForMember(x => x.RoomType, d => d.MapFrom(e => e.Type));
         }
     }
 }

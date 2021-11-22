@@ -8,8 +8,8 @@ namespace HotelManagement.Domain
         public double Price { get; set; }
         public bool Status { get; set; }
 
-        public int ServiceTypeId { get; set; }
-        public virtual ServiceType ServiceType { get; set; }
-        public virtual ICollection<ServiceReceipt> ServiceReceipts { get; set; }
+        public int TypeId { get; set; }
+        public virtual ServiceType Type { get; set; }
+        public virtual ICollection<ServiceReceipt> Receipts { get; set; }
     }
 }

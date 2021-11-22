@@ -12,7 +12,7 @@ namespace HotelManagement.Infrastructure.Repositories
         {
         }
 
-        public async Task<IList<Floor>> LoadRoomInFloor()
+        public override async Task<IList<Floor>> GetAll()
         {
             return await Context.Floors
                 .Include(e => e.Rooms)

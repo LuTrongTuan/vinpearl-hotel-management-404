@@ -16,16 +16,15 @@ namespace HotelManagement.UI.Components
         private int _borderRadius;
         private bool _isFocused;
         private bool _isPlaceHolder;
+        private bool _isError;
         private bool _underline;
         private string _placeHolder;
         private string _errorMessage;
+        private string _temp;
 
         public event EventHandler _TextChanged;
 
-        public TextBox()
-        {
-            InitializeComponent();
-        }
+        public TextBox() => InitializeComponent();
 
         protected override void OnResize(EventArgs e)
         {
@@ -117,7 +116,6 @@ namespace HotelManagement.UI.Components
             path.CloseFigure();
             return path;
         }
-
         private void SetTextBoxRoundedRegion()
         {
             GraphicsPath pathTxt;
@@ -217,14 +215,23 @@ namespace HotelManagement.UI.Components
 
         public override string Text
         {
-            get => textBox1.Text;
+            get
+            {
+                if (textBox1.Text == _placeHolder || textBox1.Text == ErrorMessage)
+                    return "";
+                return textBox1.Text;
+            }
             set => textBox1.Text = value;
         }
 
         public string ErrorMessage
         {
             get => _errorMessage;
-            set => _errorMessage = value;
+            set
+            {
+                _errorMessage = value;
+                //SetPlaceholder();
+            }
         }
 
         public Color PlaceHolderColor
@@ -233,14 +240,33 @@ namespace HotelManagement.UI.Components
             set => _placeHolderColor = value;
         }
 
-        public bool IsError { get; set; }
+        public bool IsError
+        {
+            get => _isError;
+            set
+            {
+                _isError = value;
+                SetErrorMessage();
+            }
+        }
+
+        private void SetErrorMessage()
+        {
+            if (IsError)
+            {
+                _placeHolder = ErrorMessage;
+                _temp = _placeHolder;
+                textBox1.Text = _placeHolder;
+                textBox1.ForeColor = _placeHolderColor;
+            }
+        }
 
         private void SetPlaceholder()
         {
             if (!string.IsNullOrWhiteSpace(textBox1.Text) || _placeHolder == "") return;
             _isPlaceHolder = true;
-            textBox1.Text = IsError ? _errorMessage : _placeHolder;
-            textBox1.ForeColor = IsError ? Color.Red : _placeHolderColor;
+            textBox1.Text =  _placeHolder;
+            textBox1.ForeColor = _placeHolderColor;
         }
         private void RemovePlaceholder()
         {
@@ -263,7 +289,6 @@ namespace HotelManagement.UI.Components
             OnMouseEnter(e);
             RemovePlaceholder();
         }
-
 
         private void textBox1_MouseLeave(object sender, EventArgs e)
         {

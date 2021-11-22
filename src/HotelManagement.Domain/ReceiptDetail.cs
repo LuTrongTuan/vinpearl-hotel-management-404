@@ -9,7 +9,7 @@ namespace HotelManagement.Domain
         public DateTime Checkout { get; set; }
         public int ReceiptId { get; set; }
         public virtual Receipt Receipt { get; set; }
-        public virtual ICollection<ServiceReceipt> ServiceReceipts { get; set; }
-        public virtual ICollection<RoomReceipt> RoomReceipts { get; set; }
+        public virtual ICollection<ServiceReceipt> Services { get; set; }
+        public virtual ICollection<RoomReceipt> Rooms { get; set; }
     }
 }

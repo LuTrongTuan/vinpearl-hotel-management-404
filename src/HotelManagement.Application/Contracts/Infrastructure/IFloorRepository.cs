@@ -6,6 +6,5 @@ namespace HotelManagement.Application.Contracts.Infrastructure
 {
     public interface IFloorRepository : IGenericRepository<Floor>
     {
-        Task<IList<Floor>> LoadRoomInFloor();
     }
 }

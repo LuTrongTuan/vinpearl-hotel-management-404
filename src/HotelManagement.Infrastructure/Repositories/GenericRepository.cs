@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using HotelManagement.Application.Contracts.Infrastructure;
@@ -7,24 +8,30 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HotelManagement.Infrastructure.Repositories
 {
-    public class GenericRepository<TEntity> : IGenericRepository<TEntity>
+    public abstract class GenericRepository<TEntity> : IGenericRepository<TEntity>
         where TEntity : class
     {
         protected readonly ApplicationDbContext Context;
 
         protected GenericRepository(ApplicationDbContext context) => Context = context;
 
-        public async Task<IList<TEntity>> GetAll() => await Context.Set<TEntity>().ToListAsync();
+        public virtual async Task<IList<TEntity>> GetAll() => await Context.Set<TEntity>().ToListAsync();
+        public virtual async Task<IList<TEntity>> GetAll(Expression<Func<TEntity, bool>> predicate)
+        {
+            return await Context.Set<TEntity>()
+                .Where(predicate)
+                .ToListAsync();
+        }
 
-        public async Task<TEntity> Get(Expression<Func<TEntity, bool>> predicate)
+        public virtual async Task<TEntity> Get(Expression<Func<TEntity, bool>> predicate)
             => await Context.Set<TEntity>().FirstOrDefaultAsync(predicate);
 
-        public Task Update(TEntity entity)
+        public virtual Task Update(TEntity entity)
         {
             Context.Set<TEntity>().Update(entity);
             return Task.CompletedTask;
         }
 
-        public async Task Add(TEntity entity) => await Context.Set<TEntity>().AddAsync(entity);
+        public virtual async Task Add(TEntity entity) => await Context.Set<TEntity>().AddAsync(entity);
     }
 }

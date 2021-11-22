@@ -4,17 +4,17 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace HotelManagement.Infrastructure.Configurations
 {
-    public class ReceiptDetailConfiguration : IEntityTypeConfiguration<ReceiptDetail>
+    public class HistoryConfiguration : IEntityTypeConfiguration<History>
     {
-        public void Configure(EntityTypeBuilder<ReceiptDetail> builder)
+        public void Configure(EntityTypeBuilder<History> builder)
         {
-            builder.ToTable("ReceiptDetail");
+            builder.ToTable("History");
             builder.HasKey(e => e.Id);
             builder.Property(e => e.Id).ValueGeneratedOnAdd();
 
             builder.HasOne(e => e.Receipt)
-                .WithOne(d => d.Detail)
-                .HasForeignKey<ReceiptDetail>(x => x.ReceiptId);
+                .WithMany(d => d.Histories)
+                .HasForeignKey(x => x.Room);
         }
     }
 }

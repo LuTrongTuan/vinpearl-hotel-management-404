@@ -32,7 +32,7 @@ namespace HotelManagement.Infrastructure.Repositories
         public async Task<Room> GetDetail(int id)
         {
             return await Context.Rooms
-                .Include(e => e.RoomType)
+                .Include(e => e.Type)
                 .FirstOrDefaultAsync(e => e.Id == id);
         }
     }

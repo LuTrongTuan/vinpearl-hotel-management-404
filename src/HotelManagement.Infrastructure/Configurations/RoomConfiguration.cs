@@ -12,7 +12,7 @@ namespace HotelManagement.Infrastructure.Configurations
             builder.HasKey(e => e.Id);
             builder.Property(e => e.Id).ValueGeneratedOnAdd();
 
-            builder.HasOne(e => e.RoomType)
+            builder.HasOne(e => e.Type)
                 .WithMany(d => d.Rooms)
                 .HasForeignKey(x => x.TypeId);
         }

@@ -5,6 +5,5 @@ namespace HotelManagement.Application.Contracts.Infrastructure
 {
     public interface IReceiptDetailRepository : IGenericRepository<ReceiptDetail>
     {
-        Task<ReceiptDetail> GetDetail(int id);
     }
 }
