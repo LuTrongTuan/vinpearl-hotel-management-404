@@ -36,17 +36,25 @@ namespace HotelManagement.UI.Views.Check
             this.dg_tkp = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dataCustomer = new System.Windows.Forms.DataGridView();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.statisCustomer.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_tkp)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataCustomer)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // statisCustomer
             // 
+            this.statisCustomer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.statisCustomer.Controls.Add(this.tabPage1);
             this.statisCustomer.Controls.Add(this.tabPage2);
+            this.statisCustomer.Controls.Add(this.tabPage3);
             this.statisCustomer.Location = new System.Drawing.Point(12, 12);
             this.statisCustomer.Name = "statisCustomer";
             this.statisCustomer.SelectedIndex = 0;
@@ -109,6 +117,7 @@ namespace HotelManagement.UI.Views.Check
             // 
             this.dataCustomer.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataCustomer.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dataCustomer.Location = new System.Drawing.Point(3, 92);
             this.dataCustomer.Name = "dataCustomer";
             this.dataCustomer.RowHeadersWidth = 51;
@@ -116,6 +125,28 @@ namespace HotelManagement.UI.Views.Check
             this.dataCustomer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataCustomer.Size = new System.Drawing.Size(840, 298);
             this.dataCustomer.TabIndex = 0;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.dataGridView1);
+            this.tabPage3.Location = new System.Drawing.Point(4, 29);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(846, 393);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Thống kê doanh thu";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 122);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 29;
+            this.dataGridView1.Size = new System.Drawing.Size(840, 268);
+            this.dataGridView1.TabIndex = 0;
             // 
             // FrmStastical
             // 
@@ -131,6 +162,8 @@ namespace HotelManagement.UI.Views.Check
             ((System.ComponentModel.ISupportInitialize)(this.dg_tkp)).EndInit();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataCustomer)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -144,5 +177,7 @@ namespace HotelManagement.UI.Views.Check
         private System.Windows.Forms.DataGridView dataCustomer;
         private System.Windows.Forms.ComboBox cmb_tang;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

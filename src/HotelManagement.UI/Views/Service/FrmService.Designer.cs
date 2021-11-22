@@ -89,6 +89,7 @@ namespace HotelManagement.UI.Views.Service
             // 
             // txt_DV
             // 
+            this.txt_DV.Background = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(134)))), ((int)(((byte)(203)))));
             this.txt_DV.BorderColor = System.Drawing.Color.BlueViolet;
             this.txt_DV.BorderRadius = 0;
             this.txt_DV.ErrorMessage = null;
@@ -101,9 +102,10 @@ namespace HotelManagement.UI.Views.Service
             this.txt_DV.Padding = new System.Windows.Forms.Padding(7);
             this.txt_DV.Password = false;
             this.txt_DV.PlaceHolder = null;
+            this.txt_DV.PlaceHolderColor = System.Drawing.Color.WhiteSmoke;
             this.txt_DV.Size = new System.Drawing.Size(255, 37);
             this.txt_DV.TabIndex = 14;
-            this.txt_DV.Underline = false;
+            this.txt_DV.Underline = true;
             // 
             // label11
             // 
@@ -140,6 +142,7 @@ namespace HotelManagement.UI.Views.Service
             // 
             // txt_price
             // 
+            this.txt_price.Background = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(134)))), ((int)(((byte)(203)))));
             this.txt_price.BorderColor = System.Drawing.Color.BlueViolet;
             this.txt_price.BorderRadius = 0;
             this.txt_price.ErrorMessage = null;
@@ -152,9 +155,10 @@ namespace HotelManagement.UI.Views.Service
             this.txt_price.Padding = new System.Windows.Forms.Padding(7);
             this.txt_price.Password = false;
             this.txt_price.PlaceHolder = null;
+            this.txt_price.PlaceHolderColor = System.Drawing.Color.WhiteSmoke;
             this.txt_price.Size = new System.Drawing.Size(255, 37);
             this.txt_price.TabIndex = 14;
-            this.txt_price.Underline = false;
+            this.txt_price.Underline = true;
             // 
             // btn_cl
             // 
@@ -250,6 +254,7 @@ namespace HotelManagement.UI.Views.Service
             // 
             // txt_LDV
             // 
+            this.txt_LDV.Background = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(134)))), ((int)(((byte)(203)))));
             this.txt_LDV.BorderColor = System.Drawing.Color.BlueViolet;
             this.txt_LDV.BorderRadius = 0;
             this.txt_LDV.ErrorMessage = null;
@@ -262,9 +267,10 @@ namespace HotelManagement.UI.Views.Service
             this.txt_LDV.Padding = new System.Windows.Forms.Padding(7);
             this.txt_LDV.Password = false;
             this.txt_LDV.PlaceHolder = null;
+            this.txt_LDV.PlaceHolderColor = System.Drawing.Color.WhiteSmoke;
             this.txt_LDV.Size = new System.Drawing.Size(255, 37);
             this.txt_LDV.TabIndex = 14;
-            this.txt_LDV.Underline = false;
+            this.txt_LDV.Underline = true;
             // 
             // FrmService
             // 
