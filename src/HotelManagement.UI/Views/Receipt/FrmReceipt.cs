@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using AForge.Video.DirectShow;
 using HotelManagement.Application.Contracts.Services;
 using HotelManagement.Application.DTOs;
 using HotelManagement.Application.DTOs.Receipt;
 using HotelManagement.Application.DTOs.Room;
 using HotelManagement.Application.DTOs.Service;
+using ZXing;
 
 namespace HotelManagement.UI.Views.Receipt
 {
@@ -23,6 +26,8 @@ namespace HotelManagement.UI.Views.Receipt
         private int _serviceId;
         private ServiceDTO _serviceDTO;
         private RoomDetailDTO _room;
+        private FilterInfoCollection filterInfoCollection;
+        private VideoCaptureDevice videoCaptureDevice;
 
         // properties
         public int RoomId
@@ -41,6 +46,7 @@ namespace HotelManagement.UI.Views.Receipt
             _service = service;
             _customerService = customerService;
             InitializeComponent();
+            load();
         }
 
         #region Onload
@@ -289,5 +295,84 @@ namespace HotelManagement.UI.Views.Receipt
                 CbxActive.Checked = true;
             else CbxDeactive.Checked = true;
         }
+
+        #region Quét căn cước
+
+        void load()
+        {
+            filterInfoCollection = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+            foreach (FilterInfo filter in filterInfoCollection)
+                cbo_webcam.Items.Add(filter.Name);
+            cbo_webcam.SelectedIndex = 0;
+            videoCaptureDevice = new VideoCaptureDevice();
+        }
+        private void FrmReceipt_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+            try
+            {
+                if (videoCaptureDevice.IsRunning)
+                {
+                    videoCaptureDevice.Stop();
+                }
+            }
+            catch (Exception )
+            {
+                return;
+            }
+        }
+
+        private void btn_Start_Click(object sender, EventArgs e)
+        {
+            videoCaptureDevice = new VideoCaptureDevice(filterInfoCollection[cbo_webcam.SelectedIndex].MonikerString);
+            videoCaptureDevice.NewFrame += VideoCaptureDevice_NewFrame;
+            videoCaptureDevice.Start();
+            timer1.Start();
+        }
+
+        private void VideoCaptureDevice_NewFrame(object sender, AForge.Video.NewFrameEventArgs eventArgs)
+        {
+            ptb_quet.Image = (Bitmap)eventArgs.Frame.Clone();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ptb_quet.Image != null)
+                {
+                    BarcodeReader barcodeReader = new BarcodeReader();
+                    Result result = barcodeReader.Decode((Bitmap)ptb_quet.Image);
+                    if (result != null)
+                    {
+                        txb_QR.Text = result.ToString().Trim();
+                        var str = txb_QR.Text;
+                        char[] chars = { '|' };
+                        string[] strings = str.Split(chars);
+                        TbxIdentityNumber.Text = strings[0];
+                        TbxCustomerName.Text = strings[2];
+                        if (strings[4] == "Nam")
+                        {
+                            RbtMale.Checked = true;
+                        }
+                        else
+                        {
+                            RbtFemale.Checked = true;
+                        }
+                        timer1.Stop();
+                        if (videoCaptureDevice.IsRunning)
+                        {
+                            videoCaptureDevice.Stop();
+                        }
+                    }
+                }
+            }
+            catch (Exception )
+            {
+            }
+        }
+
+        #endregion
+
     }
 }
