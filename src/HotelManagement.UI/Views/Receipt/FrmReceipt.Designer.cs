@@ -45,6 +45,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.ServiceQuantity = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.Dtpicker_out = new System.Windows.Forms.DateTimePicker();
             this.Dtpicker_in = new System.Windows.Forms.DateTimePicker();
             this.TbxNote = new HotelManagement.UI.Components.TextBox();
@@ -84,7 +85,6 @@ namespace HotelManagement.UI.Views.Receipt
             this.BtnCancle = new HotelManagement.UI.Components.CustomButton();
             this.LblPayment = new System.Windows.Forms.Label();
             this.BtnUpdate = new HotelManagement.UI.Components.CustomButton();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.ServiceQuantity)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PeopleAmount)).BeginInit();
@@ -271,6 +271,17 @@ namespace HotelManagement.UI.Views.Receipt
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin hóa đơn";
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Tiền mặt",
+            "Banking"});
+            this.comboBox1.Location = new System.Drawing.Point(142, 253);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(303, 28);
+            this.comboBox1.TabIndex = 41;
+            // 
             // Dtpicker_out
             // 
             this.Dtpicker_out.CustomFormat = "HH:mm";
@@ -309,7 +320,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.TbxNote.Password = false;
             this.TbxNote.PlaceHolder = "Ghi chú";
             this.TbxNote.PlaceHolderColor = System.Drawing.SystemColors.ScrollBar;
-            this.TbxNote.Size = new System.Drawing.Size(300, 37);
+            this.TbxNote.Size = new System.Drawing.Size(300, 39);
             this.TbxNote.TabIndex = 38;
             this.TbxNote.Underline = true;
             // 
@@ -330,7 +341,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.TbxDeposit.Password = false;
             this.TbxDeposit.PlaceHolder = "Tiền trả trước";
             this.TbxDeposit.PlaceHolderColor = System.Drawing.SystemColors.ScrollBar;
-            this.TbxDeposit.Size = new System.Drawing.Size(300, 37);
+            this.TbxDeposit.Size = new System.Drawing.Size(300, 39);
             this.TbxDeposit.TabIndex = 36;
             this.TbxDeposit.Underline = true;
             // 
@@ -589,7 +600,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.TbxPhoneNumber.Password = false;
             this.TbxPhoneNumber.PlaceHolder = "Sô điện thoại";
             this.TbxPhoneNumber.PlaceHolderColor = System.Drawing.SystemColors.ScrollBar;
-            this.TbxPhoneNumber.Size = new System.Drawing.Size(274, 37);
+            this.TbxPhoneNumber.Size = new System.Drawing.Size(274, 39);
             this.TbxPhoneNumber.TabIndex = 36;
             this.TbxPhoneNumber.Underline = true;
             // 
@@ -610,7 +621,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.TbxCustomerName.Password = false;
             this.TbxCustomerName.PlaceHolder = "Tên khách hàng";
             this.TbxCustomerName.PlaceHolderColor = System.Drawing.SystemColors.ScrollBar;
-            this.TbxCustomerName.Size = new System.Drawing.Size(274, 37);
+            this.TbxCustomerName.Size = new System.Drawing.Size(274, 39);
             this.TbxCustomerName.TabIndex = 35;
             this.TbxCustomerName.Underline = true;
             // 
@@ -631,7 +642,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.TbxIdentityNumber.Password = false;
             this.TbxIdentityNumber.PlaceHolder = "Số giấy tờ";
             this.TbxIdentityNumber.PlaceHolderColor = System.Drawing.SystemColors.ScrollBar;
-            this.TbxIdentityNumber.Size = new System.Drawing.Size(274, 37);
+            this.TbxIdentityNumber.Size = new System.Drawing.Size(274, 39);
             this.TbxIdentityNumber.TabIndex = 34;
             this.TbxIdentityNumber.Underline = true;
             this.TbxIdentityNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TbxIdentityNumber_KeyDown);
@@ -715,6 +726,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.ServiceGridView.AllowUserToAddRows = false;
             this.ServiceGridView.AllowUserToDeleteRows = false;
             this.ServiceGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.ServiceGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ServiceGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ServiceGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ServiceGridView.Location = new System.Drawing.Point(3, 23);
@@ -722,6 +734,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.ServiceGridView.Name = "ServiceGridView";
             this.ServiceGridView.RowHeadersVisible = false;
             this.ServiceGridView.RowHeadersWidth = 51;
+            this.ServiceGridView.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             this.ServiceGridView.RowTemplate.Height = 29;
             this.ServiceGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ServiceGridView.Size = new System.Drawing.Size(1527, 156);
@@ -811,17 +824,6 @@ namespace HotelManagement.UI.Views.Receipt
             this.BtnUpdate.TextColor = System.Drawing.SystemColors.ControlText;
             this.BtnUpdate.UseVisualStyleBackColor = false;
             this.BtnUpdate.Click += new System.EventHandler(this.BtnUpdate_Click);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Tiền mặt",
-            "Banking"});
-            this.comboBox1.Location = new System.Drawing.Point(142, 253);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(303, 28);
-            this.comboBox1.TabIndex = 41;
             // 
             // FrmReceipt
             // 

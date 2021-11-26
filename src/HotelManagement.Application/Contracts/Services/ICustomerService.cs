@@ -6,9 +6,8 @@ namespace HotelManagement.Application.Contracts.Services
 {
     public interface ICustomerService
     {
-        Task<CustomerDTO> GetDetail(string id);
         Task<IList<CustomerDTO>> GetList();
-        Task Add(CustomerDTO customer);
+        Task<int> Add(CustomerDTO customer);
         Task Update(CustomerDTO customer);
         Task<IEnumerable<CustomerDTO>> Get();
         Task<IList<CustomerDTO>> Find(string name);

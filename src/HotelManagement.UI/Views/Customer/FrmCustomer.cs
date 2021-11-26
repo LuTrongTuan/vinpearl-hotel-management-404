@@ -29,8 +29,8 @@ namespace HotelManagement.UI.Views.Customer
             dgrid_customer.Rows.Clear();
             foreach (var x in name.ToList())
             {
-                dgrid_customer.Rows.Add(x.IdentityNumber, x.Name, x.PhoneNumber, x.Gender == true ? "Nam" : "Nữ",
-                    x.Status == true ? "Hoạt Động" : "Không Hoạt Động", x.Id);
+                //dgrid_customer.Rows.Add(x.IdentityNumber, x.Name, x.PhoneNumber, x.Gender == true ? "Nam" : "Nữ",
+                //    x.Status == true ? "Hoạt Động" : "Không Hoạt Động");
             }
         }
         public async void loadSeach(string dv)
@@ -49,8 +49,8 @@ namespace HotelManagement.UI.Views.Customer
             foreach (var x in name.ToList())
             {
                 var cust = await _Customer.Get();
-                dgrid_customer.Rows.Add(x.IdentityNumber, x.Name, x.PhoneNumber, x.Gender == true ? "Nam" : "Nữ",
-                    x.Status == true ? "Hoạt Động" : "Không Hoạt Động", x.Id);
+                //dgrid_customer.Rows.Add(x.IdentityNumber, x.Name, x.PhoneNumber, x.Gender == true ? "Nam" : "Nữ",
+                //    x.Status == true ? "Hoạt Động" : "Không Hoạt Động");
             }
         }
         private void txb_search__TextChanged(object sender, EventArgs e)

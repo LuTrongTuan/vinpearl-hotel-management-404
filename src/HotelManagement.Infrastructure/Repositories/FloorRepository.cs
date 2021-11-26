@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using HotelManagement.Application.Contracts.Infrastructure;
@@ -15,7 +16,7 @@ namespace HotelManagement.Infrastructure.Repositories
         public override async Task<IList<Floor>> GetAll()
         {
             return await Context.Floors
-                .Include(e => e.Rooms)
+                .Include(e => e.Rooms.OrderBy(d => d.Name))
                 .ToListAsync();
         }
     }

@@ -30,7 +30,7 @@ namespace HotelManagement.Application.Services
         {
             foreach (var time in room)
             {
-                var lastRoomName = await _worker.Rooms.GetLassRoomName("P" + time.Floor);
+                var lastRoomName = await _worker.Rooms.GetLastRoomName("P" + time.Floor);
                 var max = Convert.ToInt32(lastRoomName[2..]);
                 for (int i = 0; i < time.Quantity; i++)
                 {
@@ -64,7 +64,7 @@ namespace HotelManagement.Application.Services
 
         public async Task<RoomDetailDTO> GetDetail(int id)
         {
-            var result = await _worker.Rooms.GetDetail(id);
+            var result = await _worker.Rooms.Get(x => x.Id == id);
             return _mapper.Map<RoomDetailDTO>(result);
         }
 

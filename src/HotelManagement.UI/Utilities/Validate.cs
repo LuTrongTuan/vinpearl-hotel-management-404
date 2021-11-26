@@ -22,7 +22,7 @@ namespace HotelManagement.UI.Utilities
             return this;
         }
 
-        public IValidate Run()
+        public IValidate Run(bool name = false)
         {
             _result.Clear();
             foreach (var model in _validate)

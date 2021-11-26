@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using HotelManagement.Application.Contracts.Infrastructure;
@@ -41,23 +42,24 @@ namespace HotelManagement.Application.Services
 
         private async Task<string> GetCurrentCustomerName(int roomId)
         {
-            //var room = await _worker.Rooms.Get(x => x.Id == roomId);
-            //if (room.Status == 2) return string.Empty;
-            //try
-            //{
-            //    var receiptDetail = await _worker.ReceiptDetails.GetDetail(roomId);
-            //    return receiptDetail.Receipt.Customer.Name;
-            //}
-            //catch
-            //{
-            //    return string.Empty;
-            //}
-            return default;
+            var room = await _worker.Rooms.Get(x => x.Id == roomId);
+            if (room.Status is 2 or 1) return string.Empty;
+            try
+            {
+                var roomReceipt = await _worker.RoomReceipts.Get(x => x.Id == roomId);
+                var receiptDetail = await _worker.ReceiptDetails
+                    .Get(x => x.Id == roomReceipt.DetailId);
+                return receiptDetail.Customers.First().Customer.Name;
+            }
+            catch
+            {
+                return string.Empty;
+            }
         }
 
         private async Task<string> GetRoomTypeName(int id)
         {
-            var type = await _worker.Rooms.GetDetail(id);
+            var type = await _worker.Rooms.Get(x => x.Id == id);
             return type.Type.Name;
         }
 

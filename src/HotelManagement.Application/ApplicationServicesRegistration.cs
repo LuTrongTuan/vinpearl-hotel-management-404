@@ -6,6 +6,7 @@ using HotelManagement.Application.Contracts.Ultilities;
 using HotelManagement.Application.DependencyInjection;
 using HotelManagement.Application.Services;
 using HotelManagement.Application.Utilities;
+using Service = HotelManagement.Application.Services.Service;
 
 namespace HotelManagement.Application
 {
@@ -32,6 +33,7 @@ namespace HotelManagement.Application
             container.Register<IServiceReceiptService, ServiceReceiptService>();
             container.Register<IPriceCalculate, PriceCaculator>();
             container.Register<ITimer, Timer>();
+            //container.Register<IManyToManyHandle<CustomerReceipt, CustomerDTO>, ManyToManyHandler<CustomerReceipt, CustomerDTO>>();
             return container;
         }
     }

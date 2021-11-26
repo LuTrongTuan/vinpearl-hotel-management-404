@@ -1,5 +1,9 @@
-﻿using HotelManagement.Application.Contracts.Infrastructure;
+﻿using System;
+using System.Linq.Expressions;
+using System.Threading.Tasks;
+using HotelManagement.Application.Contracts.Infrastructure;
 using HotelManagement.Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace HotelManagement.Infrastructure.Repositories
 {

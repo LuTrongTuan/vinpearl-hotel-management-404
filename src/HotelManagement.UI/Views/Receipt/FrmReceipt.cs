@@ -20,12 +20,17 @@ namespace HotelManagement.UI.Views.Receipt
         private readonly ITransacsion _transacsion;
         private readonly IService _service;
         private readonly ICustomerService _customerService;
-        private readonly IValidate _validate;
         private IList<ServiceReceiptDTO> _serviceInOrder = new List<ServiceReceiptDTO>();
+        private IValidate _validate;
         private int _roomId;
         private int _serviceId;
         private ServiceDTO _serviceDTO;
         private RoomDetailDTO _room;
+        private int _originStatus;
+        /// <summary>
+        /// add customer in room to _customers list.
+        /// </summary>
+        private readonly IList<CustomerDTO> _customers = new List<CustomerDTO>();
 
         // properties
         public int RoomId
@@ -38,12 +43,11 @@ namespace HotelManagement.UI.Views.Receipt
             }
         }
         public FrmReceipt(ITransacsion transacsion, IService service,
-            ICustomerService customerService, IValidate validate)
+            ICustomerService customerService)
         {
             _transacsion = transacsion;
             _service = service;
             _customerService = customerService;
-            _validate = validate;
             InitializeComponent();
         }
 
@@ -96,29 +100,24 @@ namespace HotelManagement.UI.Views.Receipt
         private async void ShowReceipt()
         {
             var query = await _transacsion.Query(_roomId);
+            _originStatus = query.Rooms.First(x => x.RoomId == _roomId).Histories.Last().Status;
             TbxDeposit.Text = query.Receipt.Deposit.ToString(CultureInfo.CurrentCulture);
             TbxNote.Text = query.Receipt.Note;
             PeopleAmount.Value = query.Receipt.Number;
-            TbxIdentityNumber.Text = query.Customer.IdentityNumber;
-            TbxCustomerName.Text = query.Customer.Name;
-            TbxPhoneNumber.Text = query.Customer.PhoneNumber;
-            LblPayment.Text = MoneyFormat(query.Receipt.Payment - query.Receipt.Deposit);
-            if (query.Customer.Gender) RbtMale.Checked = true;
-            else RbtFemale.Checked = true;
-            if (query.Receipt.Status == 0)
+            if (_originStatus == 0)
             {
                 CbxByDay.Checked = true;
-                Dtpicker_checkIn.Value = query.ReceiptDetail.CheckIn;
-                Dtpicker_checkOut.Value = query.ReceiptDetail.CheckOut;
+                Dtpicker_checkIn.Value = query.Detail.CheckIn;
+                Dtpicker_checkOut.Value = query.Detail.CheckOut;
             }
 
-            if (query.Receipt.Status == 1)
+            if (_originStatus == 1)
             {
                 CbxByHour.Checked = true;
-                Dtpicker_in.Value = query.ReceiptDetail.CheckIn;
-                Dtpicker_out.Value = query.ReceiptDetail.CheckOut;
+                Dtpicker_in.Value = query.Detail.CheckIn;
+                Dtpicker_out.Value = query.Detail.CheckOut;
             }
-            LoadToGrid(query.ServiceReceipts);
+            LoadToGrid(query.Services);
         }
 
         private void LoadToGrid(IList<ServiceReceiptDTO> source)
@@ -147,7 +146,7 @@ namespace HotelManagement.UI.Views.Receipt
                 Dtpicker_in.Value = DateTime.Now;
                 Dtpicker_checkIn.Value = DateTime.Now;
             }
-            AddControlToValidate();
+            CustomerControlValidate();
         }
 
         #region Checkbox
@@ -191,11 +190,11 @@ namespace HotelManagement.UI.Views.Receipt
             Price.Text = MoneyFormat(_serviceDTO.Price);
         }
 
-        private void AddControlToValidate()
+        private void CustomerControlValidate()
         {
-            _validate.Add(new ValidateModel {Control = TbxDeposit, Error = "Chỉ nhập số" , Pattern = Pattern.Number})
+            _validate = new Validate()
                 .Add(new ValidateModel {Control = TbxCustomerName, Error = "Tên không đúng định dạng", Pattern = Pattern.Name })
-                .Add(new ValidateModel { Control = TbxIdentityNumber, Error = "Định dạng không đúng"})
+                .Add(new ValidateModel { Control = TbxIdentityNumber, Error = "Định dạng không đúng", Pattern = Pattern.IdentityNumber})
                 .Add(new ValidateModel {Control = TbxPhoneNumber, Error = "Số điện thoại không đúng", Pattern = Pattern.PhoneNumber});
         }
 
@@ -238,17 +237,14 @@ namespace HotelManagement.UI.Views.Receipt
 
         private TransactionDTO GetTransaction()
         {
+            _validate = new Validate()
+                .Add(new ValidateModel {Control = TbxDeposit, Error = "Chỉ được nhập số", Pattern = Pattern.Number});
+
             if (!_validate.Run().Accept()) return null;
             var transaction = new TransactionDTO()
             {
                 RoomId = _roomId,
-                Customer = new()
-                {
-                    Name = TbxCustomerName.Text,
-                    IdentityNumber = TbxIdentityNumber.Text,
-                    PhoneNumber = TbxPhoneNumber.Text,
-                    Gender = RbtMale.Checked
-                },
+                Customers = _customers,
                 Receipt = new()
                 {
                     Deposit = Convert.ToDouble(TbxDeposit.Text),
@@ -256,27 +252,36 @@ namespace HotelManagement.UI.Views.Receipt
                     Number = Convert.ToInt32(PeopleAmount.Text),
                     IdentificationId = Convert.ToInt32(cbx_giayTo.SelectedValue)
                 },
-                ServiceReceipts = _serviceInOrder
+                Services = _serviceInOrder,
+                Histories = new List<HistoryDTO>()
             };
             if (CbxByDay.Checked)
             {
-                transaction.Receipt.Status = 0;
-                transaction.ReceiptDetail = new ReceiptDetailDTO
+                transaction.Histories.Add(new HistoryDTO
                 {
-                    CheckIn = Dtpicker_checkIn.Value,
-                    CheckOut = Dtpicker_checkOut.Value
-                };
+                    Start = Dtpicker_checkIn.Value,
+                    End = Dtpicker_checkOut.Value,
+                    Status = 0
+                });
             }
             else if (CbxByHour.Checked)
             {
-                transaction.Receipt.Status = 1;
-                transaction.ReceiptDetail = new ReceiptDetailDTO
+                transaction.Histories.Add(new HistoryDTO
                 {
-                    CheckIn = Dtpicker_in.Value,
-                    CheckOut = Dtpicker_out.Value
-                };
+                    Start = Dtpicker_in.Value,
+                    End = Dtpicker_out.Value,
+                    Status = 1
+                });
             }
             else transaction.Receipt.Status = 2;
+
+            if (_room.Status == 2)
+            {
+                transaction.Detail = new ReceiptDetailDTO
+                {
+                    CheckOut = Dtpicker_checkOut.Value
+                };
+            }
 
             return transaction;
 
@@ -294,16 +299,16 @@ namespace HotelManagement.UI.Views.Receipt
 
         private async void TbxIdentityNumber_KeyDown(object sender, KeyEventArgs e)
         {
-            var request = await _customerService.GetDetail(TbxIdentityNumber.Text);
-            if (request is null) return;
-            TbxCustomerName.Text = request.Name;
-            TbxPhoneNumber.Text = request.PhoneNumber;
-            if (request.Gender)
-                RbtMale.Checked = true;
-            else RbtFemale.Checked = true;
-            if (request.Status)
-                CbxActive.Checked = true;
-            else CbxDeactive.Checked = true;
+            //var request = await _customerService.GetDetail(TbxIdentityNumber.Text);
+            //if (request is null) return;
+            //TbxCustomerName.Text = request.Name;
+            //TbxPhoneNumber.Text = request.PhoneNumber;
+            //if (request.Gender)
+            //    RbtMale.Checked = true;
+            //else RbtFemale.Checked = true;
+            //if (request.Status)
+            //    CbxActive.Checked = true;
+            //else CbxDeactive.Checked = true;
         }
     }
 }

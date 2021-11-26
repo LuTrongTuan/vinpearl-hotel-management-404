@@ -18,7 +18,8 @@ namespace HotelManagement.Infrastructure.Repositories
             return await Context.ReceiptDetails
                 .Include(l => l.Rooms)
                 .Include(e => e.Receipt)
-                .ThenInclude(d => d.Customer)
+                .Include(j => j.Customers)
+                .ThenInclude(y => y.Customer)
                 .Include(b => b.Services)
                 .ThenInclude(h => h.Service)
                 .FirstAsync(predicate);

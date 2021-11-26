@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace HotelManagement.Domain
 {
-    public class RoomReceipt : Entity
+    public class RoomReceipt : Entity, ITime
     {
         public int DetailId { get; set; }
         public int RoomId { get; set; }

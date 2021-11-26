@@ -1,4 +1,6 @@
+using System;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using HotelManagement.Application.Contracts.Infrastructure;
 using HotelManagement.Domain;
@@ -12,7 +14,7 @@ namespace HotelManagement.Infrastructure.Repositories
         {
         }
 
-        public Task<string> GetLassRoomName(string floor)
+        public Task<string> GetLastRoomName(string floor)
         {
             string result;
             try
@@ -29,11 +31,11 @@ namespace HotelManagement.Infrastructure.Repositories
             return Task.FromResult(result);
         }
 
-        public async Task<Room> GetDetail(int id)
+        public override async Task<Room> Get(Expression<Func<Room, bool>> predicate)
         {
             return await Context.Rooms
                 .Include(e => e.Type)
-                .FirstOrDefaultAsync(e => e.Id == id);
+                .FirstOrDefaultAsync(predicate);
         }
     }
 }

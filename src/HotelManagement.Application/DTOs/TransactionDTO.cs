@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using HotelManagement.Application.DTOs.Receipt;
 using HotelManagement.Application.DTOs.Room;
-using HotelManagement.Domain;
 
 namespace HotelManagement.Application.DTOs
 {
@@ -10,9 +9,10 @@ namespace HotelManagement.Application.DTOs
         public int RoomId { get; set; }
         public int EmployeeId { get; set; }
         public ReceiptDTO Receipt { get; set; }
-        public IList<ServiceReceiptDTO> ServiceReceipts { get; set; }
-        public IList<RoomReceiptDTO> RoomReceipts { get; set; }
-        public CustomerDTO Customer { get; set; }
-        public ReceiptDetailDTO ReceiptDetail { get; set; }
+        public ReceiptDetailDTO Detail { get; set; }
+        public IList<ServiceReceiptDTO> Services { get; set; }
+        public IList<RoomReceiptDTO> Rooms { get; set; }
+        public IList<HistoryDTO> Histories { get; set; }
+        public IList<CustomerDTO> Customers { get; set; }
     }
 }

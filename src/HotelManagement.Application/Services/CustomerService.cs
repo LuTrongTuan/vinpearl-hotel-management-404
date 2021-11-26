@@ -29,23 +29,19 @@ namespace HotelManagement.Application.Services
         {
             var cus = await _worker.Customers.GetAll();
             var list = cus.Where(c => c.Name.ToLower().StartsWith(name.ToLower())).ToList();
-            return _mapper.Map<IList<Domain.Customer>, IList<CustomerDTO>>(list);
+            return _mapper.Map<IList<Customer>, IList<CustomerDTO>>(list);
         }
 
-        public async Task<CustomerDTO> GetDetail(string id)
+        public async Task<int> Add(CustomerDTO customer)
         {
-            var query = await _worker.Customers.Get(x => x.IdentityNumber == id);
-            return _mapper.Map<CustomerDTO>(query);
-        }
+            var user = await _worker.Customers.Get(x => x.IdentityNumber == customer.IdentityNumber);
+            if (user is not null)
+                return user.Id;
 
-        public async Task Add(CustomerDTO customer)
-        {
-            var query = await _worker.Customers.Get(x => x.IdentityNumber == customer.IdentityNumber);
-            if(query is not null)
-                return;
-            var user = _mapper.Map<Customer>(customer);
-            await _worker.Customers.Add(user);
+            var result = _mapper.Map<Customer>(customer);
+            await _worker.Customers.Add(result);
             await _worker.Commit();
+            return default;
         }
 
         public async Task Update(CustomerDTO customer)
@@ -53,10 +49,7 @@ namespace HotelManagement.Application.Services
             var user = await _worker.Customers.Get(x => x.IdentityNumber == customer.IdentityNumber);
             if (user is null)
                 return;
-            user.Name = customer.Name;
-            user.IdentityNumber = customer.IdentityNumber;
-            user.Gender = customer.Gender;
-            user.PhoneNumber = customer.PhoneNumber;
+            _mapper.Map(user, customer);
             await _worker.Customers.Update(user);
             await _worker.Commit();
         }

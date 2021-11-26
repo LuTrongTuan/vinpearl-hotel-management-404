@@ -26,7 +26,7 @@ namespace HotelManagement.Infrastructure
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
-            foreach (var entry in ChangeTracker.Entries<RoomReceipt>())
+            foreach (var entry in ChangeTracker.Entries<ITime>())
                 entry.Entity.CreateAt = DateTime.Now;
 
             return base.SaveChangesAsync(cancellationToken);
