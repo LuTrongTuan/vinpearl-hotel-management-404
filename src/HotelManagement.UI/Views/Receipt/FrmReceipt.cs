@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using AForge.Video.DirectShow;
 using HotelManagement.Application.Contracts.Services;
 using HotelManagement.Application.DTOs;
 using HotelManagement.Application.DTOs.Receipt;
@@ -11,6 +13,7 @@ using HotelManagement.Application.DTOs.Room;
 using HotelManagement.Application.DTOs.Service;
 using HotelManagement.UI.Contracts;
 using HotelManagement.UI.Utilities;
+using ZXing;
 
 namespace HotelManagement.UI.Views.Receipt
 {
@@ -31,6 +34,8 @@ namespace HotelManagement.UI.Views.Receipt
         /// add customer in room to _customers list.
         /// </summary>
         private readonly IList<CustomerDTO> _customers = new List<CustomerDTO>();
+        private FilterInfoCollection _filterInfoCollection;
+        private VideoCaptureDevice _videoCaptureDevice;
 
         // properties
         public int RoomId
@@ -49,6 +54,7 @@ namespace HotelManagement.UI.Views.Receipt
             _service = service;
             _customerService = customerService;
             InitializeComponent();
+            OpenCamera();
         }
 
         #region Onload
@@ -297,7 +303,7 @@ namespace HotelManagement.UI.Views.Receipt
             ShowReceipt();
         }
 
-        private async void TbxIdentityNumber_KeyDown(object sender, KeyEventArgs e)
+        private void TbxIdentityNumber_KeyDown(object sender, KeyEventArgs e)
         {
             //var request = await _customerService.GetDetail(TbxIdentityNumber.Text);
             //if (request is null) return;
@@ -310,5 +316,85 @@ namespace HotelManagement.UI.Views.Receipt
             //    CbxActive.Checked = true;
             //else CbxDeactive.Checked = true;
         }
+
+        #region Quét căn cước
+
+        void OpenCamera()
+        {
+            _filterInfoCollection = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+            foreach (FilterInfo filter in _filterInfoCollection)
+                cbo_webcam.Items.Add(filter.Name);
+            cbo_webcam.SelectedIndex = 0;
+            _videoCaptureDevice = new VideoCaptureDevice();
+        }
+        private void FrmReceipt_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+            try
+            {
+                if (_videoCaptureDevice.IsRunning)
+                {
+                    _videoCaptureDevice.Stop();
+                }
+            }
+            catch (Exception )
+            {
+                return;
+            }
+        }
+
+        private void btn_Start_Click(object sender, EventArgs e)
+        {
+            _videoCaptureDevice = new VideoCaptureDevice(_filterInfoCollection[cbo_webcam.SelectedIndex].MonikerString);
+            _videoCaptureDevice.NewFrame += VideoCaptureDevice_NewFrame;
+            _videoCaptureDevice.Start();
+            timer1.Start();
+        }
+
+        private void VideoCaptureDevice_NewFrame(object sender, AForge.Video.NewFrameEventArgs eventArgs)
+        {
+            ptb_quet.Image = (Bitmap)eventArgs.Frame.Clone();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ptb_quet.Image != null)
+                {
+                    BarcodeReader barcodeReader = new BarcodeReader();
+                    Result result = barcodeReader.Decode((Bitmap)ptb_quet.Image);
+                    if (result != null)
+                    {
+                        txb_QR.Text = result.ToString().Trim();
+                        var str = txb_QR.Text;
+                        char[] chars = { '|' };
+                        string[] strings = str.Split(chars);
+                        TbxIdentityNumber.Text = strings[0];
+                        TbxCustomerName.Text = strings[2];
+                        if (strings[4] == "Nam")
+                        {
+                            RbtMale.Checked = true;
+                        }
+                        else
+                        {
+                            RbtFemale.Checked = true;
+                        }
+                        timer1.Stop();
+                        if (_videoCaptureDevice.IsRunning)
+                        {
+                            _videoCaptureDevice.Stop();
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                return;
+            }
+        }
+
+        #endregion
+
     }
 }

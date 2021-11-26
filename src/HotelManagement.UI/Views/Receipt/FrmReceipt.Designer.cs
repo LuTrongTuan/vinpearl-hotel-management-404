@@ -31,6 +31,7 @@ namespace HotelManagement.UI.Views.Receipt
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.Dtpicker_checkOut = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
@@ -85,6 +86,11 @@ namespace HotelManagement.UI.Views.Receipt
             this.BtnCancle = new HotelManagement.UI.Components.CustomButton();
             this.LblPayment = new System.Windows.Forms.Label();
             this.BtnUpdate = new HotelManagement.UI.Components.CustomButton();
+            this.ptb_quet = new System.Windows.Forms.PictureBox();
+            this.cbo_webcam = new System.Windows.Forms.ComboBox();
+            this.txb_QR = new System.Windows.Forms.TextBox();
+            this.btn_Start = new HotelManagement.UI.Components.CustomButton();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ServiceQuantity)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PeopleAmount)).BeginInit();
@@ -92,6 +98,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ServiceGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_quet)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -264,7 +271,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.groupBox1.Controls.Add(this.Dtpicker_checkIn);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBox1.Location = new System.Drawing.Point(266, 74);
+            this.groupBox1.Location = new System.Drawing.Point(12, 74);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(470, 440);
             this.groupBox1.TabIndex = 11;
@@ -556,7 +563,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBox3.Location = new System.Drawing.Point(779, 74);
+            this.groupBox3.Location = new System.Drawing.Point(539, 74);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(523, 440);
             this.groupBox3.TabIndex = 13;
@@ -825,12 +832,67 @@ namespace HotelManagement.UI.Views.Receipt
             this.BtnUpdate.UseVisualStyleBackColor = false;
             this.BtnUpdate.Click += new System.EventHandler(this.BtnUpdate_Click);
             // 
+            // ptb_quet
+            // 
+            this.ptb_quet.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.ptb_quet.Location = new System.Drawing.Point(1131, 119);
+            this.ptb_quet.Name = "ptb_quet";
+            this.ptb_quet.Size = new System.Drawing.Size(349, 281);
+            this.ptb_quet.TabIndex = 40;
+            this.ptb_quet.TabStop = false;
+            // 
+            // cbo_webcam
+            // 
+            this.cbo_webcam.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbo_webcam.FormattingEnabled = true;
+            this.cbo_webcam.Location = new System.Drawing.Point(1130, 85);
+            this.cbo_webcam.Name = "cbo_webcam";
+            this.cbo_webcam.Size = new System.Drawing.Size(350, 28);
+            this.cbo_webcam.TabIndex = 41;
+            // 
+            // txb_QR
+            // 
+            this.txb_QR.Location = new System.Drawing.Point(1131, 412);
+            this.txb_QR.Multiline = true;
+            this.txb_QR.Name = "txb_QR";
+            this.txb_QR.Size = new System.Drawing.Size(349, 63);
+            this.txb_QR.TabIndex = 42;
+            // 
+            // btn_Start
+            // 
+            this.btn_Start.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btn_Start.BackgroundColor = System.Drawing.Color.DeepSkyBlue;
+            this.btn_Start.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btn_Start.BorderRadius = 10;
+            this.btn_Start.BorderSize = 0;
+            this.btn_Start.FlatAppearance.BorderSize = 0;
+            this.btn_Start.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Start.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_Start.ForeColor = System.Drawing.Color.Black;
+            this.btn_Start.Location = new System.Drawing.Point(1257, 481);
+            this.btn_Start.Name = "btn_Start";
+            this.btn_Start.Size = new System.Drawing.Size(118, 42);
+            this.btn_Start.TabIndex = 43;
+            this.btn_Start.Text = "Quét";
+            this.btn_Start.TextColor = System.Drawing.Color.Black;
+            this.btn_Start.UseVisualStyleBackColor = false;
+            this.btn_Start.Click += new System.EventHandler(this.btn_Start_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // FrmReceipt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(134)))), ((int)(((byte)(203)))));
             this.ClientSize = new System.Drawing.Size(1532, 776);
+            this.Controls.Add(this.btn_Start);
+            this.Controls.Add(this.txb_QR);
+            this.Controls.Add(this.cbo_webcam);
+            this.Controls.Add(this.ptb_quet);
             this.Controls.Add(this.BtnUpdate);
             this.Controls.Add(this.LblPayment);
             this.Controls.Add(this.BtnCancle);
@@ -844,6 +906,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.Name = "FrmReceipt";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hóa đơn khách hàng";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmReceipt_FormClosing);
             this.Load += new System.EventHandler(this.FrmReceipt_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ServiceQuantity)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -855,6 +918,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.groupBox3.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ServiceGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_quet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -918,5 +982,10 @@ namespace HotelManagement.UI.Views.Receipt
         private Label LblPayment;
         private Components.CustomButton BtnUpdate;
         private ComboBox comboBox1;
+        private PictureBox ptb_quet;
+        private ComboBox cbo_webcam;
+        private TextBox txb_QR;
+        private Components.CustomButton btn_Start;
+        private Timer timer1;
     }
 }
