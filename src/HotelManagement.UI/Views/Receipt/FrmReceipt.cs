@@ -29,6 +29,8 @@ namespace HotelManagement.UI.Views.Receipt
         private int _serviceId;
         private ServiceDTO _serviceDTO;
         private RoomDetailDTO _room;
+        private CustomerDTO _customerDTO;
+        private readonly IConfirm _confirm;
         private int _originStatus;
         /// <summary>
         /// add customer in room to _customers list.
@@ -48,11 +50,12 @@ namespace HotelManagement.UI.Views.Receipt
             }
         }
         public FrmReceipt(ITransacsion transacsion, IService service,
-            ICustomerService customerService)
+            ICustomerService customerService, IConfirm confirm)
         {
             _transacsion = transacsion;
             _service = service;
             _customerService = customerService;
+            _confirm = confirm;
             InitializeComponent();
             OpenCamera();
         }
@@ -126,6 +129,24 @@ namespace HotelManagement.UI.Views.Receipt
             LoadToGrid(query.Services);
         }
 
+        private void LoadCustomer()
+        {
+            GridViewCustomer.ColumnCount = 6;
+            GridViewCustomer.Columns[0].Name = "Số Giấy Tờ";
+            GridViewCustomer.Columns[1].Name = "Tên Khách Hàng";
+            GridViewCustomer.Columns[2].Name = "Số Điện Thoại";
+            GridViewCustomer.Columns[3].Name = "Giới Tính";
+            GridViewCustomer.Columns[4].Name = "Giấy Tờ";
+            GridViewCustomer.Columns[5].Name = "Id";
+            GridViewCustomer.Columns[5].Visible = false;
+            GridViewCustomer.Rows.Clear();
+            foreach (var x in _customers)
+            {
+                GridViewCustomer.Rows.Add(x.IdentityNumber,x.Name,x.PhoneNumber,x.Gender == true ? "Nam" : "Nữ",
+                    x.Type);
+            }
+
+        }
         private void LoadToGrid(IList<ServiceReceiptDTO> source)
         {
             _serviceInOrder = source;
@@ -303,7 +324,7 @@ namespace HotelManagement.UI.Views.Receipt
             ShowReceipt();
         }
 
-        private void TbxIdentityNumber_KeyDown(object sender, KeyEventArgs e)
+        private async void TbxIdentityNumber_KeyDown(object sender, KeyEventArgs e)
         {
             //var request = await _customerService.GetDetail(TbxIdentityNumber.Text);
             //if (request is null) return;
@@ -396,5 +417,16 @@ namespace HotelManagement.UI.Views.Receipt
 
         #endregion
 
+        private void Btn_AddCustomer_Click(object sender, EventArgs e)
+        {
+            _customerDTO = new CustomerDTO();
+            _customerDTO.IdentityNumber = TbxIdentityNumber.Text;
+            _customerDTO.Name = TbxCustomerName.Text;
+            _customerDTO.PhoneNumber = TbxPhoneNumber.Text;
+            _customerDTO.Gender = RbtMale.Checked;
+            _customerDTO.Type = Convert.ToInt32(cbx_giayTo.SelectedValue);
+            _customers.Add(_customerDTO);
+            LoadCustomer();
+        }
     }
 }

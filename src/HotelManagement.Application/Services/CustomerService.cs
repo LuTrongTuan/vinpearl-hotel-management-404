@@ -37,7 +37,6 @@ namespace HotelManagement.Application.Services
             var user = await _worker.Customers.Get(x => x.IdentityNumber == customer.IdentityNumber);
             if (user is not null)
                 return user.Id;
-
             var result = _mapper.Map<Customer>(customer);
             await _worker.Customers.Add(result);
             await _worker.Commit();
@@ -58,6 +57,11 @@ namespace HotelManagement.Application.Services
         {
             var query = await _worker.Customers.GetAll();
             return _mapper.Map<IList<Customer>, IList<CustomerDTO>>(query);
+        }
+        public async Task<CustomerDTO> GetDetail(string id)
+        {
+            var query = await _worker.Customers.Get(x => x.IdentityNumber == id);
+            return _mapper.Map<CustomerDTO>(query);
         }
     }
 }
