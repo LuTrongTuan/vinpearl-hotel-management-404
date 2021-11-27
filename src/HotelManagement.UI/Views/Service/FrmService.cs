@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using HotelManagement.Application.Contracts.Services;
 using HotelManagement.Application.DTOs.Service;
@@ -86,7 +84,7 @@ namespace HotelManagement.UI.Views.Service
                 MessageBox.Show("Không được để chữ");
                 return;
             }
-            var x =await _service.Get();//m nói lại đi mạng m nát quá
+            var x =await _service.Get();
             if (x.Any(c => c.Name == txt_DV.Text))
             {
                 MessageBox.Show("tên dịch vụ đã tồn tại");

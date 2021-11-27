@@ -174,8 +174,19 @@ namespace HotelManagement.UI.Views.Employee
             var _employeeDTOs = x.FirstOrDefault(c => c.Id == IdClick);
             _employeeDTOs.Name = TxtName.Text;
             _employeeDTOs.Birthday = dateTimePicker1.Value;
+            var load = await _employee.Get();
+            if (load.Any(c => c.Email != TxtEmail.Text))
+            {
+                MessageBox.Show("Không Được Sửa Email");
+                return;
+            }
             _employeeDTOs.Email = TxtEmail.Text;
             _employeeDTOs.Address = TxtDiachi.Text;
+            if (!number.IsMatch(TxtPhone.Text))
+            {
+                MessageBox.Show("SĐT không được nhập chữ");
+                return;
+            }
             _employeeDTOs.PhoneNumber = TxtPhone.Text;
             _employeeDTOs.Gender = rdoNam.Checked;
             _employeeDTOs.Status = checked_HD.Checked;

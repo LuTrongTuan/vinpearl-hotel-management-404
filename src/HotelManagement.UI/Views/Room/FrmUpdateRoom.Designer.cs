@@ -41,9 +41,9 @@ namespace HotelManagement.UI.Views.Room
             this.BtnSave = new HotelManagement.UI.Components.CustomButton();
             this.CbxDeactive = new System.Windows.Forms.CheckBox();
             this.CbxNameType = new System.Windows.Forms.ComboBox();
+            this.TbxDay = new HotelManagement.UI.Components.TextBox();
             this.TbxName = new HotelManagement.UI.Components.TextBox();
             this.TbxHour = new HotelManagement.UI.Components.TextBox();
-            this.TbxDay = new HotelManagement.UI.Components.TextBox();
             this.SuspendLayout();
             // 
             // PanelContainer
@@ -184,68 +184,77 @@ namespace HotelManagement.UI.Views.Room
             this.CbxNameType.Size = new System.Drawing.Size(214, 28);
             this.CbxNameType.TabIndex = 34;
             // 
-            // TbxName
-            // 
-            this.TbxName.BorderColor = System.Drawing.Color.BlueViolet;
-            this.TbxName.BorderRadius = 0;
-            this.TbxName.ErrorMessage = null;
-            this.TbxName.FocusedColor = System.Drawing.Color.Aqua;
-            this.TbxName.IsError = false;
-            this.TbxName.Location = new System.Drawing.Point(882, 84);
-            this.TbxName.Margin = new System.Windows.Forms.Padding(4);
-            this.TbxName.Multiline = false;
-            this.TbxName.Name = "TbxName";
-            this.TbxName.Padding = new System.Windows.Forms.Padding(7);
-            this.TbxName.Password = false;
-            this.TbxName.PlaceHolder = null;
-            this.TbxName.Size = new System.Drawing.Size(214, 37);
-            this.TbxName.TabIndex = 35;
-            this.TbxName.Underline = false;
-            // 
-            // TbxHour
-            // 
-            this.TbxHour.BorderColor = System.Drawing.Color.BlueViolet;
-            this.TbxHour.BorderRadius = 0;
-            this.TbxHour.ErrorMessage = null;
-            this.TbxHour.FocusedColor = System.Drawing.Color.Aqua;
-            this.TbxHour.IsError = false;
-            this.TbxHour.Location = new System.Drawing.Point(396, 84);
-            this.TbxHour.Margin = new System.Windows.Forms.Padding(4);
-            this.TbxHour.Multiline = false;
-            this.TbxHour.Name = "TbxHour";
-            this.TbxHour.Padding = new System.Windows.Forms.Padding(7);
-            this.TbxHour.Password = false;
-            this.TbxHour.PlaceHolder = null;
-            this.TbxHour.Size = new System.Drawing.Size(214, 37);
-            this.TbxHour.TabIndex = 36;
-            this.TbxHour.Underline = false;
-            // 
             // TbxDay
             // 
-            this.TbxDay.BorderColor = System.Drawing.Color.BlueViolet;
+            this.TbxDay.Background = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(134)))), ((int)(((byte)(203)))));
+            this.TbxDay.BorderColor = System.Drawing.Color.White;
             this.TbxDay.BorderRadius = 0;
             this.TbxDay.ErrorMessage = null;
             this.TbxDay.FocusedColor = System.Drawing.Color.Aqua;
+            this.TbxDay.ForeColor = System.Drawing.Color.White;
             this.TbxDay.IsError = false;
-            this.TbxDay.Location = new System.Drawing.Point(882, 13);
+            this.TbxDay.Location = new System.Drawing.Point(882, 10);
             this.TbxDay.Margin = new System.Windows.Forms.Padding(4);
             this.TbxDay.Multiline = false;
             this.TbxDay.Name = "TbxDay";
-            this.TbxDay.Padding = new System.Windows.Forms.Padding(7);
+            this.TbxDay.Padding = new System.Windows.Forms.Padding(9, 7, 9, 7);
             this.TbxDay.Password = false;
-            this.TbxDay.PlaceHolder = null;
+            this.TbxDay.PlaceHolder = "";
+            this.TbxDay.PlaceHolderColor = System.Drawing.SystemColors.ScrollBar;
             this.TbxDay.Size = new System.Drawing.Size(214, 37);
-            this.TbxDay.TabIndex = 37;
-            this.TbxDay.Underline = false;
+            this.TbxDay.TabIndex = 38;
+            this.TbxDay.Underline = true;
+            // 
+            // TbxName
+            // 
+            this.TbxName.Background = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(134)))), ((int)(((byte)(203)))));
+            this.TbxName.BorderColor = System.Drawing.Color.White;
+            this.TbxName.BorderRadius = 0;
+            this.TbxName.ErrorMessage = null;
+            this.TbxName.FocusedColor = System.Drawing.Color.Aqua;
+            this.TbxName.ForeColor = System.Drawing.Color.White;
+            this.TbxName.IsError = false;
+            this.TbxName.Location = new System.Drawing.Point(882, 98);
+            this.TbxName.Margin = new System.Windows.Forms.Padding(4);
+            this.TbxName.Multiline = false;
+            this.TbxName.Name = "TbxName";
+            this.TbxName.Padding = new System.Windows.Forms.Padding(9, 7, 9, 7);
+            this.TbxName.Password = false;
+            this.TbxName.PlaceHolder = "";
+            this.TbxName.PlaceHolderColor = System.Drawing.SystemColors.ScrollBar;
+            this.TbxName.Size = new System.Drawing.Size(214, 37);
+            this.TbxName.TabIndex = 39;
+            this.TbxName.Underline = true;
+            // 
+            // TbxHour
+            // 
+            this.TbxHour.Background = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(134)))), ((int)(((byte)(203)))));
+            this.TbxHour.BorderColor = System.Drawing.Color.White;
+            this.TbxHour.BorderRadius = 0;
+            this.TbxHour.ErrorMessage = null;
+            this.TbxHour.FocusedColor = System.Drawing.Color.Aqua;
+            this.TbxHour.ForeColor = System.Drawing.Color.White;
+            this.TbxHour.IsError = false;
+            this.TbxHour.Location = new System.Drawing.Point(396, 98);
+            this.TbxHour.Margin = new System.Windows.Forms.Padding(4);
+            this.TbxHour.Multiline = false;
+            this.TbxHour.Name = "TbxHour";
+            this.TbxHour.Padding = new System.Windows.Forms.Padding(9, 7, 9, 7);
+            this.TbxHour.Password = false;
+            this.TbxHour.PlaceHolder = "";
+            this.TbxHour.PlaceHolderColor = System.Drawing.SystemColors.ScrollBar;
+            this.TbxHour.Size = new System.Drawing.Size(214, 37);
+            this.TbxHour.TabIndex = 40;
+            this.TbxHour.Underline = true;
             // 
             // FrmUpdateRoom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1429, 901);
-            this.Controls.Add(this.TbxDay);
             this.Controls.Add(this.TbxHour);
             this.Controls.Add(this.TbxName);
+            this.Controls.Add(this.TbxDay);
             this.Controls.Add(this.CbxNameType);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -280,8 +289,8 @@ namespace HotelManagement.UI.Views.Room
         private Components.CustomButton BtnSave;
         private System.Windows.Forms.CheckBox CbxDeactive;
         private System.Windows.Forms.ComboBox CbxNameType;
+        private Components.TextBox TbxDay;
         private Components.TextBox TbxName;
         private Components.TextBox TbxHour;
-        private Components.TextBox TbxDay;
     }
 }
