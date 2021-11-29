@@ -7,6 +7,7 @@ using HotelManagement.Application.Contracts.Infrastructure;
 using HotelManagement.Application.Contracts.Services;
 using HotelManagement.Application.Contracts.Ultilities;
 using HotelManagement.Application.DTOs;
+using HotelManagement.Application.DTOs.Employee;
 using HotelManagement.Application.DTOs.Receipt;
 using HotelManagement.Application.DTOs.Room;
 using HotelManagement.Application.DTOs.Service;
