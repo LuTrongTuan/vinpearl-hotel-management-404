@@ -8,9 +8,7 @@ namespace HotelManagement.Application.Profiles
     {
         public HistoryMapperProfile()
         {
-            CreateMap<History, HistoryDTO>()
-                .ForMember(x => x.Start, d => d.MapFrom(e => e.CreateAt));
-            CreateMap<HistoryDTO, History>();
+            CreateMap<History, HistoryDTO>().ReverseMap();
         }
     }
 }

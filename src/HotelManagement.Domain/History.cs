@@ -7,9 +7,10 @@ namespace HotelManagement.Domain
         public int Status { get; set; }
         public double Payment { get; set; }
         public DateTime CreateAt { get; set; }
+        public DateTime Start { get; set; }
         public DateTime End { get; set; }
         
-        public int Room { get; set; }
-        public RoomReceipt Receipt { get; set; }
+        public int DetailId { get; set; }
+        public virtual ReceiptDetail Detail { get; set; }
     }
 }

@@ -45,10 +45,9 @@ namespace HotelManagement.Application.Services
             var room = await _worker.Rooms.Get(x => x.Id == roomId);
             if (room.Status is 2 or 1) return string.Empty;
             try
-            {
-                var roomReceipt = await _worker.RoomReceipts.Get(x => x.Id == roomId);
+            { 
                 var receiptDetail = await _worker.ReceiptDetails
-                    .Get(x => x.Id == roomReceipt.DetailId);
+                    .Get(x => x.RoomId == roomId);
                 return receiptDetail.Customers.First().Customer.Name;
             }
             catch

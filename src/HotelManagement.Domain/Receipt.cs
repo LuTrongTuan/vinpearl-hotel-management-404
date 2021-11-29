@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace HotelManagement.Domain
+﻿namespace HotelManagement.Domain
 {
     public class Receipt : Entity
     {
@@ -10,6 +7,7 @@ namespace HotelManagement.Domain
         public int Number { get; set; }
         public string Note { get; set; }
         public int EmployeeId { get; set; }
+        public bool Status { get; set; }
 
         public virtual Employee Employee { get; set; }
         public virtual ReceiptDetail Detail { get; set; }

@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using HotelManagement.Application.Contracts.Ultilities;
-using HotelManagement.Application.DTOs;
 using HotelManagement.Application.DTOs.Receipt;
-using HotelManagement.Application.DTOs.Service;
 
 namespace HotelManagement.Application.Utilities
 {

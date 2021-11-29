@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using HotelManagement.Application.Contracts.Infrastructure;
@@ -16,13 +17,14 @@ namespace HotelManagement.Infrastructure.Repositories
         public override async Task<ReceiptDetail> Get(Expression<Func<ReceiptDetail, bool>> predicate)
         {
             return await Context.ReceiptDetails
-                .Include(l => l.Rooms)
                 .Include(e => e.Receipt)
                 .Include(j => j.Customers)
                 .ThenInclude(y => y.Customer)
                 .Include(b => b.Services)
                 .ThenInclude(h => h.Service)
-                .FirstAsync(predicate);
+                .Include(k => k.Histories)
+                .OrderBy(x => x.CreateAt)
+                .LastAsync(predicate);
         }
     }
 }

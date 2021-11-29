@@ -53,6 +53,12 @@ namespace HotelManagement.Application.Services
             await _worker.Commit();
         }
 
+        public async Task<int> IsExist(CustomerDTO customer)
+        {
+            var query = await _worker.Customers.Get(x => x.IdentityNumber == customer.IdentityNumber);
+            return query?.Id ?? 0;
+        }
+
         public async Task<IList<CustomerDTO>> GetList()
         {
             var query = await _worker.Customers.GetAll();

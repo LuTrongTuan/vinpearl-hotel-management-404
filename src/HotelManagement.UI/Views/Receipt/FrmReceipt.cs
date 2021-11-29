@@ -24,6 +24,7 @@ namespace HotelManagement.UI.Views.Receipt
         private readonly IService _service;
         private readonly ICustomerService _customerService;
         private IList<ServiceReceiptDTO> _serviceInOrder = new List<ServiceReceiptDTO>();
+        private IList<HistoryDTO> _history = new List<HistoryDTO>();
         private IValidate _validate;
         private int _roomId;
         private int _serviceId;
@@ -32,10 +33,11 @@ namespace HotelManagement.UI.Views.Receipt
         private CustomerDTO _customerDTO;
         private readonly IConfirm _confirm;
         private int _originStatus;
+        private bool _isReceipt;
         /// <summary>
         /// add customer in room to _customers list.
         /// </summary>
-        private readonly IList<CustomerDTO> _customers = new List<CustomerDTO>();
+        private IList<CustomerDTO> _customers = new List<CustomerDTO>();
         private FilterInfoCollection _filterInfoCollection;
         private VideoCaptureDevice _videoCaptureDevice;
 
@@ -109,10 +111,13 @@ namespace HotelManagement.UI.Views.Receipt
         private async void ShowReceipt()
         {
             var query = await _transacsion.Query(_roomId);
-            _originStatus = query.Rooms.First(x => x.RoomId == _roomId).Histories.Last().Status;
+            _originStatus = query.Histories.Last().Status;
             TbxDeposit.Text = query.Receipt.Deposit.ToString(CultureInfo.CurrentCulture);
             TbxNote.Text = query.Receipt.Note;
             PeopleAmount.Value = query.Receipt.Number;
+            LblPayment.Text = MoneyFormat(query.Receipt.Payment);
+            _history = query.Histories;
+            _isReceipt = true;
             if (_originStatus == 0)
             {
                 CbxByDay.Checked = true;
@@ -126,6 +131,9 @@ namespace HotelManagement.UI.Views.Receipt
                 Dtpicker_in.Value = query.Detail.CheckIn;
                 Dtpicker_out.Value = query.Detail.CheckOut;
             }
+
+            _customers = query.Customers;
+            LoadCustomer();
             LoadToGrid(query.Services);
         }
 
@@ -141,10 +149,8 @@ namespace HotelManagement.UI.Views.Receipt
             GridViewCustomer.Columns[5].Visible = false;
             GridViewCustomer.Rows.Clear();
             foreach (var x in _customers)
-            {
-                GridViewCustomer.Rows.Add(x.IdentityNumber,x.Name,x.PhoneNumber,x.Gender == true ? "Nam" : "Nữ",
+                GridViewCustomer.Rows.Add(x.IdentityNumber,x.Name,x.PhoneNumber,x.Gender ? "Nam" : "Nữ",
                     x.Type);
-            }
 
         }
         private void LoadToGrid(IList<ServiceReceiptDTO> source)
@@ -173,7 +179,6 @@ namespace HotelManagement.UI.Views.Receipt
                 Dtpicker_in.Value = DateTime.Now;
                 Dtpicker_checkIn.Value = DateTime.Now;
             }
-            CustomerControlValidate();
         }
 
         #region Checkbox
@@ -215,14 +220,6 @@ namespace HotelManagement.UI.Views.Receipt
             _serviceId = Convert.ToInt32(CmbService.SelectedValue);
             _serviceDTO = await _service.GetDetail(_serviceId);
             Price.Text = MoneyFormat(_serviceDTO.Price);
-        }
-
-        private void CustomerControlValidate()
-        {
-            _validate = new Validate()
-                .Add(new ValidateModel {Control = TbxCustomerName, Error = "Tên không đúng định dạng", Pattern = Pattern.Name })
-                .Add(new ValidateModel { Control = TbxIdentityNumber, Error = "Định dạng không đúng", Pattern = Pattern.IdentityNumber})
-                .Add(new ValidateModel {Control = TbxPhoneNumber, Error = "Số điện thoại không đúng", Pattern = Pattern.PhoneNumber});
         }
 
         private void ServiceQuantity_ValueChanged(object sender, EventArgs e)
@@ -284,21 +281,52 @@ namespace HotelManagement.UI.Views.Receipt
             };
             if (CbxByDay.Checked)
             {
-                transaction.Histories.Add(new HistoryDTO
+                if (!_isReceipt)
                 {
-                    Start = Dtpicker_checkIn.Value,
-                    End = Dtpicker_checkOut.Value,
-                    Status = 0
-                });
+                    _history.Add(new HistoryDTO
+                    {
+                        Start = Dtpicker_checkIn.Value,
+                        End = Dtpicker_checkOut.Value,
+                        Status = 0
+                    });
+                }
+                else
+                {
+                    if (_originStatus != 0)
+                    {
+                        _history.Add(new HistoryDTO
+                        {
+                            Start = Dtpicker_checkIn.Value,
+                            End = Dtpicker_checkOut.Value,
+                            Status = 0
+                        });
+                    }
+                }
+
             }
             else if (CbxByHour.Checked)
             {
-                transaction.Histories.Add(new HistoryDTO
+                if (!_isReceipt)
                 {
-                    Start = Dtpicker_in.Value,
-                    End = Dtpicker_out.Value,
-                    Status = 1
-                });
+                    _history.Add(new HistoryDTO
+                    {
+                        Start = Dtpicker_in.Value,
+                        End = Dtpicker_out.Value,
+                        Status = 1
+                    });
+                }
+                else
+                {
+                    if (_originStatus != 1)
+                    {
+                        _history.Add(new HistoryDTO
+                        {
+                            Start = Dtpicker_in.Value,
+                            End = Dtpicker_out.Value,
+                            Status = 1
+                        });
+                    }
+                }
             }
             else transaction.Receipt.Status = 2;
 
@@ -310,6 +338,7 @@ namespace HotelManagement.UI.Views.Receipt
                 };
             }
 
+            transaction.Histories = _history;
             return transaction;
 
         }
@@ -326,16 +355,13 @@ namespace HotelManagement.UI.Views.Receipt
 
         private async void TbxIdentityNumber_KeyDown(object sender, KeyEventArgs e)
         {
-            //var request = await _customerService.GetDetail(TbxIdentityNumber.Text);
-            //if (request is null) return;
-            //TbxCustomerName.Text = request.Name;
-            //TbxPhoneNumber.Text = request.PhoneNumber;
-            //if (request.Gender)
-            //    RbtMale.Checked = true;
-            //else RbtFemale.Checked = true;
-            //if (request.Status)
-            //    CbxActive.Checked = true;
-            //else CbxDeactive.Checked = true;
+            var request = await _customerService.GetDetail(TbxIdentityNumber.Text);
+            if (request is null) return;
+            TbxCustomerName.Text = request.Name;
+            TbxPhoneNumber.Text = request.PhoneNumber;
+            if (request.Gender)
+                RbtMale.Checked = true;
+            else RbtFemale.Checked = true;
         }
 
         #region Quét căn cước
@@ -419,14 +445,27 @@ namespace HotelManagement.UI.Views.Receipt
 
         private void Btn_AddCustomer_Click(object sender, EventArgs e)
         {
-            _customerDTO = new CustomerDTO();
-            _customerDTO.IdentityNumber = TbxIdentityNumber.Text;
-            _customerDTO.Name = TbxCustomerName.Text;
-            _customerDTO.PhoneNumber = TbxPhoneNumber.Text;
-            _customerDTO.Gender = RbtMale.Checked;
-            _customerDTO.Type = Convert.ToInt32(cbx_giayTo.SelectedValue);
-            _customers.Add(_customerDTO);
-            LoadCustomer();
+            _validate = new Validate();
+            _validate
+                .Add(new ValidateModel
+                    {Control = TbxCustomerName, Error = "Tên không đúng định dạng", Pattern = Pattern.Name})
+                .Add(new ValidateModel
+                    {Control = TbxIdentityNumber, Error = "Số dịnh danh không đúng", Pattern = Pattern.IdentityNumber})
+                .Add(new ValidateModel
+                    {Control = TbxPhoneNumber, Error = "SĐT không đúng", Pattern = Pattern.PhoneNumber});
+            if (_validate.Run().Accept())
+            {
+                _customerDTO = new CustomerDTO
+                {
+                    IdentityNumber = TbxIdentityNumber.Text,
+                    Name = TbxCustomerName.Text,
+                    PhoneNumber = TbxPhoneNumber.Text,
+                    Gender = RbtMale.Checked,
+                    Type = Convert.ToInt32(cbx_giayTo.SelectedValue)
+                };
+                _customers.Add(_customerDTO);
+                LoadCustomer();
+            }
         }
     }
 }

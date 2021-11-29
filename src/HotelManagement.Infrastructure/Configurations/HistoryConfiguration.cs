@@ -12,9 +12,9 @@ namespace HotelManagement.Infrastructure.Configurations
             builder.HasKey(e => e.Id);
             builder.Property(e => e.Id).ValueGeneratedOnAdd();
 
-            builder.HasOne(e => e.Receipt)
+            builder.HasOne(e => e.Detail)
                 .WithMany(d => d.Histories)
-                .HasForeignKey(x => x.Room);
+                .HasForeignKey(x => x.DetailId);
         }
     }
 }

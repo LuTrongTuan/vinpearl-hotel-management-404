@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -9,6 +10,7 @@ using HotelManagement.Application.DTOs;
 using HotelManagement.Application.DTOs.Receipt;
 using HotelManagement.Application.DTOs.Room;
 using HotelManagement.Application.DTOs.Service;
+using HotelManagement.Application.Utilities;
 using HotelManagement.Domain;
 
 namespace HotelManagement.Application.Services
@@ -21,13 +23,15 @@ namespace HotelManagement.Application.Services
         private readonly IService _service;
         private readonly IIdentificationService _identificationService;
         private readonly IPriceCalculate _calculator;
+        private readonly ICustomerService _customer;
         private TransactionDTO _transaction;
         private double _payment;
 
         public Transacsion(IRoomService roomService,
             IService service,
             IIdentificationService identificationService,
-            IMapper mapper, IUnitOfWork worker, IPriceCalculate calculator)
+            IMapper mapper, IUnitOfWork worker, IPriceCalculate calculator,
+            ICustomerService customer)
         {
             _service = service;
             _identificationService = identificationService;
@@ -35,6 +39,7 @@ namespace HotelManagement.Application.Services
             _mapper = mapper;
             _worker = worker;
             _calculator = calculator;
+            _customer = customer;
         }
 
         public async Task<RoomDetailDTO> GetRoomDetail(int id) => await _roomService.GetDetail(id);
@@ -47,17 +52,14 @@ namespace HotelManagement.Application.Services
             RoomPayment(source.Histories, room.Type.ByDay, room.Type.ByHour);
             receipt.EmployeeId = 1; // only for test
             receipt.Detail = _mapper.Map<ReceiptDetail>(source.Detail);
-            receipt.Detail.Customers = CustomerHandle(source.Customers);
-            receipt.Detail.Rooms = new List<RoomReceipt>(1) {new()
-            {
-                RoomId = source.RoomId,
-                Histories = _mapper.Map<IList<HistoryDTO>, ICollection<History>>(source.Histories)
-            }};
+            receipt.Detail.RoomId = source.RoomId;
+            receipt.Detail.Customers = await new NToN<CustomerDTO, Customer>(_mapper, _customer.IsExist)
+                .Handle<CustomerReceipt>(source.Customers, nameof(CustomerReceipt.CustomerId), nameof(CustomerReceipt.Customer));
             receipt.Detail.Services =
                 _mapper.Map<IList<ServiceReceiptDTO>, IList<ServiceReceipt>>(source.Services);
+            receipt.Detail.Histories = _mapper.Map<ICollection<History>>(source.Histories);
             receipt.Payment += _payment + _calculator.ServiceCalculate(source.Services);
             room.Status = 0;
-            receipt.Detail.Customers = default;
             await _worker.Receipts.Add(receipt);
             await _worker.Rooms.Update(room);
             await _worker.Commit();
@@ -65,20 +67,26 @@ namespace HotelManagement.Application.Services
         }
         public async Task<string> Update(TransactionDTO source)
         {
-            var receipt = await _worker.RoomReceipts
-                .Get(x => x.Id == source.RoomId);
-            var data = await _worker.ReceiptDetails
-                .Get(x => x.Id == receipt.DetailId);
-            _mapper.Map(source.Receipt, data.Receipt);
-            _mapper.Map(source.Detail, data);
-            _mapper.Map(source.Services, data.Services);
-            _mapper.Map(source.Histories, receipt.Histories);
-            await _worker.ReceiptDetails.Update(data);
-            await _worker.RoomReceipts.Update(receipt);
+            var room = await _worker.Rooms.Get(x => x.Id == source.RoomId);
+            var detail = await _worker.ReceiptDetails.Get(x => x.RoomId == source.RoomId);
+            _mapper.Map(source.Receipt, detail.Receipt);
+            _mapper.Map(source.Detail, detail);
+            _mapper.Map(source.Services, detail.Services);
+            _mapper.Map(source.Histories, detail.Histories);
+            RoomPayment(source.Histories, room.Type.ByDay, room.Type.ByHour);
+            detail.Customers = await new NToN<CustomerDTO, Customer>(_mapper, _customer.IsExist)
+                .Handle<CustomerReceipt>(source.Customers, nameof(CustomerReceipt.CustomerId), nameof(CustomerReceipt.Customer));
+            detail.Receipt.Payment += _payment + _calculator.ServiceCalculate(source.Services);
+            if (source.Histories.Count >= 2)
+            {
+                var history = source.Histories.OrderBy(x => x.Start).ToArray();
+                detail.CreateAt = source.Histories[0].Start;
+                detail.Checkout = source.Histories[^1].End;
+            }
+            await _worker.ReceiptDetails.Update(detail);
             await _worker.Commit();
             return "Thành công";
         }
-
         public async Task<string> Checkout(int id)
         {
             var room = await _worker.Rooms.Get(x => x.Id == id);
@@ -99,16 +107,16 @@ namespace HotelManagement.Application.Services
         {
             try
             {
-                var room = await _worker.RoomReceipts.Get(x => x.Id == roomId);
-                var data = await _worker.ReceiptDetails.Get(x => x.Id == room.DetailId);
+                var data = await _worker.ReceiptDetails.Get(x => x.Id == roomId);
                 _transaction = new TransactionDTO
                 {
-                    //Customer = _mapper.Map<CustomerDTO>(data.Receipt.Customer),
+                    Customers = new NToN<Customer, CustomerDTO>(_mapper, null)
+                        .Get(data.Customers, nameof(CustomerReceipt.Customer)),
                     Receipt = _mapper.Map<ReceiptDTO>(data.Receipt),
                     Services = _mapper.Map<ICollection<ServiceReceipt>, IList<ServiceReceiptDTO>>(data.Services),
                     EmployeeId = data.Receipt.EmployeeId,
                     Detail = _mapper.Map<ReceiptDetailDTO>(data),
-                    Rooms = _mapper.Map<ICollection<RoomReceipt>, IList<RoomReceiptDTO>>(data.Rooms)
+                    Histories = _mapper.Map<IList<HistoryDTO>>(data.Histories)
                 };
 
                 await GetPrice(_transaction.Services);
@@ -119,7 +127,7 @@ namespace HotelManagement.Application.Services
                 return null;
             }
         }
-        private async Task GetPrice(IList<ServiceReceiptDTO> source)
+        private async Task GetPrice(IEnumerable<ServiceReceiptDTO> source)
         {
             foreach (var receipt in source)
             {
@@ -136,8 +144,5 @@ namespace HotelManagement.Application.Services
                 _payment += history.Payment;
             }
         }
-
-        private IList<CustomerReceipt> CustomerHandle(IEnumerable<CustomerDTO> source)
-            => source.Select(customer => _mapper.Map<Customer>(customer)).Select(stuff => new CustomerReceipt {Customer = stuff}).ToList();
     }
 }

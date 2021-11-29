@@ -12,5 +12,6 @@ namespace HotelManagement.Application.Contracts.Services
         Task<IEnumerable<CustomerDTO>> Get();
         Task<IList<CustomerDTO>> Find(string name);
         Task<CustomerDTO> GetDetail(string id);
+        Task<int> IsExist(CustomerDTO customer);
     }
 }

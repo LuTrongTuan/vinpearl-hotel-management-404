@@ -11,7 +11,6 @@ namespace HotelManagement.Application.DTOs
         public ReceiptDTO Receipt { get; set; }
         public ReceiptDetailDTO Detail { get; set; }
         public IList<ServiceReceiptDTO> Services { get; set; }
-        public IList<RoomReceiptDTO> Rooms { get; set; }
         public IList<HistoryDTO> Histories { get; set; }
         public IList<CustomerDTO> Customers { get; set; }
     }

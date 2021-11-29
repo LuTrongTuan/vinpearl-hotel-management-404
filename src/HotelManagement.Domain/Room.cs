@@ -11,6 +11,7 @@ namespace HotelManagement.Domain
         public int FloorNumber { get; set; }
         public virtual RoomType Type { get; set; }
         public virtual Floor Floor { get; set; }
-        public virtual ICollection<RoomReceipt> Receipts { get; set; }
+        public virtual ICollection<ReceiptDetail> Details { get; set; }
+
     }
 }

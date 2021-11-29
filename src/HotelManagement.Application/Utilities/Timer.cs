@@ -16,7 +16,7 @@ namespace HotelManagement.Application.Utilities
             var startTime = Get(start);
             var endTime = Get(end);
             var totalMinutes = endTime.Subtract(startTime).TotalMinutes;
-            var hour = Convert.ToInt32(totalMinutes / 60);
+            var hour = Convert.ToInt32(Math.Floor(totalMinutes / 60));
             var remain = totalMinutes % 60;
             return remain > minute ? hour + 1 : hour;
         }
