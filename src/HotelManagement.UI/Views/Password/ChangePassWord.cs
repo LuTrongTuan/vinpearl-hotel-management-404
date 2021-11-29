@@ -23,7 +23,6 @@ namespace HotelManagement.UI
         private async void customButton1_Click_1(object sender, EventArgs e)
         {
             _accountDto = new AccountDTO();
-
             _accountDto.UserName = txt_name.Text;
             _accountDto.Password = txt_mk.Text;
             _accountDto.NewPassword = txt_newMK.Text;
@@ -31,6 +30,7 @@ namespace HotelManagement.UI
             
             _mss = await _iPasswordService.UpdatePassword(_accountDto);
             MessageBox.Show(_mss);
+            //MessageBox.Show(await _iPasswordService.UpdatePassword(_accountDto));
         }
 
         private void customButton1_KeyDown(object sender, KeyEventArgs e)

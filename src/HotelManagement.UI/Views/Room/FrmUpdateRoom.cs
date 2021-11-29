@@ -50,7 +50,7 @@ namespace HotelManagement.UI.Views.Room
 
         async Task LoadRoom()
         {
-            TbxName.Enabled = false;
+            CbxActive.Enabled = false;
             var roomLocation = new Point(140, 5);
             var floorLocation = new Point(10, 5);
             var numberOf = (PanelWidth - 100) / 250;
@@ -179,6 +179,13 @@ namespace HotelManagement.UI.Views.Room
             }
             roomTypeDTO.ByHour = Convert.ToDouble(TbxHour.Text);
 
+            var check = await _roomService.GetList();
+            if (check.Any(c => c.Name == TbxName.Text)) _roomDetail.Name = TbxName.Text;
+            else
+            {
+                MessageBox.Show("Không Được Sửa Tên Phòng ", "Thông Báo");
+                return;
+            }
             _roomDetail.Name = TbxName.Text;
             if (CbxActive.Checked) _roomDetail.Status = 0;
             if (CbxDeactive.Checked) _roomDetail.Status = 2;
