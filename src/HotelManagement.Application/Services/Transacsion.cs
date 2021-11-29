@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -7,7 +6,6 @@ using HotelManagement.Application.Contracts.Infrastructure;
 using HotelManagement.Application.Contracts.Services;
 using HotelManagement.Application.Contracts.Ultilities;
 using HotelManagement.Application.DTOs;
-using HotelManagement.Application.DTOs.Employee;
 using HotelManagement.Application.DTOs.Receipt;
 using HotelManagement.Application.DTOs.Room;
 using HotelManagement.Application.DTOs.Service;
@@ -81,8 +79,8 @@ namespace HotelManagement.Application.Services
             if (source.Histories.Count >= 2)
             {
                 var history = source.Histories.OrderBy(x => x.Start).ToArray();
-                detail.CreateAt = source.Histories[0].Start;
-                detail.Checkout = source.Histories[^1].End;
+                detail.CreateAt = history[0].Start;
+                detail.Checkout = history[^1].End;
             }
             await _worker.ReceiptDetails.Update(detail);
             await _worker.Commit();

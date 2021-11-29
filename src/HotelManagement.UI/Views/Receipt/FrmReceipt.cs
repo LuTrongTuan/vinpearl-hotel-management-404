@@ -151,7 +151,6 @@ namespace HotelManagement.UI.Views.Receipt
             foreach (var x in _customers)
                 GridViewCustomer.Rows.Add(x.IdentityNumber,x.Name,x.PhoneNumber,x.Gender ? "Nam" : "Nữ",
                     x.Type);
-
         }
         private void LoadToGrid(IList<ServiceReceiptDTO> source)
         {
