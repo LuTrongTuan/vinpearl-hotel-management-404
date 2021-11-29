@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using HotelManagement.Application.Contracts.Services;
 using HotelManagement.Application.DTOs.Service;
@@ -24,18 +22,38 @@ namespace HotelManagement.UI.Views.Service
             _confirm = con;
             _serviceType = sert;
             number = new Regex(@"^[0-9]*$");
-            LoadServiceType();
-            Service();
+            LoadService();
         }
-        async void LoadServiceType()
+        //async void LoadServiceType()
+        //{
+        //    var result = await _serviceType.Get();
+        //    cmb_LDV.DataSource = result.ToList();
+        //    cmb_LDV.DisplayMember = "Name";
+        //    cmb_LDV.ValueMember = "Id";
+        //}
+        async void LoadService()
         {
+            DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
+            DataGridViewComboBoxColumn cmb = new DataGridViewComboBoxColumn();
+            DataGridViewComboBoxColumn cmb_ser = new DataGridViewComboBoxColumn();
             var result = await _serviceType.Get();
             cmb_LDV.DataSource = result.ToList();
             cmb_LDV.DisplayMember = "Name";
             cmb_LDV.ValueMember = "Id";
-        }
-        async void Service()
-        {
+            btn.Name = "btn_confirm";
+            btn.UseColumnTextForButtonValue = true;
+            btn.HeaderText = "Confirm";
+            btn.Text = "OK";
+            btn.FlatStyle = FlatStyle.Popup;
+            cmb.Name = "function";
+            cmb.HeaderText = "Chức năng";
+            cmb.Items.Add("thêm");
+            cmb.Items.Add("sửa");
+            cmb_ser.Name = "service";
+            cmb_ser.HeaderText = "ServiceType";
+            cmb_ser.DataSource = result.ToList();
+            cmb_ser.DisplayMember = "Name";
+            cmb_ser.ValueMember = "id";
             var _list = await _service.Get();
             dg_DV.ColumnCount = 3;
             dg_DV.Columns[0].Name = "name";
@@ -44,6 +62,9 @@ namespace HotelManagement.UI.Views.Service
             dg_DV.Columns[2].Visible = false;
             dg_DV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dg_DV.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dg_DV.Columns.Add(cmb_ser);
+            dg_DV.Columns.Add(cmb);
+            dg_DV.Columns.Add(btn);
             dg_DV.Rows.Clear();
             foreach (var room in _list)
                 dg_DV.Rows.Add(room.Name, room.Price, room.Id);
@@ -61,7 +82,7 @@ namespace HotelManagement.UI.Views.Service
                 if (_confirm.IsConfirm("bạn chắc chắn thêm"))
                 {
                     await _serviceType.Add(sertype);
-                    LoadServiceType();
+                    LoadService();
                 }
             }
         }
@@ -86,7 +107,7 @@ namespace HotelManagement.UI.Views.Service
                 MessageBox.Show("Không được để chữ");
                 return;
             }
-            var x =await _service.Get();//m nói lại đi mạng m nát quá
+            var x =await _service.Get();
             if (x.Any(c => c.Name == txt_DV.Text))
             {
                 MessageBox.Show("tên dịch vụ đã tồn tại");
@@ -95,13 +116,15 @@ namespace HotelManagement.UI.Views.Service
             var sertype = new ServiceDTO
             {
                 Name = txt_DV.Text,
-                ServiceTypeId = Convert.ToInt32(cmb_LDV.SelectedValue),
-                Price = Convert.ToDouble(txt_price.Text)
+                TypeId = Convert.ToInt32(cmb_LDV.SelectedValue),
+                Price = Convert.ToDouble(txt_price.Text),
+                Status = checkBox1.Checked
+                //Id = x.Max(c=>c.Id) +1
             };
             if (_confirm.IsConfirm("bạn chắc chắn thêm"))
             {
                 await _service.AddService(sertype);
-                Service();
+                LoadService();
             }
         }
         public async void loadserach(string dv)
@@ -122,26 +145,62 @@ namespace HotelManagement.UI.Views.Service
             var ser = x.Where(c => c.Id == idClick).FirstOrDefault();
             ser.Name = txt_DV.Text;
             ser.Price = Convert.ToDouble(txt_price.Text);
-            ser.ServiceTypeId = Convert.ToInt32(cmb_LDV.SelectedValue);
+            ser.TypeId = Convert.ToInt32(cmb_LDV.SelectedValue);
             if (_confirm.IsConfirm("bạn chắc chắn sửa"))
             {
                 await _service.UpdateService(ser);
-                Service();
+                LoadService();
             }
         }
         private void textBox1_KeyUp(object sender, KeyEventArgs e)  => loadserach(TbxSearch.Text);
         private async void dg_DV_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            var service = await _service.Get();
             int rowIndex = e.RowIndex;
-            if (rowIndex == -1) return;
-            idClick = dg_DV.Rows[rowIndex].Cells[2].Value.GetHashCode();
-            txt_DV.Text = dg_DV.Rows[rowIndex].Cells[0].Value.ToString();
-            txt_price.Text = dg_DV.Rows[rowIndex].Cells[1].Value.ToString();
-            var x = await _service.GetDetail(idClick);
-            var y = await _serviceType.Get();
-            cmb_LDV.Text = y.Where(c => c.Id == x.ServiceTypeId).Select(c => c.Name).FirstOrDefault();
+            if (rowIndex < service.Count && rowIndex > -1)
+            {
+                idClick = dg_DV.Rows[rowIndex].Cells[2].Value.GetHashCode();
+                txt_DV.Text = dg_DV.Rows[rowIndex].Cells[0].Value.ToString();
+                txt_price.Text = dg_DV.Rows[rowIndex].Cells[1].Value.ToString();
+                //var x = await _service.GetDetail(idClick);
+                //var y = await _serviceType.Get();
+                //cmb_LDV.Text = y.Where(c => c.Id == x.ServiceTypeId).Select(c => c.Name).FirstOrDefault();
+                if (e.ColumnIndex == dg_DV.Columns["btn_confirm"].Index)
+                {
+                    if (dg_DV.Rows[rowIndex].Cells[6].Value.ToString() == "sửa")
+                    {
+                        var xs= await _service.Get();
+                        var ser = xs.Where(c => c.Id == idClick).FirstOrDefault();
+                        ser.Name = txt_DV.Text;
+                        ser.Price = Convert.ToDouble(txt_price.Text);
+                        ser.TypeId = Convert.ToInt32(cmb_LDV.SelectedValue);
+                        if (_confirm.IsConfirm("bạn chắc chắn sửa"))
+                        {
+                            await _service.UpdateService(ser);
+                            LoadService();
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (e.ColumnIndex == dg_DV.Columns["btn_confirm"].Index)
+                {
+                    var sertype = new ServiceDTO
+                    {
+                        Name = txt_DV.Text,
+                        TypeId = Convert.ToInt32(cmb_LDV.SelectedValue),
+                        Price = Convert.ToDouble(txt_price.Text),
+                        Status = checkBox1.Checked
+                        //Id = x.Max(c=>c.Id) +1
+                    };
+                    if (_confirm.IsConfirm("bạn chắc chắn thêm"))
+                    {
+                        await _service.AddService(sertype);
+                        LoadService();
+                    }
+                }
+            }
         }
-
-        
     }
 }

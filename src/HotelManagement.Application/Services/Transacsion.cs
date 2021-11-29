@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -6,6 +7,7 @@ using HotelManagement.Application.Contracts.Infrastructure;
 using HotelManagement.Application.Contracts.Services;
 using HotelManagement.Application.Contracts.Ultilities;
 using HotelManagement.Application.DTOs;
+using HotelManagement.Application.DTOs.Employee;
 using HotelManagement.Application.DTOs.Receipt;
 using HotelManagement.Application.DTOs.Room;
 using HotelManagement.Application.DTOs.Service;
@@ -57,7 +59,6 @@ namespace HotelManagement.Application.Services
                 _mapper.Map<IList<ServiceReceiptDTO>, IList<ServiceReceipt>>(source.Services);
             receipt.Payment += _payment + _calculator.ServiceCalculate(source.Services);
             room.Status = 0;
-            receipt.Detail.Customers = default;
             await _worker.Receipts.Add(receipt);
             await _worker.Rooms.Update(room);
             await _worker.Commit();
@@ -138,6 +139,6 @@ namespace HotelManagement.Application.Services
         }
 
         private IList<CustomerReceipt> CustomerHandle(IEnumerable<CustomerDTO> source)
-            => source.Select(customer => _mapper.Map<Customer>(customer)).Select(stuff => new CustomerReceipt {Customer = stuff}).ToList();
+            => source.Select(customer => _mapper.Map<Customer>(customer)).Select(stuff => new CustomerReceipt { Customer = stuff }).ToList();
     }
 }

@@ -32,7 +32,7 @@ namespace HotelManagement.Application.Services
             if (_ser == null) return "không tồn tại";
             _ser.Name = ser.Name;
             _ser.Price = ser.Price;
-            _ser.TypeId = ser.ServiceTypeId;
+            _ser.TypeId = ser.TypeId;
             await _work.Services.Update(_ser);
             await _work.Commit();
             return "sửa thành công";
