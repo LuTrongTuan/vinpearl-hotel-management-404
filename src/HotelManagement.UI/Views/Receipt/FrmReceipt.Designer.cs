@@ -46,6 +46,8 @@ namespace HotelManagement.UI.Views.Receipt
             this.ServiceQuantity = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.LblType = new System.Windows.Forms.Label();
+            this.LblPeople = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.Dtpicker_out = new System.Windows.Forms.DateTimePicker();
             this.Dtpicker_in = new System.Windows.Forms.DateTimePicker();
@@ -55,14 +57,12 @@ namespace HotelManagement.UI.Views.Receipt
             this.CbxByDay = new System.Windows.Forms.CheckBox();
             this.CbxByHour = new System.Windows.Forms.CheckBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.PeopleAmount = new System.Windows.Forms.NumericUpDown();
             this.label11 = new System.Windows.Forms.Label();
             this.LblRoomType = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.cbx_roomtype = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.BtnAddService = new HotelManagement.UI.Components.CustomButton();
             this.Price = new System.Windows.Forms.Label();
@@ -92,7 +92,6 @@ namespace HotelManagement.UI.Views.Receipt
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ServiceQuantity)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PeopleAmount)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -246,6 +245,8 @@ namespace HotelManagement.UI.Views.Receipt
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.LblType);
+            this.groupBox1.Controls.Add(this.LblPeople);
             this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.Dtpicker_out);
             this.groupBox1.Controls.Add(this.Dtpicker_in);
@@ -255,7 +256,6 @@ namespace HotelManagement.UI.Views.Receipt
             this.groupBox1.Controls.Add(this.CbxByDay);
             this.groupBox1.Controls.Add(this.CbxByHour);
             this.groupBox1.Controls.Add(this.label19);
-            this.groupBox1.Controls.Add(this.PeopleAmount);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.LblRoomType);
             this.groupBox1.Controls.Add(this.label16);
@@ -265,7 +265,6 @@ namespace HotelManagement.UI.Views.Receipt
             this.groupBox1.Controls.Add(this.Dtpicker_checkOut);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label14);
-            this.groupBox1.Controls.Add(this.cbx_roomtype);
             this.groupBox1.Controls.Add(this.Dtpicker_checkIn);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -275,6 +274,26 @@ namespace HotelManagement.UI.Views.Receipt
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin hóa đơn";
+            // 
+            // LblType
+            // 
+            this.LblType.AutoSize = true;
+            this.LblType.ForeColor = System.Drawing.Color.White;
+            this.LblType.Location = new System.Drawing.Point(142, 45);
+            this.LblType.Name = "LblType";
+            this.LblType.Size = new System.Drawing.Size(81, 20);
+            this.LblType.TabIndex = 43;
+            this.LblType.Text = "RoomType";
+            // 
+            // LblPeople
+            // 
+            this.LblPeople.AutoSize = true;
+            this.LblPeople.ForeColor = System.Drawing.Color.White;
+            this.LblPeople.Location = new System.Drawing.Point(142, 309);
+            this.LblPeople.Name = "LblPeople";
+            this.LblPeople.Size = new System.Drawing.Size(55, 20);
+            this.LblPeople.TabIndex = 42;
+            this.LblPeople.Text = "People";
             // 
             // comboBox1
             // 
@@ -290,6 +309,7 @@ namespace HotelManagement.UI.Views.Receipt
             // Dtpicker_out
             // 
             this.Dtpicker_out.CustomFormat = "HH:mm";
+            this.Dtpicker_out.Enabled = false;
             this.Dtpicker_out.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.Dtpicker_out.Location = new System.Drawing.Point(311, 128);
             this.Dtpicker_out.Name = "Dtpicker_out";
@@ -300,6 +320,7 @@ namespace HotelManagement.UI.Views.Receipt
             // Dtpicker_in
             // 
             this.Dtpicker_in.CustomFormat = "HH:mm";
+            this.Dtpicker_in.Enabled = false;
             this.Dtpicker_in.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.Dtpicker_in.Location = new System.Drawing.Point(311, 84);
             this.Dtpicker_in.Name = "Dtpicker_in";
@@ -325,7 +346,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.TbxNote.Password = false;
             this.TbxNote.PlaceHolder = "Ghi chú";
             this.TbxNote.PlaceHolderColor = System.Drawing.SystemColors.ScrollBar;
-            this.TbxNote.Size = new System.Drawing.Size(300, 37);
+            this.TbxNote.Size = new System.Drawing.Size(300, 39);
             this.TbxNote.TabIndex = 38;
             this.TbxNote.Underline = true;
             // 
@@ -346,7 +367,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.TbxDeposit.Password = false;
             this.TbxDeposit.PlaceHolder = "Tiền trả trước";
             this.TbxDeposit.PlaceHolderColor = System.Drawing.SystemColors.ScrollBar;
-            this.TbxDeposit.Size = new System.Drawing.Size(300, 37);
+            this.TbxDeposit.Size = new System.Drawing.Size(300, 39);
             this.TbxDeposit.TabIndex = 36;
             this.TbxDeposit.Underline = true;
             // 
@@ -396,24 +417,6 @@ namespace HotelManagement.UI.Views.Receipt
             this.label19.Size = new System.Drawing.Size(71, 20);
             this.label19.TabIndex = 23;
             this.label19.Text = "Số người";
-            // 
-            // PeopleAmount
-            // 
-            this.PeopleAmount.Location = new System.Drawing.Point(145, 302);
-            this.PeopleAmount.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.PeopleAmount.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.PeopleAmount.Name = "PeopleAmount";
-            this.PeopleAmount.Size = new System.Drawing.Size(120, 27);
-            this.PeopleAmount.TabIndex = 24;
-            this.PeopleAmount.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             // 
             // label11
             // 
@@ -477,16 +480,6 @@ namespace HotelManagement.UI.Views.Receipt
             this.label14.Size = new System.Drawing.Size(91, 20);
             this.label14.TabIndex = 4;
             this.label14.Text = "Loại phòng:";
-            // 
-            // cbx_roomtype
-            // 
-            this.cbx_roomtype.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.cbx_roomtype.ForeColor = System.Drawing.Color.Black;
-            this.cbx_roomtype.FormattingEnabled = true;
-            this.cbx_roomtype.Location = new System.Drawing.Point(145, 45);
-            this.cbx_roomtype.Name = "cbx_roomtype";
-            this.cbx_roomtype.Size = new System.Drawing.Size(300, 28);
-            this.cbx_roomtype.TabIndex = 8;
             // 
             // groupBox2
             // 
@@ -606,7 +599,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.TbxPhoneNumber.Password = false;
             this.TbxPhoneNumber.PlaceHolder = "Sô điện thoại";
             this.TbxPhoneNumber.PlaceHolderColor = System.Drawing.SystemColors.ScrollBar;
-            this.TbxPhoneNumber.Size = new System.Drawing.Size(274, 37);
+            this.TbxPhoneNumber.Size = new System.Drawing.Size(274, 39);
             this.TbxPhoneNumber.TabIndex = 36;
             this.TbxPhoneNumber.Underline = true;
             // 
@@ -627,7 +620,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.TbxCustomerName.Password = false;
             this.TbxCustomerName.PlaceHolder = "Tên khách hàng";
             this.TbxCustomerName.PlaceHolderColor = System.Drawing.SystemColors.ScrollBar;
-            this.TbxCustomerName.Size = new System.Drawing.Size(274, 37);
+            this.TbxCustomerName.Size = new System.Drawing.Size(274, 39);
             this.TbxCustomerName.TabIndex = 35;
             this.TbxCustomerName.Underline = true;
             // 
@@ -648,7 +641,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.TbxIdentityNumber.Password = false;
             this.TbxIdentityNumber.PlaceHolder = "Số giấy tờ";
             this.TbxIdentityNumber.PlaceHolderColor = System.Drawing.SystemColors.ScrollBar;
-            this.TbxIdentityNumber.Size = new System.Drawing.Size(274, 37);
+            this.TbxIdentityNumber.Size = new System.Drawing.Size(274, 39);
             this.TbxIdentityNumber.TabIndex = 34;
             this.TbxIdentityNumber.Underline = true;
             this.TbxIdentityNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TbxIdentityNumber_KeyDown);
@@ -761,9 +754,9 @@ namespace HotelManagement.UI.Views.Receipt
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label13.Location = new System.Drawing.Point(286, 721);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(122, 25);
+            this.label13.Size = new System.Drawing.Size(103, 25);
             this.label13.TabIndex = 0;
-            this.label13.Text = "Thành tiền:";
+            this.label13.Text = "Tạm tính:";
             // 
             // BtnConfirm
             // 
@@ -919,7 +912,6 @@ namespace HotelManagement.UI.Views.Receipt
             ((System.ComponentModel.ISupportInitialize)(this.ServiceQuantity)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PeopleAmount)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -955,7 +947,6 @@ namespace HotelManagement.UI.Views.Receipt
         private System.Windows.Forms.Label RoomName;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label LblRoomType;
-        private System.Windows.Forms.ComboBox cbx_roomtype;
         private System.Windows.Forms.RadioButton RbtMale;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.RadioButton RbtFemale;
@@ -964,7 +955,6 @@ namespace HotelManagement.UI.Views.Receipt
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.DataGridView ServiceGridView;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.NumericUpDown PeopleAmount;
         private System.Windows.Forms.CheckBox CbxByDay;
         private System.Windows.Forms.CheckBox CbxByHour;
         private System.Windows.Forms.Label label11;
@@ -995,5 +985,7 @@ namespace HotelManagement.UI.Views.Receipt
         private Timer timer1;
         private Components.CustomButton Btn_AddCustomer;
         private DataGridView GridViewCustomer;
+        private Label LblPeople;
+        private Label LblType;
     }
 }

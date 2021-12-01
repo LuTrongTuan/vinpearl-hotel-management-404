@@ -106,7 +106,7 @@ namespace HotelManagement.Application.Services
         {
             try
             {
-                var data = await _worker.ReceiptDetails.Get(x => x.Id == roomId);
+                var data = await _worker.ReceiptDetails.Get(x => x.RoomId == roomId);
                 _transaction = new TransactionDTO
                 {
                     Customers = new NToN<Customer, CustomerDTO>(_mapper, null)
@@ -135,7 +135,7 @@ namespace HotelManagement.Application.Services
                 receipt.Name = price.Name;
             }
         }
-        private void RoomPayment(IList<HistoryDTO> data, double dayPrice, double hourPrice)
+        private void RoomPayment(IEnumerable<HistoryDTO> data, double dayPrice, double hourPrice)
         {
             foreach (var history in data)
             {

@@ -13,8 +13,7 @@ namespace HotelManagement.Infrastructure.Configurations
 
             builder.HasOne(e => e.Service)
                 .WithMany(d => d.Receipts)
-                .HasForeignKey(d => d.ServiceId)
-                ;
+                .HasForeignKey(d => d.ServiceId);
 
             builder.HasOne(e => e.Detail)
                 .WithMany(d => d.Services)

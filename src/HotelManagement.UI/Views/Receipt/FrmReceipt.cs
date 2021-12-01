@@ -86,7 +86,7 @@ namespace HotelManagement.UI.Views.Receipt
         {
             _room = await _transacsion.GetRoomDetail(_roomId);
             RoomName.Text = "Phòng: " + _room.Name;
-            cbx_roomtype.Text = _room.RoomType.Name;
+            LblType.Text = _room.RoomType.Name;
             CbxByDay.Checked = true;
             if (_room.Status == 0)
             {
@@ -114,7 +114,7 @@ namespace HotelManagement.UI.Views.Receipt
             _originStatus = query.Histories.Last().Status;
             TbxDeposit.Text = query.Receipt.Deposit.ToString(CultureInfo.CurrentCulture);
             TbxNote.Text = query.Receipt.Note;
-            PeopleAmount.Value = query.Receipt.Number;
+            LblPeople.Text = query.Receipt.Number.ToString();
             LblPayment.Text = MoneyFormat(query.Receipt.Payment);
             _history = query.Histories;
             _isReceipt = true;
@@ -129,7 +129,7 @@ namespace HotelManagement.UI.Views.Receipt
             {
                 CbxByHour.Checked = true;
                 Dtpicker_in.Value = query.Detail.CheckIn;
-                Dtpicker_out.Value = query.Detail.CheckOut;
+                Dtpicker_out.Value = DateTime.Now;
             }
 
             _customers = query.Customers;
@@ -201,7 +201,7 @@ namespace HotelManagement.UI.Views.Receipt
         private async void Checkin_Click(object sender, EventArgs e)
         {
             var transaction = GetTransaction();
-            if(transaction is not null)
+            if(transaction is not null && _confirm.IsConfirm("Bạn có chắc không?"))
                 MessageBox.Show(await _transacsion.Create(transaction));
         }
 
@@ -243,7 +243,7 @@ namespace HotelManagement.UI.Views.Receipt
 
         private void BtnAddService_Click(object sender, EventArgs e)
         {
-
+            if (!_confirm.IsConfirm("Bạn có chắc không?")) return;
             var item = new ServiceReceiptDTO()
             {
                 Name = CmbService.Text,
@@ -260,19 +260,34 @@ namespace HotelManagement.UI.Views.Receipt
 
         private TransactionDTO GetTransaction()
         {
-            _validate = new Validate()
-                .Add(new ValidateModel {Control = TbxDeposit, Error = "Chỉ được nhập số", Pattern = Pattern.Number});
+            try
+            {
+                var deposit = TbxDeposit.Text;
+                if (deposit != "")
+                {
+                    _ = Convert.ToInt32(deposit);
+                }
+            }
+            catch
+            {
+                TbxDeposit.ErrorMessage = "Chỉ được nhập số";
+                return null;
+            }
 
-            if (!_validate.Run().Accept()) return null;
+            if (_customers.Count == 0)
+            {
+                MessageBox.Show("Không thể tạo hóa đơn khi không có khách hàng");
+                return null;
+            }
+
             var transaction = new TransactionDTO()
             {
                 RoomId = _roomId,
                 Customers = _customers,
                 Receipt = new()
                 {
-                    Deposit = Convert.ToDouble(TbxDeposit.Text),
                     Note = TbxNote.Text,
-                    Number = Convert.ToInt32(PeopleAmount.Text),
+                    Number = Convert.ToInt32(LblPeople.Text),
                     IdentificationId = Convert.ToInt32(cbx_giayTo.SelectedValue)
                 },
                 Services = _serviceInOrder,
@@ -309,8 +324,8 @@ namespace HotelManagement.UI.Views.Receipt
                 {
                     _history.Add(new HistoryDTO
                     {
-                        Start = Dtpicker_in.Value,
-                        End = Dtpicker_out.Value,
+                        Start = DateTime.Now,
+                        End = DateTime.Now,
                         Status = 1
                     });
                 }
@@ -320,8 +335,8 @@ namespace HotelManagement.UI.Views.Receipt
                     {
                         _history.Add(new HistoryDTO
                         {
-                            Start = Dtpicker_in.Value,
-                            End = Dtpicker_out.Value,
+                            Start = DateTime.Now,
+                            End = DateTime.Now,
                             Status = 1
                         });
                     }
@@ -337,6 +352,8 @@ namespace HotelManagement.UI.Views.Receipt
                 };
             }
 
+            transaction.Receipt.Deposit = TbxDeposit.Text == "" ? 0 : Convert.ToInt32(TbxDeposit.Text);
+
             transaction.Histories = _history;
             return transaction;
 
@@ -348,6 +365,7 @@ namespace HotelManagement.UI.Views.Receipt
 
         private async void BtnUpdate_Click(object sender, EventArgs e)
         {
+            if (!_confirm.IsConfirm("Bạn có muốn cập nhật?")) return;
             MessageBox.Show(await _transacsion.Update(GetTransaction()));
             ShowReceipt();
         }
@@ -452,7 +470,7 @@ namespace HotelManagement.UI.Views.Receipt
                     {Control = TbxIdentityNumber, Error = "Số dịnh danh không đúng", Pattern = Pattern.IdentityNumber})
                 .Add(new ValidateModel
                     {Control = TbxPhoneNumber, Error = "SĐT không đúng", Pattern = Pattern.PhoneNumber});
-            if (_validate.Run().Accept())
+            if (_validate.Run().Accept() && _confirm.IsConfirm("Bạn có chắc không"))
             {
                 _customerDTO = new CustomerDTO
                 {
@@ -463,6 +481,7 @@ namespace HotelManagement.UI.Views.Receipt
                     Type = Convert.ToInt32(cbx_giayTo.SelectedValue)
                 };
                 _customers.Add(_customerDTO);
+                LblPeople.Text = _customers.Count.ToString();
                 LoadCustomer();
             }
         }
