@@ -150,7 +150,7 @@ namespace HotelManagement.UI.Views.Receipt
             GridViewCustomer.Rows.Clear();
             foreach (var x in _customers)
                 GridViewCustomer.Rows.Add(x.IdentityNumber,x.Name,x.PhoneNumber,x.Gender ? "Nam" : "Nữ",
-                    x.Type);
+                    x.Type == 1 ? "CCCD" : x.Type == 2 ? "GPLX":"Passport");
         }
         private void LoadToGrid(IList<ServiceReceiptDTO> source)
         {
