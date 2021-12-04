@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Xml.Schema;
 using AutoMapper;
 using HotelManagement.Application.Contracts.Infrastructure;
 using HotelManagement.Application.Contracts.Services;
@@ -35,6 +38,7 @@ namespace HotelManagement.Application.Services
                 {
                     room.Customer = await GetCurrentCustomerName(room.Id);
                     room.Type = await GetRoomTypeName(room.Id);
+                    room.Price = await GetPrice(room.Id);
                 }
 
             return result;
@@ -56,6 +60,21 @@ namespace HotelManagement.Application.Services
             }
         }
 
+        private async Task<string> GetPrice(int roomId)
+        {
+            try
+            {
+                var rentType = await _worker.ReceiptDetails.GetCurrentRentType(x => x.RoomId == roomId);
+                var room = await _worker.Rooms.Get(x => x.Id == roomId);
+                if (rentType == 0)
+                    return "Giá: " + room.Type.ByDay.ToString("C", new CultureInfo("vi-VN")) + "/ngày";
+                return "Giá: " + room.Type.ByHour.ToString("C", new CultureInfo("vi-VN")) + "/giờ";
+            }
+            catch
+            {
+                return string.Empty;
+            }
+        }
         private async Task<string> GetRoomTypeName(int id)
         {
             var type = await _worker.Rooms.Get(x => x.Id == id);

@@ -26,5 +26,14 @@ namespace HotelManagement.Infrastructure.Repositories
                 .OrderBy(x => x.CreateAt)
                 .LastAsync(predicate);
         }
+
+        public async Task<int> GetCurrentRentType(Expression<Func<ReceiptDetail, bool>> predicate)
+        {
+            var history = await Context.ReceiptDetails
+                .Include(d => d.Histories)
+                .OrderBy(x => x.CreateAt)
+                .LastAsync(predicate);
+            return history.Histories.Last().Status;
+        }
     }
 }

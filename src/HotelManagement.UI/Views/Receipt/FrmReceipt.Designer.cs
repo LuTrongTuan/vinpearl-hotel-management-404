@@ -78,8 +78,8 @@ namespace HotelManagement.UI.Views.Receipt
             this.label6 = new System.Windows.Forms.Label();
             this.RoomName = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.GridViewCustomer = new System.Windows.Forms.DataGridView();
             this.ServiceGridView = new System.Windows.Forms.DataGridView();
+            this.GridViewCustomer = new System.Windows.Forms.DataGridView();
             this.label13 = new System.Windows.Forms.Label();
             this.BtnConfirm = new HotelManagement.UI.Components.CustomButton();
             this.BtnCancle = new HotelManagement.UI.Components.CustomButton();
@@ -96,8 +96,8 @@ namespace HotelManagement.UI.Views.Receipt
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GridViewCustomer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ServiceGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridViewCustomer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_quet)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.SuspendLayout();
@@ -158,6 +158,7 @@ namespace HotelManagement.UI.Views.Receipt
             // Dtpicker_checkIn
             // 
             this.Dtpicker_checkIn.CustomFormat = "";
+            this.Dtpicker_checkIn.Enabled = false;
             this.Dtpicker_checkIn.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.Dtpicker_checkIn.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.Dtpicker_checkIn.Location = new System.Drawing.Point(145, 84);
@@ -713,25 +714,6 @@ namespace HotelManagement.UI.Views.Receipt
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Danh sách dịch vụ";
             // 
-            // GridViewCustomer
-            // 
-            this.GridViewCustomer.AllowUserToAddRows = false;
-            this.GridViewCustomer.AllowUserToDeleteRows = false;
-            this.GridViewCustomer.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.GridViewCustomer.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.GridViewCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GridViewCustomer.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.GridViewCustomer.Location = new System.Drawing.Point(3, 28);
-            this.GridViewCustomer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.GridViewCustomer.Name = "GridViewCustomer";
-            this.GridViewCustomer.RowHeadersVisible = false;
-            this.GridViewCustomer.RowHeadersWidth = 51;
-            this.GridViewCustomer.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-            this.GridViewCustomer.RowTemplate.Height = 29;
-            this.GridViewCustomer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.GridViewCustomer.Size = new System.Drawing.Size(714, 156);
-            this.GridViewCustomer.TabIndex = 1;
-            // 
             // ServiceGridView
             // 
             this.ServiceGridView.AllowUserToAddRows = false;
@@ -750,6 +732,25 @@ namespace HotelManagement.UI.Views.Receipt
             this.ServiceGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ServiceGridView.Size = new System.Drawing.Size(801, 156);
             this.ServiceGridView.TabIndex = 0;
+            // 
+            // GridViewCustomer
+            // 
+            this.GridViewCustomer.AllowUserToAddRows = false;
+            this.GridViewCustomer.AllowUserToDeleteRows = false;
+            this.GridViewCustomer.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.GridViewCustomer.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.GridViewCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GridViewCustomer.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.GridViewCustomer.Location = new System.Drawing.Point(3, 28);
+            this.GridViewCustomer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.GridViewCustomer.Name = "GridViewCustomer";
+            this.GridViewCustomer.RowHeadersVisible = false;
+            this.GridViewCustomer.RowHeadersWidth = 51;
+            this.GridViewCustomer.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+            this.GridViewCustomer.RowTemplate.Height = 29;
+            this.GridViewCustomer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.GridViewCustomer.Size = new System.Drawing.Size(714, 156);
+            this.GridViewCustomer.TabIndex = 1;
             // 
             // label13
             // 
@@ -931,8 +932,8 @@ namespace HotelManagement.UI.Views.Receipt
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.GridViewCustomer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ServiceGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridViewCustomer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_quet)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);

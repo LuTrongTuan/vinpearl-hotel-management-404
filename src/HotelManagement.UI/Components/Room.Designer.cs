@@ -33,6 +33,7 @@ namespace HotelManagement.UI.Components
             this.Icon = new System.Windows.Forms.PictureBox();
             this.CustomerName = new System.Windows.Forms.Label();
             this.LblRoomType = new System.Windows.Forms.Label();
+            this.LblPrice = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Icon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -40,7 +41,7 @@ namespace HotelManagement.UI.Components
             // 
             this.LblRoomName.AutoSize = true;
             this.LblRoomName.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.LblRoomName.Location = new System.Drawing.Point(20, 9);
+            this.LblRoomName.Location = new System.Drawing.Point(10, 9);
             this.LblRoomName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblRoomName.Name = "LblRoomName";
             this.LblRoomName.Size = new System.Drawing.Size(67, 24);
@@ -59,26 +60,33 @@ namespace HotelManagement.UI.Components
             // 
             // CustomerName
             // 
-            this.CustomerName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.CustomerName.AutoSize = true;
-            this.CustomerName.Location = new System.Drawing.Point(20, 68);
+            this.CustomerName.Location = new System.Drawing.Point(6, 75);
             this.CustomerName.Name = "CustomerName";
             this.CustomerName.Size = new System.Drawing.Size(0, 24);
             this.CustomerName.TabIndex = 2;
             // 
             // LblRoomType
             // 
-            this.LblRoomType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.LblRoomType.AutoSize = true;
-            this.LblRoomType.Location = new System.Drawing.Point(20, 37);
+            this.LblRoomType.Location = new System.Drawing.Point(8, 40);
             this.LblRoomType.Name = "LblRoomType";
             this.LblRoomType.Size = new System.Drawing.Size(0, 24);
             this.LblRoomType.TabIndex = 3;
+            // 
+            // LblPrice
+            // 
+            this.LblPrice.AutoSize = true;
+            this.LblPrice.Location = new System.Drawing.Point(6, 108);
+            this.LblPrice.Name = "LblPrice";
+            this.LblPrice.Size = new System.Drawing.Size(0, 24);
+            this.LblPrice.TabIndex = 4;
             // 
             // Room
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.LblPrice);
             this.Controls.Add(this.LblRoomType);
             this.Controls.Add(this.CustomerName);
             this.Controls.Add(this.Icon);
@@ -86,7 +94,7 @@ namespace HotelManagement.UI.Components
             this.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Room";
-            this.Size = new System.Drawing.Size(195, 102);
+            this.Size = new System.Drawing.Size(195, 140);
             ((System.ComponentModel.ISupportInitialize)(this.Icon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -99,5 +107,6 @@ namespace HotelManagement.UI.Components
         private System.Windows.Forms.PictureBox Icon;
         private System.Windows.Forms.Label CustomerName;
         private System.Windows.Forms.Label LblRoomType;
+        private System.Windows.Forms.Label LblPrice;
     }
 }

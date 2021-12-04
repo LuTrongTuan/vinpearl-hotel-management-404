@@ -66,6 +66,12 @@ namespace HotelManagement.UI.Components
             set => this.LblRoomType.Text = value;
         }
 
+        public string Price
+        {
+            get => this.LblPrice.Text;
+            set => this.LblPrice.Text = value;
+        }
+
         protected override void OnPaint(PaintEventArgs pevent)
         {
             base.OnPaint(pevent);
