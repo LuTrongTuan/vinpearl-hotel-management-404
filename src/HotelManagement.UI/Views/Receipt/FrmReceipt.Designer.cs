@@ -78,8 +78,8 @@ namespace HotelManagement.UI.Views.Receipt
             this.label6 = new System.Windows.Forms.Label();
             this.RoomName = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.GridViewCustomer = new System.Windows.Forms.DataGridView();
             this.ServiceGridView = new System.Windows.Forms.DataGridView();
+            this.GridViewCustomer = new System.Windows.Forms.DataGridView();
             this.label13 = new System.Windows.Forms.Label();
             this.BtnConfirm = new HotelManagement.UI.Components.CustomButton();
             this.BtnCancle = new HotelManagement.UI.Components.CustomButton();
@@ -96,8 +96,8 @@ namespace HotelManagement.UI.Views.Receipt
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GridViewCustomer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ServiceGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridViewCustomer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_quet)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.SuspendLayout();
@@ -348,7 +348,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.TbxNote.Password = false;
             this.TbxNote.PlaceHolder = "Ghi chú";
             this.TbxNote.PlaceHolderColor = System.Drawing.SystemColors.ScrollBar;
-            this.TbxNote.Size = new System.Drawing.Size(300, 39);
+            this.TbxNote.Size = new System.Drawing.Size(300, 37);
             this.TbxNote.TabIndex = 38;
             this.TbxNote.Underline = true;
             // 
@@ -369,7 +369,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.TbxDeposit.Password = false;
             this.TbxDeposit.PlaceHolder = "Tiền trả trước";
             this.TbxDeposit.PlaceHolderColor = System.Drawing.SystemColors.ScrollBar;
-            this.TbxDeposit.Size = new System.Drawing.Size(300, 39);
+            this.TbxDeposit.Size = new System.Drawing.Size(300, 37);
             this.TbxDeposit.TabIndex = 36;
             this.TbxDeposit.Underline = true;
             // 
@@ -601,7 +601,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.TbxPhoneNumber.Password = false;
             this.TbxPhoneNumber.PlaceHolder = "Sô điện thoại";
             this.TbxPhoneNumber.PlaceHolderColor = System.Drawing.SystemColors.ScrollBar;
-            this.TbxPhoneNumber.Size = new System.Drawing.Size(274, 39);
+            this.TbxPhoneNumber.Size = new System.Drawing.Size(274, 37);
             this.TbxPhoneNumber.TabIndex = 36;
             this.TbxPhoneNumber.Underline = true;
             // 
@@ -622,7 +622,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.TbxCustomerName.Password = false;
             this.TbxCustomerName.PlaceHolder = "Tên khách hàng";
             this.TbxCustomerName.PlaceHolderColor = System.Drawing.SystemColors.ScrollBar;
-            this.TbxCustomerName.Size = new System.Drawing.Size(274, 39);
+            this.TbxCustomerName.Size = new System.Drawing.Size(274, 37);
             this.TbxCustomerName.TabIndex = 35;
             this.TbxCustomerName.Underline = true;
             // 
@@ -643,7 +643,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.TbxIdentityNumber.Password = false;
             this.TbxIdentityNumber.PlaceHolder = "Số giấy tờ";
             this.TbxIdentityNumber.PlaceHolderColor = System.Drawing.SystemColors.ScrollBar;
-            this.TbxIdentityNumber.Size = new System.Drawing.Size(274, 39);
+            this.TbxIdentityNumber.Size = new System.Drawing.Size(274, 37);
             this.TbxIdentityNumber.TabIndex = 34;
             this.TbxIdentityNumber.Underline = true;
             this.TbxIdentityNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TbxIdentityNumber_KeyDown);
@@ -713,25 +713,6 @@ namespace HotelManagement.UI.Views.Receipt
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Danh sách dịch vụ";
             // 
-            // GridViewCustomer
-            // 
-            this.GridViewCustomer.AllowUserToAddRows = false;
-            this.GridViewCustomer.AllowUserToDeleteRows = false;
-            this.GridViewCustomer.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.GridViewCustomer.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.GridViewCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GridViewCustomer.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.GridViewCustomer.Location = new System.Drawing.Point(3, 28);
-            this.GridViewCustomer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.GridViewCustomer.Name = "GridViewCustomer";
-            this.GridViewCustomer.RowHeadersVisible = false;
-            this.GridViewCustomer.RowHeadersWidth = 51;
-            this.GridViewCustomer.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-            this.GridViewCustomer.RowTemplate.Height = 29;
-            this.GridViewCustomer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.GridViewCustomer.Size = new System.Drawing.Size(714, 156);
-            this.GridViewCustomer.TabIndex = 1;
-            // 
             // ServiceGridView
             // 
             this.ServiceGridView.AllowUserToAddRows = false;
@@ -750,6 +731,25 @@ namespace HotelManagement.UI.Views.Receipt
             this.ServiceGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ServiceGridView.Size = new System.Drawing.Size(801, 156);
             this.ServiceGridView.TabIndex = 0;
+            // 
+            // GridViewCustomer
+            // 
+            this.GridViewCustomer.AllowUserToAddRows = false;
+            this.GridViewCustomer.AllowUserToDeleteRows = false;
+            this.GridViewCustomer.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.GridViewCustomer.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.GridViewCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GridViewCustomer.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.GridViewCustomer.Location = new System.Drawing.Point(3, 28);
+            this.GridViewCustomer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.GridViewCustomer.Name = "GridViewCustomer";
+            this.GridViewCustomer.RowHeadersVisible = false;
+            this.GridViewCustomer.RowHeadersWidth = 51;
+            this.GridViewCustomer.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+            this.GridViewCustomer.RowTemplate.Height = 29;
+            this.GridViewCustomer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.GridViewCustomer.Size = new System.Drawing.Size(714, 156);
+            this.GridViewCustomer.TabIndex = 1;
             // 
             // label13
             // 
@@ -839,7 +839,7 @@ namespace HotelManagement.UI.Views.Receipt
             // ptb_quet
             // 
             this.ptb_quet.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.ptb_quet.Location = new System.Drawing.Point(1211, 123);
+            this.ptb_quet.Location = new System.Drawing.Point(1211, 117);
             this.ptb_quet.Name = "ptb_quet";
             this.ptb_quet.Size = new System.Drawing.Size(349, 281);
             this.ptb_quet.TabIndex = 40;
@@ -849,14 +849,14 @@ namespace HotelManagement.UI.Views.Receipt
             // 
             this.cbo_webcam.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbo_webcam.FormattingEnabled = true;
-            this.cbo_webcam.Location = new System.Drawing.Point(1210, 89);
+            this.cbo_webcam.Location = new System.Drawing.Point(1210, 83);
             this.cbo_webcam.Name = "cbo_webcam";
             this.cbo_webcam.Size = new System.Drawing.Size(350, 28);
             this.cbo_webcam.TabIndex = 41;
             // 
             // txb_QR
             // 
-            this.txb_QR.Location = new System.Drawing.Point(1211, 416);
+            this.txb_QR.Location = new System.Drawing.Point(1211, 410);
             this.txb_QR.Multiline = true;
             this.txb_QR.Name = "txb_QR";
             this.txb_QR.Size = new System.Drawing.Size(349, 63);
@@ -873,9 +873,9 @@ namespace HotelManagement.UI.Views.Receipt
             this.btn_Start.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Start.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_Start.ForeColor = System.Drawing.Color.Black;
-            this.btn_Start.Location = new System.Drawing.Point(1337, 485);
+            this.btn_Start.Location = new System.Drawing.Point(1327, 479);
             this.btn_Start.Name = "btn_Start";
-            this.btn_Start.Size = new System.Drawing.Size(118, 42);
+            this.btn_Start.Size = new System.Drawing.Size(118, 40);
             this.btn_Start.TabIndex = 43;
             this.btn_Start.Text = "Quét";
             this.btn_Start.TextColor = System.Drawing.Color.Black;
@@ -931,8 +931,8 @@ namespace HotelManagement.UI.Views.Receipt
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.GridViewCustomer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ServiceGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridViewCustomer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_quet)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
