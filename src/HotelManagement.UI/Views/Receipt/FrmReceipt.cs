@@ -180,6 +180,12 @@ namespace HotelManagement.UI.Views.Receipt
             }
         }
 
+        private void LoadFrm()
+        {
+            var frmRe = Program.Container.GetInstance<FrmReceiptDetail>();
+            frmRe.Show();
+            frmRe.RoomId = _roomId;
+        }
         #region Checkbox
 
         private void CbxByHour_CheckedChanged(object sender, EventArgs e)
@@ -207,7 +213,7 @@ namespace HotelManagement.UI.Views.Receipt
 
         private async void Checkout_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(await _transacsion.Checkout(_roomId));
+            LoadFrm();
         }
 
         private async void CmbService_SelectedIndexChanged(object sender, EventArgs e)

@@ -57,10 +57,9 @@ namespace HotelManagement.UI.Views.Receipt
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
-            this.customButton1 = new HotelManagement.UI.Components.CustomButton();
             this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
-            this.customButton2 = new HotelManagement.UI.Components.CustomButton();
+            this.customButton3 = new HotelManagement.UI.Components.CustomButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -140,9 +139,9 @@ namespace HotelManagement.UI.Views.Receipt
             this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(10, 219);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(68, 23);
+            this.label6.Size = new System.Drawing.Size(41, 23);
             this.label6.TabIndex = 6;
-            this.label6.Text = "Giá giờ";
+            this.label6.Text = "Giá ";
             // 
             // dataGridView2
             // 
@@ -152,6 +151,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.RowTemplate.Height = 29;
+            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.Size = new System.Drawing.Size(795, 144);
             this.dataGridView2.TabIndex = 7;
             // 
@@ -350,25 +350,6 @@ namespace HotelManagement.UI.Views.Receipt
             this.label24.TabIndex = 27;
             this.label24.Text = "label24";
             // 
-            // customButton1
-            // 
-            this.customButton1.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.customButton1.BackgroundColor = System.Drawing.Color.DeepSkyBlue;
-            this.customButton1.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.customButton1.BorderRadius = 10;
-            this.customButton1.BorderSize = 0;
-            this.customButton1.FlatAppearance.BorderSize = 0;
-            this.customButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customButton1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.customButton1.ForeColor = System.Drawing.Color.Black;
-            this.customButton1.Location = new System.Drawing.Point(675, 679);
-            this.customButton1.Name = "customButton1";
-            this.customButton1.Size = new System.Drawing.Size(132, 42);
-            this.customButton1.TabIndex = 28;
-            this.customButton1.Text = "Xác nhận";
-            this.customButton1.TextColor = System.Drawing.Color.Black;
-            this.customButton1.UseVisualStyleBackColor = false;
-            // 
             // label25
             // 
             this.label25.AutoSize = true;
@@ -388,35 +369,34 @@ namespace HotelManagement.UI.Views.Receipt
             this.label26.TabIndex = 30;
             this.label26.Text = "label26";
             // 
-            // customButton2
+            // customButton3
             // 
-            this.customButton2.BackColor = System.Drawing.Color.Crimson;
-            this.customButton2.BackgroundColor = System.Drawing.Color.Crimson;
-            this.customButton2.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.customButton2.BorderRadius = 10;
-            this.customButton2.BorderSize = 0;
-            this.customButton2.FlatAppearance.BorderSize = 0;
-            this.customButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customButton2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.customButton2.ForeColor = System.Drawing.Color.Black;
-            this.customButton2.Location = new System.Drawing.Point(555, 679);
-            this.customButton2.Name = "customButton2";
-            this.customButton2.Size = new System.Drawing.Size(99, 42);
-            this.customButton2.TabIndex = 31;
-            this.customButton2.Text = "Hủy";
-            this.customButton2.TextColor = System.Drawing.Color.Black;
-            this.customButton2.UseVisualStyleBackColor = false;
+            this.customButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.customButton3.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.customButton3.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.customButton3.BorderRadius = 10;
+            this.customButton3.BorderSize = 0;
+            this.customButton3.FlatAppearance.BorderSize = 0;
+            this.customButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.customButton3.ForeColor = System.Drawing.Color.White;
+            this.customButton3.Location = new System.Drawing.Point(659, 671);
+            this.customButton3.Name = "customButton3";
+            this.customButton3.Size = new System.Drawing.Size(148, 50);
+            this.customButton3.TabIndex = 31;
+            this.customButton3.Text = "Xác Nhận\r\n";
+            this.customButton3.TextColor = System.Drawing.Color.White;
+            this.customButton3.UseVisualStyleBackColor = false;
+            this.customButton3.Click += new System.EventHandler(this.customButton3_Click);
             // 
             // FrmReceiptDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(134)))), ((int)(((byte)(203)))));
-            this.ClientSize = new System.Drawing.Size(825, 733);
-            this.Controls.Add(this.customButton2);
+            this.ClientSize = new System.Drawing.Size(828, 733);
+            this.Controls.Add(this.customButton3);
             this.Controls.Add(this.label26);
             this.Controls.Add(this.label25);
-            this.Controls.Add(this.customButton1);
             this.Controls.Add(this.label24);
             this.Controls.Add(this.label23);
             this.Controls.Add(this.label22);
@@ -490,5 +470,6 @@ namespace HotelManagement.UI.Views.Receipt
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label26;
         private Components.CustomButton customButton2;
+        private Components.CustomButton customButton3;
     }
 }

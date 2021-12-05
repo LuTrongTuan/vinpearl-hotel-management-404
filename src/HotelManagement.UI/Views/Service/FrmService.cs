@@ -119,7 +119,6 @@ namespace HotelManagement.UI.Views.Service
                 TypeId = Convert.ToInt32(cmb_LDV.SelectedValue),
                 Price = Convert.ToDouble(txt_price.Text),
                 Status = checkBox1.Checked
-                //Id = x.Max(c=>c.Id) +1
             };
             if (_confirm.IsConfirm("bạn chắc chắn thêm"))
             {
@@ -162,9 +161,9 @@ namespace HotelManagement.UI.Views.Service
                 idClick = dg_DV.Rows[rowIndex].Cells[2].Value.GetHashCode();
                 txt_DV.Text = dg_DV.Rows[rowIndex].Cells[0].Value.ToString();
                 txt_price.Text = dg_DV.Rows[rowIndex].Cells[1].Value.ToString();
-                //var x = await _service.GetDetail(idClick);
-                //var y = await _serviceType.Get();
-                //cmb_LDV.Text = y.Where(c => c.Id == x.ServiceTypeId).Select(c => c.Name).FirstOrDefault();
+                var x = await _service.GetDetail(idClick);
+                var y = await _serviceType.Get();
+                cmb_LDV.Text = y.Where(c => c.Id == x.TypeId).Select(c => c.Name).FirstOrDefault();
                 if (e.ColumnIndex == dg_DV.Columns["btn_confirm"].Index)
                 {
                     if (dg_DV.Rows[rowIndex].Cells[6].Value.ToString() == "sửa")
