@@ -185,6 +185,7 @@ namespace HotelManagement.UI.Views.Receipt
             var frmRe = Program.Container.GetInstance<FrmReceiptDetail>();
             frmRe.Show();
             frmRe.RoomId = _roomId;
+            frmRe.Check = CbxByDay.Checked;
         }
         #region Checkbox
 
@@ -213,6 +214,9 @@ namespace HotelManagement.UI.Views.Receipt
 
         private async void Checkout_Click(object sender, EventArgs e)
         {
+            if (!_confirm.IsConfirm("Xác Nhận Thanh Toán?")) return;
+            MessageBox.Show(await _transacsion.Update(GetTransaction()));
+            ShowReceipt();
             LoadFrm();
         }
 

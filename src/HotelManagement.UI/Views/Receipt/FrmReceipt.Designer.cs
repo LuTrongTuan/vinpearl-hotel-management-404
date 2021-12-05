@@ -312,7 +312,6 @@ namespace HotelManagement.UI.Views.Receipt
             // Dtpicker_out
             // 
             this.Dtpicker_out.CustomFormat = "HH:mm";
-            this.Dtpicker_out.Enabled = false;
             this.Dtpicker_out.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.Dtpicker_out.Location = new System.Drawing.Point(311, 128);
             this.Dtpicker_out.Name = "Dtpicker_out";
@@ -349,7 +348,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.TbxNote.Password = false;
             this.TbxNote.PlaceHolder = "Ghi chú";
             this.TbxNote.PlaceHolderColor = System.Drawing.SystemColors.ScrollBar;
-            this.TbxNote.Size = new System.Drawing.Size(300, 39);
+            this.TbxNote.Size = new System.Drawing.Size(300, 37);
             this.TbxNote.TabIndex = 38;
             this.TbxNote.Underline = true;
             // 
@@ -370,7 +369,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.TbxDeposit.Password = false;
             this.TbxDeposit.PlaceHolder = "Tiền trả trước";
             this.TbxDeposit.PlaceHolderColor = System.Drawing.SystemColors.ScrollBar;
-            this.TbxDeposit.Size = new System.Drawing.Size(300, 39);
+            this.TbxDeposit.Size = new System.Drawing.Size(300, 37);
             this.TbxDeposit.TabIndex = 36;
             this.TbxDeposit.Underline = true;
             // 
@@ -602,7 +601,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.TbxPhoneNumber.Password = false;
             this.TbxPhoneNumber.PlaceHolder = "Sô điện thoại";
             this.TbxPhoneNumber.PlaceHolderColor = System.Drawing.SystemColors.ScrollBar;
-            this.TbxPhoneNumber.Size = new System.Drawing.Size(274, 39);
+            this.TbxPhoneNumber.Size = new System.Drawing.Size(274, 37);
             this.TbxPhoneNumber.TabIndex = 36;
             this.TbxPhoneNumber.Underline = true;
             // 
@@ -623,7 +622,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.TbxCustomerName.Password = false;
             this.TbxCustomerName.PlaceHolder = "Tên khách hàng";
             this.TbxCustomerName.PlaceHolderColor = System.Drawing.SystemColors.ScrollBar;
-            this.TbxCustomerName.Size = new System.Drawing.Size(274, 39);
+            this.TbxCustomerName.Size = new System.Drawing.Size(274, 37);
             this.TbxCustomerName.TabIndex = 35;
             this.TbxCustomerName.Underline = true;
             // 
@@ -644,7 +643,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.TbxIdentityNumber.Password = false;
             this.TbxIdentityNumber.PlaceHolder = "Số giấy tờ";
             this.TbxIdentityNumber.PlaceHolderColor = System.Drawing.SystemColors.ScrollBar;
-            this.TbxIdentityNumber.Size = new System.Drawing.Size(274, 39);
+            this.TbxIdentityNumber.Size = new System.Drawing.Size(274, 37);
             this.TbxIdentityNumber.TabIndex = 34;
             this.TbxIdentityNumber.Underline = true;
             this.TbxIdentityNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TbxIdentityNumber_KeyDown);
