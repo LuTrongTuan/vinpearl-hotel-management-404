@@ -17,6 +17,7 @@ namespace HotelManagement.UI.Views.Receipt
         private readonly ITransacsion _transacsion;
         private RoomDetailDTO _room;
         private int _roomId;
+        private bool _check;
         public int RoomId
         {
             get => _roomId;
@@ -25,6 +26,16 @@ namespace HotelManagement.UI.Views.Receipt
                 _roomId = value;
                 Binding();
             }
+        }
+
+        public bool Check 
+        { 
+            get => _check;
+            set
+            {
+                _check = value;
+            }
+
         }
         public FrmReceiptDetail(ITransacsion transacsion)
         {
@@ -37,16 +48,26 @@ namespace HotelManagement.UI.Views.Receipt
             _room = await _transacsion.GetRoomDetail(_roomId);
             label24.Text = "Phòng: " + _room.Name;
             label13.Text = _room.RoomType.Name;
-            label14.Text = query.Histories.First().Start.ToString();
-            label15.Text = query.Histories.First().End.ToString();
             label17.Text = query.Receipt.Note;
             label16.Text = query.Receipt.Deposit.ToString();
-            label18.Text = _room.RoomType.ByDay.ToString();
+            if (Check == false)
+            {
+                label14.Text = query.Histories.First().Start.ToString();
+                label15.Text = query.Histories.First().End.ToString();
+                label18.Text = _room.RoomType.ByHour.ToString();
+            }
+            else
+            {
+                label14.Text = query.Histories.First().Start.ToString();
+                label15.Text = query.Histories.First().End.ToString();
+                label18.Text = _room.RoomType.ByDay.ToString();
+            }
+            
             var x = query.Customers;
             label19.Text = x.First().Name;
             label20.Text = x.First().PhoneNumber;
-            label21.Text = x.First().Gender.ToString();
-            label22.Text = x.First().Type.ToString();
+            label21.Text = x.First().Gender == true?"Nam":"Nữ";
+            label22.Text = x.First().Type == 1?"CCCD":"Banking";
             label23.Text = x.First().IdentityNumber;
             label26.Text = query.Receipt.Payment.ToString();
             dataGridView1.ColumnCount = 3;

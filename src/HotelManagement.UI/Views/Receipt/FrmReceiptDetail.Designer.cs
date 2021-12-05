@@ -139,9 +139,9 @@ namespace HotelManagement.UI.Views.Receipt
             this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(10, 219);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(41, 23);
+            this.label6.Size = new System.Drawing.Size(92, 23);
             this.label6.TabIndex = 6;
-            this.label6.Text = "Giá ";
+            this.label6.Text = "Giá Phòng";
             // 
             // dataGridView2
             // 
