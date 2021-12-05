@@ -49,7 +49,6 @@ namespace HotelManagement.UI.Views.Receipt
             this.Dtpicker_in = new System.Windows.Forms.DateTimePicker();
             this.LblType = new System.Windows.Forms.Label();
             this.LblPeople = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.Dtpicker_out = new System.Windows.Forms.DateTimePicker();
             this.TbxNote = new HotelManagement.UI.Components.TextBox();
             this.TbxDeposit = new HotelManagement.UI.Components.TextBox();
@@ -61,7 +60,6 @@ namespace HotelManagement.UI.Views.Receipt
             this.LblRoomType = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.BtnAddService = new HotelManagement.UI.Components.CustomButton();
@@ -251,7 +249,6 @@ namespace HotelManagement.UI.Views.Receipt
             this.groupBox1.Controls.Add(this.Dtpicker_in);
             this.groupBox1.Controls.Add(this.LblType);
             this.groupBox1.Controls.Add(this.LblPeople);
-            this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.Dtpicker_out);
             this.groupBox1.Controls.Add(this.TbxNote);
             this.groupBox1.Controls.Add(this.TbxDeposit);
@@ -263,7 +260,6 @@ namespace HotelManagement.UI.Views.Receipt
             this.groupBox1.Controls.Add(this.LblRoomType);
             this.groupBox1.Controls.Add(this.label16);
             this.groupBox1.Controls.Add(this.label18);
-            this.groupBox1.Controls.Add(this.label20);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.Dtpicker_checkOut);
             this.groupBox1.Controls.Add(this.label3);
@@ -309,21 +305,9 @@ namespace HotelManagement.UI.Views.Receipt
             this.LblPeople.TabIndex = 42;
             this.LblPeople.Text = "People";
             // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Tiền mặt",
-            "Banking"});
-            this.comboBox1.Location = new System.Drawing.Point(142, 213);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(303, 28);
-            this.comboBox1.TabIndex = 41;
-            // 
             // Dtpicker_out
             // 
             this.Dtpicker_out.CustomFormat = "HH:mm";
-            this.Dtpicker_out.Enabled = false;
             this.Dtpicker_out.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.Dtpicker_out.Location = new System.Drawing.Point(311, 128);
             this.Dtpicker_out.Name = "Dtpicker_out";
@@ -460,17 +444,6 @@ namespace HotelManagement.UI.Views.Receipt
             this.label18.Size = new System.Drawing.Size(81, 20);
             this.label18.TabIndex = 0;
             this.label18.Text = "Giá phòng";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label20.ForeColor = System.Drawing.Color.White;
-            this.label20.Location = new System.Drawing.Point(15, 221);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(78, 20);
-            this.label20.TabIndex = 0;
-            this.label20.Text = "Hình thức";
             // 
             // label14
             // 
@@ -974,7 +947,6 @@ namespace HotelManagement.UI.Views.Receipt
         private System.Windows.Forms.CheckBox CbxByHour;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label lbl_roomPrice;
         private System.Windows.Forms.Label Price;
         private Components.CustomButton BtnAddService;
@@ -991,7 +963,6 @@ namespace HotelManagement.UI.Views.Receipt
         private DateTimePicker Dtpicker_out;
         private Label LblPayment;
         private Components.CustomButton BtnUpdate;
-        private ComboBox comboBox1;
         private PictureBox ptb_quet; 
         private ComboBox cbo_webcam;
         private TextBox txb_QR;

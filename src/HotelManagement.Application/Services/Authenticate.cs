@@ -30,6 +30,7 @@ namespace HotelManagement.Application.Services
             if (_account != null)
             {
                 Session.Username = _account.UserName;
+                Session.Id = _account.Id;
                 Session.Role = _account.RoleId;
             }
             return _account != null;

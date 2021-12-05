@@ -108,7 +108,6 @@ namespace HotelManagement.UI
 
         private void customButton2_Click(object sender, System.EventArgs e)
         {
-            OpenForm(Program.Container.GetInstance<FrmReceiptDetail>(), sender);
         }
 
         private void customButton6_Click(object sender, System.EventArgs e)
