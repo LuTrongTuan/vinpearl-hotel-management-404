@@ -57,16 +57,14 @@ namespace HotelManagement.UI.Views.Receipt
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
-            this.customButton1 = new HotelManagement.UI.Components.CustomButton();
             this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
-            this.customButton2 = new HotelManagement.UI.Components.CustomButton();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.customButton3 = new HotelManagement.UI.Components.CustomButton();
+            this.BtnBack = new HotelManagement.UI.Components.CustomButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -85,7 +83,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(13, 53);
+            this.label1.Location = new System.Drawing.Point(17, 88);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 23);
             this.label1.TabIndex = 1;
@@ -96,7 +94,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(13, 84);
+            this.label2.Location = new System.Drawing.Point(17, 119);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(85, 23);
             this.label2.TabIndex = 2;
@@ -107,7 +105,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(13, 117);
+            this.label3.Location = new System.Drawing.Point(17, 152);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(73, 23);
             this.label3.TabIndex = 3;
@@ -118,7 +116,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(13, 152);
+            this.label4.Location = new System.Drawing.Point(17, 187);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(121, 23);
             this.label4.TabIndex = 4;
@@ -129,7 +127,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(13, 189);
+            this.label5.Location = new System.Drawing.Point(17, 224);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(70, 23);
             this.label5.TabIndex = 5;
@@ -140,11 +138,11 @@ namespace HotelManagement.UI.Views.Receipt
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(13, 222);
+            this.label6.Location = new System.Drawing.Point(17, 257);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(68, 23);
+            this.label6.Size = new System.Drawing.Size(41, 23);
             this.label6.TabIndex = 6;
-            this.label6.Text = "Giá giờ";
+            this.label6.Text = "Giá ";
             // 
             // dataGridView2
             // 
@@ -154,6 +152,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.RowTemplate.Height = 29;
+            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.Size = new System.Drawing.Size(795, 144);
             this.dataGridView2.TabIndex = 7;
             // 
@@ -182,7 +181,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(436, 53);
+            this.label7.Location = new System.Drawing.Point(440, 88);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(134, 23);
             this.label7.TabIndex = 10;
@@ -193,7 +192,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(436, 86);
+            this.label8.Location = new System.Drawing.Point(440, 121);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(116, 23);
             this.label8.TabIndex = 11;
@@ -204,7 +203,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(436, 152);
+            this.label9.Location = new System.Drawing.Point(440, 187);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(68, 23);
             this.label9.TabIndex = 12;
@@ -215,7 +214,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(436, 189);
+            this.label10.Location = new System.Drawing.Point(440, 224);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(92, 23);
             this.label10.TabIndex = 13;
@@ -226,7 +225,7 @@ namespace HotelManagement.UI.Views.Receipt
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(436, 121);
+            this.label11.Location = new System.Drawing.Point(440, 156);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(80, 23);
             this.label11.TabIndex = 14;
@@ -246,7 +245,7 @@ namespace HotelManagement.UI.Views.Receipt
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(155, 55);
+            this.label13.Location = new System.Drawing.Point(159, 90);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(58, 20);
             this.label13.TabIndex = 16;
@@ -255,7 +254,7 @@ namespace HotelManagement.UI.Views.Receipt
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(155, 86);
+            this.label14.Location = new System.Drawing.Point(159, 121);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(58, 20);
             this.label14.TabIndex = 17;
@@ -264,7 +263,7 @@ namespace HotelManagement.UI.Views.Receipt
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(155, 117);
+            this.label15.Location = new System.Drawing.Point(159, 152);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(58, 20);
             this.label15.TabIndex = 18;
@@ -273,7 +272,7 @@ namespace HotelManagement.UI.Views.Receipt
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(155, 152);
+            this.label16.Location = new System.Drawing.Point(159, 187);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(58, 20);
             this.label16.TabIndex = 19;
@@ -282,7 +281,7 @@ namespace HotelManagement.UI.Views.Receipt
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(155, 192);
+            this.label17.Location = new System.Drawing.Point(159, 227);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(58, 20);
             this.label17.TabIndex = 20;
@@ -291,7 +290,7 @@ namespace HotelManagement.UI.Views.Receipt
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(155, 225);
+            this.label18.Location = new System.Drawing.Point(159, 260);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(58, 20);
             this.label18.TabIndex = 21;
@@ -300,7 +299,7 @@ namespace HotelManagement.UI.Views.Receipt
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(599, 55);
+            this.label19.Location = new System.Drawing.Point(603, 90);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(58, 20);
             this.label19.TabIndex = 22;
@@ -309,7 +308,7 @@ namespace HotelManagement.UI.Views.Receipt
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(599, 89);
+            this.label20.Location = new System.Drawing.Point(603, 124);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(58, 20);
             this.label20.TabIndex = 23;
@@ -318,7 +317,7 @@ namespace HotelManagement.UI.Views.Receipt
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(599, 124);
+            this.label21.Location = new System.Drawing.Point(603, 159);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(58, 20);
             this.label21.TabIndex = 24;
@@ -327,7 +326,7 @@ namespace HotelManagement.UI.Views.Receipt
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(599, 155);
+            this.label22.Location = new System.Drawing.Point(603, 190);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(58, 20);
             this.label22.TabIndex = 25;
@@ -336,7 +335,7 @@ namespace HotelManagement.UI.Views.Receipt
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(599, 192);
+            this.label23.Location = new System.Drawing.Point(603, 227);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(58, 20);
             this.label23.TabIndex = 26;
@@ -352,30 +351,11 @@ namespace HotelManagement.UI.Views.Receipt
             this.label24.TabIndex = 27;
             this.label24.Text = "label24";
             // 
-            // customButton1
-            // 
-            this.customButton1.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.customButton1.BackgroundColor = System.Drawing.Color.DeepSkyBlue;
-            this.customButton1.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.customButton1.BorderRadius = 10;
-            this.customButton1.BorderSize = 0;
-            this.customButton1.FlatAppearance.BorderSize = 0;
-            this.customButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customButton1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.customButton1.ForeColor = System.Drawing.Color.Black;
-            this.customButton1.Location = new System.Drawing.Point(681, 658);
-            this.customButton1.Name = "customButton1";
-            this.customButton1.Size = new System.Drawing.Size(132, 42);
-            this.customButton1.TabIndex = 28;
-            this.customButton1.Text = "Xác nhận";
-            this.customButton1.TextColor = System.Drawing.Color.Black;
-            this.customButton1.UseVisualStyleBackColor = false;
-            // 
             // label25
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label25.Location = new System.Drawing.Point(436, 235);
+            this.label25.Location = new System.Drawing.Point(440, 270);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(87, 23);
             this.label25.TabIndex = 29;
@@ -384,90 +364,100 @@ namespace HotelManagement.UI.Views.Receipt
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(599, 235);
+            this.label26.Location = new System.Drawing.Point(603, 270);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(58, 20);
             this.label26.TabIndex = 30;
             this.label26.Text = "label26";
             // 
-            // customButton2
+            // customButton3
             // 
-            this.customButton2.BackColor = System.Drawing.Color.Crimson;
-            this.customButton2.BackgroundColor = System.Drawing.Color.Crimson;
-            this.customButton2.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.customButton2.BorderRadius = 10;
-            this.customButton2.BorderSize = 0;
-            this.customButton2.FlatAppearance.BorderSize = 0;
-            this.customButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customButton2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.customButton2.ForeColor = System.Drawing.Color.Black;
-            this.customButton2.Location = new System.Drawing.Point(561, 658);
-            this.customButton2.Name = "customButton2";
-            this.customButton2.Size = new System.Drawing.Size(99, 42);
-            this.customButton2.TabIndex = 31;
-            this.customButton2.Text = "Hủy";
-            this.customButton2.TextColor = System.Drawing.Color.Black;
-            this.customButton2.UseVisualStyleBackColor = false;
+            this.customButton3.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.customButton3.BackgroundColor = System.Drawing.Color.DeepSkyBlue;
+            this.customButton3.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.customButton3.BorderRadius = 10;
+            this.customButton3.BorderSize = 0;
+            this.customButton3.FlatAppearance.BorderSize = 0;
+            this.customButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.customButton3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.customButton3.ForeColor = System.Drawing.Color.Black;
+            this.customButton3.Location = new System.Drawing.Point(659, 671);
+            this.customButton3.Name = "customButton3";
+            this.customButton3.Size = new System.Drawing.Size(148, 50);
+            this.customButton3.TabIndex = 31;
+            this.customButton3.Text = "Xác Nhận\r\n";
+            this.customButton3.TextColor = System.Drawing.Color.Black;
+            this.customButton3.UseVisualStyleBackColor = false;
+            this.customButton3.Click += new System.EventHandler(this.customButton3_Click);
             // 
-            // panel1
+            // BtnBack
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.label24);
-            this.panel1.Controls.Add(this.customButton2);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.label26);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label25);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.customButton1);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.label23);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.label22);
-            this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Controls.Add(this.label21);
-            this.panel1.Controls.Add(this.groupBox2);
-            this.panel1.Controls.Add(this.label20);
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.label19);
-            this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.label18);
-            this.panel1.Controls.Add(this.label9);
-            this.panel1.Controls.Add(this.label17);
-            this.panel1.Controls.Add(this.label10);
-            this.panel1.Controls.Add(this.label16);
-            this.panel1.Controls.Add(this.label11);
-            this.panel1.Controls.Add(this.label15);
-            this.panel1.Controls.Add(this.label12);
-            this.panel1.Controls.Add(this.label14);
-            this.panel1.Controls.Add(this.label13);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(827, 718);
-            this.panel1.TabIndex = 32;
+            this.BtnBack.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.BtnBack.BackgroundColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.BtnBack.BorderColor = System.Drawing.Color.Transparent;
+            this.BtnBack.BorderRadius = 5;
+            this.BtnBack.BorderSize = 2;
+            this.BtnBack.FlatAppearance.BorderSize = 0;
+            this.BtnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.BtnBack.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.BtnBack.Image = global::HotelManagement.UI.Properties.Resources.previous;
+            this.BtnBack.Location = new System.Drawing.Point(17, 12);
+            this.BtnBack.Name = "BtnBack";
+            this.BtnBack.Size = new System.Drawing.Size(117, 44);
+            this.BtnBack.TabIndex = 32;
+            this.BtnBack.Text = "Trở lại";
+            this.BtnBack.TextColor = System.Drawing.SystemColors.ControlText;
+            this.BtnBack.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnBack.UseVisualStyleBackColor = false;
+            this.BtnBack.Click += new System.EventHandler(this.BtnBack_Click);
             // 
             // FrmReceiptDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(134)))), ((int)(((byte)(203)))));
-            this.ClientSize = new System.Drawing.Size(848, 733);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(828, 733);
+            this.Controls.Add(this.BtnBack);
+            this.Controls.Add(this.customButton3);
+            this.Controls.Add(this.label26);
+            this.Controls.Add(this.label25);
+            this.Controls.Add(this.label24);
+            this.Controls.Add(this.label23);
+            this.Controls.Add(this.label22);
+            this.Controls.Add(this.label21);
+            this.Controls.Add(this.label20);
+            this.Controls.Add(this.label19);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.ForeColor = System.Drawing.Color.White;
             this.Name = "FrmReceiptDetail";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Thanh toán";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -504,7 +494,7 @@ namespace HotelManagement.UI.Views.Receipt
         private Components.CustomButton customButton1;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label26;
-        private Components.CustomButton customButton2;
-        private System.Windows.Forms.Panel panel1;
+        private Components.CustomButton customButton3;
+        private Components.CustomButton BtnBack;
     }
 }

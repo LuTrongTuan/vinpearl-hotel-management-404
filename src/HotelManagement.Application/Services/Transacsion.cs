@@ -76,6 +76,7 @@ namespace HotelManagement.Application.Services
             detail.Customers = await new NToN<CustomerDTO, Customer>(_mapper, _customer.IsExist)
                 .Handle<CustomerReceipt>(source.Customers, nameof(CustomerReceipt.CustomerId), nameof(CustomerReceipt.Customer));
             detail.Receipt.Payment += _payment + _calculator.ServiceCalculate(source.Services);
+            
             if (source.Histories.Count >= 2)
             {
                 var history = source.Histories.OrderBy(x => x.Start).ToArray();
