@@ -99,6 +99,7 @@ namespace HotelManagement.UI.Views.Receipt
                 BtnConfirm.Text = "Nhận phòng";
                 BtnConfirm.Click += Checkin_Click;
                 BtnUpdate.Enabled = false;
+                Dtpicker_in.Value = DateTime.Now;
             }
         }
 
@@ -124,7 +125,8 @@ namespace HotelManagement.UI.Views.Receipt
             {
                 CbxByHour.Checked = true;
                 Dtpicker_in.Value = query.Detail.CheckIn;
-                Dtpicker_out.Value = DateTime.Now;
+                //Dtpicker_out.Value = DateTime.Now;
+                Dtpicker_out.Value = query.Detail.CheckOut;
             }
 
             if (_originStatus == 2)
@@ -208,7 +210,10 @@ namespace HotelManagement.UI.Views.Receipt
         {
             var transaction = GetTransaction();
             if(transaction is not null && _confirm.IsConfirm("Bạn có chắc không?"))
+            {
                 MessageBox.Show(await _transacsion.Create(transaction));
+                ShowReceipt();
+            }
         }
 
         private async void Checkout_Click(object sender, EventArgs e)
@@ -296,6 +301,12 @@ namespace HotelManagement.UI.Views.Receipt
             };
             if (CbxByDay.Checked)
             {
+                transaction.Detail = new ReceiptDetailDTO
+                {
+                    CheckIn = Dtpicker_checkIn.Value,
+                    CheckOut = Dtpicker_checkOut.Value
+                };
+
                 if (!_isReceipt)
                 {
                     _history.Add(new HistoryDTO
@@ -326,12 +337,17 @@ namespace HotelManagement.UI.Views.Receipt
             }
             else if (CbxByHour.Checked)
             {
+                transaction.Detail = new ReceiptDetailDTO
+                {
+                    CheckIn = Dtpicker_in.Value,
+                    CheckOut = Dtpicker_out.Value
+                };
                 if (!_isReceipt)
                 {
                     _history.Add(new HistoryDTO
                     {
-                        Start = DateTime.Now,
-                        End = DateTime.Now,
+                        Start = Dtpicker_in.Value,
+                        End = Dtpicker_out.Value,
                         Status = 1
                     });
                 }
@@ -341,22 +357,19 @@ namespace HotelManagement.UI.Views.Receipt
                     {
                         _history.Add(new HistoryDTO
                         {
-                            Start = DateTime.Now,
-                            End = DateTime.Now,
+                            Start = Dtpicker_in.Value,
+                            End = Dtpicker_out.Value,
                             Status = 1
                         });
+                    }
+                    else
+                    {
+                        var currentHistory = _history.First(x => x.Start.ToShortDateString() == Dtpicker_in.Value.ToShortDateString());
+                        currentHistory.End = Dtpicker_out.Value;
                     }
                 }
             }
             else transaction.Receipt.Status = 2;
-
-            if (_room.Status == 2)
-            {
-                transaction.Detail = new ReceiptDetailDTO
-                {
-                    CheckOut = Dtpicker_checkOut.Value
-                };
-            }
 
             transaction.Receipt.Deposit = TbxDeposit.Text == "" ? 0 : Convert.ToInt32(TbxDeposit.Text);
 

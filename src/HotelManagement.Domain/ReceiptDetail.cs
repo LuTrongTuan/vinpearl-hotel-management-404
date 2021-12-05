@@ -6,6 +6,7 @@ namespace HotelManagement.Domain
     public class ReceiptDetail : Entity, ITime
     {
         public DateTime CreateAt { get; set; }
+        public DateTime CheckIn { get; set; }
         public DateTime Checkout { get; set; }
         public int ReceiptId { get; set; }
         public int RoomId { get; set; }

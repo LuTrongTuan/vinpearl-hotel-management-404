@@ -312,7 +312,6 @@ namespace HotelManagement.UI.Views.Receipt
             // Dtpicker_out
             // 
             this.Dtpicker_out.CustomFormat = "HH:mm";
-            this.Dtpicker_out.Enabled = false;
             this.Dtpicker_out.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.Dtpicker_out.Location = new System.Drawing.Point(311, 128);
             this.Dtpicker_out.Name = "Dtpicker_out";

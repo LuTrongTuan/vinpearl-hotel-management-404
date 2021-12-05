@@ -68,6 +68,7 @@ namespace HotelManagement.Application.Services
         {
             var room = await _worker.Rooms.Get(x => x.Id == source.RoomId);
             var detail = await _worker.ReceiptDetails.Get(x => x.RoomId == source.RoomId);
+            RoomPayment(source.Histories, room.Type.ByDay, room.Type.ByHour);
             _mapper.Map(source.Receipt, detail.Receipt);
             _mapper.Map(source.Detail, detail);
             _mapper.Map(source.Services, detail.Services);
@@ -79,8 +80,8 @@ namespace HotelManagement.Application.Services
             if (source.Histories.Count >= 2)
             {
                 var history = source.Histories.OrderBy(x => x.Start).ToArray();
-                detail.CreateAt = history[0].Start;
-                detail.Checkout = history[^1].End;
+                detail.CheckIn = history[0].Start;
+                detail.Checkout = history[history.Length - 1].End;
             }
             await _worker.ReceiptDetails.Update(detail);
             await _worker.Commit();
@@ -137,6 +138,7 @@ namespace HotelManagement.Application.Services
         }
         private void RoomPayment(IEnumerable<HistoryDTO> data, double dayPrice, double hourPrice)
         {
+            _payment = 0;
             foreach (var history in data)
             {
                 history.Payment = history.Status == 0 ? _calculator.ByDay(history.Start, history.End, dayPrice) : _calculator.ByHour(history.Start, history.End, hourPrice);
