@@ -42,7 +42,6 @@ namespace HotelManagement.UI.Views.Employee
             this.checked_HD = new System.Windows.Forms.CheckBox();
             this.rdoNu = new System.Windows.Forms.RadioButton();
             this.rdoNam = new System.Windows.Forms.RadioButton();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.button2 = new System.Windows.Forms.Button();
             this.btn_reset = new System.Windows.Forms.Button();
             this.btn_edit = new System.Windows.Forms.Button();
@@ -56,6 +55,7 @@ namespace HotelManagement.UI.Views.Employee
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -66,6 +66,7 @@ namespace HotelManagement.UI.Views.Employee
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(134)))), ((int)(((byte)(203)))));
+            this.panel1.Controls.Add(this.dateTimePicker1);
             this.panel1.Controls.Add(this.TxtUsername);
             this.panel1.Controls.Add(this.TxtEmail);
             this.panel1.Controls.Add(this.TxtPhone);
@@ -78,7 +79,6 @@ namespace HotelManagement.UI.Views.Employee
             this.panel1.Controls.Add(this.checked_HD);
             this.panel1.Controls.Add(this.rdoNu);
             this.panel1.Controls.Add(this.rdoNam);
-            this.panel1.Controls.Add(this.dateTimePicker1);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.btn_reset);
             this.panel1.Controls.Add(this.btn_edit);
@@ -100,32 +100,32 @@ namespace HotelManagement.UI.Views.Employee
             // 
             // TxtUsername
             // 
-            this.TxtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.TxtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.TxtUsername.Location = new System.Drawing.Point(971, 140);
             this.TxtUsername.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TxtUsername.Multiline = true;
             this.TxtUsername.Name = "TxtUsername";
-            this.TxtUsername.Size = new System.Drawing.Size(260, 37);
+            this.TxtUsername.Size = new System.Drawing.Size(260, 32);
             this.TxtUsername.TabIndex = 12;
             // 
             // TxtEmail
             // 
-            this.TxtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.TxtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.TxtEmail.Location = new System.Drawing.Point(464, 193);
             this.TxtEmail.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TxtEmail.Multiline = true;
             this.TxtEmail.Name = "TxtEmail";
-            this.TxtEmail.Size = new System.Drawing.Size(260, 37);
+            this.TxtEmail.Size = new System.Drawing.Size(260, 31);
             this.TxtEmail.TabIndex = 11;
             // 
             // TxtPhone
             // 
-            this.TxtPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.TxtPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.TxtPhone.Location = new System.Drawing.Point(464, 247);
             this.TxtPhone.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TxtPhone.Multiline = true;
             this.TxtPhone.Name = "TxtPhone";
-            this.TxtPhone.Size = new System.Drawing.Size(260, 37);
+            this.TxtPhone.Size = new System.Drawing.Size(260, 31);
             this.TxtPhone.TabIndex = 10;
             // 
             // tbx_search
@@ -140,22 +140,22 @@ namespace HotelManagement.UI.Views.Employee
             // 
             // TxtDiachi
             // 
-            this.TxtDiachi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.TxtDiachi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.TxtDiachi.Location = new System.Drawing.Point(464, 309);
             this.TxtDiachi.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TxtDiachi.Multiline = true;
             this.TxtDiachi.Name = "TxtDiachi";
-            this.TxtDiachi.Size = new System.Drawing.Size(260, 37);
+            this.TxtDiachi.Size = new System.Drawing.Size(260, 32);
             this.TxtDiachi.TabIndex = 9;
             // 
             // TxtName
             // 
-            this.TxtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.TxtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.TxtName.Location = new System.Drawing.Point(464, 89);
             this.TxtName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TxtName.Multiline = true;
             this.TxtName.Name = "TxtName";
-            this.TxtName.Size = new System.Drawing.Size(260, 33);
+            this.TxtName.Size = new System.Drawing.Size(260, 29);
             this.TxtName.TabIndex = 8;
             // 
             // dataGridView1
@@ -192,7 +192,7 @@ namespace HotelManagement.UI.Views.Employee
             this.checked_NHD.Name = "checked_NHD";
             this.checked_NHD.Size = new System.Drawing.Size(199, 29);
             this.checked_NHD.TabIndex = 5;
-            this.checked_NHD.Text = "Ngưng hoạt động";
+            this.checked_NHD.Text = "Không hoạt động";
             this.checked_NHD.UseVisualStyleBackColor = false;
             this.checked_NHD.CheckedChanged += new System.EventHandler(this.checked_NHD_CheckedChanged);
             // 
@@ -237,17 +237,6 @@ namespace HotelManagement.UI.Views.Employee
             this.rdoNam.TabStop = true;
             this.rdoNam.Text = "Nam";
             this.rdoNam.UseVisualStyleBackColor = false;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.CustomFormat = "";
-            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(464, 147);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(260, 24);
-            this.dateTimePicker1.TabIndex = 3;
-            this.dateTimePicker1.Value = new System.DateTime(2021, 11, 16, 0, 0, 0, 0);
             // 
             // button2
             // 
@@ -410,6 +399,15 @@ namespace HotelManagement.UI.Views.Employee
             this.label2.TabIndex = 0;
             this.label2.Text = "Họ tên";
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.CustomFormat = "MM/dd/yyyy";
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker1.Location = new System.Drawing.Point(464, 142);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(260, 30);
+            this.dateTimePicker1.TabIndex = 13;
+            // 
             // Frm_Employee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -440,7 +438,6 @@ namespace HotelManagement.UI.Views.Employee
         private System.Windows.Forms.CheckBox checked_HD;
         private System.Windows.Forms.RadioButton rdoNu;
         private System.Windows.Forms.RadioButton rdoNam;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btn_reset;
         private System.Windows.Forms.Button btn_edit;
@@ -454,5 +451,6 @@ namespace HotelManagement.UI.Views.Employee
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }

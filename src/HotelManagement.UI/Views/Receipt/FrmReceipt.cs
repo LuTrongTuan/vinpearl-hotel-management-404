@@ -94,12 +94,6 @@ namespace HotelManagement.UI.Views.Receipt
                 BtnConfirm.Click += Checkout_Click;
                 BtnConfirm.Text = "Thanh toán";
             }
-            else if(_room.Status == 1)
-            {
-                BtnConfirm.Text = "Dọn xong";
-                BtnConfirm.Click += CheckClean_Click;
-                BtnUpdate.Enabled = false;
-            }
             else
             {
                 BtnConfirm.Text = "Nhận phòng";
@@ -123,6 +117,7 @@ namespace HotelManagement.UI.Views.Receipt
                 CbxByDay.Checked = true;
                 Dtpicker_checkIn.Value = query.Detail.CheckIn;
                 Dtpicker_checkOut.Value = query.Detail.CheckOut;
+                Dtpicker_checkOut.MinDate = query.Detail.CheckOut;
             }
 
             if (_originStatus == 1)
@@ -130,6 +125,11 @@ namespace HotelManagement.UI.Views.Receipt
                 CbxByHour.Checked = true;
                 Dtpicker_in.Value = query.Detail.CheckIn;
                 Dtpicker_out.Value = DateTime.Now;
+            }
+
+            if (_originStatus == 2)
+            {
+                Dtpicker_checkOut.MinDate = DateTime.Now;
             }
 
             _customers = query.Customers;
@@ -210,10 +210,6 @@ namespace HotelManagement.UI.Views.Receipt
             MessageBox.Show(await _transacsion.Checkout(_roomId));
         }
 
-        private async void CheckClean_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show(await _transacsion.CheckClean(_roomId));
-        }
         private async void CmbService_SelectedIndexChanged(object sender, EventArgs e)
         {
             _serviceId = Convert.ToInt32(CmbService.SelectedValue);
@@ -290,8 +286,7 @@ namespace HotelManagement.UI.Views.Receipt
                     Number = Convert.ToInt32(LblPeople.Text),
                     IdentificationId = Convert.ToInt32(cbx_giayTo.SelectedValue)
                 },
-                Services = _serviceInOrder,
-                Histories = new List<HistoryDTO>()
+                Services = _serviceInOrder
             };
             if (CbxByDay.Checked)
             {
@@ -314,6 +309,11 @@ namespace HotelManagement.UI.Views.Receipt
                             End = Dtpicker_checkOut.Value,
                             Status = 0
                         });
+                    }
+                    else
+                    {
+                        var currentHistory = _history.First(x => x.Start.ToShortDateString() == Dtpicker_checkIn.Value.ToShortDateString());
+                        currentHistory.End = Dtpicker_checkOut.Value;
                     }
                 }
 

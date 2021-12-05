@@ -7,5 +7,6 @@
         public int Status { get; set; }
         public string Customer { get; set; }
         public string Type { get; set; }
+        public string Price { get; set; }
     }
 }

@@ -78,17 +78,48 @@ namespace HotelManagement.UI.Views.Check
 
         async void LoadCustomer()
         {
-            dataCustomer.ColumnCount = 4;
+            dataCustomer.ColumnCount = 8;
             dataCustomer.Columns[0].Name = "Name";
             dataCustomer.Columns[1].Name = "Giới Tính";
             dataCustomer.Columns[2].Name = "SĐT";
-            dataCustomer.Columns[3].Name = "Số Giấy Tờ";
-            //dataCustomer.Columns[4].Name = "Id";
-            //dataCustomer.Columns[4].Visible = false;
+            dataCustomer.Columns[3].Name = "Status";
+            dataCustomer.Columns[4].Name = "Số Giấy Tờ";
+            dataCustomer.Columns[5].Name = "Loại giấy Tờ";
+            //dataCustomer.Columns[6].Name = "Ngày Vào";
+            //dataCustomer.Columns[7].Name = "Ngày Ra";
             dataCustomer.Rows.Clear();
             foreach (var x in  await _customer.GetList())
             {
-                dataCustomer.Rows.Add(x.Name, x.Gender == true ? "Nam" : "Nữ", x.PhoneNumber, x.IdentityNumber);
+                dataCustomer.Rows.Add(x.Name, x.Gender == true ? "Nam" : "Nữ", x.PhoneNumber,
+                    x.Status == true ? "Hoạt Động" : "Không Hoạt Động", x.IdentityNumber,
+                    x.Type);
+                Cmb_Type.Items.Add(x.Type);
+            }
+        }
+
+        private void BtnRefresh_Click(object sender, EventArgs e) => LoadCustomer();
+
+        private void Cmb_Type_SelectedValueChanged(object sender, EventArgs e)
+        {
+            LoadCustomerType(Convert.ToInt32(Cmb_Type.Text));
+        }
+        async void LoadCustomerType(int type)
+        {
+            dataCustomer.ColumnCount = 8;
+            dataCustomer.Columns[0].Name = "Name";
+            dataCustomer.Columns[1].Name = "Giới Tính";
+            dataCustomer.Columns[2].Name = "SĐT";
+            dataCustomer.Columns[3].Name = "Status";
+            dataCustomer.Columns[4].Name = "Số Giấy Tờ";
+            dataCustomer.Columns[5].Name = "Loại giấy Tờ";
+            //dataCustomer.Columns[6].Name = "Ngày Vào";
+            //dataCustomer.Columns[7].Name = "Ngày Ra";
+            dataCustomer.Rows.Clear();
+            foreach (var x in await _customer.FindType(type))
+            {
+                dataCustomer.Rows.Add(x.Name, x.Gender == true ? "Nam" : "Nữ", x.PhoneNumber,
+                    x.Status == true ? "Hoạt Động" : "Không Hoạt Động", x.IdentityNumber,
+                    x.Type);
             }
         }
     }

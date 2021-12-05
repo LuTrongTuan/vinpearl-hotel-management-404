@@ -69,5 +69,12 @@ namespace HotelManagement.Application.Services
             var query = await _worker.Customers.Get(x => x.IdentityNumber == id);
             return _mapper.Map<CustomerDTO>(query);
         }
+
+        public async Task<IList<CustomerDTO>> FindType(int type)
+        {
+            var customers = await _worker.Customers.GetAll();
+            var list = customers.Where(c => c.Type == type).ToList();
+            return _mapper.Map<IList<Customer>, IList<CustomerDTO>>(list);
+        }
     }
 }

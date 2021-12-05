@@ -46,11 +46,11 @@ namespace HotelManagement.UI.Views.Receipt
             this.ServiceQuantity = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Dtpicker_in = new System.Windows.Forms.DateTimePicker();
             this.LblType = new System.Windows.Forms.Label();
             this.LblPeople = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.Dtpicker_out = new System.Windows.Forms.DateTimePicker();
-            this.Dtpicker_in = new System.Windows.Forms.DateTimePicker();
             this.TbxNote = new HotelManagement.UI.Components.TextBox();
             this.TbxDeposit = new HotelManagement.UI.Components.TextBox();
             this.lbl_roomPrice = new System.Windows.Forms.Label();
@@ -158,6 +158,7 @@ namespace HotelManagement.UI.Views.Receipt
             // Dtpicker_checkIn
             // 
             this.Dtpicker_checkIn.CustomFormat = "";
+            this.Dtpicker_checkIn.Enabled = false;
             this.Dtpicker_checkIn.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.Dtpicker_checkIn.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.Dtpicker_checkIn.Location = new System.Drawing.Point(145, 84);
@@ -247,11 +248,11 @@ namespace HotelManagement.UI.Views.Receipt
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.Dtpicker_in);
             this.groupBox1.Controls.Add(this.LblType);
             this.groupBox1.Controls.Add(this.LblPeople);
             this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.Dtpicker_out);
-            this.groupBox1.Controls.Add(this.Dtpicker_in);
             this.groupBox1.Controls.Add(this.TbxNote);
             this.groupBox1.Controls.Add(this.TbxDeposit);
             this.groupBox1.Controls.Add(this.lbl_roomPrice);
@@ -276,6 +277,17 @@ namespace HotelManagement.UI.Views.Receipt
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin hóa đơn";
+            // 
+            // Dtpicker_in
+            // 
+            this.Dtpicker_in.CustomFormat = "HH:mm";
+            this.Dtpicker_in.Enabled = false;
+            this.Dtpicker_in.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.Dtpicker_in.Location = new System.Drawing.Point(310, 84);
+            this.Dtpicker_in.Name = "Dtpicker_in";
+            this.Dtpicker_in.ShowUpDown = true;
+            this.Dtpicker_in.Size = new System.Drawing.Size(135, 27);
+            this.Dtpicker_in.TabIndex = 40;
             // 
             // LblType
             // 
@@ -318,18 +330,6 @@ namespace HotelManagement.UI.Views.Receipt
             this.Dtpicker_out.ShowUpDown = true;
             this.Dtpicker_out.Size = new System.Drawing.Size(134, 27);
             this.Dtpicker_out.TabIndex = 40;
-            // 
-            // Dtpicker_in
-            // 
-            this.Dtpicker_in.CustomFormat = "HH:mm";
-            this.Dtpicker_in.Enabled = false;
-            this.Dtpicker_in.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.Dtpicker_in.Location = new System.Drawing.Point(311, 84);
-            this.Dtpicker_in.Name = "Dtpicker_in";
-            this.Dtpicker_in.ShowUpDown = true;
-            this.Dtpicker_in.Size = new System.Drawing.Size(134, 27);
-            this.Dtpicker_in.TabIndex = 39;
-            this.Dtpicker_in.Value = new System.DateTime(2021, 11, 17, 9, 27, 0, 0);
             // 
             // TbxNote
             // 
@@ -989,7 +989,6 @@ namespace HotelManagement.UI.Views.Receipt
         private Components.CustomButton BtnCancle;
         private Components.TextBox TbxCustomerName;
         private DateTimePicker Dtpicker_out;
-        private DateTimePicker Dtpicker_in;
         private Label LblPayment;
         private Components.CustomButton BtnUpdate;
         private ComboBox comboBox1;
@@ -1003,5 +1002,6 @@ namespace HotelManagement.UI.Views.Receipt
         private GroupBox groupBox4;
         private Label LblPeople;
         private Label LblType;
+        private DateTimePicker Dtpicker_in;
     }
 }

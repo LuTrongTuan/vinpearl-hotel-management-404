@@ -17,6 +17,7 @@ namespace HotelManagement.Infrastructure.Repositories
         {
             return await Context.Floors
                 .Include(e => e.Rooms.OrderBy(d => d.Name))
+                .ThenInclude(m => m.Type)
                 .ToListAsync();
         }
     }
