@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 using HotelManagement.Application.Contracts.Services;
@@ -48,13 +49,13 @@ namespace HotelManagement.UI.Views.Receipt
             {
                 label14.Text = query.Histories.First().Start.ToString();
                 label15.Text = query.Histories.First().End.ToString();
-                label18.Text = _room.RoomType.ByHour.ToString();
+                label18.Text = MoneyFormat(_room.RoomType.ByHour);
             }
             else
             {
                 label14.Text = query.Histories.First().Start.ToString();
                 label15.Text = query.Histories.First().End.ToString();
-                label18.Text = _room.RoomType.ByDay.ToString();
+                label18.Text = MoneyFormat(_room.RoomType.ByDay);
             }
             
             var x = query.Customers;
@@ -63,7 +64,7 @@ namespace HotelManagement.UI.Views.Receipt
             label21.Text = x.First().Gender == true?"Nam":"Nữ";
             label22.Text = x.First().Type == 1?"CCCD":"Banking";
             label23.Text = x.First().IdentityNumber;
-            label26.Text = query.Receipt.Payment.ToString();
+            label26.Text = MoneyFormat((query.Receipt.Payment * 0.1)+ query.Receipt.Payment);
             dataGridView1.ColumnCount = 3;
             dataGridView1.Columns[0].Name = "Tên Dịch Vụ";
             dataGridView1.Columns[1].Name = "Số Lượng";
@@ -91,7 +92,7 @@ namespace HotelManagement.UI.Views.Receipt
             frmReceipt.Close();
             this.Hide();
         }
-
+        private string MoneyFormat(double money) => money.ToString("C", new CultureInfo("vi-VN"));
         private async void Btn_confirm_Click(object sender, EventArgs e)
         {
             MessageBox.Show(await _transacsion.Checkout(_roomId));
