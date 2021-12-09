@@ -57,16 +57,16 @@ namespace HotelManagement.UI.Views.Room
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(3, 253);
+            this.panel1.Location = new System.Drawing.Point(3, 349);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1423, 636);
+            this.panel1.Size = new System.Drawing.Size(1423, 540);
             this.panel1.TabIndex = 26;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(696, 101);
+            this.label1.Location = new System.Drawing.Point(737, 101);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(120, 23);
             this.label1.TabIndex = 15;
@@ -76,7 +76,7 @@ namespace HotelManagement.UI.Views.Room
             // 
             this.CbxActive.AutoSize = true;
             this.CbxActive.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.CbxActive.Location = new System.Drawing.Point(396, 174);
+            this.CbxActive.Location = new System.Drawing.Point(351, 174);
             this.CbxActive.Name = "CbxActive";
             this.CbxActive.Size = new System.Drawing.Size(117, 27);
             this.CbxActive.TabIndex = 17;
@@ -88,7 +88,7 @@ namespace HotelManagement.UI.Views.Room
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(694, 24);
+            this.label3.Location = new System.Drawing.Point(735, 24);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(130, 23);
             this.label3.TabIndex = 27;
@@ -106,7 +106,7 @@ namespace HotelManagement.UI.Views.Room
             this.BtnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnRefresh.ForeColor = System.Drawing.SystemColors.ControlText;
             this.BtnRefresh.Image = global::HotelManagement.UI.Properties.Resources.refresh__2_;
-            this.BtnRefresh.Location = new System.Drawing.Point(856, 157);
+            this.BtnRefresh.Location = new System.Drawing.Point(846, 175);
             this.BtnRefresh.Name = "BtnRefresh";
             this.BtnRefresh.Size = new System.Drawing.Size(48, 45);
             this.BtnRefresh.TabIndex = 25;
@@ -118,7 +118,7 @@ namespace HotelManagement.UI.Views.Room
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(239, 24);
+            this.label4.Location = new System.Drawing.Point(194, 24);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(112, 23);
             this.label4.TabIndex = 28;
@@ -128,7 +128,7 @@ namespace HotelManagement.UI.Views.Room
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(239, 98);
+            this.label5.Location = new System.Drawing.Point(194, 98);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(75, 23);
             this.label5.TabIndex = 29;
@@ -138,7 +138,7 @@ namespace HotelManagement.UI.Views.Room
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(239, 173);
+            this.label2.Location = new System.Drawing.Point(194, 173);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(68, 23);
             this.label2.TabIndex = 16;
@@ -155,7 +155,7 @@ namespace HotelManagement.UI.Views.Room
             this.BtnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnSave.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.BtnSave.ForeColor = System.Drawing.Color.White;
-            this.BtnSave.Location = new System.Drawing.Point(952, 156);
+            this.BtnSave.Location = new System.Drawing.Point(942, 174);
             this.BtnSave.Name = "BtnSave";
             this.BtnSave.Size = new System.Drawing.Size(144, 45);
             this.BtnSave.TabIndex = 22;
@@ -168,7 +168,7 @@ namespace HotelManagement.UI.Views.Room
             // 
             this.CbxDeactive.AutoSize = true;
             this.CbxDeactive.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.CbxDeactive.Location = new System.Drawing.Point(558, 172);
+            this.CbxDeactive.Location = new System.Drawing.Point(486, 174);
             this.CbxDeactive.Name = "CbxDeactive";
             this.CbxDeactive.Size = new System.Drawing.Size(172, 27);
             this.CbxDeactive.TabIndex = 18;
@@ -179,7 +179,7 @@ namespace HotelManagement.UI.Views.Room
             // CbxNameType
             // 
             this.CbxNameType.FormattingEnabled = true;
-            this.CbxNameType.Location = new System.Drawing.Point(396, 19);
+            this.CbxNameType.Location = new System.Drawing.Point(351, 19);
             this.CbxNameType.Name = "CbxNameType";
             this.CbxNameType.Size = new System.Drawing.Size(214, 28);
             this.CbxNameType.TabIndex = 34;
@@ -193,7 +193,7 @@ namespace HotelManagement.UI.Views.Room
             this.TbxDay.FocusedColor = System.Drawing.Color.Aqua;
             this.TbxDay.ForeColor = System.Drawing.Color.White;
             this.TbxDay.IsError = false;
-            this.TbxDay.Location = new System.Drawing.Point(882, 10);
+            this.TbxDay.Location = new System.Drawing.Point(923, 10);
             this.TbxDay.Margin = new System.Windows.Forms.Padding(4);
             this.TbxDay.Multiline = false;
             this.TbxDay.Name = "TbxDay";
@@ -214,7 +214,7 @@ namespace HotelManagement.UI.Views.Room
             this.TbxName.FocusedColor = System.Drawing.Color.Aqua;
             this.TbxName.ForeColor = System.Drawing.Color.White;
             this.TbxName.IsError = false;
-            this.TbxName.Location = new System.Drawing.Point(882, 98);
+            this.TbxName.Location = new System.Drawing.Point(923, 98);
             this.TbxName.Margin = new System.Windows.Forms.Padding(4);
             this.TbxName.Multiline = false;
             this.TbxName.Name = "TbxName";
@@ -235,7 +235,7 @@ namespace HotelManagement.UI.Views.Room
             this.TbxHour.FocusedColor = System.Drawing.Color.Aqua;
             this.TbxHour.ForeColor = System.Drawing.Color.White;
             this.TbxHour.IsError = false;
-            this.TbxHour.Location = new System.Drawing.Point(396, 98);
+            this.TbxHour.Location = new System.Drawing.Point(351, 98);
             this.TbxHour.Margin = new System.Windows.Forms.Padding(4);
             this.TbxHour.Multiline = false;
             this.TbxHour.Name = "TbxHour";

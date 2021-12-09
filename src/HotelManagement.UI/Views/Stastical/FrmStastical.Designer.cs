@@ -40,6 +40,7 @@ namespace HotelManagement.UI.Views.Check
             this.dataCustomer = new System.Windows.Forms.DataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.BtnRefresh_Room = new HotelManagement.UI.Components.CustomButton();
             this.statisCustomer.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_tkp)).BeginInit();
@@ -65,6 +66,7 @@ namespace HotelManagement.UI.Views.Check
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.BtnRefresh_Room);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.cmb_tang);
             this.tabPage1.Controls.Add(this.dg_tkp);
@@ -92,6 +94,7 @@ namespace HotelManagement.UI.Views.Check
             this.cmb_tang.Name = "cmb_tang";
             this.cmb_tang.Size = new System.Drawing.Size(151, 28);
             this.cmb_tang.TabIndex = 1;
+            this.cmb_tang.SelectedValueChanged += new System.EventHandler(this.cmb_tang_SelectedValueChanged);
             // 
             // dg_tkp
             // 
@@ -181,6 +184,26 @@ namespace HotelManagement.UI.Views.Check
             this.dataGridView1.Size = new System.Drawing.Size(1345, 268);
             this.dataGridView1.TabIndex = 0;
             // 
+            // BtnRefresh_Room
+            // 
+            this.BtnRefresh_Room.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnRefresh_Room.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.BtnRefresh_Room.BackgroundColor = System.Drawing.SystemColors.MenuHighlight;
+            this.BtnRefresh_Room.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.BtnRefresh_Room.BorderRadius = 5;
+            this.BtnRefresh_Room.BorderSize = 2;
+            this.BtnRefresh_Room.FlatAppearance.BorderSize = 0;
+            this.BtnRefresh_Room.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnRefresh_Room.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.BtnRefresh_Room.Image = global::HotelManagement.UI.Properties.Resources.refresh__2_;
+            this.BtnRefresh_Room.Location = new System.Drawing.Point(286, 29);
+            this.BtnRefresh_Room.Name = "BtnRefresh_Room";
+            this.BtnRefresh_Room.Size = new System.Drawing.Size(48, 40);
+            this.BtnRefresh_Room.TabIndex = 5;
+            this.BtnRefresh_Room.TextColor = System.Drawing.SystemColors.ControlText;
+            this.BtnRefresh_Room.UseVisualStyleBackColor = false;
+            this.BtnRefresh_Room.Click += new System.EventHandler(this.BtnRefresh_Room_Click);
+            // 
             // FrmStastical
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -214,5 +237,6 @@ namespace HotelManagement.UI.Views.Check
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ComboBox Cmb_Type;
         private Components.CustomButton BtnRefresh;
+        private Components.CustomButton BtnRefresh_Room;
     }
 }

@@ -6,6 +6,5 @@
         public string Name { get; set; }
         public double ByDay { get; set; }
         public double ByHour { get; set; }
-
     }
 }

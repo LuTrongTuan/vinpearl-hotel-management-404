@@ -22,6 +22,7 @@ namespace HotelManagement.UI.Views.Room
         private IRoomTypeService _roomType;
         private readonly IConfirm _confirm;
         private RoomDetailDTO _roomDetail;
+        private FloorDTO _floorDto;
         private Components.Room _room;
         private const int PanelWidth = 1610;
         private Regex number;
@@ -50,7 +51,7 @@ namespace HotelManagement.UI.Views.Room
 
         async Task LoadRoom()
         {
-            CbxActive.Enabled = false;
+            //CbxActive.Enabled = false;
             var roomLocation = new Point(140, 5);
             var floorLocation = new Point(10, 5);
             var numberOf = (PanelWidth - 100) / 250;

@@ -27,36 +27,10 @@ namespace HotelManagement.UI.Views.Check
         {
             var z = await _floor.Get();
             cmb_tang.Items.Add("");
-            // cmb_tang.DataSource = z;
-            // cmb_tang.DisplayMember = "tang";
-            // cmb_tang.ValueMember = "id";
             foreach (var a in z)
             {
                 cmb_tang.Items.Add(a.Floor);
             }
-            if (cmb_tang.Text == "1")
-            {
-                dg_tkp.Rows.Clear();
-                dg_tkp.ColumnCount = 4;
-                dg_tkp.Columns[0].Name = "id";
-                dg_tkp.Columns[0].Visible = false;
-                dg_tkp.Columns[1].Name = "Tên phòng";
-                dg_tkp.Columns[2].Name = "Tên loại phòng";
-                dg_tkp.Columns[3].Name = "Trạng thái phòng";
-                dg_tkp.Rows.Clear();
-                var list = await _room.GetList();
-                foreach (var x in list.Where(c=>c.FloorNumber == Convert.ToInt32(cmb_tang.Text)))
-                {
-                    var y = await _roomType.Get();
-                    var name = y.Where(c => c.Id == x.typeId).Select(c => c.Name).FirstOrDefault();
-                    dg_tkp.Rows.Add(x.Id, x.Name, name, x.Status == 0 ? "Hoạt động" : x.Status == 1 ? "Đang dọn dẹp" : "Không hoạt động");
-                }
-            }
-            else if (cmb_tang.SelectedIndex == 2)
-            {
-                
-            }
-
         }
         async void gridTk()
         {
@@ -72,7 +46,9 @@ namespace HotelManagement.UI.Views.Check
             {
                 var y = await _roomType.Get();
                 var name = y.Where(c => c.Id == x.typeId).Select(c => c.Name).FirstOrDefault();
-                dg_tkp.Rows.Add(x.Id,x.Name,name,x.Status == 0? "Hoạt động":x.Status == 1 ?"Đang dọn dẹp":"Không hoạt động");
+                var tang = await _floor.GetAll();
+                var load = tang.Where(c => c.Id == x.typeId).Select(c => c.Floor).FirstOrDefault();
+                dg_tkp.Rows.Add(x.Id,x.Name, name, x.Status == 0? "Hoạt động":x.Status == 1 ?"Đang dọn dẹp":"Không hoạt động");
             }
         }
 
@@ -122,5 +98,31 @@ namespace HotelManagement.UI.Views.Check
                     x.Type);
             }
         }
+
+        private void cmb_tang_SelectedValueChanged(object sender, EventArgs e)
+        {
+            Search(Convert.ToInt32(cmb_tang.Text));
+        }
+        async void Search(int floor)
+        {
+            dg_tkp.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dg_tkp.ColumnCount = 4;
+            dg_tkp.Columns[0].Name = "id";
+            dg_tkp.Columns[0].Visible = false;
+            dg_tkp.Columns[1].Name = "Tên phòng";
+            dg_tkp.Columns[2].Name = "Tên loại phòng";
+            dg_tkp.Columns[3].Name = "Trạng thái phòng";
+            dg_tkp.Rows.Clear();
+            var room = await _room.GetList();
+            foreach (var x in room.Where(c => c.FloorNumber == floor))
+            {
+                var y = await _roomType.Get();
+                var name = y.Where(c => c.Id == x.typeId).Select(c => c.Name).FirstOrDefault();
+                dg_tkp.Rows.Add(x.Id, x.Name, name, x.Status == 0 ? "Hoạt động" : x.Status == 1 ? "Đang dọn dẹp" : "Không hoạt động");
+            }
+        }
+
+        private void BtnRefresh_Room_Click(object sender, EventArgs e) => gridTk();
+        
     }
 }
