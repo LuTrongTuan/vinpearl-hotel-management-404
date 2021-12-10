@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
@@ -34,6 +35,14 @@ namespace HotelManagement.Infrastructure.Repositories
                 .OrderBy(x => x.CreateAt)
                 .LastAsync(predicate);
             return history.Histories.Last().Status;
+        }
+
+        public async Task<IList<ReceiptDetail>> getTak(Expression<Func<ReceiptDetail, bool>> predicate)
+        {
+            return await Context.ReceiptDetails
+
+                .Include(e => e.Receipt)
+                .Where(predicate).ToListAsync();
         }
     }
 }
