@@ -123,6 +123,29 @@ namespace HotelManagement.UI.Views.Check
         }
 
         private void BtnRefresh_Room_Click(object sender, EventArgs e) => gridTk();
-        
+        async void load()
+        {
+            dgrid_doanh.ColumnCount = 3;
+            dgrid_doanh.Columns[0].Name = "Tên phòng";
+            dgrid_doanh.Columns[1].Name = "Tên loại phòng";
+            dgrid_doanh.Columns[2].Name = "Tiền";
+            dgrid_doanh.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgrid_doanh.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgrid_doanh.Rows.Clear();
+
+            foreach (var x in await _room.GetList())
+            {
+                var m = await _roomType.Get();
+                var nae = m.Where(c => c.Id == x.typeId).Select(c => c.Name).FirstOrDefault();
+
+                var name = await _room.getTak(y => y.RoomId == x.Id);
+                var money = name.Sum(c => c.Receipt.Payment);
+                dgrid_doanh.Rows.Add(x.Name, nae, money);
+            }
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            load();
+        }
     }
 }

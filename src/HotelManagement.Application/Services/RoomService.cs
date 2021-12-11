@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using AutoMapper;
 using HotelManagement.Application.Contracts.Infrastructure;
@@ -80,6 +81,11 @@ namespace HotelManagement.Application.Services
             await _worker.Rooms.Update(_room);
             await _worker.Commit();
             return "Sửa thành công";
+        }
+
+        public async Task<IList<ReceiptDetail>> getTak(Expression<Func<ReceiptDetail, bool>> predicate)
+        {
+            return await _worker.ReceiptDetails.getTak(predicate);
         }
     }
 }
