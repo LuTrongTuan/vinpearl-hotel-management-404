@@ -54,7 +54,7 @@ namespace HotelManagement.UI.Views.Check
 
         async void LoadCustomer()
         {
-            dataCustomer.ColumnCount = 8;
+            dataCustomer.ColumnCount = 6;
             dataCustomer.Columns[0].Name = "Name";
             dataCustomer.Columns[1].Name = "Giới Tính";
             dataCustomer.Columns[2].Name = "SĐT";
@@ -68,15 +68,19 @@ namespace HotelManagement.UI.Views.Check
             {
                 dataCustomer.Rows.Add(x.Name, x.Gender == true ? "Nam" : "Nữ", x.PhoneNumber,
                     x.Status == true ? "Hoạt Động" : "Không Hoạt Động", x.IdentityNumber,
-                    x.Type);
+                    x.Type == 1 ? "CCCD" : x.Type == 2 ? "GPLX" : "Passport");
+                //Cmb_Type.Items.Add("None");
                 Cmb_Type.Items.Add(x.Type);
+                //Cmb_Type.SelectedIndex = 0;
             }
         }
 
-        private void BtnRefresh_Click(object sender, EventArgs e) => LoadCustomer();
-
         private void Cmb_Type_SelectedValueChanged(object sender, EventArgs e)
         {
+            //if (Cmb_Type.SelectedIndex == 0)
+            //{
+            //    LoadCustomer();
+            //}
             LoadCustomerType(Convert.ToInt32(Cmb_Type.Text));
         }
         async void LoadCustomerType(int type)
@@ -122,7 +126,6 @@ namespace HotelManagement.UI.Views.Check
             }
         }
 
-        private void BtnRefresh_Room_Click(object sender, EventArgs e) => gridTk();
         async void load()
         {
             dgrid_doanh.ColumnCount = 3;
